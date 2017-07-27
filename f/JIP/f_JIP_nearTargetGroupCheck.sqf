@@ -4,7 +4,7 @@
 
 // DECLARE VARIABLES AND FUNCTIONS
 
-private ["_grp","_joinDistance"];
+private ["_grp","_joinDistance", "_unit"];
 
 // ====================================================================================
 
@@ -32,12 +32,6 @@ while {true} do
 if ({alive _x} count (units _grp) == 0) exitWith {
 	[player] execVM "f\JIP\f_JIP_addReinforcementOptionsAction.sqf";
 	["JIP",[format ["All members of %1 have died. Please select a new group",_grp]]] call BIS_fnc_showNotification;
-};
-
-// DEBUG
-if (f_param_debugMode == 1) then
-{
-	player sideChat format ["DEBUG (f\JIP\f_JIP_nearTargetGroupCheck.sqf): _alive = %1",_alive];
 };
 
 // ====================================================================================
