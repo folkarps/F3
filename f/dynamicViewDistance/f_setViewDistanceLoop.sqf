@@ -20,7 +20,7 @@ if (_veh != _unit) then
 {
 	if (f_param_debugMode == 1) then 
 	{
-		player sideChat "DEBUG (f\dynamicViewDistance\f_setViewDistanceLoop.sqf): Player is in a vehicle";
+		player sideChat "DEBUG (f\dynamicViewDistance\f_setViewDistanceLoop.sqf): Player starts in a vehicle";
 	};
 	
 	if !(f_var_viewDistance_crewOnly && {_unit in assignedCargo _veh}) then 
