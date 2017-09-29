@@ -19,9 +19,16 @@ else
 if (_vd != viewDistance) then
 {
 	setViewDistance _vd;
-	systemChat format ["DEBUG: Viewdistance set to %1",_vd];
+	
+	if (f_param_debugMode == 1) then 
+	{
+		player sideChat format ["DEBUG (f\dynamicViewDistance\f_eh_setViewDistance_onSeatChange.sqf): Viewdistance set to %1",_vd];
+	};
 }
-else
+else 
 {
-	systemChat "No VD change required";
+	if (f_param_debugMode == 1) then 
+	{
+		player sideChat "DEBUG (f\dynamicViewDistance\f_eh_setViewDistance_onSeatChange.sqf): No VD change required";
+	};
 };

@@ -18,9 +18,12 @@ private _vd = f_var_viewDistance_default;
 
 if (_veh != _unit) then 
 {
-	systemChat "DEBUG: Player is in a vehicle";
+	if (f_param_debugMode == 1) then 
+	{
+		player sideChat "DEBUG (f\dynamicViewDistance\f_setViewDistanceLoop.sqf): Player is in a vehicle";
+	};
 	
-	if (f_var_viewDistance_crewOnly && {!(_unit in assignedCargo _veh)}) then
+	if !(f_var_viewDistance_crewOnly && {_unit in assignedCargo _veh}) then 
 	{
 		if (_veh isKindOf "Car") then {_vd = f_var_viewDistance_car;};
 		if (_veh isKindOf "Tank") then {_vd = f_var_viewDistance_tank;};
@@ -30,13 +33,21 @@ if (_veh != _unit) then
 };
 
 setViewDistance _vd;
-systemChat format ["DEBUG: Viewdistance set to %1", viewDistance];
+
+if (f_param_debugMode == 1) then 
+{
+	player sideChat format ["DEBUG: Viewdistance set to %1", viewDistance];
+};
 
 f_ehIndex_dynamicViewDistance_0 = _unit addEventHandler ['GetInMan', {_this execVM 'f\dynamicViewDistance\f_eh_setViewDistance_onGetIn.sqf'}];
-systemChat format ["DEBUG: Successfully added Event Handler ID: %1",f_ehIndex_dynamicViewDistance_0];
 
 f_ehIndex_dynamicViewDistance_1 = _unit addEventHandler ['GetOutMan', {_this execVM 'f\dynamicViewDistance\f_eh_setViewDistance_onGetOut.sqf'}];
-systemChat format ["DEBUG: Successfully added Event Handler ID: %1",f_ehIndex_dynamicViewDistance_1];
 
 f_ehIndex_dynamicViewDistance_2 = _unit addEventHandler ['SeatSwitchedMan', {_this execVM 'f\dynamicViewDistance\f_eh_setViewDistance_onSeatChange.sqf'}];
-systemChat format ["DEBUG: Successfully added Event Handler ID: %1",f_ehIndex_dynamicViewDistance_2];
+
+if (f_param_debugMode == 1) then 
+{
+	player sideChat format ["DEBUG (f\dynamicViewDistance\f_setViewDistanceLoop.sqf): Successfully added Event Handler GetInMan ID: %1",f_ehIndex_dynamicViewDistance_0];
+	player sideChat format ["DEBUG (f\dynamicViewDistance\f_setViewDistanceLoop.sqf): Successfully added Event Handler GetOutMan ID: %1",f_ehIndex_dynamicViewDistance_1];
+	player sideChat format ["DEBUG (f\dynamicViewDistance\f_setViewDistanceLoop.sqf): Successfully added Event Handler SeatSwitchedMan ID: %1",f_ehIndex_dynamicViewDistance_2];
+};
