@@ -281,15 +281,6 @@ _sfGlasses = [];
 
 // ====================================================================================
 
-// INTERPRET PASSED VARIABLES
-// The following interprets what has been passed to this script element
-
-_typeofUnit = toLower (_this select 0);	// Tidy input for SWITCH/CASE statements, expecting something like : r = Rifleman, co = Commanding Officer, rat = Rifleman (AT)
-_unit = _this select 1;					// expecting name of unit; originally passed by using 'this' in unit init
-_isMan = _unit isKindOf "CAManBase";	// We check if we're dealing with a soldier or a vehicle
-
-// ====================================================================================
-
 // This block needs only to be run on an infantry unit
 if (_isMan) then {
 
@@ -344,6 +335,13 @@ if (_loadout == 1) then {
 
 // If this isn't run on an infantry unit we can exit
 if !(_isMan) exitWith {};
+
+// ====================================================================================
+
+// Add extra FAKs
+for "_i" from 1 to _extraFAK do {
+	_unit addItem _firstaid;
+};
 
 // ====================================================================================
 
