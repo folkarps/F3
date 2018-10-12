@@ -58,6 +58,8 @@ if (_unitfaction in ["opf_f","opf_t_f"]) then {
 
 	["GrpCSAT_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
 
+	["GrpCSAT_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
+
 	["UnitCSAT_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitCSAT_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitCSAT_ASL_M",_med, "AM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
@@ -122,6 +124,8 @@ if (_unitfaction in ["opf_g_f"]) then {
 	["GrpOFIA_TH8",_hel, "TH8", "ColorOrange"] spawn f_fnc_localGroupMarker;
 
 	["GrpOFIA_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
+
+	["GrpOFIA_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
 
 	["UnitOFIA_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitOFIA_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;

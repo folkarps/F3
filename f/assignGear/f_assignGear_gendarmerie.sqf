@@ -111,7 +111,7 @@ _DMriflemag = "20Rnd_762x51_Mag";
 // Define classes. This defines which gear class gets which uniform
 // "medium" vests are used for all classes if they are not assigned a specific uniform
 
-_pilot = ["pp","pcc"];
+_pilot = ["pp","pcc","pc"];
 _specOp = ["nf"];
 
 // Basic clothing
@@ -252,8 +252,10 @@ switch (_typeofUnit) do
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
 	};
-// Heli Pilot Loadout:
-	case "pp":
+// Helicopter Crew Loadout:
+	case "pp";
+	case "pcc";
+	case "pc":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit setUnitTrait ["engineer",true]; // Can repair

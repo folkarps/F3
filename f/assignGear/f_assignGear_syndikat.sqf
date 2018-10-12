@@ -230,6 +230,7 @@ _pilot = ["pp","pcc","pc"];
 _crew = ["vc","vg","vd"];
 _ghillie = ["sn","sp"];
 _specOp = [];
+_jet = ["jp"];
 
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
@@ -253,6 +254,12 @@ _pilotUniform = ["U_C_WorkerCoveralls"];
 _pilotHelmet = _baseHelmet;
 _pilotRig = ["V_Chestrig_blk"];
 _pilotGlasses = [];
+
+// Jet Pilot
+_jetUniform = ["U_I_pilotCoveralls"];
+_jetHelmet = ["H_PilotHelmetFighter_I"];
+_jetRig = ["V_Chestrig_blk"];
+_jetGlasses = [];
 
 // Crewman
 _crewUniform = _baseUniform;

@@ -120,7 +120,7 @@
 		_unit addMagazineCargoGlobal [_smokegrenadegreen,4];
 		_unit addMagazineCargoGlobal [_glmag,12];
 		_unit addMagazineCargoGlobal [_chemgreen,4];
-		_unit addBackpackCargoGlobal [_bagmedium,2];
+		_unit addBackpackCargoGlobal [_bag,2];
 		_unit addItemCargoGlobal [_firstaid,4];
 		_unit addBackpackCargoGlobal ["B_Parachute",2];
 		_unit addItemCargoGlobal ["Toolkit",1];
@@ -147,7 +147,7 @@
 		_unit addMagazineCargoGlobal [_glmag,12];
 		_unit addMagazineCargoGlobal [_glsmokewhite,12];
 		_unit addMagazineCargoGlobal [_chemgreen,4];
-		_unit addBackpackCargoGlobal [_bagmedium,4];
+		_unit addBackpackCargoGlobal [_bag,4];
 		_unit addItemCargoGlobal [_firstaid,6];
 		_unit addBackpackCargoGlobal ["B_Parachute",4];
 		_unit addItemCargoGlobal ["Toolkit",1];
@@ -178,6 +178,8 @@
 		_unit addMagazineCargoGlobal [_chemgreen,2];
 		_unit addItemCargoGlobal [_firstaid,1];
 		_unit addBackpackCargoGlobal ["B_Parachute",1];
+		_unit addBackpackCargoGlobal [_bag,1];
+		_unit addItemCargoGlobal ["Toolkit",1];
     };
 
 // CRATE: Small, ammo for 1 fireteam

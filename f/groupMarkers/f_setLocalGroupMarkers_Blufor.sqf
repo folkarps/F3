@@ -59,6 +59,8 @@ if (_unitfaction in ["blu_f","blu_t_f","blu_ctrg_f"]) then {
 
 	["GrpNATO_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
 
+	["GrpNATO_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
+
 	["UnitNATO_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitNATO_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitNATO_ASL_M",_med, "AM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
@@ -124,6 +126,8 @@ if (_unitfaction in ["blu_g_f","blu_ctrg_f"]) then {
 	["GrpFIA_TH8",_hel, "TH8", "ColorOrange"] spawn f_fnc_localGroupMarker;
 
 	["GrpFIA_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
+
+	["GrpFIA_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
 
 	["UnitFIA_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitFIA_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;

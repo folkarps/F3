@@ -54,6 +54,8 @@ if (_unitfaction in ["ind_f"]) then {
 
 	["GrpAAF_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
 
+	["GrpAAF_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
+
 	["UnitAAF_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitAAF_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitAAF_ASL_M",_med, "AM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
@@ -119,6 +121,8 @@ if (_unitfaction in ["ind_g_f"]) then {
 
 	["GrpIFIA_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
 
+	["GrpIFIA_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
+
 	["UnitIFIA_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitIFIA_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitIFIA_ASL_M",_med, "AM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
@@ -183,6 +187,8 @@ if (_unitfaction in ["ind_c_f"]) then {
 	["GrpSyn_TH8",_hel, "TH8", "ColorOrange"] spawn f_fnc_localGroupMarker;
 
 	["GrpSyn_AH1",_hel, "AH1", "ColorRed"] spawn f_fnc_localGroupMarker;
+
+	["GrpSyn_CAS1",_pla, "CAS1", "ColorOrange"] spawn f_fnc_localGroupMarker;
 
 	["UnitSyn_CO_M",_med, "COM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;
 	["UnitSyn_DC_M",_med, "DCM", "ColorBlack"] spawn f_fnc_localSpecialistMarker;

@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1134;
+		nextID=1147;
 	};
 	class Camera
 	{
@@ -58,13 +58,16 @@ addons[]=
 	"A3_Soft_F_Exp_Offroad_01",
 	"A3_Soft_F_Gamma_SUV_01",
 	"A3_Modules_F",
-	"A3_Data_F_Exp_A_Virtual"
+	"A3_Data_F_Exp_A_Virtual",
+	"A3_Air_F_EPC_Plane_CAS_01",
+	"A3_Air_F_Gamma_Plane_Fighter_03",
+	"A3_Air_F_EPC_Plane_CAS_02"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=20;
+		items=22;
 		class Item0
 		{
 			className="A3_Air_F_Heli";
@@ -205,6 +208,20 @@ class AddonsMetaData
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
+		class Item20
+		{
+			className="A3_Air_F_EPC";
+			name="Arma 3 Win Episode - Aircraft";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item21
+		{
+			className="A3_Air_F_Gamma";
+			name="Arma 3 - Aircraft";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
 	};
 };
 randomSeed=1116085;
@@ -270,7 +287,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=394;
+		items=400;
 		class Item0
 		{
 			dataType="Object";
@@ -8818,7 +8835,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH1_P";
 						description="NATO Transport Helo 1 Pilot";
 						isPlayable=1;
@@ -8839,7 +8856,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH1_CP";
 						description="NATO Transport Helo 1 Co-Pilot";
 						isPlayable=1;
@@ -8860,9 +8877,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH1_G1";
-						description="NATO Transport Helo 1 Crew Chief (Repair)";
+						description="NATO Transport Helo 1 Crew Chief";
 						isPlayable=1;
 					};
 					id=322;
@@ -8992,7 +9009,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH2_P";
 						description="NATO Transport Helo 2 Pilot";
 						isPlayable=1;
@@ -9013,7 +9030,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH2_CP";
 						description="NATO Transport Helo 2 Co-Pilot";
 						isPlayable=1;
@@ -9034,9 +9051,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH2_G1";
-						description="NATO Transport Helo 2 Crew Chief (Repair)";
+						description="NATO Transport Helo 2 Crew Chief";
 						isPlayable=1;
 					};
 					id=327;
@@ -9166,7 +9183,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH3_P";
 						description="NATO Transport Helo 3 Pilot";
 						isPlayable=1;
@@ -9187,7 +9204,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH3_CP";
 						description="NATO Transport Helo 3 Co-Pilot";
 						isPlayable=1;
@@ -9208,9 +9225,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH3_G1";
-						description="NATO Transport Helo 3 Crew Chief (Repair)";
+						description="NATO Transport Helo 3 Crew Chief";
 						isPlayable=1;
 					};
 					id=332;
@@ -9341,7 +9358,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH4_P";
 						description="NATO Transport Helo 4 Pilot";
 						isPlayable=1;
@@ -9362,7 +9379,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH4_CP";
 						description="NATO Transport Helo 4 Co-Pilot";
 						isPlayable=1;
@@ -9383,9 +9400,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH4_G1";
-						description="NATO Transport Helo 4 Crew Chief (Repair)";
+						description="NATO Transport Helo 4 Crew Chief";
 						isPlayable=1;
 					};
 					id=337;
@@ -9516,7 +9533,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH5_P";
 						description="NATO Transport Helo 5 Pilot";
 						isPlayable=1;
@@ -9537,7 +9554,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH5_CP";
 						description="NATO Transport Helo 5 Co-Pilot";
 						isPlayable=1;
@@ -9558,9 +9575,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH5_G1";
-						description="NATO Transport Helo 5 Crew Chief (Repair)";
+						description="NATO Transport Helo 5 Crew Chief";
 						isPlayable=1;
 					};
 					id=342;
@@ -9691,7 +9708,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH6_P";
 						description="NATO Transport Helo 6 Pilot";
 						isPlayable=1;
@@ -9712,7 +9729,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH6_CP";
 						description="NATO Transport Helo 6 Co-Pilot";
 						isPlayable=1;
@@ -9733,9 +9750,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH6_G1";
-						description="NATO Transport Helo 6 Crew Chief (Repair)";
+						description="NATO Transport Helo 6 Crew Chief";
 						isPlayable=1;
 					};
 					id=347;
@@ -9866,7 +9883,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH7_P";
 						description="NATO Transport Helo 7 Pilot";
 						isPlayable=1;
@@ -9887,7 +9904,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH7_CP";
 						description="NATO Transport Helo 7 Co-Pilot";
 						isPlayable=1;
@@ -9908,9 +9925,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH7_G1";
-						description="NATO Transport Helo 7 Crew Chief (Repair)";
+						description="NATO Transport Helo 7 Crew Chief";
 						isPlayable=1;
 					};
 					id=352;
@@ -10041,7 +10058,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH8_P";
 						description="NATO Transport Helo 8 Pilot";
 						isPlayable=1;
@@ -10062,7 +10079,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH8_CP";
 						description="NATO Transport Helo 8 Co-Pilot";
 						isPlayable=1;
@@ -10083,9 +10100,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="CORPORAL";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_TH8_G1";
-						description="NATO Transport Helo 8 Crew Chief (Repair)";
+						description="NATO Transport Helo 8 Crew Chief";
 						isPlayable=1;
 					};
 					id=357;
@@ -10216,7 +10233,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_AH1_P";
 						description="NATO Attack Helo 1 Pilot";
 						isPlayable=1;
@@ -10237,9 +10254,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitNATO_AH1_CP";
-						description="NATO Attack Helo 1 Gunner (Repair)";
+						description="NATO Attack Helo 1 Gunner";
 						isPlayable=1;
 					};
 					id=361;
@@ -15471,7 +15488,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH1_P";
 						description="CSAT Transport Helo 1 Pilot";
 						isPlayable=1;
@@ -15492,9 +15509,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH1_CP";
-						description="CSAT Transport Helo 1 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 1 Co-Pilot";
 						isPlayable=1;
 					};
 					id=498;
@@ -15637,7 +15654,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH2_P";
 						description="CSAT Transport Helo 2 Pilot";
 						isPlayable=1;
@@ -15658,9 +15675,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH2_CP";
-						description="CSAT Transport Helo 2 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 2 Co-Pilot";
 						isPlayable=1;
 					};
 					id=502;
@@ -15803,7 +15820,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH3_P";
 						description="CSAT Transport Helo 3 Pilot";
 						isPlayable=1;
@@ -15824,9 +15841,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH3_CP";
-						description="CSAT Transport Helo 3 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 3 Co-Pilot";
 						isPlayable=1;
 					};
 					id=506;
@@ -15914,7 +15931,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH4_P";
 						description="CSAT Transport Helo 4 Pilot";
 						isPlayable=1;
@@ -15935,9 +15952,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH4_CP";
-						description="CSAT Transport Helo 4 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 4 Co-Pilot";
 						isPlayable=1;
 					};
 					id=509;
@@ -16025,7 +16042,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH5_P";
 						description="CSAT Transport Helo 5 Pilot";
 						isPlayable=1;
@@ -16046,9 +16063,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH5_CP";
-						description="CSAT Transport Helo 5 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 5 Co-Pilot";
 						isPlayable=1;
 					};
 					id=512;
@@ -16136,7 +16153,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH6_P";
 						description="CSAT Transport Helo 6 Pilot";
 						isPlayable=1;
@@ -16157,9 +16174,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH6_CP";
-						description="CSAT Transport Helo 6 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 6 Co-Pilot";
 						isPlayable=1;
 					};
 					id=515;
@@ -16247,7 +16264,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH7_P";
 						description="CSAT Transport Helo 7 Pilot";
 						isPlayable=1;
@@ -16268,9 +16285,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH7_CP";
-						description="CSAT Transport Helo 7 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 7 Co-Pilot";
 						isPlayable=1;
 					};
 					id=518;
@@ -16358,7 +16375,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH8_P";
 						description="CSAT Transport Helo 8 Pilot";
 						isPlayable=1;
@@ -16379,9 +16396,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_TH8_CP";
-						description="CSAT Transport Helo 8 Co-Pilot (Repair)";
+						description="CSAT Transport Helo 8 Co-Pilot";
 						isPlayable=1;
 					};
 					id=521;
@@ -16469,7 +16486,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_AH1_P";
 						description="CSAT Attack Helo 1 Pilot";
 						isPlayable=1;
@@ -16513,9 +16530,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitCSAT_AH1_CP";
-						description="CSAT Attack Helo 1 Gunner (Repair)";
+						description="CSAT Attack Helo 1 Gunner";
 						isPlayable=1;
 					};
 					id=524;
@@ -20059,7 +20076,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH1_P";
 						description="AAF Transport Helo 1 Pilot";
 						isPlayable=1;
@@ -20080,9 +20097,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH1_CP";
-						description="AAF Transport Helo 1 Co-Pilot (Repair)";
+						description="AAF Transport Helo 1 Co-Pilot";
 						isPlayable=1;
 					};
 					id=661;
@@ -20171,7 +20188,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH2_P";
 						description="AAF Transport Helo 2 Pilot";
 						isPlayable=1;
@@ -20192,9 +20209,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH2_CP";
-						description="AAF Transport Helo 2 Co-Pilot (Repair)";
+						description="AAF Transport Helo 2 Co-Pilot";
 						isPlayable=1;
 					};
 					id=664;
@@ -20283,7 +20300,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH3_P";
 						description="AAF Transport Helo 3 Pilot";
 						isPlayable=1;
@@ -20304,9 +20321,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH3_CP";
-						description="AAF Transport Helo 3 Co-Pilot (Repair)";
+						description="AAF Transport Helo 3 Co-Pilot";
 						isPlayable=1;
 					};
 					id=667;
@@ -20395,7 +20412,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH4_P";
 						description="AAF Transport Helo 4 Pilot";
 						isPlayable=1;
@@ -20416,9 +20433,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_TH4_CP";
-						description="AAF Transport Helo 4 Co-Pilot (Repair)";
+						description="AAF Transport Helo 4 Co-Pilot";
 						isPlayable=1;
 					};
 					id=670;
@@ -20507,7 +20524,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_AH1_P";
 						description="AAF Attack Helo 1 Pilot";
 						isPlayable=1;
@@ -20528,9 +20545,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitAAF_AH1_CP";
-						description="AAF Attack Helo 1 Co-Pilot (Repair)";
+						description="AAF Attack Helo 1 Co-Pilot";
 						isPlayable=1;
 					};
 					id=673;
@@ -23456,7 +23473,7 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitFIA_TH1_P";
 						description="FIA Transport Helo 1 Pilot";
 						isPlayable=1;
@@ -23477,9 +23494,9 @@ class Mission
 					{
 						skill=0.60000002;
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitFIA_TH1_CP";
-						description="FIA Transport Helo 1 Co-Pilot (Repair)";
+						description="FIA Transport Helo 1 Co-Pilot";
 						isPlayable=1;
 					};
 					id=777;
@@ -28739,7 +28756,7 @@ class Mission
 					class Attributes
 					{
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitSyn_TH1_P";
 						description="Syndikat Transport Helo 1 Pilot";
 						isPlayable=1;
@@ -28782,9 +28799,9 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="[""pcc"",this] call f_fnc_assignGear; ";
+						init="[""pc"",this] call f_fnc_assignGear; ";
 						name="UnitSyn_TH1_CP";
-						description="Syndikat Transport Helo 1 Co-Pilot (Repair)";
+						description="Syndikat Transport Helo 1 Co-Pilot";
 						isPlayable=1;
 					};
 					id=941;
@@ -31856,7 +31873,7 @@ class Mission
 					class Attributes
 					{
 						rank="LIEUTENANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitGEN_TH1_P";
 						description="Gendarmerie Transport Helo 1 Pilot";
 						isPlayable=1;
@@ -31899,9 +31916,9 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="[""pp"",this] call f_fnc_assignGear;";
+						init="[""pc"",this] call f_fnc_assignGear;";
 						name="UnitGEN_TH1_CP";
-						description="Gendarmerie Transport Helo 1 Co-Pilot (Repair)";
+						description="Gendarmerie Transport Helo 1 Co-Pilot";
 						isPlayable=1;
 					};
 					id=1086;
@@ -32902,6 +32919,359 @@ class Mission
 				};
 				nAttributes=5;
 			};
+		};
+		class Item394
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={393.79614,7.380455,1306.8588};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="[""v_jet"",this] call f_fnc_assignGear;";
+				name="VehNATO_CAS1";
+			};
+			id=1134;
+			type="B_Plane_CAS_01_dynamicLoadout_F";
+		};
+		class Item395
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={390.034,5.0014391,1312.3861};
+						angles[]={0,1.4669667,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="LIEUTENANT";
+						init="[""jp"",this] call f_fnc_assignGear;";
+						name="UnitNATO_CAS1_P";
+						description="NATO CAS1 Pilot";
+						isPlayable=1;
+					};
+					id=1136;
+					type="B_Helipilot_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male12ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.99000001;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+				name="GrpNATO_CAS1";
+			};
+			id=1135;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="NATO CAS1 -";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item396
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1383.8635,7.4227982,675.79047};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="[""v_jet"",this] call f_fnc_assignGear;";
+				name="VehAAF_CAS1";
+			};
+			id=1139;
+			type="I_Plane_Fighter_03_dynamicLoadout_F";
+		};
+		class Item397
+		{
+			dataType="Group";
+			side="Independent";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1380.6572,5.0014391,679.09668};
+						angles[]={-0,1.7658945,0};
+					};
+					side="Independent";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="LIEUTENANT";
+						init="[""jp"",this] call f_fnc_assignGear;";
+						name="UnitAAF_CAS1_P";
+						description="AAF CAS1 Pilot";
+						isPlayable=1;
+					};
+					id=1143;
+					type="I_helipilot_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04GRE";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.04;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+				name="GrpAAF_CAS1";
+			};
+			id=1142;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="AAF CAS1 -";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item398
+		{
+			dataType="Group";
+			side="East";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2342.749,5.0014391,1312.0121};
+					};
+					side="East";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="LIEUTENANT";
+						init="[""jp"",this] call f_fnc_assignGear;";
+						name="UnitCSAT_CAS1_P";
+						description="CSAT CAS1 Pilot";
+						isPlayable=1;
+					};
+					id=1145;
+					type="O_helipilot_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02PER";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1.02;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+			};
+			class Attributes
+			{
+				name="GrpCSAT_CAS1";
+			};
+			id=1144;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="CSAT CAS1 -";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item399
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={2347.4487,7.9799161,1306.9673};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="[""v_jet"",this] call f_fnc_assignGear;";
+				name="VehCSAT_CAS1";
+			};
+			id=1146;
+			type="O_Plane_CAS_02_dynamicLoadout_F";
 		};
 	};
 	class Connections
