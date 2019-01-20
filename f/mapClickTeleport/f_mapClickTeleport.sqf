@@ -39,6 +39,15 @@ f_var_mapClickTeleport_Units = f_var_mapClickTeleport_Units select {! isNil _x} 
 
 // ====================================================================================
 
+// ADD BRIEFING PAGE - HALO
+// Add a briefing page for everyone if HALO is being used
+
+if (f_var_mapClickTeleport_Height > 0) then {
+        [] call f_fnc_mapClickTeleportBriefing;
+};
+
+// ====================================================================================
+
 // CHECK IF COMPONENT SHOULD BE ENABLED
 // We end the script if:
 // - the teleport is restricted to certain units and the player isn't one of those units
@@ -46,21 +55,6 @@ f_var_mapClickTeleport_Units = f_var_mapClickTeleport_Units select {! isNil _x} 
 
 if (count f_var_mapClickTeleport_Units > 0 && !(player in f_var_mapClickTeleport_Units)) exitWith {};
 if (f_var_mapClickTeleport_GroupTeleport && player != leader group player)  exitWith {};
-
-// ====================================================================================
-
-// ADD BRIEFING PAGE - HALO
-// Add a briefing page for everyone that can use the action or is affected by it
-
-if (f_var_mapClickTeleport_Height > 0) then {
-	if (f_var_mapClickTeleport_GroupTeleport) then {
-		{
-			[_x] remoteExec ["f_fnc_mapClickTeleportBriefing", _x, true];
-		} forEach (units group player);
-	} else {
-		[] call f_fnc_mapClickTeleportBriefing;
-	};
-};
 
 // ====================================================================================
 
