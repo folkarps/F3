@@ -40,8 +40,9 @@ f_var_mapClickTeleport_Units = f_var_mapClickTeleport_Units select {! isNil _x} 
 // ====================================================================================
 
 // CHECK IF COMPONENT SHOULD BE ENABLED
-// We end the script if it is not running on a server or if only group leaders can use
-// the action and the player is not the leader of his/her group
+// We end the script if:
+// - the teleport is restricted to certain units and the player isn't one of those units
+// - or if only group leaders can use the action and the player is not the leader of his/her group
 
 if (count f_var_mapClickTeleport_Units > 0 && !(player in f_var_mapClickTeleport_Units)) exitWith {};
 if (f_var_mapClickTeleport_GroupTeleport && player != leader group player)  exitWith {};
