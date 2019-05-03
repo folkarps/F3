@@ -12,7 +12,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1453.8992,134.58762,872.38373};
+		pos[]={1465.2286,112.83681,885.57111};
 		dir[]={-0.012939595,-0.69021803,0.72348863};
 		up[]={-0.012342638,0.72360009,0.69011098};
 		aside[]={0.99984413,-4.4892658e-009,0.017882211};
@@ -34677,84 +34677,13 @@ class Mission
 		};
 		class Item403
 		{
-			dataType="Group";
-			side="Independent";
-			class Entities
+			dataType="Logic";
+			class PositionInfo
 			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1526.9625,5.0014391,940.33557};
-					};
-					side="Independent";
-					flags=6;
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="LIEUTENANT";
-						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""pc"",this] call f_fnc_assignGear;";
-						name="Unit3IFB_TH1_P";
-						description="3IFB Transport Helo 1 Pilot";
-						isPlayable=1;
-						reportRemoteTargets=1;
-					};
-					id=1640;
-					type="I_G_engineer_F";
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1529.8549,5.0014391,939.17291};
-					};
-					side="Independent";
-					flags=4;
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="SERGEANT";
-						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""pc"",this] call f_fnc_assignGear;";
-						name="Unit3IFB_TH1_CP";
-						description="3IFB Transport Helo 1 Co-Pilot";
-						isPlayable=1;
-						reportRemoteTargets=1;
-					};
-					id=1641;
-					type="I_G_engineer_F";
-				};
+				position[]={1355.8893,5,1062.4961};
 			};
-			class Attributes
-			{
-				name="Grp3IFB_TH1";
-			};
-			id=1402;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="groupID";
-					expression="_this setGroupID [_value];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="3IFB TH1 -";
-						};
-					};
-				};
-				nAttributes=1;
-			};
+			id=1538;
+			type="SupportProvider_Artillery";
 		};
 		class Item404
 		{
@@ -34763,8 +34692,8 @@ class Mission
 			{
 				position[]={1532.8141,5.6047058,935.72253};
 			};
-			side="Empty";
-			flags=4;
+			side="Independent";
+			flags=6;
 			class Attributes
 			{
 				skill=0.60000002;
@@ -38597,39 +38526,144 @@ class Mission
 		};
 		class Item437
 		{
-			dataType="Logic";
-			class PositionInfo
+			dataType="Group";
+			side="Independent";
+			class Entities
 			{
-				position[]={1361.316,5.7177486,1039.123};
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1378.1918,5.0014391,983.27466};
+					};
+					side="Independent";
+					flags=4;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vd"",this] call f_fnc_assignGear;";
+						name="Unit3IFB_IFV1_D";
+						description="3IFB Technical 1 Driver (Repair)";
+						isPlayable=1;
+						reportRemoteTargets=1;
+					};
+					id=1650;
+					type="I_G_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1378.1918,5.0014391,983.27466};
+					};
+					side="Independent";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="CORPORAL";
+						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vg"",this] call f_fnc_assignGear;";
+						name="Unit3IFB_IFV1_G";
+						description="3IFB Technical 1 Gunner";
+						isPlayable=1;
+						reportRemoteTargets=1;
+					};
+					id=1651;
+					type="I_G_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
 			};
-			id=1535;
-			type="SupportProvider_Virtual_CAS_Heli";
-			atlOffset=0.71774864;
+			class Attributes
+			{
+				name="Grp3IFB_IFV1";
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=2;
+				};
+				class Links
+				{
+					items=2;
+					class Item0
+					{
+						linkID=0;
+						item0=1650;
+						item1=1652;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=1651;
+						item1=1652;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=1642;
 			class CustomAttributes
 			{
 				class Attribute0
 				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_cooldown";
-					expression="_this setVariable ['BIS_SUPP_cooldown',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicleInit";
-					expression="_this setVariable ['BIS_SUPP_vehicleInit',_value,true];";
+					property="groupID";
+					expression="_this setGroupID [_value];";
 					class Value
 					{
 						class data
@@ -38641,86 +38675,153 @@ class Mission
 									"STRING"
 								};
 							};
-							value="";
+							value="3IFB IFV1 -";
 						};
 					};
 				};
-				class Attribute2
-				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicles";
-					expression="_this setVariable ['BIS_SUPP_vehicles',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[]";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_filter";
-					expression="_this setVariable ['BIS_SUPP_filter',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Side";
-						};
-					};
-				};
-				nAttributes=4;
+				nAttributes=1;
 			};
 		};
 		class Item438
 		{
-			dataType="Logic";
-			class PositionInfo
+			dataType="Group";
+			side="Independent";
+			class Entities
 			{
-				position[]={1360.1705,5.4597912,1062.4004};
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1412.9154,5.0014391,983.19165};
+					};
+					side="Independent";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="CORPORAL";
+						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vg"",this] call f_fnc_assignGear;";
+						name="Unit3IFB_IFV2_G";
+						description="3IFB Technical 2 Gunner";
+						isPlayable=1;
+						reportRemoteTargets=1;
+					};
+					id=1653;
+					type="I_G_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.99833667;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1412.9154,5.0014391,983.19165};
+					};
+					side="Independent";
+					flags=4;
+					class Attributes
+					{
+						skill=0.60000002;
+						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vd"",this] call f_fnc_assignGear;";
+						name="Unit3IFB_IFV2_D";
+						description="3IFB Technical 2 Driver (Repair)";
+						isPlayable=1;
+						reportRemoteTargets=1;
+					};
+					id=1654;
+					type="I_G_Soldier_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=1;
+					};
+				};
 			};
-			id=1536;
-			type="SupportProvider_Virtual_CAS_Heli";
-			atlOffset=0.45979118;
+			class Attributes
+			{
+				name="Grp3IFB_IFV2";
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=2;
+				};
+				class Links
+				{
+					items=2;
+					class Item0
+					{
+						linkID=0;
+						item0=1653;
+						item1=1655;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=1654;
+						item1=1655;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+				};
+			};
+			id=1646;
 			class CustomAttributes
 			{
 				class Attribute0
 				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_cooldown";
-					expression="_this setVariable ['BIS_SUPP_cooldown',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicleInit";
-					expression="_this setVariable ['BIS_SUPP_vehicleInit',_value,true];";
+					property="groupID";
+					expression="_this setGroupID [_value];";
 					class Value
 					{
 						class data
@@ -38732,49 +38833,11 @@ class Mission
 									"STRING"
 								};
 							};
-							value="";
+							value="3IFB IFV2 -";
 						};
 					};
 				};
-				class Attribute2
-				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicles";
-					expression="_this setVariable ['BIS_SUPP_vehicles',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[]";
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_filter";
-					expression="_this setVariable ['BIS_SUPP_filter',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="Side";
-						};
-					};
-				};
-				nAttributes=4;
+				nAttributes=1;
 			};
 		};
 		class Item439
@@ -38790,13 +38853,116 @@ class Mission
 		};
 		class Item440
 		{
-			dataType="Logic";
-			class PositionInfo
+			dataType="Group";
+			side="Independent";
+			class Entities
 			{
-				position[]={1355.8893,5,1062.4961};
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1532.814,5.0014391,936.75256};
+					};
+					side="Independent";
+					flags=6;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="LIEUTENANT";
+						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""pc"",this] call f_fnc_assignGear;";
+						name="Unit3IFB_TH1_P";
+						description="3IFB Transport Helo 1 Pilot";
+						isPlayable=1;
+						reportRemoteTargets=1;
+					};
+					id=1640;
+					type="I_G_engineer_F";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1532.814,5.0014391,936.75256};
+					};
+					side="Independent";
+					flags=4;
+					class Attributes
+					{
+						skill=0.60000002;
+						rank="SERGEANT";
+						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""pc"",this] call f_fnc_assignGear;";
+						name="Unit3IFB_TH1_CP";
+						description="3IFB Transport Helo 1 Co-Pilot";
+						isPlayable=1;
+						reportRemoteTargets=1;
+					};
+					id=1641;
+					type="I_G_engineer_F";
+				};
 			};
-			id=1538;
-			type="SupportProvider_Artillery";
+			class Attributes
+			{
+				name="Grp3IFB_TH1";
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=2;
+				};
+				class Links
+				{
+					items=2;
+					class Item0
+					{
+						linkID=0;
+						item0=1640;
+						item1=1405;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=1641;
+						item1=1405;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=1402;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="3IFB TH1 -";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item441
 		{
@@ -39062,112 +39228,39 @@ class Mission
 		};
 		class Item456
 		{
-			dataType="Group";
-			side="Independent";
-			class Entities
+			dataType="Logic";
+			class PositionInfo
 			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1374.6105,5.0014391,989.40234};
-					};
-					side="Independent";
-					flags=4;
-					class Attributes
-					{
-						skill=0.60000002;
-						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vd"",this] call f_fnc_assignGear;";
-						name="Unit3IFB_IFV1_D";
-						description="3IFB Technical 1 Driver (Repair)";
-						isPlayable=1;
-						reportRemoteTargets=1;
-					};
-					id=1650;
-					type="I_G_Soldier_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1376.6055,5.0014391,986.85553};
-					};
-					side="Independent";
-					flags=6;
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="CORPORAL";
-						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vg"",this] call f_fnc_assignGear;";
-						name="Unit3IFB_IFV1_G";
-						description="3IFB Technical 1 Gunner";
-						isPlayable=1;
-						reportRemoteTargets=1;
-					};
-					id=1651;
-					type="I_G_Soldier_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
+				position[]={1361.316,5.7177486,1039.123};
 			};
-			class Attributes
-			{
-				name="Grp3IFB_IFV1";
-			};
-			id=1642;
+			id=1535;
+			type="SupportProvider_Virtual_CAS_Heli";
+			atlOffset=0.71774864;
 			class CustomAttributes
 			{
 				class Attribute0
 				{
-					property="groupID";
-					expression="_this setGroupID [_value];";
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_cooldown";
+					expression="_this setVariable ['BIS_SUPP_cooldown',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicleInit";
+					expression="_this setVariable ['BIS_SUPP_vehicleInit',_value,true];";
 					class Value
 					{
 						class data
@@ -39179,121 +39272,86 @@ class Mission
 									"STRING"
 								};
 							};
-							value="3IFB IFV1 -";
+							value="";
 						};
 					};
 				};
-				nAttributes=1;
+				class Attribute2
+				{
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicles";
+					expression="_this setVariable ['BIS_SUPP_vehicles',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[]";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_filter";
+					expression="_this setVariable ['BIS_SUPP_filter',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Side";
+						};
+					};
+				};
+				nAttributes=4;
 			};
 		};
 		class Item457
 		{
-			dataType="Group";
-			side="Independent";
-			class Entities
+			dataType="Logic";
+			class PositionInfo
 			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1411.6982,5.0014391,986.72272};
-					};
-					side="Independent";
-					flags=6;
-					class Attributes
-					{
-						skill=0.60000002;
-						rank="CORPORAL";
-						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vg"",this] call f_fnc_assignGear;";
-						name="Unit3IFB_IFV2_G";
-						description="3IFB Technical 2 Gunner";
-						isPlayable=1;
-						reportRemoteTargets=1;
-					};
-					id=1653;
-					type="I_G_Soldier_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=0.99833667;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1410.0551,5.0014391,988.76141};
-					};
-					side="Independent";
-					flags=4;
-					class Attributes
-					{
-						skill=0.60000002;
-						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""vd"",this] call f_fnc_assignGear;";
-						name="Unit3IFB_IFV2_D";
-						description="3IFB Technical 2 Driver (Repair)";
-						isPlayable=1;
-						reportRemoteTargets=1;
-					};
-					id=1654;
-					type="I_G_Soldier_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1;
-								};
-							};
-						};
-						nAttributes=1;
-					};
-				};
+				position[]={1360.1705,5.4597912,1062.4004};
 			};
-			class Attributes
-			{
-				name="Grp3IFB_IFV2";
-			};
-			id=1646;
+			id=1536;
+			type="SupportProvider_Virtual_CAS_Heli";
+			atlOffset=0.45979118;
 			class CustomAttributes
 			{
 				class Attribute0
 				{
-					property="groupID";
-					expression="_this setGroupID [_value];";
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_cooldown";
+					expression="_this setVariable ['BIS_SUPP_cooldown',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"SCALAR"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicleInit";
+					expression="_this setVariable ['BIS_SUPP_vehicleInit',_value,true];";
 					class Value
 					{
 						class data
@@ -39305,11 +39363,49 @@ class Mission
 									"STRING"
 								};
 							};
-							value="3IFB IFV2 -";
+							value="";
 						};
 					};
 				};
-				nAttributes=1;
+				class Attribute2
+				{
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_vehicles";
+					expression="_this setVariable ['BIS_SUPP_vehicles',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[]";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="SupportProvider_Virtual_CAS_Heli_BIS_SUPP_filter";
+					expression="_this setVariable ['BIS_SUPP_filter',_value,true];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="Side";
+						};
+					};
+				};
+				nAttributes=4;
 			};
 		};
 		class Item458
@@ -39319,8 +39415,8 @@ class Mission
 			{
 				position[]={1378.1918,7.1644082,983.26599};
 			};
-			side="Empty";
-			flags=4;
+			side="Independent";
+			flags=6;
 			class Attributes
 			{
 				skill=0.60000002;
@@ -39338,8 +39434,8 @@ class Mission
 			{
 				position[]={1412.9154,7.1644082,983.18298};
 			};
-			side="Empty";
-			flags=4;
+			side="Independent";
+			flags=6;
 			class Attributes
 			{
 				skill=0.60000002;
