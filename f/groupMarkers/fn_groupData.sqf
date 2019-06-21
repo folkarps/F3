@@ -289,6 +289,68 @@ f_var_groupData_opfor_fia = [
 	["UnitOFIA_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
 
+f_var_groupData_indfor_spetsnaz = [
+	["GrpSpetsnaz_CO",     _hq,  "CO",     "ColorYellow",  "Spetsnaz CO -"],
+	["GrpSpetsnaz_DC",     _hq,  "DC",     "ColorYellow",  "Spetsnaz DC -"],
+	["GrpSpetsnaz_COV",    _ifv, "COV",    "ColorYellow",  "Spetsnaz COV -"],
+
+	["GrpSpetsnaz_ASL",    _hq,  "ASL",    "ColorRed",     "Spetsnaz ASL -"],
+	["GrpSpetsnaz_A1",     _ft,  "A1",     "ColorRed",     "Spetsnaz A1 -"],
+	["GrpSpetsnaz_A2",     _ft,  "A2",     "ColorRed",     "Spetsnaz A2 -"],
+	["GrpSpetsnaz_AV",     _ifv, "AV",     "ColorRed",     "Spetsnaz AV -"],
+
+	["GrpSpetsnaz_BSL",    _hq,  "BSL",    "ColorBlue",    "Spetsnaz BSL -"],
+	["GrpSpetsnaz_B1",     _ft,  "B1",     "ColorBlue",    "Spetsnaz B1 -"],
+	["GrpSpetsnaz_B2",     _ft,  "B2",     "ColorBlue",    "Spetsnaz B2 -"],
+	["GrpSpetsnaz_BV",     _ifv, "BV",     "ColorBlue",    "Spetsnaz BV -"],
+
+	["GrpSpetsnaz_CSL",    _hq,  "CSL",    "ColorGreen",   "Spetsnaz CSL -"],
+	["GrpSpetsnaz_C1",     _ft,  "C1",     "ColorGreen",   "Spetsnaz C1 -"],
+	["GrpSpetsnaz_C2",     _ft,  "C2",     "ColorGreen",   "Spetsnaz C2 -"],
+	["GrpSpetsnaz_CV",     _ifv, "CV",     "ColorGreen",   "Spetsnaz CV -"],
+
+	["GrpSpetsnaz_JSL",    _hq,  "JSL",    "ColorPink",    "Spetsnaz JSL -"],
+	["GrpSpetsnaz_J1",     _ft,  "J1",     "ColorPink",    "Spetsnaz J1 -"],
+	["GrpSpetsnaz_J2",     _ft,  "J2",     "ColorPink",    "Spetsnaz J2 -"],
+	["GrpSpetsnaz_JV",     _ifv, "JV",     "ColorPink",    "Spetsnaz JV -"],
+
+	["GrpSpetsnaz_MMG1",   _sup, "MMG1",   "ColorOrange",  "Spetsnaz MMG1 -"],
+	["GrpSpetsnaz_MMG2",   _sup, "MMG2",   "ColorOrange",  "Spetsnaz MMG2 -"],
+	["GrpSpetsnaz_HMG1",   _sup, "HMG1",   "ColorOrange",  "Spetsnaz HMG1 -"],
+	["GrpSpetsnaz_MAT1",   _lau, "MAT1",   "ColorOrange",  "Spetsnaz MAT1 -"],
+	["GrpSpetsnaz_MAT2",   _lau, "MAT2",   "ColorOrange",  "Spetsnaz MAT2 -"],
+	["GrpSpetsnaz_HAT1",   _lau, "HAT1",   "ColorOrange",  "Spetsnaz HAT1 -"],
+	["GrpSpetsnaz_MTR1",   _mor, "MTR1",   "ColorOrange",  "Spetsnaz MTR1 -"],
+	["GrpSpetsnaz_MSAM1",  _lau, "MSAM1",  "ColorOrange",  "Spetsnaz MSAM1 -"],
+	["GrpSpetsnaz_HSAM1",  _lau, "HSAM1",  "ColorOrange",  "Spetsnaz HSAM1 -"],
+	["GrpSpetsnaz_ST1",    _rec, "ST1",    "ColorOrange",  "Spetsnaz ST1 -"],
+	["GrpSpetsnaz_DT1",    _rec, "DT1",    "ColorOrange",  "Spetsnaz DT1 -"],
+	["GrpSpetsnaz_ENG1",   _eng, "ENG1",   "ColorOrange",  "Spetsnaz ENG1 -"],
+
+	["GrpSpetsnaz_IFV1",   _ifv, "IFV1",   "ColorOrange",  "Spetsnaz IFV1 -"],
+	["GrpSpetsnaz_IFV2",   _ifv, "IFV2",   "ColorOrange",  "Spetsnaz IFV2 -"],
+	["GrpSpetsnaz_TNK1",   _tnk, "TNK1",   "ColorRed",     "Spetsnaz TNK1 -"],
+
+	["GrpSpetsnaz_CAS1",   _pla, "CAS1",   "ColorOrange",  "Spetsnaz CAS1 -"],
+
+	["GrpSpetsnaz_TH1",    _hel, "TH1",    "ColorRed",     "Spetsnaz TH1 -"],
+	["GrpSpetsnaz_TH2",    _hel, "TH2",    "ColorRed",     "Spetsnaz TH2 -"],
+	["GrpSpetsnaz_TH3",    _hel, "TH3",    "ColorBlue",    "Spetsnaz TH3 -"],
+	["GrpSpetsnaz_TH4",    _hel, "TH4",    "ColorBlue",    "Spetsnaz TH4 -"],
+	["GrpSpetsnaz_TH5",    _hel, "TH5",    "ColorGreen",   "Spetsnaz TH5 -"],
+	["GrpSpetsnaz_TH6",    _hel, "TH6",    "ColorGreen",   "Spetsnaz TH6 -"],
+	["GrpSpetsnaz_TH7",    _hel, "TH7",    "ColorOrange",  "Spetsnaz TH7 -"],
+	["GrpSpetsnaz_TH8",    _hel, "TH8",    "ColorOrange",  "Spetsnaz TH8 -"],
+
+	["GrpSpetsnaz_AH1",    _hel, "AH1",    "ColorRed",     "Spetsnaz AH1 -"],
+
+	["UnitSpetsnaz_CO_M",  _med, "COM",    "ColorBlack",   ""],
+	["UnitSpetsnaz_DC_M",  _med, "DCM",    "ColorBlack",   ""],
+	["UnitSpetsnaz_ASL_M", _med, "AM",     "ColorBlack",   ""],
+	["UnitSpetsnaz_BSL_M", _med, "BM",     "ColorBlack",   ""],
+	["UnitSpetsnaz_CSL_M", _med, "CM",     "ColorBlack",   ""]
+];
+
 f_var_groupData_indfor_aaf = [
 	["GrpAAF_CO",      _hq,  "CO",     "ColorYellow",  "AAF CO -"],
 	["GrpAAF_DC",      _hq,  "DC",     "ColorYellow",  "AAF DC -"],
@@ -532,6 +594,73 @@ f_var_groupData_indfor_3ifb = [
 	["Unit3IFB_BSL_M", _med, "BM",     "ColorBlack",   ""],
 	["Unit3IFB_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
+
+f_var_groupData_indfor_LDF = [
+	["GrpLDF_CO",     _hq,  "CO",     "ColorYellow",  "LDF CO -"],
+	["GrpLDF_DC",     _hq,  "DC",     "ColorYellow",  "LDF DC -"],
+	["GrpLDF_COV",    _ifv, "COV",    "ColorYellow",  "LDF COV -"],
+
+	["GrpLDF_ASL",    _hq,  "ASL",    "ColorRed",     "LDF ASL -"],
+	["GrpLDF_A1",     _ft,  "A1",     "ColorRed",     "LDF A1 -"],
+	["GrpLDF_A2",     _ft,  "A2",     "ColorRed",     "LDF A2 -"],
+	["GrpLDF_AV",     _ifv, "AV",     "ColorRed",     "LDF AV -"],
+
+	["GrpLDF_BSL",    _hq,  "BSL",    "ColorBlue",    "LDF BSL -"],
+	["GrpLDF_B1",     _ft,  "B1",     "ColorBlue",    "LDF B1 -"],
+	["GrpLDF_B2",     _ft,  "B2",     "ColorBlue",    "LDF B2 -"],
+	["GrpLDF_BV",     _ifv, "BV",     "ColorBlue",    "LDF BV -"],
+
+	["GrpLDF_CSL",    _hq,  "CSL",    "ColorGreen",   "LDF CSL -"],
+	["GrpLDF_C1",     _ft,  "C1",     "ColorGreen",   "LDF C1 -"],
+	["GrpLDF_C2",     _ft,  "C2",     "ColorGreen",   "LDF C2 -"],
+	["GrpLDF_CV",     _ifv, "CV",     "ColorGreen",   "LDF CV -"],
+
+	["GrpLDF_JSL",    _hq,  "JSL",    "ColorPink",    "LDF JSL -"],
+	["GrpLDF_J1",     _ft,  "J1",     "ColorPink",    "LDF J1 -"],
+	["GrpLDF_J2",     _ft,  "J2",     "ColorPink",    "LDF J2 -"],
+	["GrpLDF_JV",     _ifv, "JV",     "ColorPink",    "LDF JV -"],
+
+	["GrpLDF_MMG1",   _sup, "MMG1",   "ColorOrange",  "LDF MMG1 -"],
+	["GrpLDF_MMG2",   _sup, "MMG2",   "ColorOrange",  "LDF MMG2 -"],
+	["GrpLDF_HMG1",   _sup, "HMG1",   "ColorOrange",  "LDF HMG1 -"],
+	["GrpLDF_MAT1",   _lau, "MAT1",   "ColorOrange",  "LDF MAT1 -"],
+	["GrpLDF_MAT2",   _lau, "MAT2",   "ColorOrange",  "LDF MAT2 -"],
+	["GrpLDF_HAT1",   _lau, "HAT1",   "ColorOrange",  "LDF HAT1 -"],
+	["GrpLDF_MTR1",   _mor, "MTR1",   "ColorOrange",  "LDF MTR1 -"],
+	["GrpLDF_MSAM1",  _lau, "MSAM1",  "ColorOrange",  "LDF MSAM1 -"],
+	["GrpLDF_HSAM1",  _lau, "HSAM1",  "ColorOrange",  "LDF HSAM1 -"],
+	["GrpLDF_ST1",    _rec, "ST1",    "ColorOrange",  "LDF ST1 -"],
+	["GrpLDF_DT1",    _rec, "DT1",    "ColorOrange",  "LDF DT1 -"],
+	["GrpLDF_ENG1",   _eng, "ENG1",   "ColorOrange",  "LDF ENG1 -"],
+
+	["GrpLDF_IFV1",   _ifv, "IFV1",   "ColorOrange",  "LDF IFV1 -"],
+	["GrpLDF_IFV2",   _ifv, "IFV2",   "ColorOrange",  "LDF IFV2 -"],
+	["GrpLDF_TNK1",   _tnk, "TNK1",   "ColorRed",     "LDF TNK1 -"],
+
+	["GrpLDF_CAS1",   _pla, "CAS1",   "ColorOrange",  "LDF CAS1 -"],
+
+	["GrpLDF_TH1",    _hel, "TH1",    "ColorRed",     "LDF TH1 -"],
+	["GrpLDF_TH2",    _hel, "TH2",    "ColorRed",     "LDF TH2 -"],
+	["GrpLDF_TH3",    _hel, "TH3",    "ColorBlue",    "LDF TH3 -"],
+	["GrpLDF_TH4",    _hel, "TH4",    "ColorBlue",    "LDF TH4 -"],
+	["GrpLDF_TH5",    _hel, "TH5",    "ColorGreen",   "LDF TH5 -"],
+	["GrpLDF_TH6",    _hel, "TH6",    "ColorGreen",   "LDF TH6 -"],
+	["GrpLDF_TH7",    _hel, "TH7",    "ColorOrange",  "LDF TH7 -"],
+	["GrpLDF_TH8",    _hel, "TH8",    "ColorOrange",  "LDF TH8 -"],
+
+	["GrpLDF_AH1",    _hel, "AH1",    "ColorRed",     "LDF AH1 -"],
+
+	["UnitLDF_CO_M",  _med, "COM",    "ColorBlack",   ""],
+	["UnitLDF_DC_M",  _med, "DCM",    "ColorBlack",   ""],
+	["UnitLDF_ASL_M", _med, "AM",     "ColorBlack",   ""],
+	["UnitLDF_BSL_M", _med, "BM",     "ColorBlack",   ""],
+	["UnitLDF_CSL_M", _med, "CM",     "ColorBlack",   ""]
+];
+
+f_var_groupData_indfor_syn = [
+	["GrpCIV_R1",      _hq,  "R1",     "ColorPink",  "Reporter 1"],
+	["GrpCIV_R2",      _hq,  "R2",     "ColorPink",  "Reporter 2"]
+];
 // ====================================================================================
 
 // Adding all of the group data to a single array
@@ -541,9 +670,12 @@ f_var_groupData_all append f_var_groupData_blufor_fia;
 f_var_groupData_all append f_var_groupData_blufor_gen;
 f_var_groupData_all append f_var_groupData_opfor_csat;
 f_var_groupData_all append f_var_groupData_opfor_fia;
+f_var_groupData_all append f_var_groupData_opfor_spetsnaz;
 f_var_groupData_all append f_var_groupData_indfor_aaf;
 f_var_groupData_all append f_var_groupData_indfor_fia;
 f_var_groupData_all append f_var_groupData_indfor_syn;
 f_var_groupData_all append f_var_groupData_indfor_3ifb;
+f_var_groupData_all append f_var_groupData_indfor_ldf;
+f_var_groupData_all append f_var_groupData_civ;
 
 // ====================================================================================
