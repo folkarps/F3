@@ -289,7 +289,7 @@ f_var_groupData_opfor_fia = [
 	["UnitOFIA_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
 
-f_var_groupData_indfor_spetsnaz = [
+f_var_groupData_opfor_spetsnaz = [
 	["GrpSpetsnaz_CO",     _hq,  "CO",     "ColorYellow",  "Spetsnaz CO -"],
 	["GrpSpetsnaz_DC",     _hq,  "DC",     "ColorYellow",  "Spetsnaz DC -"],
 	["GrpSpetsnaz_COV",    _ifv, "COV",    "ColorYellow",  "Spetsnaz COV -"],
