@@ -58,7 +58,7 @@ if (_unitfaction in ["ind_f"]) then {
 };
 
 // Markers seen by players in LDF slots.
-if (_unitfaction in ["i_e_f"]) then {
+if (_unitfaction in ["ind_e_f"]) then {
 	_groups = f_var_groupData_indfor_ldf;
 };
 
@@ -75,6 +75,11 @@ if (_unitfaction in ["ind_c_f"]) then {
 // Markers seen by players in 3IFB (virtual) slots.
 if (_unitfaction in ["3ifb"]) then {
 	_groups = f_var_groupData_indfor_3ifb;
+};
+
+// Markers seen by players in 3IFB (virtual) slots.
+if (_unitfaction in ["ind_l_f"]) then {
+	_groups = f_var_groupData_indfor_looters;
 };
 
 // Markers seen by players in Civilian slots.
