@@ -738,6 +738,7 @@ f_var_groupData_all append f_var_groupData_indfor_fia;
 f_var_groupData_all append f_var_groupData_indfor_syn;
 f_var_groupData_all append f_var_groupData_indfor_3ifb;
 f_var_groupData_all append f_var_groupData_indfor_ldf;
+f_var_groupData_all append f_var_groupData_indfor_looters;
 f_var_groupData_all append f_var_groupData_civ;
 
 // ====================================================================================
