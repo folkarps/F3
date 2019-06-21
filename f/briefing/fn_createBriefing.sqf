@@ -49,7 +49,7 @@ if (serverCommandAvailable "#kick" || !isMultiplayer) then {
 // The following code blocks include faction-specific briefing files.
 
 // BLUFOR > NATO
-if (_unitfaction in ["blu_f","blu_t_f"]) exitwith {
+if (_unitfaction in ["blu_f","blu_t_f","blu_w_f"]) exitwith {
 	#include "f_briefing_nato.sqf"
 	[_unitfaction] call _fnc_debug;
 };
