@@ -657,7 +657,69 @@ f_var_groupData_indfor_LDF = [
 	["UnitLDF_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
 
-f_var_groupData_indfor_syn = [
+f_var_groupData_indfor_looters = [
+	["GrpLooters_CO",     _hq,  "CO",     "ColorYellow",  "Looters CO -"],
+	["GrpLooters_DC",     _hq,  "DC",     "ColorYellow",  "Looters DC -"],
+	["GrpLooters_COV",    _ifv, "COV",    "ColorYellow",  "Looters COV -"],
+
+	["GrpLooters_ASL",    _hq,  "ASL",    "ColorRed",     "Looters ASL -"],
+	["GrpLooters_A1",     _ft,  "A1",     "ColorRed",     "Looters A1 -"],
+	["GrpLooters_A2",     _ft,  "A2",     "ColorRed",     "Looters A2 -"],
+	["GrpLooters_AV",     _ifv, "AV",     "ColorRed",     "Looters AV -"],
+
+	["GrpLooters_BSL",    _hq,  "BSL",    "ColorBlue",    "Looters BSL -"],
+	["GrpLooters_B1",     _ft,  "B1",     "ColorBlue",    "Looters B1 -"],
+	["GrpLooters_B2",     _ft,  "B2",     "ColorBlue",    "Looters B2 -"],
+	["GrpLooters_BV",     _ifv, "BV",     "ColorBlue",    "Looters BV -"],
+
+	["GrpLooters_CSL",    _hq,  "CSL",    "ColorGreen",   "Looters CSL -"],
+	["GrpLooters_C1",     _ft,  "C1",     "ColorGreen",   "Looters C1 -"],
+	["GrpLooters_C2",     _ft,  "C2",     "ColorGreen",   "Looters C2 -"],
+	["GrpLooters_CV",     _ifv, "CV",     "ColorGreen",   "Looters CV -"],
+
+	["GrpLooters_JSL",    _hq,  "JSL",    "ColorPink",    "Looters JSL -"],
+	["GrpLooters_J1",     _ft,  "J1",     "ColorPink",    "Looters J1 -"],
+	["GrpLooters_J2",     _ft,  "J2",     "ColorPink",    "Looters J2 -"],
+	["GrpLooters_JV",     _ifv, "JV",     "ColorPink",    "Looters JV -"],
+
+	["GrpLooters_MMG1",   _sup, "MMG1",   "ColorOrange",  "Looters MMG1 -"],
+	["GrpLooters_MMG2",   _sup, "MMG2",   "ColorOrange",  "Looters MMG2 -"],
+	["GrpLooters_HMG1",   _sup, "HMG1",   "ColorOrange",  "Looters HMG1 -"],
+	["GrpLooters_MAT1",   _lau, "MAT1",   "ColorOrange",  "Looters MAT1 -"],
+	["GrpLooters_MAT2",   _lau, "MAT2",   "ColorOrange",  "Looters MAT2 -"],
+	["GrpLooters_HAT1",   _lau, "HAT1",   "ColorOrange",  "Looters HAT1 -"],
+	["GrpLooters_MTR1",   _mor, "MTR1",   "ColorOrange",  "Looters MTR1 -"],
+	["GrpLooters_MSAM1",  _lau, "MSAM1",  "ColorOrange",  "Looters MSAM1 -"],
+	["GrpLooters_HSAM1",  _lau, "HSAM1",  "ColorOrange",  "Looters HSAM1 -"],
+	["GrpLooters_ST1",    _rec, "ST1",    "ColorOrange",  "Looters ST1 -"],
+	["GrpLooters_DT1",    _rec, "DT1",    "ColorOrange",  "Looters DT1 -"],
+	["GrpLooters_ENG1",   _eng, "ENG1",   "ColorOrange",  "Looters ENG1 -"],
+
+	["GrpLooters_IFV1",   _ifv, "IFV1",   "ColorOrange",  "Looters IFV1 -"],
+	["GrpLooters_IFV2",   _ifv, "IFV2",   "ColorOrange",  "Looters IFV2 -"],
+	["GrpLooters_TNK1",   _tnk, "TNK1",   "ColorRed",     "Looters TNK1 -"],
+
+	["GrpLooters_CAS1",   _pla, "CAS1",   "ColorOrange",  "Looters CAS1 -"],
+
+	["GrpLooters_TH1",    _hel, "TH1",    "ColorRed",     "Looters TH1 -"],
+	["GrpLooters_TH2",    _hel, "TH2",    "ColorRed",     "Looters TH2 -"],
+	["GrpLooters_TH3",    _hel, "TH3",    "ColorBlue",    "Looters TH3 -"],
+	["GrpLooters_TH4",    _hel, "TH4",    "ColorBlue",    "Looters TH4 -"],
+	["GrpLooters_TH5",    _hel, "TH5",    "ColorGreen",   "Looters TH5 -"],
+	["GrpLooters_TH6",    _hel, "TH6",    "ColorGreen",   "Looters TH6 -"],
+	["GrpLooters_TH7",    _hel, "TH7",    "ColorOrange",  "Looters TH7 -"],
+	["GrpLooters_TH8",    _hel, "TH8",    "ColorOrange",  "Looters TH8 -"],
+
+	["GrpLooters_AH1",    _hel, "AH1",    "ColorRed",     "Looters AH1 -"],
+
+	["UnitLooters_CO_M",  _med, "COM",    "ColorBlack",   ""],
+	["UnitLooters_DC_M",  _med, "DCM",    "ColorBlack",   ""],
+	["UnitLooters_ASL_M", _med, "AM",     "ColorBlack",   ""],
+	["UnitLooters_BSL_M", _med, "BM",     "ColorBlack",   ""],
+	["UnitLooters_CSL_M", _med, "CM",     "ColorBlack",   ""]
+];
+
+f_var_groupData_civ = [
 	["GrpCIV_R1",      _hq,  "R1",     "ColorPink",  "Reporter 1"],
 	["GrpCIV_R2",      _hq,  "R2",     "ColorPink",  "Reporter 2"]
 ];
