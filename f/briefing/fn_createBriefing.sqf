@@ -72,9 +72,21 @@ if (_unitfaction in ["opf_f","opf_t_f"]) exitwith {
 	[_unitfaction] call _fnc_debug;
 };
 
+// OPFOR > Spetsnaz
+if (_unitfaction in ["opf_r_f"]) exitwith {
+	#include "f_briefing_spetsnaz.sqf"
+	[_unitfaction] call _fnc_debug;
+};
+
 // INDEPENDENT > AAF
 if (_unitfaction in ["ind_f"]) exitwith {
 	#include "f_briefing_aaf.sqf"
+	[_unitfaction] call _fnc_debug;
+};
+
+// INDEPENDENT > LDF
+if (_unitfaction in ["ind_e_f"]) exitwith {
+	#include "f_briefing_ldf.sqf"
 	[_unitfaction] call _fnc_debug;
 };
 
@@ -83,6 +95,13 @@ if (_unitfaction in ["ind_c_f"]) exitwith {
 	#include "f_briefing_syndikat.sqf"
 	[_unitfaction] call _fnc_debug;
 };
+
+// INDEPENDENT > Looters
+if (_unitfaction in ["ind_l_f"]) exitwith {
+	#include "f_briefing_looters.sqf"
+	[_unitfaction] call _fnc_debug;
+};
+
 
 // BLUFOR > CTRG
 if (_unitfaction in ["blu_ctrg_f"]) exitwith {
