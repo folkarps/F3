@@ -657,66 +657,66 @@ f_var_groupData_indfor_LDF = [
 	["UnitLDF_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
 
-f_var_groupData_indfor_looters = [
-	["GrpLooters_CO",     _hq,  "CO",     "ColorYellow",  "Looters CO -"],
-	["GrpLooters_DC",     _hq,  "DC",     "ColorYellow",  "Looters DC -"],
-	["GrpLooters_COV",    _ifv, "COV",    "ColorYellow",  "Looters COV -"],
+f_var_groupData_indfor_npr = [
+	["GrpNPR_CO",     _hq,  "CO",     "ColorYellow",  "NPR CO -"],
+	["GrpNPR_DC",     _hq,  "DC",     "ColorYellow",  "NPR DC -"],
+	["GrpNPR_COV",    _ifv, "COV",    "ColorYellow",  "NPR COV -"],
 
-	["GrpLooters_ASL",    _hq,  "ASL",    "ColorRed",     "Looters ASL -"],
-	["GrpLooters_A1",     _ft,  "A1",     "ColorRed",     "Looters A1 -"],
-	["GrpLooters_A2",     _ft,  "A2",     "ColorRed",     "Looters A2 -"],
-	["GrpLooters_AV",     _ifv, "AV",     "ColorRed",     "Looters AV -"],
+	["GrpNPR_ASL",    _hq,  "ASL",    "ColorRed",     "NPR ASL -"],
+	["GrpNPR_A1",     _ft,  "A1",     "ColorRed",     "NPR A1 -"],
+	["GrpNPR_A2",     _ft,  "A2",     "ColorRed",     "NPR A2 -"],
+	["GrpNPR_AV",     _ifv, "AV",     "ColorRed",     "NPR AV -"],
 
-	["GrpLooters_BSL",    _hq,  "BSL",    "ColorBlue",    "Looters BSL -"],
-	["GrpLooters_B1",     _ft,  "B1",     "ColorBlue",    "Looters B1 -"],
-	["GrpLooters_B2",     _ft,  "B2",     "ColorBlue",    "Looters B2 -"],
-	["GrpLooters_BV",     _ifv, "BV",     "ColorBlue",    "Looters BV -"],
+	["GrpNPR_BSL",    _hq,  "BSL",    "ColorBlue",    "NPR BSL -"],
+	["GrpNPR_B1",     _ft,  "B1",     "ColorBlue",    "NPR B1 -"],
+	["GrpNPR_B2",     _ft,  "B2",     "ColorBlue",    "NPR B2 -"],
+	["GrpNPR_BV",     _ifv, "BV",     "ColorBlue",    "NPR BV -"],
 
-	["GrpLooters_CSL",    _hq,  "CSL",    "ColorGreen",   "Looters CSL -"],
-	["GrpLooters_C1",     _ft,  "C1",     "ColorGreen",   "Looters C1 -"],
-	["GrpLooters_C2",     _ft,  "C2",     "ColorGreen",   "Looters C2 -"],
-	["GrpLooters_CV",     _ifv, "CV",     "ColorGreen",   "Looters CV -"],
+	["GrpNPR_CSL",    _hq,  "CSL",    "ColorGreen",   "NPR CSL -"],
+	["GrpNPR_C1",     _ft,  "C1",     "ColorGreen",   "NPR C1 -"],
+	["GrpNPR_C2",     _ft,  "C2",     "ColorGreen",   "NPR C2 -"],
+	["GrpNPR_CV",     _ifv, "CV",     "ColorGreen",   "NPR CV -"],
 
-	["GrpLooters_JSL",    _hq,  "JSL",    "ColorPink",    "Looters JSL -"],
-	["GrpLooters_J1",     _ft,  "J1",     "ColorPink",    "Looters J1 -"],
-	["GrpLooters_J2",     _ft,  "J2",     "ColorPink",    "Looters J2 -"],
-	["GrpLooters_JV",     _ifv, "JV",     "ColorPink",    "Looters JV -"],
+	["GrpNPR_JSL",    _hq,  "JSL",    "ColorPink",    "NPR JSL -"],
+	["GrpNPR_J1",     _ft,  "J1",     "ColorPink",    "NPR J1 -"],
+	["GrpNPR_J2",     _ft,  "J2",     "ColorPink",    "NPR J2 -"],
+	["GrpNPR_JV",     _ifv, "JV",     "ColorPink",    "NPR JV -"],
 
-	["GrpLooters_MMG1",   _sup, "MMG1",   "ColorOrange",  "Looters MMG1 -"],
-	["GrpLooters_MMG2",   _sup, "MMG2",   "ColorOrange",  "Looters MMG2 -"],
-	["GrpLooters_HMG1",   _sup, "HMG1",   "ColorOrange",  "Looters HMG1 -"],
-	["GrpLooters_MAT1",   _lau, "MAT1",   "ColorOrange",  "Looters MAT1 -"],
-	["GrpLooters_MAT2",   _lau, "MAT2",   "ColorOrange",  "Looters MAT2 -"],
-	["GrpLooters_HAT1",   _lau, "HAT1",   "ColorOrange",  "Looters HAT1 -"],
-	["GrpLooters_MTR1",   _mor, "MTR1",   "ColorOrange",  "Looters MTR1 -"],
-	["GrpLooters_MSAM1",  _lau, "MSAM1",  "ColorOrange",  "Looters MSAM1 -"],
-	["GrpLooters_HSAM1",  _lau, "HSAM1",  "ColorOrange",  "Looters HSAM1 -"],
-	["GrpLooters_ST1",    _rec, "ST1",    "ColorOrange",  "Looters ST1 -"],
-	["GrpLooters_DT1",    _rec, "DT1",    "ColorOrange",  "Looters DT1 -"],
-	["GrpLooters_ENG1",   _eng, "ENG1",   "ColorOrange",  "Looters ENG1 -"],
+	["GrpNPR_MMG1",   _sup, "MMG1",   "ColorOrange",  "NPR MMG1 -"],
+	["GrpNPR_MMG2",   _sup, "MMG2",   "ColorOrange",  "NPR MMG2 -"],
+	["GrpNPR_HMG1",   _sup, "HMG1",   "ColorOrange",  "NPR HMG1 -"],
+	["GrpNPR_MAT1",   _lau, "MAT1",   "ColorOrange",  "NPR MAT1 -"],
+	["GrpNPR_MAT2",   _lau, "MAT2",   "ColorOrange",  "NPR MAT2 -"],
+	["GrpNPR_HAT1",   _lau, "HAT1",   "ColorOrange",  "NPR HAT1 -"],
+	["GrpNPR_MTR1",   _mor, "MTR1",   "ColorOrange",  "NPR MTR1 -"],
+	["GrpNPR_MSAM1",  _lau, "MSAM1",  "ColorOrange",  "NPR MSAM1 -"],
+	["GrpNPR_HSAM1",  _lau, "HSAM1",  "ColorOrange",  "NPR HSAM1 -"],
+	["GrpNPR_ST1",    _rec, "ST1",    "ColorOrange",  "NPR ST1 -"],
+	["GrpNPR_DT1",    _rec, "DT1",    "ColorOrange",  "NPR DT1 -"],
+	["GrpNPR_ENG1",   _eng, "ENG1",   "ColorOrange",  "NPR ENG1 -"],
 
-	["GrpLooters_IFV1",   _ifv, "IFV1",   "ColorOrange",  "Looters IFV1 -"],
-	["GrpLooters_IFV2",   _ifv, "IFV2",   "ColorOrange",  "Looters IFV2 -"],
-	["GrpLooters_TNK1",   _tnk, "TNK1",   "ColorRed",     "Looters TNK1 -"],
+	["GrpNPR_IFV1",   _ifv, "IFV1",   "ColorOrange",  "NPR IFV1 -"],
+	["GrpNPR_IFV2",   _ifv, "IFV2",   "ColorOrange",  "NPR IFV2 -"],
+	["GrpNPR_TNK1",   _tnk, "TNK1",   "ColorRed",     "NPR TNK1 -"],
 
-	["GrpLooters_CAS1",   _pla, "CAS1",   "ColorOrange",  "Looters CAS1 -"],
+	["GrpNPR_CAS1",   _pla, "CAS1",   "ColorOrange",  "NPR CAS1 -"],
 
-	["GrpLooters_TH1",    _hel, "TH1",    "ColorRed",     "Looters TH1 -"],
-	["GrpLooters_TH2",    _hel, "TH2",    "ColorRed",     "Looters TH2 -"],
-	["GrpLooters_TH3",    _hel, "TH3",    "ColorBlue",    "Looters TH3 -"],
-	["GrpLooters_TH4",    _hel, "TH4",    "ColorBlue",    "Looters TH4 -"],
-	["GrpLooters_TH5",    _hel, "TH5",    "ColorGreen",   "Looters TH5 -"],
-	["GrpLooters_TH6",    _hel, "TH6",    "ColorGreen",   "Looters TH6 -"],
-	["GrpLooters_TH7",    _hel, "TH7",    "ColorOrange",  "Looters TH7 -"],
-	["GrpLooters_TH8",    _hel, "TH8",    "ColorOrange",  "Looters TH8 -"],
+	["GrpNPR_TH1",    _hel, "TH1",    "ColorRed",     "NPR TH1 -"],
+	["GrpNPR_TH2",    _hel, "TH2",    "ColorRed",     "NPR TH2 -"],
+	["GrpNPR_TH3",    _hel, "TH3",    "ColorBlue",    "NPR TH3 -"],
+	["GrpNPR_TH4",    _hel, "TH4",    "ColorBlue",    "NPR TH4 -"],
+	["GrpNPR_TH5",    _hel, "TH5",    "ColorGreen",   "NPR TH5 -"],
+	["GrpNPR_TH6",    _hel, "TH6",    "ColorGreen",   "NPR TH6 -"],
+	["GrpNPR_TH7",    _hel, "TH7",    "ColorOrange",  "NPR TH7 -"],
+	["GrpNPR_TH8",    _hel, "TH8",    "ColorOrange",  "NPR TH8 -"],
 
-	["GrpLooters_AH1",    _hel, "AH1",    "ColorRed",     "Looters AH1 -"],
+	["GrpNPR_AH1",    _hel, "AH1",    "ColorRed",     "NPR AH1 -"],
 
-	["UnitLooters_CO_M",  _med, "COM",    "ColorBlack",   ""],
-	["UnitLooters_DC_M",  _med, "DCM",    "ColorBlack",   ""],
-	["UnitLooters_ASL_M", _med, "AM",     "ColorBlack",   ""],
-	["UnitLooters_BSL_M", _med, "BM",     "ColorBlack",   ""],
-	["UnitLooters_CSL_M", _med, "CM",     "ColorBlack",   ""]
+	["UnitNPR_CO_M",  _med, "COM",    "ColorBlack",   ""],
+	["UnitNPR_DC_M",  _med, "DCM",    "ColorBlack",   ""],
+	["UnitNPR_ASL_M", _med, "AM",     "ColorBlack",   ""],
+	["UnitNPR_BSL_M", _med, "BM",     "ColorBlack",   ""],
+	["UnitNPR_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
 
 f_var_groupData_civ = [
@@ -738,7 +738,7 @@ f_var_groupData_all append f_var_groupData_indfor_fia;
 f_var_groupData_all append f_var_groupData_indfor_syn;
 f_var_groupData_all append f_var_groupData_indfor_3ifb;
 f_var_groupData_all append f_var_groupData_indfor_ldf;
-f_var_groupData_all append f_var_groupData_indfor_looters;
+f_var_groupData_all append f_var_groupData_indfor_npr;
 f_var_groupData_all append f_var_groupData_civ;
 
 // ====================================================================================

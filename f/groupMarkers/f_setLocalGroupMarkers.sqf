@@ -79,7 +79,7 @@ if (_unitfaction in ["3ifb"]) then {
 
 // Markers seen by players in 3IFB (virtual) slots.
 if (_unitfaction in ["ind_l_f"]) then {
-	_groups = f_var_groupData_indfor_looters;
+	_groups = f_var_groupData_indfor_npr;
 };
 
 // Markers seen by players in Civilian slots.

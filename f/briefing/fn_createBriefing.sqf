@@ -98,7 +98,7 @@ if (_unitfaction in ["ind_c_f"]) exitwith {
 
 // INDEPENDENT > Looters
 if (_unitfaction in ["ind_l_f"]) exitwith {
-	#include "f_briefing_looters.sqf"
+	#include "f_briefing_npr.sqf"
 	[_unitfaction] call _fnc_debug;
 };
 
