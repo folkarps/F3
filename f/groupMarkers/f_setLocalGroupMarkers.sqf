@@ -77,7 +77,7 @@ if (_unitfaction in ["3ifb"]) then {
 	_groups = f_var_groupData_indfor_3ifb;
 };
 
-// Markers seen by players in 3IFB (virtual) slots.
+// Markers seen by players in NPR (Looters) slots.
 if (_unitfaction in ["ind_l_f"]) then {
 	_groups = f_var_groupData_indfor_npr;
 };
