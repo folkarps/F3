@@ -23,12 +23,12 @@ params [
 private _groups = [];
 
 // Markers seen by players in NATO, NATO (Pacific) & CTRG slots.
-if (_unitfaction in ["blu_f","blu_t_f","blu_ctrg_f","blu_w_f"]) then {
+if (_unitfaction in ["blu_f","blu_t_f","blu_ctrg_f","blu_w_f","nato","natowoodland","natopacific"]) then {
 	_groups = f_var_groupData_blufor_nato;
 };
 
-// Markers seen by players in FIA & CTRG slots.
-if (_unitfaction in ["blu_g_f","blu_ctrg_f"]) then {
+// Markers seen by players in FIA & CTRG slots. Add "fia" if using "fia" with Virtual Faction.
+if (_unitfaction in ["blu_g_f","blu_ctrg_f","ctrg"]) then {
 	_groups = f_var_groupData_blufor_fia;
 };
 
@@ -38,37 +38,37 @@ if (_unitfaction in ["blu_gen_f"]) then {
 };
 
 // Markers seen by players in CSAT & CSAT (Pacific) slots.
-if (_unitfaction in ["opf_f","opf_t_f"]) then {
+if (_unitfaction in ["opf_f","opf_t_f","csat","csatpacific"]) then {
 	_groups = f_var_groupData_opfor_csat;
 };
 
-// Markers seen by players in OPFOR-FIA slots.
+// Markers seen by players in OPFOR-FIA slots. Add "fia" if using "fia" with Virtual Faction.
 if (_unitfaction in ["opf_g_f"]) then {
 	_groups = f_var_groupData_opfor_fia;
 };
 
 // Markers seen by players in Spetsnaz slots.
-if (_unitfaction in ["opf_r_f"]) then {
+if (_unitfaction in ["opf_r_f","spetsnaz"]) then {
 	_groups = f_var_groupData_opfor_spetsnaz;
 };
 
 // Markers seen by players in AAF slots.
-if (_unitfaction in ["ind_f"]) then {
+if (_unitfaction in ["ind_f","aaf"]) then {
 	_groups = f_var_groupData_indfor_aaf;
 };
 
 // Markers seen by players in LDF slots.
-if (_unitfaction in ["ind_e_f"]) then {
+if (_unitfaction in ["ind_e_f","ldf"]) then {
 	_groups = f_var_groupData_indfor_ldf;
 };
 
-// Markers seen by players in INDEPENDENT-FIA slots.
+// Markers seen by players in INDEPENDENT-FIA slots. Add "fia" if using "fia" with Virtual Faction.
 if (_unitfaction in ["ind_g_f"]) then {
 	_groups = f_var_groupData_indfor_fia;
 };
 
 // Markers seen by players in SYNDIKAT slots.
-if (_unitfaction in ["ind_c_f"]) then {
+if (_unitfaction in ["ind_c_f","syndikat"]) then {
 	_groups = f_var_groupData_indfor_syn;
 };
 
@@ -78,7 +78,7 @@ if (_unitfaction in ["3ifb"]) then {
 };
 
 // Markers seen by players in NPR (Looters) slots.
-if (_unitfaction in ["ind_l_f"]) then {
+if (_unitfaction in ["ind_l_f","npr"]) then {
 	_groups = f_var_groupData_indfor_npr;
 };
 

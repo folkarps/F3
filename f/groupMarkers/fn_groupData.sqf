@@ -657,7 +657,7 @@ f_var_groupData_indfor_LDF = [
 	["UnitLDF_CSL_M", _med, "CM",     "ColorBlack",   ""]
 ];
 
-f_var_groupData_indfor_npr = [
+f_var_groupData_opfor_npr = [
 	["GrpNPR_CO",     _hq,  "CO",     "ColorYellow",  "NPR CO -"],
 	["GrpNPR_DC",     _hq,  "DC",     "ColorYellow",  "NPR DC -"],
 	["GrpNPR_COV",    _ifv, "COV",    "ColorYellow",  "NPR COV -"],
@@ -733,12 +733,12 @@ f_var_groupData_all append f_var_groupData_blufor_gen;
 f_var_groupData_all append f_var_groupData_opfor_csat;
 f_var_groupData_all append f_var_groupData_opfor_fia;
 f_var_groupData_all append f_var_groupData_opfor_spetsnaz;
+f_var_groupData_all append f_var_groupData_opfor_npr;
 f_var_groupData_all append f_var_groupData_indfor_aaf;
 f_var_groupData_all append f_var_groupData_indfor_fia;
 f_var_groupData_all append f_var_groupData_indfor_syn;
 f_var_groupData_all append f_var_groupData_indfor_3ifb;
 f_var_groupData_all append f_var_groupData_indfor_ldf;
-f_var_groupData_all append f_var_groupData_indfor_npr;
 f_var_groupData_all append f_var_groupData_civ;
 
 // ====================================================================================
