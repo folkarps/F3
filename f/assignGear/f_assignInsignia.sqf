@@ -44,14 +44,14 @@ private _roleBadge = switch (_typeofUnit) do
 // INSIGNIA: MEDIC
 	case "m":
 	{
-		switch (_faction) do
+		switch (true) do
 		{
-			case ("blu_f" or "nato") : {_NATO_Medic_Badge};
-			case ("blu_t_f" or "blu_w_f" or "natopacific" or "natowoodland") : {"NATO_Pacific_Medic_Badge"}
-			case ("opf_f" or "csat") : {_CSAT_Medic_Badge};
-			case ("opf_t_f" or "csatpacific") : {"CSAT_Pacific_Medic_Badge"};
-			case ("ind_f" or "ind_e_f" or "aaf" or "ldf") : {"AAF_Medic_Badge"};
-			case ("opf_r_f" or "spetsnaz") : {"CSAT_Pacific_Medic_Badge"};
+			case (_faction in ["blu_f","nato"]) : {_NATO_Medic_Badge};
+			case (_faction in ["blu_t_f","blu_w_f","natopacific","natowoodland"]) : {"NATO_Pacific_Medic_Badge"};
+			case (_faction in ["opf_f","csat"]) : {_CSAT_Medic_Badge};
+			case (_faction in ["opf_t_f","csatpacific"]) : {"CSAT_Pacific_Medic_Badge"};
+			case (_faction in ["ind_f","ind_e_f","aaf","ldf"]) : {"AAF_Medic_Badge"};
+			case (_faction in ["opf_r_f","spetsnaz"]) : {"CSAT_Pacific_Medic_Badge"};
 			default {"NATO_Medic_Badge"};
 		};
 	};
@@ -65,9 +65,9 @@ private _roleBadge = switch (_typeofUnit) do
 
 private _groupBadges = [];
 
-switch (_faction) do
+switch (true) do
 {
-	case ("blu_f" or "nato") : {
+	case (_faction in ["blu_f","nato"]) : {
 		if (_insignia_style_NATO == "Tanoa") then {
 			_groupBadges = [
 				["GrpNATO_ASL","NATO_Pacific_ASL_Badge"],
@@ -104,7 +104,7 @@ switch (_faction) do
 			];
 		};
 	};
-	case ("blu_t_f" or "blu_w_f" or "natoPacific" or "natoWoodland"): {
+	case (_faction in ["blu_t_f","blu_w_f","natoPacific","natoWoodland"]): {
 		_groupBadges = [
 			["GrpNATO_ASL","NATO_Pacific_ASL_Badge"],
 			["GrpNATO_A1","NATO_Pacific_A1_Badge"],
@@ -123,7 +123,7 @@ switch (_faction) do
 		];
 	};
 	
-	case ("opf_f" or "csat"): {
+	case (_faction in ["opf_f","csat"]): {
 		switch (_insignia_style_CSAT) do
 		{
 			case "Tanoa" : {
@@ -182,7 +182,7 @@ switch (_faction) do
 			};
 		};
 	};
-	case ("opf_t_f" or "csatPacific"): {
+	case (_faction in ["opf_t_f","csatPacific"]): {
 		_groupBadges = [
 			["GrpCSAT_ASL","CSAT_Pacific_ASL_Badge"],
 			["GrpCSAT_A1","CSAT_Pacific_A1_Badge"],
@@ -200,7 +200,7 @@ switch (_faction) do
 			["GrpCSAT_DC","CSAT_Pacific_DC_Badge"]
 		];
 	};
-	case ("opf_r_f" or "spetsnaz"): {
+	case (_faction in ["opf_r_f","spetsnaz"]): {
 		_groupBadges = [
 			["GrpSpetsnaz_ASL","CSAT_Pacific_ASL_Badge"],
 			["GrpSpetsnaz_A1","CSAT_Pacific_A1_Badge"],
@@ -218,7 +218,7 @@ switch (_faction) do
 			["GrpSpetsnaz_DC","CSAT_Pacific_DC_Badge"]
 		];
 	};
-	case ("ind_f" or "aaf"): {
+	case (_faction in ["ind_f","aaf"]): {
 		_groupBadges = [
 			["GrpAAF_ASL","AAF_ASL_Badge"],
 			["GrpAAF_A1","AAF_A1_Badge"],
@@ -236,7 +236,7 @@ switch (_faction) do
 			["GrpAAF_DC","AAF_DC_Badge"]
 		];
 	};
-	case ("ind_e_f" or "ldf"): {
+	case (_faction in ["ind_e_f","ldf"]): {
 		_groupBadges = [
 			["GrpLDF_ASL","AAF_ASL_Badge"],
 			["GrpLDF_A1","AAF_A1_Badge"],
@@ -254,7 +254,7 @@ switch (_faction) do
 			["GrpLDF_DC","AAF_DC_Badge"]
 		];
 	};
-	case ("blu_g_f" or "opf_g_f" or "ind_g_f" or "fia") : {
+	case (_faction in ["blu_g_f","opf_g_f","ind_g_f","fia"]) : {
 		_groupBadges = [
 			["GrpFIA_ASL","NATO_ASL_Badge"],
 			["GrpFIA_A1","NATO_A1_Badge"],
@@ -269,7 +269,7 @@ switch (_faction) do
 			["GrpFIA_C2","NATO_C2_Badge"],
 			["GrpFIA_C3","NATO_C3_Badge"],
 			["GrpFIA_CO","NATO_CO_Badge"],
-			["GrpFIA_DC","NATO_DC_Badge"]
+			["GrpFIA_DC","NATO_DC_Badge"],
 			
 			["GrpOFIA_ASL","NATO_ASL_Badge"],
 			["GrpOFIA_A1","NATO_A1_Badge"],
@@ -284,7 +284,7 @@ switch (_faction) do
 			["GrpOFIA_C2","NATO_C2_Badge"],
 			["GrpOFIA_C3","NATO_C3_Badge"],
 			["GrpOFIA_CO","NATO_CO_Badge"],
-			["GrpOFIA_DC","NATO_DC_Badge"]
+			["GrpOFIA_DC","NATO_DC_Badge"],
 			
 			["GrpIFIA_ASL","NATO_ASL_Badge"],
 			["GrpIFIA_A1","NATO_A1_Badge"],
@@ -302,7 +302,7 @@ switch (_faction) do
 			["GrpIFIA_DC","NATO_DC_Badge"]
 		];
 	};
-	case ("ind_c_f" or "syndikat") :{
+	case (_faction in ["ind_c_f","syndikat"]) :{
 		_groupBadges = [
 			["GrpSyndikat_ASL","NATO_ASL_Badge"],
 			["GrpSyndikat_A1","NATO_A1_Badge"],
@@ -320,7 +320,7 @@ switch (_faction) do
 			["GrpSyndikat_DC","NATO_DC_Badge"]
 		];
 	};
-	case ("ind_l_f" or "npr") :{
+	case (_faction in ["ind_l_f","npr"]) :{
 		_groupBadges = [
 			["GrpNPR_ASL","NATO_ASL_Badge"],
 			["GrpNPR_A1","NATO_A1_Badge"],
@@ -338,7 +338,7 @@ switch (_faction) do
 			["GrpNPR_DC","NATO_DC_Badge"]
 		];
 	};
-	case "3ifb" :{
+	case (_faction in ["3ifb"]) :{
 		_groupBadges = [
 			["Grp3IFB_ASL","NATO_ASL_Badge"],
 			["Grp3IFB_A1","NATO_A1_Badge"],
