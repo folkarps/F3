@@ -52,6 +52,11 @@ if (_unitfaction in ["opf_r_f","spetsnaz"]) then {
 	_groups = f_var_groupData_opfor_spetsnaz;
 };
 
+// Markers seen by players in NPR (Looters) slots.
+if (_unitfaction in ["ind_l_f","npr"]) then {
+	_groups = f_var_groupData_opfor_npr;
+};
+
 // Markers seen by players in AAF slots.
 if (_unitfaction in ["ind_f","aaf"]) then {
 	_groups = f_var_groupData_indfor_aaf;
@@ -75,11 +80,6 @@ if (_unitfaction in ["ind_c_f","syndikat"]) then {
 // Markers seen by players in 3IFB (virtual) slots.
 if (_unitfaction in ["3ifb"]) then {
 	_groups = f_var_groupData_indfor_3ifb;
-};
-
-// Markers seen by players in NPR (Looters) slots.
-if (_unitfaction in ["ind_l_f","npr"]) then {
-	_groups = f_var_groupData_indfor_npr;
 };
 
 // Markers seen by players in Civilian slots.
