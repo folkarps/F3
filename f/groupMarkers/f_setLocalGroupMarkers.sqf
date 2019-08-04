@@ -22,21 +22,22 @@ params [
 
 private _groups = [];
 
-// Markers seen by players in NATO, NATO (Pacific) & CTRG slots.
+// Markers seen by players in NATO, NATO (Pacific) & NATO (Woodland) slots.
 if (_unitfaction in ["blu_f","blu_t_f","blu_w_f","nato","natowoodland","natopacific"]) then {
 	_groups = f_var_groupData_blufor_nato;
 };
 
-// Markers seen by players in FIA & CTRG slots. Move "fia" to OPFOR FIA or INDFOR FIA if using them.
+// Markers seen by players in FIA slots. Move "fia" to OPFOR FIA or INDFOR FIA if using them.
 if (_unitfaction in ["blu_g_f","fia"]) then {
 	_groups = f_var_groupData_blufor_fia;
 };
 
-// Markers seen by players in gendarmerie slots.
+// Markers seen by players in Gendarmerie slots.
 if (_unitfaction in ["blu_gen_f"]) then {
 	_groups = f_var_groupData_blufor_gen;
 };
 
+// Markers seen by players in CTRG slots.
 if (_unitfaction in ["blu_ctrg_f","ctrg"]) then {
 	_groups = f_var_groupData_blufor_ctrg;
 };
