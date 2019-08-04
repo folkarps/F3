@@ -31,9 +31,6 @@ switch (_insignia_style_CSAT) do
 	case "Urban" : {_CSAT_Medic_Badge = "CSAT_Urban_Medic_Badge";};
 	};
 
-// Treat CTRG like BLUFOR
-if (_faction in ["blu_ctrg_f","ctrg"]) then {_faction = "blu_f"};
-
 // ===================================================================================
 
 // Assign Insignia based on type of the unit.
@@ -52,6 +49,7 @@ private _roleBadge = switch (_typeofUnit) do
 			case (_faction in ["opf_t_f","csatpacific"]) : {"CSAT_Pacific_Medic_Badge"};
 			case (_faction in ["ind_f","ind_e_f","aaf","ldf"]) : {"AAF_Medic_Badge"};
 			case (_faction in ["opf_r_f","spetsnaz"]) : {"CSAT_Pacific_Medic_Badge"};
+			case (_faction in ["blu_ctrg_f","ctrg"]) : {_NATO_Medic_Badge"};
 			default {"NATO_Medic_Badge"};
 		};
 	};
@@ -252,6 +250,24 @@ switch (true) do
 			["GrpLDF_C3","AAF_C3_Badge"],
 			["GrpLDF_CO","AAF_CO_Badge"],
 			["GrpLDF_DC","AAF_DC_Badge"]
+		];
+	};
+	case (_faction in ["blu_ctrg_f","ctrg"]): {
+		_groupBadges = [
+			["GrpCTRG_ASL","NATO_ASL_Badge"],
+			["GrpCTRG_A1","NATO_A1_Badge"],
+			["GrpCTRG_A2","NATO_A2_Badge"],
+			["GrpCTRG_A3","NATO_A3_Badge"],
+			["GrpCTRG_BSL","NATO_BSL_Badge"],
+			["GrpCTRG_B1","NATO_B1_Badge"],
+			["GrpCTRG_B2","NATO_B2_Badge"],
+			["GrpCTRG_B3","NATO_B3_Badge"],
+			["GrpCTRG_CSL","NATO_CSL_Badge"],
+			["GrpCTRG_C1","NATO_C1_Badge"],
+			["GrpCTRG_C2","NATO_C2_Badge"],
+			["GrpCTRG_C3","NATO_C3_Badge"],
+			["GrpCTRG_CO","NATO_CO_Badge"],
+			["GrpCTRG_DC","NATO_DC_Badge"]
 		];
 	};
 	case (_faction in ["blu_g_f","opf_g_f","ind_g_f","fia"]) : {

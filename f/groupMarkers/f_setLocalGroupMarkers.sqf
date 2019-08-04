@@ -23,12 +23,12 @@ params [
 private _groups = [];
 
 // Markers seen by players in NATO, NATO (Pacific) & CTRG slots.
-if (_unitfaction in ["blu_f","blu_t_f","blu_ctrg_f","blu_w_f","nato","natowoodland","natopacific"]) then {
+if (_unitfaction in ["blu_f","blu_t_f","blu_w_f","nato","natowoodland","natopacific"]) then {
 	_groups = f_var_groupData_blufor_nato;
 };
 
-// Markers seen by players in FIA & CTRG slots. Add "fia" if using "fia" with Virtual Faction.
-if (_unitfaction in ["blu_g_f","blu_ctrg_f","ctrg"]) then {
+// Markers seen by players in FIA & CTRG slots. Move "fia" to OPFOR FIA or INDFOR FIA if using them.
+if (_unitfaction in ["blu_g_f","fia"]) then {
 	_groups = f_var_groupData_blufor_fia;
 };
 
@@ -37,12 +37,16 @@ if (_unitfaction in ["blu_gen_f"]) then {
 	_groups = f_var_groupData_blufor_gen;
 };
 
+if (_unitfaction in ["blu_ctrg_f","ctrg"]) then {
+	_groups = f_var_groupData_blufor_ctrg;
+};
+
 // Markers seen by players in CSAT & CSAT (Pacific) slots.
 if (_unitfaction in ["opf_f","opf_t_f","csat","csatpacific"]) then {
 	_groups = f_var_groupData_opfor_csat;
 };
 
-// Markers seen by players in OPFOR-FIA slots. Add "fia" if using "fia" with Virtual Faction.
+// Markers seen by players in OPFOR-FIA slots. Add "fia" if using "fia" with Virtual Faction, and remove it from BLUFOR FIA.
 if (_unitfaction in ["opf_g_f"]) then {
 	_groups = f_var_groupData_opfor_fia;
 };
@@ -67,7 +71,7 @@ if (_unitfaction in ["ind_e_f","ldf"]) then {
 	_groups = f_var_groupData_indfor_ldf;
 };
 
-// Markers seen by players in INDEPENDENT-FIA slots. Add "fia" if using "fia" with Virtual Faction.
+// Markers seen by players in INDEPENDENT-FIA slots. Add "fia" if using "fia" with Virtual Faction, and remove it from BLUFOR FIA.
 if (_unitfaction in ["ind_g_f"]) then {
 	_groups = f_var_groupData_indfor_fia;
 };
