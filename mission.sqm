@@ -11640,7 +11640,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={431.17886,7.4527192,1304.5967};
+				position[]={431.17899,7.4527192,1304.597};
 			};
 			side="West";
 			flags=6;
@@ -16712,7 +16712,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={431.17886,5.0014391,1304.6467};
+						position[]={431.17899,4.8214393,1304.6471};
 					};
 					side="West";
 					flags=6;
@@ -16728,13 +16728,14 @@ class Mission
 					};
 					id=2720;
 					type="B_crew_F";
+					atlOffset=-0.17999983;
 				};
 				class Item1
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={431.17886,5.0014391,1304.6467};
+						position[]={431.17899,4.8214393,1304.6471};
 					};
 					side="West";
 					flags=4;
@@ -16750,13 +16751,14 @@ class Mission
 					};
 					id=2721;
 					type="B_crew_F";
+					atlOffset=-0.17999983;
 				};
 				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={431.17886,5.0014391,1304.6467};
+						position[]={431.17899,4.8214393,1304.6471};
 					};
 					side="West";
 					flags=4;
@@ -16771,6 +16773,7 @@ class Mission
 					};
 					id=2722;
 					type="B_crew_F";
+					atlOffset=-0.17999983;
 				};
 			};
 			class Attributes
@@ -16822,6 +16825,29 @@ class Mission
 			};
 			id=2719;
 			atlOffset=-0.17999983;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="groupID";
+					expression="_this setGroupID [_value];";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="NATO COV -";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item270
 		{
@@ -43738,7 +43764,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Gendarmerie A -";
+							value="Gendarmerie Alpha -";
 						};
 					};
 				};
@@ -44004,7 +44030,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Gendarmerie B -";
+							value="Gendarmerie Bravo -";
 						};
 					};
 				};
@@ -44270,7 +44296,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Gendarmerie C -";
+							value="Gendarmerie Charlie -";
 						};
 					};
 				};
@@ -44536,7 +44562,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Gendarmerie J -";
+							value="Gendarmerie Juliett -";
 						};
 					};
 				};
@@ -44636,7 +44662,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="Gendarmerie MK -";
+							value="Gendarmerie Marksman -";
 						};
 					};
 				};
