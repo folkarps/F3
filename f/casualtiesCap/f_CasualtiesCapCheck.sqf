@@ -127,7 +127,7 @@ while {true} do
 		{
 			player sideChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _started = %1",_started];
 		};
-	}
+	};
 
 // DEBUG
 	if (f_param_debugMode == 1) then
