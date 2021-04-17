@@ -127,6 +127,9 @@ while {true} do
 		{
 			player sideChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _started = %1",_started];
 		};
+		if(_started == 0) exitWith {
+			player sideChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): Exiting because no units found"];
+		};
 	}
 
 // DEBUG
