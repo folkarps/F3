@@ -30,9 +30,9 @@ if (isNil "f_var_mapClickTeleport_SaferVehicleHALO") then {f_var_mapClickTelepor
 
 private _string = if (f_var_mapClickTeleport_Height == 0) then {"Teleport"} else {"HALO"};
 
-f_var_mapClickTeleport_textAction = localize format ["STR_f_mapClick%1Action",_string];
-f_var_mapClickTeleport_textDone   = localize format ["STR_f_mapClick%1Done",_string];
-f_var_mapClickTeleport_textSelect = localize format ["STR_f_mapClick%1Select",_string];
+f_var_mapClickTeleport_textAction = _string;
+f_var_mapClickTeleport_textDone   = "You have been moved to the selected location.";
+f_var_mapClickTeleport_textSelect = format ["Click on the map to set %1 coordinates",_string];
 
 // Reduce the array to valid units only
 f_var_mapClickTeleport_Units = f_var_mapClickTeleport_Units select {! isNil _x} apply {call compile format ["%1",_x]};

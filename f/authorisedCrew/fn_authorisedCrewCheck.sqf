@@ -23,7 +23,7 @@ _fromEH params [
 	["_unitToCheck", objNull, [objNull]]
 ];
 
-_warningMsg = localize "STR_f_UnauthorisedCrew_Warning";
+_warningMsg = "You are not authorised to crew this vehicle!";
 
 // DEBUG
 if (f_param_debugMode == 1) then
