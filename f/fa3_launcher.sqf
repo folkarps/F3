@@ -1,3 +1,5 @@
+// FA3 - Script Launcher
+// This component starts all FA3 init scripts. It's included in init.sqf. Don't move this file, and don't touch things here unless you really know what you're doing. Use fa3_config.sqf instead.
 // ====================================================================================
 
 // FA3 - Common Local Variables
