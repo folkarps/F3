@@ -32,8 +32,9 @@ enableSaving [false, false];
 
 // FA3 - FA3 Mission Conditions Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-
-f_script_setMissionConditions = [] spawn f_fnc_setMissionConditions;
+if _startMissionConditions then {
+	f_script_setMissionConditions = [] spawn f_fnc_setMissionConditions;
+};
 
 // ====================================================================================
 
@@ -46,8 +47,9 @@ f_script_setGroupIDs = [] spawn f_fnc_startGroupID;
 
 // FA3 - FA3 Folk ARPS Group Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-
-f_script_setGroupMarkers = [] spawn f_fnc_setLocalGroupMarkers;
+if _startGroupMarkers then {
+	f_script_setGroupMarkers = [] spawn f_fnc_setLocalGroupMarkers;
+};
 
 // ====================================================================================
 
@@ -60,8 +62,9 @@ f_script_setTeamColours = [] spawn f_fnc_setTeamColours;
 
 // FA3 - Fireteam Member Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-
-[] spawn f_fnc_SetLocalFTMemberMarkers;
+if _startTeamMarkers then {
+	[] spawn f_fnc_SetLocalFTMemberMarkers;
+};
 
 // ====================================================================================
 
@@ -101,22 +104,18 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 
 // FA3 - Combat Life Saver EH
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-// Uncomment the line below to enable the Combat Life Saver heal handler. Does nothing unless you have player units using the "cls" assignGear role.
-
-// [] spawn f_fnc_clsAdd;
+// Combat Life Saver heal handler. Does nothing unless you have player units using the "cls" assignGear role.
+if _startCLS then {
+	[] spawn f_fnc_clsAdd;
+};
 
 // ====================================================================================
 
 // FA3 - AI Unit Caching
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-
-//[30] spawn f_fnc_cInit;
-
-// Note: Caching aggressiveness is set using the f_var_cachingAggressiveness variable; possible values:
-// 1 - cache only non-leaders and non-drivers
-// 2 - cache all non-moving units, always exclude vehicle drivers
-// 3 - cache all units, incl. group leaders and vehicle drivers
-//f_var_cachingAggressiveness = 2;
+if _startCache then {
+	[_cacheInitialDelay] spawn f_fnc_cInit;
+};
 
 // ====================================================================================
 
@@ -124,8 +123,7 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 //Exclude units from automatic body/wreck removal:
-removeFromRemainsCollector playableUnits;
-//removeFromRemainsCollector [unit1, unit2, vehicle1];
+removeFromRemainsCollector (playableUnits + _cleanupBlacklist);
 
 // ====================================================================================
 
@@ -139,37 +137,35 @@ f_var_civAI = independent; 		// Optional: The civilian AI will use this side's s
 
 // FA3 - Assign Gear AI
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-
-// [] spawn f_fnc_assignGear_AI;
+if _startAssignGearAI then {
+	[] spawn f_fnc_assignGear_AI;
+};
 
 // ====================================================================================
 
 // FA3 - Dynamic View Distance
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_var_viewDistance_default = 1600;
-f_var_viewDistance_tank = 2500;
-f_var_viewDistance_car = 2000;
-f_var_viewDistance_rotaryWing = 3000;
-f_var_viewDistance_fixedWing = 5000;
-f_var_viewDistance_crewOnly = true;
 [] spawn f_fnc_setViewDistanceInit;
 
 // ====================================================================================
 
 // FA3 - Authorised Crew Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
+{
+	_x params ["_vehicle","_whitelist",["_restrictCargo",false]];
+	_vehicle setVariable ["f_var_crewCheckWhiteList",_whitelist;
+	_vehicle setVariable ["f_var_crewCheckRestrictCargo",_restrictCargo];
+	_vehicle addEventhandler ["GetIn", {[_this,_this getVariable ["f_var_crewCheckWhiteList",[]],_this getVariable ["f_var_crewCheckRestrictCargo",false]] call f_fnc_authorisedCrewCheck}];
+} forEach _crewCheckArray;
 
-// VehicleName addEventhandler ["GetIn", {[_this,[UnitName1,UnitName2],false] call f_fnc_authorisedCrewCheck}];
-// VehicleName addEventhandler ["GetIn", {[_this,["UnitClass1","UnitClass2"],false] call f_fnc_authorisedCrewCheck}];
 
 // ====================================================================================
 
 // FA3 - Commander's Override and FCS failure
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// [vehicleName] call f_fnc_fcsInit;
-// { _x call f_fnc_fcsInit; } forEach [vehicle1,vehicle2,vehicle3];
+{ _x call f_fnc_fcsInit; } forEach _fcsArray;
 
 // ====================================================================================
 
@@ -183,13 +179,9 @@ f_var_viewDistance_crewOnly = true;
 // FA3 - MapClick Teleport
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// f_var_mapClickTeleport_Uses = 1;                 // How often the teleport action can be used. 0 = infinite usage.
-// f_var_mapClickTeleport_TimeLimit = 0;            // If higher than 0 the action will be removed after the given time.
-// f_var_mapClickTeleport_GroupTeleport = true;     // False: everyone can teleport. True: Only group leaders can teleport and will move their entire group.
-// f_var_mapClickTeleport_Units = [];               // Restrict map click teleport to these units.
-// f_var_mapClickTeleport_Height = 0;               // If > 0 map click teleport will act as a HALO drop and automatically assign parachutes to units.
-// f_var_mapClickTeleport_SaferVehicleHALO = false; // If HALO-ing (f_var_mapClickTeleport_Height > 0), False: crew remain in vehicle during drop. True: crew drop separately with their own parachutes.
-// [] spawn f_fnc_mapClickTeleport;
+if _startMapClickTeleport then {
+	[] spawn f_fnc_mapClickTeleport;
+};
 
 // ====================================================================================
 
@@ -203,34 +195,27 @@ f_var_viewDistance_crewOnly = true;
 // FA3 - Group E&E Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// [side,ObjectName or "MarkerName",100,1] spawn f_fnc_EandECheckLoop;
-// [["Grp1","Grp2"],ObjectName or "MarkerName",100,1] spawn f_fnc_EandECheckLoop;
-// Note: If the 3rd parameter is <= 0 then the 2nd parameter will be used for inArea:
-// [side,inArea argument,0,1] spawn f_fnc_EandECheckLoop;
+if _startEandECheck then {
+	[_EandEescapees,_EandEtarget,_EandEdistance,_EandEending] spawn f_fnc_EandECheckLoop;
+};
 
 // ====================================================================================
 
 // FA3 - Casualties Cap
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// [[GroupName or SIDE],100,1] spawn f_fnc_casualtiesCapCheck;
-// [[GroupName or SIDE],100,{code}] spawn f_fnc_casualtiesCapCheck;
-
-// BLUFOR > NATO
-// [BLUFOR,100,1] spawn f_fnc_casualtiesCapCheck;
-
-// OPFOR > CSAT
-// [OPFOR,100,1] spawn f_fnc_casualtiesCapCheck;
-
-// INDEPENDENT > AAF
-// [INDEPENDENT,100,1] spawn f_fnc_casualtiesCapCheck;
+{
+	_x params ["_targets","_percent","_end"];
+	[_targets,_percent,_end] spawn f_fnc_casualtiesCapCheck;
+} forEach _casCapArrays;
 
 // ====================================================================================
 
 // FA3 - Disable Thermals
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-[] spawn f_fnc_disableThermals;
-// [[UnitName1, "UnitClass1"]] spawn f_fnc_disableThermals;
+if _startDisableThermals then {
+	_disableThermalsWhitelist spawn f_fnc_disableThermals;
+};
 
 // ====================================================================================
 
@@ -243,7 +228,7 @@ f_var_viewDistance_crewOnly = true;
 
 // This component is enabled by default and it's recommended to leave it enabled. The default configuration provides an in-game CC-like function and prevents issues with reslotted players and the Direct channel.
 
-[false] spawn f_fnc_radioChannels;
+[_radioMode] spawn f_fnc_radioChannels;
 
 // If you are creating other custom channels, you must wait for F3 Radio Channels to finish to avoid conflicts:
 //  waitUntil {(!isNil f_var_radioChannelsUnified)}
