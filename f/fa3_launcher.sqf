@@ -156,7 +156,7 @@ if _startAssignGearAI then {
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 {
 	_x params ["_vehicle","_whitelist",["_restrictCargo",false]];
-	_vehicle setVariable ["f_var_crewCheckWhiteList",_whitelist;
+	_vehicle setVariable ["f_var_crewCheckWhiteList",_whitelist];
 	_vehicle setVariable ["f_var_crewCheckRestrictCargo",_restrictCargo];
 	_vehicle addEventhandler ["GetIn", {[_this,_this getVariable ["f_var_crewCheckWhiteList",[]],_this getVariable ["f_var_crewCheckRestrictCargo",false]] call f_fnc_authorisedCrewCheck}];
 } forEach _crewCheckArray;
