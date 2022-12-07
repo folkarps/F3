@@ -4,7 +4,7 @@
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // WARNING: DO NOT DISABLE THIS COMPONENT
 if(isServer) then {
-	f_script_setLocalVars = [] execVM "f\common\f_setLocalVars.sqf";
+	f_script_setLocalVars = [] spawn f_fnc_setLocalVars;
 };
 
 // ====================================================================================
@@ -26,35 +26,35 @@ enableSaving [false, false];
 // FA3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\safeStart\f_safeStart.sqf";
+[] spawn f_fnc_safeStart;
 
 // ====================================================================================
 
 // FA3 - FA3 Mission Conditions Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_script_setMissionConditions = [] execVM "f\missionConditions\f_setMissionConditions.sqf";
+f_script_setMissionConditions = [] spawn f_fnc_setMissionConditions;
 
 // ====================================================================================
 
 // FA3 - Folk ARPS Group IDs
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_script_setGroupIDs = [] execVM "f\setGroupID\f_setGroupIDs.sqf";
+f_script_setGroupIDs = [] spawn f_fnc_startGroupID;
 
 // ====================================================================================
 
 // FA3 - FA3 Folk ARPS Group Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_setLocalGroupMarkers.sqf";
+f_script_setGroupMarkers = [] spawn f_fnc_setLocalGroupMarkers;
 
 // ====================================================================================
 
 // FA3 - Buddy Team Colours
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
+f_script_setTeamColours = [] spawn f_fnc_setTeamColours;
 
 // ====================================================================================
 
@@ -68,7 +68,7 @@ f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
 // FA3 - Join Group Action
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[false] execVM "f\groupJoin\f_groupJoinAction.sqf";
+[false] spawn f_fnc_groupJoinAction;
 
 // ====================================================================================
 
@@ -82,20 +82,20 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // FA3 - ORBAT Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\briefing\f_orbatNotes.sqf";
+[] spawn f_fnc_orbatNotes;
 
 // ====================================================================================
 
 // FA3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\briefing\f_loadoutNotes.sqf";
+[] spawn f_fnc_loadoutNotes;
 
 // ====================================================================================
 
 // FA3 - Revive
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-[] execVM "f\medical\init.sqf";
+[] spawn f_fnc_medicalInit;
 
 // ====================================================================================
 
@@ -103,7 +103,7 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // Uncomment the line below to enable the Combat Life Saver heal handler. Does nothing unless you have player units using the "cls" assignGear role.
 
-// [] execVM "f\medical\f_clsEH.sqf";
+// [] spawn f_fnc_clsAdd;
 
 // ====================================================================================
 
@@ -133,14 +133,14 @@ removeFromRemainsCollector playableUnits;
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_var_civAI = independent; 		// Optional: The civilian AI will use this side's settings
-[] execVM "f\setAISKill\f_setAISkill.sqf";
+[] spawn f_fnc_startAISkill;
 
 // ====================================================================================
 
 // FA3 - Assign Gear AI
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// [] execVM "f\assignGear\f_assignGear_AI.sqf";
+// [] spawn f_fnc_assignGear_AI;
 
 // ====================================================================================
 
@@ -153,7 +153,7 @@ f_var_viewDistance_car = 2000;
 f_var_viewDistance_rotaryWing = 3000;
 f_var_viewDistance_fixedWing = 5000;
 f_var_viewDistance_crewOnly = true;
-[] execVM "f\dynamicViewDistance\f_setViewDistanceInit.sqf";
+[] spawn f_fnc_setViewDistanceInit;
 
 // ====================================================================================
 
@@ -189,41 +189,41 @@ f_var_viewDistance_crewOnly = true;
 // f_var_mapClickTeleport_Units = [];               // Restrict map click teleport to these units.
 // f_var_mapClickTeleport_Height = 0;               // If > 0 map click teleport will act as a HALO drop and automatically assign parachutes to units.
 // f_var_mapClickTeleport_SaferVehicleHALO = false; // If HALO-ing (f_var_mapClickTeleport_Height > 0), False: crew remain in vehicle during drop. True: crew drop separately with their own parachutes.
-// [] execVM "f\mapClickTeleport\f_mapClickTeleport.sqf";
+// [] spawn f_fnc_mapClickTeleport;
 
 // ====================================================================================
 
 // FA3 - Name Tags
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\nametag\f_nametagInit.sqf";
+[] spawn f_fnc_nameTagInit;
 
 // ====================================================================================
 
 // FA3 - Group E&E Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// [side,ObjectName or "MarkerName",100,1] execVM "f\EandEcheck\f_EandECheckLoop.sqf";
-// [["Grp1","Grp2"],ObjectName or "MarkerName",100,1] execVM "f\EandEcheck\f_EandECheckLoop.sqf";
+// [side,ObjectName or "MarkerName",100,1] spawn f_fnc_EandECheckLoop;
+// [["Grp1","Grp2"],ObjectName or "MarkerName",100,1] spawn f_fnc_EandECheckLoop;
 // Note: If the 3rd parameter is <= 0 then the 2nd parameter will be used for inArea:
-// [side,inArea argument,0,1] execVM "f\EandEcheck\f_EandECheckLoop.sqf";
+// [side,inArea argument,0,1] spawn f_fnc_EandECheckLoop;
 
 // ====================================================================================
 
 // FA3 - Casualties Cap
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-// [[GroupName or SIDE],100,1] execVM "f\casualtiesCap\f_CasualtiesCapCheck.sqf";
-// [[GroupName or SIDE],100,{code}] execVM "f\casualtiesCap\f_CasualtiesCapCheck.sqf";
+// [[GroupName or SIDE],100,1] spawn f_fnc_casualtiesCapCheck;
+// [[GroupName or SIDE],100,{code}] spawn f_fnc_casualtiesCapCheck;
 
 // BLUFOR > NATO
-// [BLUFOR,100,1] execVM "f\casualtiesCap\f_CasualtiesCapCheck.sqf";
+// [BLUFOR,100,1] spawn f_fnc_casualtiesCapCheck;
 
 // OPFOR > CSAT
-// [OPFOR,100,1] execVM "f\casualtiesCap\f_CasualtiesCapCheck.sqf";
+// [OPFOR,100,1] spawn f_fnc_casualtiesCapCheck;
 
 // INDEPENDENT > AAF
-// [INDEPENDENT,100,1] execVM "f\casualtiesCap\f_CasualtiesCapCheck.sqf";
+// [INDEPENDENT,100,1] spawn f_fnc_casualtiesCapCheck;
 
 // ====================================================================================
 

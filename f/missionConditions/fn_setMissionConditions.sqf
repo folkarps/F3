@@ -49,7 +49,7 @@ if (hasInterface) then {
 
 	// GENERATE CONDITION NOTES
 	// Adds a briefing entry that summarizes the mission conditions
-	[] execVM "f\missionConditions\f_conditionNotes.sqf";
+	[] spawn f_fnc_conditionNotes;
 
 	// Wait until the mission has started - ambient temperature takes a tick to update
 	sleep 0.1;

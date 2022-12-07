@@ -5,6 +5,7 @@ class F // Defines the "owner"
 	class common // category
 	{
 		file = "f\common";
+		class setLocalVars{};
 		class processParamsArray{preInit = 1; postInit=1;};
 		class nearPlayer{};
 		class virtualFaction{};
@@ -14,6 +15,8 @@ class F // Defines the "owner"
 	{
 		file = "f\briefing";
 		class createBriefing{};
+		class orbatNotes{};
+		class loadoutNotes{};
 	};
 	class mpEnd
 	{
@@ -24,17 +27,21 @@ class F // Defines the "owner"
 	class assignGear
 	{
 		file = "f\assignGear";
+		class assignGear_AI{};
 		class assignGear{};
 		class assignInsignia{};
 	};
 	class setGroupID
 	{
 		file = "f\setGroupID";
+		class startGroupID{};
 		class setGroupID{};
 	};
 	class missionConditions
 	{
 		file = "f\missionConditions";
+		class setMissionConditions{};
+		class conditionNotes{};
 		class SetTime{};
 		class SetFog{};
 		class SetWeather{};
@@ -51,6 +58,7 @@ class F // Defines the "owner"
 	};
 	class groupMarkers {
 		file = "f\groupMarkers";
+		class setLocalGroupMarkers{};
 		class localGroupMarker{};
 		class localSpecialistMarker{};
 		class groupData{preInit = 1;};
@@ -66,14 +74,26 @@ class F // Defines the "owner"
 		class SetLocalFTMemberMarkers{};
 		class GetMarkerColor{};
 	};
+	class setTeamColours
+	{
+		file = "f\setTeamColours";
+		class setTeamColours{};
+	};
+	class groupJoin
+	{
+		file = "f\groupJoin";
+		class groupJoinAction{};
+	};
 	class setAISkill
 	{
 		file = "f\setAISkill";
+		class startAISkill{};
 		class setAISkill{};
 	};
 	class mapClickTeleport
 	{
 		file = "f\mapClickTeleport";
+		class mapClickTeleport{};
 		class mapClickTeleportAction{};
 		class mapClickTeleportSetPos{};
 		class mapClickTeleportParachute{};
@@ -83,6 +103,9 @@ class F // Defines the "owner"
 	class nametag
 	{
 		file = "f\nametag\functions";
+		class nametagInit{
+			file = "f\nametag\fn_nametagInit.sqf";
+		};
 		class nametagUpdate {};
 		class nametagDraw {};
 		class nametagGetData {};
@@ -107,6 +130,8 @@ class F // Defines the "owner"
 	{
 		file = "f\safeStart";
 		class safety{};
+		class safeStart{};
+		class safeStartLoop{};
 	};
 	class spect
 	{
@@ -114,11 +139,24 @@ class F // Defines the "owner"
 		class activateSpectator{};
 		class terminateSpectator{};
 	};
+	class EandEcheck
+	{
+		file = "f\EandEcheck";
+		class EandECheckLoop{};
+	};
+	class casualtiesCap
+	{
+		file = "f\casualtiesCap";
+		class casualtiesCapCheck{};
+	};
 	class woundingsystem
 	{
 		file = "f\medical";
 		class addDragAction {};
 		class onDrag {};
+		class medicalInit{};
+		class clsAdd{};
+		class clsEH{};
 	};
 	class disableThermals
 	{
@@ -128,6 +166,7 @@ class F // Defines the "owner"
 	class dynamicViewDistance
 	{
 		file = "f\dynamicViewDistance";
+		class setViewDistanceInit{};
 		class ehSetViewDistance {};
 	};
 	class fcs
