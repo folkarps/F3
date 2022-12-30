@@ -93,9 +93,18 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 
 // ====================================================================================
 
-// F3 - Revive
+// F3 - FA Medical 
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-[] execVM "f\medical\init.sqf";
+
+{
+	_x remoteExec ["f_fnc_famInit",player,player];
+} foreach playableUnits;
+
+// MEDICAL SUPPLIES 
+// Serverside cleanup to replace default FAKs with Bandages
+if (isServer) then {
+	[] call f_fnc_famMedSwap;
+};
 
 // ====================================================================================
 

@@ -116,8 +116,17 @@ class F // Defines the "owner"
 	class woundingsystem
 	{
 		file = "f\medical";
-		class addDragAction {};
-		class onDrag {};
+		class famWoundedEffect{};
+		class famAddDragAction{};
+		class famOnDrag{};
+		class famInit{};
+		class famLoop{};
+		class famDamageHandler{};
+		class famRagDoll{};
+		class famPassOut{};
+		class famWakeUp{};
+		class famReset{};
+		class famMedSwap{};
 	};
 	class disableThermals
 	{

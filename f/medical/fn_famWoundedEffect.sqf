@@ -1,0 +1,96 @@
+// F3 FA Medical
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+// ====================================================================================
+
+// INITIALIZE
+params ["_stage"];
+
+// ====================================================================================
+
+// SELECT SCREEN EFFECT 
+// store effect in this variable
+private _adjust = [];
+
+// choose effect, 0 is most common, 4 is less common or used on wakeup.
+switch (_stage) do {
+	case 0: {
+		5 fadeSound 0.4;
+		5 fadeSpeech 0.75;
+		5 fadeRadio 0.4;
+		_adjust = [0.01,1,0,[0,0,0,0],[1, 0.0008, 1,1],[1, 1, 1, 0]];
+		FAM_UncBlur ppEffectAdjust [0.5];
+		FAM_UncBlur ppEffectEnable TRUE;
+		FAM_UncBlur ppEffectCommit 0;
+		5 enableChannel false;
+	};
+	case 1: {
+		5 fadeSound 0.4;
+		5 fadeSpeech 0.75;
+		5 fadeRadio 0.4;
+		_adjust = [0.08,1,0,[0.05,0,0,0],[1, 0.0008, 1,1],[1, 1, 1, 0]];
+		FAM_UncBlur ppEffectAdjust [0.5];
+		FAM_UncBlur ppEffectEnable TRUE;
+		FAM_UncBlur ppEffectCommit 0;
+		5 enableChannel false;
+
+	};
+	case 2: {
+		5 fadeSound 0.4;
+		5 fadeSpeech 0.75;
+		5 fadeRadio 0.4;
+		_adjust = [0.10,1,0,[0.25,0,0,0.4],[1, 0.0008, 1,1],[1, 1, 1, 0]]; 
+		FAM_UncBlur ppEffectAdjust [0.5];
+		FAM_UncBlur ppEffectEnable TRUE;
+		FAM_UncBlur ppEffectCommit 0;
+		5 enableChannel false;
+
+	};
+	case 3: {
+		5 fadeSound 0.8;
+		5 fadeSpeech 0.95;
+		5 fadeRadio 0.8;
+		_adjust = [0.01,1,0,[0,0,0,0],[1, 0.0008, 1,1],[1, 1, 1, 0]];
+		FAM_UncBlur ppEffectAdjust [0.5];
+		FAM_UncBlur ppEffectEnable TRUE;
+		FAM_UncBlur ppEffectCommit 0;
+		5 enableChannel false;
+
+	};
+	case 4: {
+		10 fadeSound 1;
+		10 fadeSpeech 1;
+		10 fadeRadio 1;
+		_adjust = [1,1,0,[0,0,0,0],[1,1,1,1],[0,0,0,0]];
+		FAM_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
+		FAM_UncRadialBlur ppEffectCommit 1;  //2.5
+		FAM_UncBlur ppEffectAdjust [0];
+		FAM_UncBlur ppEffectCommit 1;  //2.5
+		FAM_UncBlur ppEffectEnable FALSE;
+		5 enableChannel true;
+	};
+	default {
+		10 fadeSound 1;
+		10 fadeSpeech 1;
+		10 fadeRadio 1;
+		_adjust = [1,1,0,[0,0,0,0],[1,1,1,1],[0,0,0,0]];
+		FAM_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
+		FAM_UncRadialBlur ppEffectCommit 1;  //2.5
+		FAM_UncBlur ppEffectAdjust [0];
+		FAM_UncBlur ppEffectCommit 1;  //2.5
+		FAM_UncBlur ppEffectEnable FALSE;
+		5 enableChannel true;
+	};
+};
+
+// ====================================================================================
+
+// DO EFFECT
+FAM_UncCC ppEffectAdjust _adjust; 
+FAM_UncCC ppEffectEnable TRUE; 
+FAM_UncCC ppEffectCommit 1;
+FAM_UncCC ppEffectEnable TRUE;
+FAM_UncCC ppEffectForceInNVG TRUE;
+
+
+
+

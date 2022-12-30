@@ -263,10 +263,10 @@ if (_faction in ["3ifb"]) then {
 // This block needs only to be run on an infantry unit
 if (_isMan) then {
 
-	// Add extra FAKs,
+	// Add extra Bandages,
 	// because the assignGear files were made when the sws was still existing.
-	private _numExtraFAK = 2;
-	for "_i" from 1 to _numExtraFAK do {
+	private _numExtraBandage = 2;
+	for "_i" from 1 to _numExtraBandage do {
 		_unit addItem _firstaid;
 	};
 

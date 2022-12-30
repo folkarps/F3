@@ -1,6 +1,11 @@
-#include "\a3\functions_f_mp_mark\Revive\defines.inc"
+// F3 FA Medical
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+// ====================================================================================
 
+// INITIAL VARIABLES 
 params ["_unit", "_dragger"];
+
+// ====================================================================================
 
 private _actionIdx = -1; //only relevant for dragger
 private _isDragger = local _dragger;
@@ -32,6 +37,8 @@ if (_isDragger) then {
 _dragger setVariable ["f_wound_dragging",      _unit, false];
 _unit    setVariable ["f_wound_being_dragged", true,  false];
 
+// ====================================================================================
+
 // Wait until the unit is released, dead, downed, or revived)
 private _dragged_unit = nil;
 waitUntil {
@@ -40,9 +47,8 @@ waitUntil {
 	(
 		isNil "_dragged_unit" //unit is released
 		|| !(_unit getVariable ["f_wound_being_dragged", false])
-		|| GET_STATE(_unit) != STATE_INCAPACITATED // unit isn't incapacitated anymore
-		|| GET_STATE(_dragger) == STATE_INCAPACITATED // dragger is incapacitated
-		|| IS_BEING_REVIVED(_unit) // someone else is reviving the unit
+		|| (_unit getVariable ["FAM_CONSCIOUS",true]) // unit isn't incapacitated anymore
+		|| !(_dragger getVariable ["FAM_CONSCIOUS",true]) // dragger is incapacitated
 		|| !alive _unit
 		|| !alive _dragger
 		|| !(isPlayer _dragger)
@@ -51,6 +57,9 @@ waitUntil {
 	)
 };
 
+// ====================================================================================
+
+// EXIT DRAGGING
 if (_isDragger) then {
 	detach _unit;
 };
@@ -63,8 +72,8 @@ if (f_param_debugMode == 1) then {
 };
 
 if (_isDragger) then {
-	if( GET_STATE(_dragger) == STATE_INCAPACITATED) then {
-		_dragger switchMove ANIM_WOUNDED;
+	if !(_dragger getVariable ["FAM_CONSCIOUS",true]) then {
+		// _dragger switchMove ANIM_WOUNDED;
 	} else {
 	    if(vehicle _dragger == _dragger) then {
 		    _dragger switchMove "";
