@@ -126,7 +126,7 @@ private _bdg = _unit addAction
 	true,		// showWindow
 	true,		// hideOnUse
 	"",			// shortcut
-	"_target == _this && _target getVariable ['FAM_BLEED',false]", 	// condition
+	"(_target == _this) && {_target getVariable ['FAM_BLEED',false]}", 	// condition
 	50,			// radius
 	false,		// unconscious
 	"",			// selection
@@ -151,7 +151,7 @@ _unit setUserActionText [
 	_unit, 
 	format ["<t color='#FF0000'>Bandage %1'</t>", name _unit],
 	_bdgIcon, _bdgIcon, 
-	"_target != _this && alive _target && !(_this getUnitTrait 'medic') && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)", 
+	"(_target != _this) && {alive _target && !(_this getUnitTrait 'medic') && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
 	_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime, 20, false, false, true
 ] call BIS_fnc_holdActionAdd;
 
@@ -160,6 +160,6 @@ _unit setUserActionText [
 	_unit, 
 	format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 	_bdgIcon, _bdgIcon, 
-	"_target != _this && alive _target && (_this getUnitTrait 'medic') && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)", 
+	"(_target != _this) && {alive _target && (_this getUnitTrait 'medic') && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
 	_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime * FAM_MEDICMOD, 20, false, false, true
 ] call BIS_fnc_holdActionAdd;

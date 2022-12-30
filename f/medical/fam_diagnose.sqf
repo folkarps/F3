@@ -66,7 +66,7 @@ _unit addAction
 	true,		// showWindow
 	true,		// hideOnUse
 	"",			// shortcut
-	"_target != _this && vehicle _target == _target", 	// condition
+	"(_target != _this) && {vehicle _target == _target}", 	// condition
 	3,			// radius
 	false,		// unconscious
 	"",			// selection
@@ -83,7 +83,7 @@ _unit addAction
 	false,		// showWindow
 	true,		// hideOnUse
 	"",			// shortcut
-	"_target == _this && (weaponLowered _this || stance _this == 'prone')", 	// condition
+	"(_target == _this) && {(weaponLowered _this || stance _this == 'prone')}", 	// condition
 	0,			// radius
 	false,		// unconscious
 	"",			// selection

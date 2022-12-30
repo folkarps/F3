@@ -4,7 +4,7 @@
 
 // Variables to streamline balancing/updates
 private _healIcon = "a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa"; //Icon to Display
-private _healProg = "alive _target && alive _target && _target distance _caller < 3 && !(_target getVariable ['FAM_CONSCIOUS',true])"; // This one is always the same, start condition varies by unit type.
+private _healProg = "(_target distance _caller < 3) && {alive _target && && !(_target getVariable ['FAM_CONSCIOUS',true])}"; // This one is always the same, start condition varies by unit type.
 private _healTime = 6; // Action Duration
 
 // Starting Code
@@ -95,7 +95,7 @@ private _healCodeInt = {
 	format ["Heal %1", name _unit],
 	_healIcon, 
 	_healIcon, 
-	"(!(_this getUnitTrait 'medic') || !('Medikit' in items _this)) && alive _target && _target distance _this < 3 && !(_target getVariable ['FAM_CONSCIOUS',true]) && 'FirstAidKit' in items _this", 
+	"(!(_this getUnitTrait 'medic') || !('Medikit' in items _this)) && {alive _target && _target distance _this < 3 && !(_target getVariable ['FAM_CONSCIOUS',true]) && 'FirstAidKit' in items _this}", 
 	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;
 
@@ -105,6 +105,6 @@ private _healCodeInt = {
 	format ["Heal %1", name _unit],
 	_healIcon, 
 	_healIcon, 
-	"(_this getUnitTrait 'medic' && 'Medikit' in items _this) && alive _target && _target distance _this < 3 && !(_target getVariable ['FAM_CONSCIOUS',true])", 
+	"(_this getUnitTrait 'medic' && 'Medikit' in items _this) && {alive _target && _target distance _this < 3 && !(_target getVariable ['FAM_CONSCIOUS',true])}", 
 	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime * FAM_MEDICMOD, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;
