@@ -34,20 +34,6 @@ respawnTemplates[] = {"F_Spectator"};
 
 // ============================================================================================
 
-// F3 - Revive Settings
-/*
-https://community.bistudio.com/wiki/Arma_3_Revive
-https://community.bistudio.com/wiki/Description.ext#ReviveMode
-*/
-ReviveMode = 1;
-ReviveUnconsciousStateMode = 1;
-ReviveRequiredTrait = 0;
-ReviveRequiredItems = 2;
-ReviveRequiredItemsFakConsumed = 1;
-ReviveMedicSpeedMultiplier = 2;
-reviveDelay = 15;
-reviveForceRespawnDelay = 99999;
-reviveBleedOutDelay = 240;
 // F3 - Start of Notifications block.
 
 class cfgNotifications
