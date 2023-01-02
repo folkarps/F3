@@ -97,7 +97,7 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 {
-	_x remoteExec ["f_fnc_famInit",player,player];
+	_x remoteExec ["f_fnc_famInit",0,player];
 } foreach playableUnits;
 
 // MEDICAL SUPPLIES 

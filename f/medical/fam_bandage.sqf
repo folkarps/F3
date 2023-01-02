@@ -4,7 +4,7 @@
 
 // Action components
 private _bdgIcon = "a3\ui_f\data\igui\cfg\actions\ico_cpt_thtl_off_ca.paa"; //Icon to Display
-private _bdgProg = "alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false]"; // This one is always the same, start condition varies by unit type.
+private _bdgProg = "(_this distance _target < 3) && {alive _target && _target getVariable ['FAM_BLEED',false]}"; // This one is always the same, start condition varies by unit type.
 private _bdgTime = 6; // Action Duration
 
 // Starting Code

@@ -5,6 +5,9 @@
 // INITIALIZE
 _unit = _this;
 
+// Exit when not local.
+if !(local _unit) exitWith {};
+
 // ====================================================================================
 
 // MEDICAL SCRIPTS

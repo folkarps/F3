@@ -38,13 +38,13 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	};
 
 	// Down you on a big hit.
-    if (_selection != "" && _newDamage >= 0.8) then { 
+    if (_selection != "" && {_newDamage >= 0.8}) then { 
 		_unit setVariable ["FAM_FORCEDOWN",true];
-		//_newDamage = _currentDamage;
+		
 	};
 
 	// Set bleed but only update if unit is not already bleeding. TODO Maybe bleed should be its own dice roll.
-	if (_projectile != "" && !(_unit getVariable ["FAM_BLEED",false] && _newDamage > 0.4)) then {
+	if (_projectile != "" && {!(_unit getVariable ["FAM_BLEED",false] && _newDamage > 0.8)}) then {
 		_unit setVariable ["FAM_BLEED",true,true];
 		_unit setBleedingRemaining 400;
 	};

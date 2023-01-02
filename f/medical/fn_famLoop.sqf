@@ -10,20 +10,19 @@ private _nextSave = time;
 
 // MEDICAL LOOP 
 // Runs until the unit is killed or locality changes
-while {alive _unit && local _unit} do {
+while {alive _unit && {local _unit}} do {
 	
 // ====================================================================================
 
 	// PASSOUT TEST 
 	// Force Unit Down above damage threshold. 
-	if (damage _unit >= 0.9 && _unit getVariable ["FAM_CONSCIOUS",true]) then { 
+	if (damage _unit >= 0.9 && {_unit getVariable ["FAM_CONSCIOUS",true]}) then { 
 
 		_unit setVariable ["FAM_FORCEDOWN",true];
 	}; 
 
-	if (_unit getVariable ["FAM_FORCEDOWN",false] && _unit getVariable ["FAM_CONSCIOUS",true]) then {
+	if ((_unit getVariable ["FAM_FORCEDOWN",false]) && {_unit getVariable ["FAM_CONSCIOUS",true]}) then {
 
-		_unit setVariable ["FAM_CONSCIOUS",false]; 
 		_unit call f_fnc_famPassOut;
 		_nextSave = _nextSave + 10; 
 	};
@@ -31,7 +30,7 @@ while {alive _unit && local _unit} do {
 	_unit setVariable ["FAM_FORCEDOWN",false];
 
 	// Check if Unit should go down, only above 50% damage and only check at intervals.
-	if (time > _nextSave && _unit getVariable ["FAM_CONSCIOUS",true] && damage _unit >= 0.5) then { 
+	if (time > _nextSave && {_unit getVariable ["FAM_CONSCIOUS",true] && {damage _unit >= 0.5}}) then { 
 
 		private _save = random 100;
 		private _dc = round (100 - (20 * damage _unit));
@@ -67,7 +66,7 @@ while {alive _unit && local _unit} do {
 			private _save =  random 100;
 			private _dc = (100 * damage _unit);
 
-			if (_save >= _dc && damage _unit < 0.95) then {
+			if (_save >= _dc && {damage _unit < 0.95}) then {
 
 				// extra time if you roll to wake up in the 11th hour.
 				if (damage _unit >= 0.9) then {
@@ -123,8 +122,7 @@ while {alive _unit && local _unit} do {
 // ====================================================================================
 
 	// LOOP RESTART
-	// Loops every second
-	sleep 1;
+	sleep 0.1;
 };
 
 // ====================================================================================

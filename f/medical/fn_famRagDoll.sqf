@@ -27,7 +27,7 @@ _unit addEventHandler ["AnimStateChanged", {
             _tE = _this select 1;
             _tEH = _this select 2;
     
-            _unit setPosWorld getPosWorld player;
+            _unit setPosWorld getPosWorld _unit;
 
             if !(_unit getVariable ["FAM_CONSCIOUS",false]) then {
 
@@ -57,8 +57,8 @@ if ((animationState _unit == "ainvpknlmstpslaywrfldnon_medic" || animationState 
 
     waitUntil {sleep 0.1; (animationState _unit != "ainvpknlmstpslaywrfldnon_medic" && animationState _unit != "ainvppnemstpslaywrfldnon_medic")};
 
-    player setDamage _dmg;
-    player addItem "FirstAidKit"; //replace the one they won't know they lost.
+    _unit setDamage _dmg;
+    _unit addItem "FirstAidKit"; //replace the one they won't know they lost.
     
 };
 
