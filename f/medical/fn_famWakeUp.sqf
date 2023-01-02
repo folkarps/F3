@@ -74,7 +74,7 @@ _unit addEventHandler ["Fired", {
     _unit removeEventHandler [_thisEvent, _thisEventHandler];
 }];
 
-// ...Or setCaptive false after 10 seconds and return senses if unit stays awake long enough.
+// ...Or setCaptive false after a few seconds and return senses if unit stays awake long enough.
 _unit spawn {
 
     _unit = _this;
