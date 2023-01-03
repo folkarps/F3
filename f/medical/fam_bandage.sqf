@@ -144,22 +144,13 @@ _unit setUserActionText [
 
 // ====================================================================================
 
-// HOLD ACTIONS
-// Every Unit Has Actions, two versions each as medics are just built different.
-// Stop Bleed Action Regular
-[ 
-	_unit, 
-	format ["<t color='#FF0000'>Bandage %1'</t>", name _unit],
-	_bdgIcon, _bdgIcon, 
-	"(_target != _this) && {alive _target && !(_this getUnitTrait 'medic') && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
-	_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime, 20, false, false, true
-] call BIS_fnc_holdActionAdd;
+// HOLD ACTION
 
-// Stop Bleed Action Medic
+// Stop Bleed Action
 [ 
 	_unit, 
 	format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 	_bdgIcon, _bdgIcon, 
-	"(_target != _this) && {alive _target && (_this getUnitTrait 'medic') && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
-	_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime * FAM_MEDICMOD, 20, false, false, true
+	"(_target != _this) && {alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
+	_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], [_bdgTime, _bdgTime * FAM_MEDICMOD] select (_this getUnitTrait 'medic'), 20, false, false, true
 ] call BIS_fnc_holdActionAdd;
