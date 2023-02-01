@@ -93,21 +93,6 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 
 // ====================================================================================
 
-// F3 - FA Medical 
-// Credits and documentation: https://github.com/folkarps/F3/wiki
-
-{
-	_x remoteExec ["f_fnc_famInit",0,player];
-} foreach playableUnits;
-
-// MEDICAL SUPPLIES 
-// Serverside cleanup to replace default FAKs with Bandages
-if (isServer) then {
-	[] call f_fnc_famMedSwap;
-};
-
-// ====================================================================================
-
 // F3 - Combat Life Saver EH
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // Uncomment the line below to enable the Combat Life Saver heal handler. Does nothing unless you have player units using the "cls" assignGear role.

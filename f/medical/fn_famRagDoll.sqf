@@ -14,7 +14,7 @@ _unit addEventHandler ["AnimStateChanged", {
 	params ["_unit", "_anim"];
 
     // Detect animations which should put us on our belly.
-    if (_anim == "unconsciousfacedown" || _anim == "unconsciousfaceright" || _anim == "amovppnemstpsnonwnondnon_turnl" || _anim == "amovppnemstpsnonwnondnon") then {
+    if (_anim == "unconsciousfacedown" || _anim == "unconsciousfaceright" || _anim == "amovppnemstpsnonwnondnon_turnl" || _anim == "amovppnemstpsnonwnondnon" || _anim == "incapacitated") then {
 
         if (f_param_debugMode == 1) then
         {

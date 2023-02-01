@@ -117,7 +117,11 @@ class F // Defines the "owner"
 	{
 		file = "f\medical";
 		class famWoundedEffect{};
+		class famAddAllActions{};
 		class famAddDragAction{};
+		class famAddBandageAction{};
+		class famAddHealAction{};
+		class famAddDiagnoseAction{};
 		class famOnDrag{};
 		class famInit{};
 		class famLoop{};

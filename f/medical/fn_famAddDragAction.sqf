@@ -9,7 +9,6 @@ params ["_unit"];
 
 // EXIT IF NOT REQUIRED
 if (!hasInterface) exitWith {};
-waitUntil {sleep 0.1; !isNull player};
 if (_unit == player) exitWith {};
 if (_unit getVariable ["#revDragId", -1] != -1) exitWith {};
 

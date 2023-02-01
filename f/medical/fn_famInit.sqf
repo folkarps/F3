@@ -2,6 +2,62 @@
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
+//global stuff:
+FAM_MEDICMOD = 0.5;
+FAM_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
+FAM_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
+FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
+
+{
+    if (local _x) then { 
+    
+    // MEDICAL VARIABLES
+    // These become global later.
+    _x setVariable ["FAM_BLEED",false]; 
+    _x setVariable ["FAM_CONSCIOUS",true]; 
+
+    // These are local only.
+    _x setVariable ["FAM_FORCEDOWN",false]; 
+    _x setVariable ["FAM_HASFAK",false]; 
+    _x setVariable ["FAM_HASBANDAGE",false]; 
+    _x getVariable ["FAM_FLAG",false];
+    _x setVariable ["FAM_ACTIONS",false];
+
+    [_x] spawn f_fnc_famLoop; 
+    [_x] spawn f_fnc_famDamageHandler;
+
+    // Let all others know that we (this unit/player) exists.
+    // Add actions for this player on everyone else's machine.
+    // These are also executed for JIPed players
+ 
+    if (!(_x getVariable ["FAM_ACTIONS",false]) && {hasInterface}) then {
+            
+            [_x, f_fnc_famAddAllActions ] remoteExec ["spawn", 0, _x];
+            _x setVariable ["FAM_ACTIONS",true,true];
+            
+        };
+    };
+} forEach playableUnits;
+
+if (isServer) then {
+
+    {
+        _obj = _x;
+        if ("" != (_obj getVariable ["f_var_assignGear", ""]) && { !(_obj getVariable ["f_var_assignGear_done", false]) }) then {
+            systemChat "TODO assign gear wasnt done after all o.O";
+            _obj spawn {
+                waitUntil { sleep 1; _this getVariable ["f_var_assignGear_done", false]; };
+                [_this] call f_fnc_famMedSwap;
+            }
+        }else{
+            [_obj] call f_fnc_famMedSwap;
+        };
+    } forEach (allMissionObjects "ALL" select {!isPlayer _x});
+};
+
+
+/* OLD TO DELETE
+
 // INITIALIZE
 _unit = _this;
 
@@ -69,3 +125,4 @@ dummy setDir 270;
     dummy setPosWorld getPosWorld dummy;
     player switchMove "";
 }
+*/

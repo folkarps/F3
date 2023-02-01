@@ -3,7 +3,8 @@
 // ====================================================================================
 
 // INITIAL VARIABLES 
-_unit = _this;
+params ["_unit"];
+
 private _nextSave = time;
 
 // ====================================================================================
@@ -37,7 +38,7 @@ while {alive _unit && {local _unit}} do {
 
 		if (_save >= _dc) then {
 
-			_unit setVariable ["FAM_CONSCIOUS",false]; 
+			// _unit setVariable ["FAM_CONSCIOUS",false]; 
 			_unit call f_fnc_famPassOut;
 
 			_nextSave = _nextSave + 20; 

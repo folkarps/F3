@@ -22,9 +22,10 @@ playSound3d [_sound,_unit];
 // RAGDOLL
 // If in a vehicle
 if (vehicle _unit != _unit) then {
-
-    if (driver vehicle _unit == _unit) then {
-        _anim = getArray (configfile >> "CfgMovesMaleSdr" >> "States" >> animationState _unit >> "interpolateTo");
+  
+    _animCfg = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
+    if (isArray (_animCfg >> "interpolateTo")) then {
+        _anim = getArray (_animCfg >> "interpolateTo") select 0;
         _unit playMove (_anim select 0);
     };
 

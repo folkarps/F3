@@ -5,6 +5,9 @@
 // INITIALIZE
 params ["_unit"];
 
+// Need to wait for safeStart to end otherwise you can start bleeding while invulnerable
+waitUntil {sleep 0.1; f_param_mission_timer <= 0};
+
 // ====================================================================================
 
 _eh = _unit addEventHandler ["HandleDamage",{
