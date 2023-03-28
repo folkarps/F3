@@ -12,7 +12,7 @@ private _bdgTime = 6; // Action Duration
 
 // Medic bandages faster
 if (_unit getUnitTrait "medic") then {
-	_bdgTime = _bdgTime * FAM_MEDICMOD;
+	_bdgTime = _bdgTime / FAM_MEDICMOD;
 };
 
 // Starting Code
@@ -24,23 +24,23 @@ private _bdgCodeStart = {
 
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 2;
+		_caller setAnimSpeedCoef 1 * FAM_MEDICMOD;
 	};
 
 	// Set an appropriate animation by stance
 	if (stance _caller == "PRONE") then {
 		// prone
 		if (_caller == _target) then {
-			_caller playMove "ainvppnemstpslaywrfldnon_medic";
+			_caller playMove "ainvpknlmstpslaywnondnon_medic";
 		} else {	
-			_caller playMove "ainvppnemstpslaywrfldnon_medicother";
+			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
 		};
 	} else {
 		// standing/crouched
 		if (_caller == _target) then {
-			_caller playMove "ainvpknlmstpslaywrfldnon_medic";
+			_caller playMove "ainvpknlmstpslaywnondnon_medic";
 		} else {	
-			_caller playMove "ainvpknlmstpslaywrfldnon_medicother";
+			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
 		};
 	}; 
 
@@ -113,9 +113,17 @@ if (_unit == player) then {
 			_caller setVariable ["FAM_FLAG",true];
 
 			if (stance _caller == "PRONE") then {
+				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) then {
 					_caller playMove "ainvppnemstpslaywrfldnon_medic";
-			} else {
+				} else {
+					_caller playMove "ainvppnemstpslaywnondnon_medic";
+				};
+			} else { 
+				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) then {
 					_caller playMove "ainvpknlmstpslaywrfldnon_medic";
+				} else {
+					_caller playMove "ainvpknlmstpslaywnondnon_medic";
+				};
 			}; 
 			_caller spawn {
 				sleep 5;

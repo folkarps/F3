@@ -23,10 +23,13 @@ playSound3d [_sound,_unit];
 // If in a vehicle
 if (vehicle _unit != _unit) then {
   
+    _unit setVariable ["FAM_VEHICLE_ANIMATION",animationstate _unit];
     _animCfg = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
-    if (isArray (_animCfg >> "interpolateTo")) then {
-        _anim = getArray (_animCfg >> "interpolateTo") select 0;
-        _unit playMove (_anim select 0);
+
+    if (isArray (_animCfg >> "interpolateTo") && {count getArray (_animCfg >> "interpolateTo") != 0}) then {
+        _anims =  getArray (_animCfg >> "interpolateTo");
+        _anim = _anims select (count _anims - 2);
+       _unit playMove _anim;
     };
 
     _unit setUnconscious true;

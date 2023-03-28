@@ -71,7 +71,7 @@ if (_unit != player) then {
 		true,		// showWindow
 		true,		// hideOnUse
 		"",			// shortcut
-		"(_target != _this) && {vehicle _target == _target && vehicle _target != vehicle _this}", 	// condition
+		"(_target != _this) && {vehicle _target == _target && {vehicle _target != vehicle _this}}", 	// condition
 		3,			// radius
 		false,		// unconscious
 		"",			// selection

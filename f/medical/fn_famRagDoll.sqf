@@ -50,12 +50,19 @@ _unit addEventHandler ["AnimStateChanged", {
 
 
 // this bit avoid a BI bug that removes all actions if you ragdoll while healing.
-if ((animationState _unit == "ainvpknlmstpslaywrfldnon_medic" || animationState _unit == "ainvppnemstpslaywrfldnon_medic") && !(_unit getVariable ["FAM_FLAG",false])) then {
+if ((animationState _unit == "ainvpknlmstpslaywrfldnon_medic" || 
+    { animationState _unit == "ainvppnemstpslaywrfldnon_medic" || 
+     animationState _unit == "ainvpknlmstpslaywnondnon_medic" || 
+     animationState _unit == "ainvpknlmstpslaywnondnon_medicother"}) && 
+     {!(_unit getVariable ["FAM_FLAG",false])}) then {
 
     _unit setCaptive true;
     private _dmg = damage _unit;
 
-    waitUntil {sleep 0.1; (animationState _unit != "ainvpknlmstpslaywrfldnon_medic" && animationState _unit != "ainvppnemstpslaywrfldnon_medic")};
+    waitUntil {sleep 0.1; ( animationState _unit != "ainvpknlmstpslaywrfldnon_medic" && 
+                            {animationState _unit != "ainvppnemstpslaywrfldnon_medic" && 
+                            animationState _unit != "ainvpknlmstpslaywnondnon_medic" && 
+                            animationState _unit != "ainvpknlmstpslaywnondnon_medicother"})};
 
     _unit setDamage _dmg;
     _unit addItem "FirstAidKit"; //replace the one they won't know they lost.

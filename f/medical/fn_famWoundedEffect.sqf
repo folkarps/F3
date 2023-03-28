@@ -73,6 +73,19 @@ switch (_stage) do {
 		FAM_UncBlur ppEffectEnable false;
 		5 enableChannel true;
 	};
+	case 5: {
+		// Desaturate to show you might pass out.
+		10 fadeSound 1;
+		10 fadeSpeech 1;
+		10 fadeRadio 1;
+		_adjust = [1,1,0,[0,0,0,0],[1,1,1,0],[0.5,0.5,0,0]];
+		FAM_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
+		FAM_UncRadialBlur ppEffectCommit 1;  //2.5
+		FAM_UncBlur ppEffectAdjust [0.1];
+		FAM_UncBlur ppEffectCommit 1;  //2.5
+		FAM_UncBlur ppEffectEnable false;
+		5 enableChannel true;
+	};
 	default {
 		// Same as 4.
 		10 fadeSound 1;
@@ -90,7 +103,7 @@ switch (_stage) do {
 
 // ====================================================================================
 
-// DO EFFECT
+// DO EFFECT 
 FAM_UncCC ppEffectAdjust _adjust; 
 FAM_UncCC ppEffectEnable true; 
 FAM_UncCC ppEffectCommit 1;

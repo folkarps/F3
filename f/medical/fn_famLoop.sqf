@@ -6,15 +6,20 @@
 params ["_unit"];
 
 private _nextSave = time;
-
+private _desaturate = false;
 // ====================================================================================
 
 // MEDICAL LOOP 
 // Runs until the unit is killed or locality changes
 while {alive _unit && {local _unit}} do {
-	
 // ====================================================================================
-
+	// if you were desaturated last tick and got healed, remove that.
+	if (_desaturate) then {
+		_desaturate = false;
+		[4] spawn f_fnc_famWoundedEffect;
+	};
+// ====================================================================================
+	
 	// PASSOUT TEST 
 	// Force Unit Down above damage threshold. 
 	if (damage _unit >= 0.9 && {_unit getVariable ["FAM_CONSCIOUS",true]}) then { 
@@ -30,24 +35,33 @@ while {alive _unit && {local _unit}} do {
 	
 	_unit setVariable ["FAM_FORCEDOWN",false];
 
-	// Check if Unit should go down, only above 50% damage and only check at intervals.
-	if (time > _nextSave && {_unit getVariable ["FAM_CONSCIOUS",true] && {damage _unit >= 0.5}}) then { 
+	if (damage _unit >= 0.5 && {_unit getVariable ["FAM_CONSCIOUS",true]}) then {
 
-		private _save = random 100;
-		private _dc = round (100 - (20 * damage _unit));
-
-		if (_save >= _dc) then {
-
-			// _unit setVariable ["FAM_CONSCIOUS",false]; 
-			_unit call f_fnc_famPassOut;
-
-			_nextSave = _nextSave + 20; 
+		// desaturate screen to indicate you risk passing out.
+		if !(_desaturate) then {
+			_desaturate = true;
+			[5] spawn f_fnc_famWoundedEffect;
 		};
 
+		// Check if Unit should go down, only above 50% damage and only check at intervals.
+		if (time > _nextSave) then { 
 
-		if (f_param_debugMode == 1) then
-		{
-			systemChat format ["Pass Out Save %1, require %2", _save, _dc];
+			private _save = random 100;
+			private _dc = round (100 - (20 * damage _unit));
+
+			if (_save >= _dc) then {
+
+				// _unit setVariable ["FAM_CONSCIOUS",false]; 
+				_unit call f_fnc_famPassOut;
+
+				_nextSave = _nextSave + 20; 
+			};
+
+
+			if (f_param_debugMode == 1) then
+			{
+				systemChat format ["Pass Out Save %1, require %2", _save, _dc];
+			};
 		};
 	};
 	
@@ -135,6 +149,12 @@ if (f_param_debugMode == 1) then
 
 // EXIT
 // This occurs after death, make sure that none of the wounded affects carry over.
+
+// Give them their gear back
+if !(_unit getVariable ["FAM_CONSCIOUS",true]) then {
+	_unit call f_fnc_famWakeUp;
+}; 
+
 _unit enableSimulation true;
 _unit addForce [[0,20,200], [2,0,2]]; 
 for "_i" from 2 to 5 do {

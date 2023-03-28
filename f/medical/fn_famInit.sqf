@@ -3,7 +3,7 @@
 // ====================================================================================
 
 //global stuff:
-FAM_MEDICMOD = 0.5;
+FAM_MEDICMOD = 2;
 FAM_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
 FAM_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
 FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
@@ -38,6 +38,7 @@ FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
         };
     };
 } forEach playableUnits;
+
 
 if (isServer) then {
 

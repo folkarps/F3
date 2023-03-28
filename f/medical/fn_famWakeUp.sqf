@@ -52,14 +52,11 @@ if(local _unit) then
     
     if (vehicle _unit == _unit)  then {
 
-         _unit playMove "amovppnemstpsraswrfldnon";
+        _unit playMove "amovppnemstpsraswrfldnon";
 
     } else {
 
-        if (driver vehicle _unit == _unit) then {
-            _anim = getText (configfile >> "CfgVehicles" >> typeof vehicle _unit >> "driverAction");
-            _unit switchMove _anim;
-        };
+       _unit switchMove (_unit getVariable ["FAM_VEHICLE_ANIMATION",""]);
         
     };
 };

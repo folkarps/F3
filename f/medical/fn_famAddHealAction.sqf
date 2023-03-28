@@ -13,6 +13,11 @@ private _healIcon = "a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa"
 private _healProg = "(_target distance _caller < 3) && {alive _target && !(_target getVariable ['FAM_CONSCIOUS',true])}"; // This one is always the same, start condition varies by unit type.
 private _healTime = 6; // Action Duration
 
+// Medic bandages faster
+if (_unit getUnitTrait "medic") then {
+	_bdgTime = _healTime / FAM_MEDICMOD;
+};
+
 // Starting Code
 private _healCodeStart = { 
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
@@ -22,23 +27,23 @@ private _healCodeStart = {
 	
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 2;
+		_caller setAnimSpeedCoef 1 * FAM_MEDICMOD;
 	};
 
 	// Set an appropriate animation by stance
 	if (stance _caller == "PRONE") then {
 		// prone
 		if (_caller == _target) then {
-			_caller playMove "ainvppnemstpslaywrfldnon_medic";
+			_caller playMove "ainvpknlmstpslaywnondnon_medic";
 		} else {	
-			_caller playMove "ainvppnemstpslaywrfldnon_medicother";
+			_caller playMove "ainvppnemstpslaywrondnon_medicother";
 		};
 	} else {
 		// standing/crouched
 		if (_caller == _target) then {
-			_caller playMove "ainvpknlmstpslaywrfldnon_medic";
+			_caller playMove "ainvpknlmstpslaywnondnon_medic";
 		} else {	
-			_caller playMove "ainvpknlmstpslaywrfldnon_medicother";
+			_caller playMove "ainvpknlmstpslaywrondnon_medicother";
 		};
 	}; 
 
@@ -112,5 +117,5 @@ private _healCodeInt = {
 	_healIcon, 
 	_healIcon, 
 	"(_this getUnitTrait 'medic' && 'Medikit' in items _this) && {alive _target && _target distance _this < 3 && !(_target getVariable ['FAM_CONSCIOUS',true])}", 
-	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime * FAM_MEDICMOD, 19, false, false, false
+	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;
