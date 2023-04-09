@@ -338,12 +338,15 @@ _vipGlasses = ["G_Aviator"];
 if (_isMan) then {
 
 	// PREPARE UNIT FOR GEAR ADDITION
-	// The following code removes all existing weapons, items, magazines and backpacks
+	// The following code removes all existing weapons, items, magazines, traits, and backpacks
 
 	removeBackpack _unit;
 	removeAllWeapons _unit;
 	removeAllItemsWithMagazines _unit;
 	removeAllAssignedItems _unit;
+	{
+		_unit setUnitTrait [_x, false];
+	} forEach ["engineer","explosiveSpecialist","medic","UAVHacker"];
 
 	// ====================================================================================
 
