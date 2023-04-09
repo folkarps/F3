@@ -52,7 +52,7 @@ if(_sideorgrps isEqualType sideUnknown) then
     _side = _sideorgrps;
 	_factionsOnly = count _factions > 0;
 	_countAliveUnits = {
-	    private _eligibleUnits = if(_onlyPlayable) then {playableUnits} else {allUnits};
+	    private _eligibleUnits = if(_onlyPlayable) then {(playableUnits + switchableUnits)} else {allUnits};
 		private _filteredUnits = if(_factionsOnly) then
 		{
 		    _eligibleUnits select {(side _x == _side) && (([_x] call f_fnc_virtualFaction) in _factions)};
