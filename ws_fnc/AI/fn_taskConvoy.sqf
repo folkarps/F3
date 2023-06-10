@@ -42,9 +42,9 @@ params [
 	["_leadv", objNull],
 	["_marker", "", ["",objNull,[]]],
 	["_speedLimit", 15, [0]],
-	["_allowInterrupt",false],
-	["_finalwp","SENTRY"],
-	["_finalwpcrew","SENTRY"],
+	["_allowInterrupt",true,[true]],
+	["_finalwp","SENTRY",[""]],
+	["_finalwpcrew","SENTRY",[""]],
 	["_endCode",{}]
 ];
 
@@ -55,6 +55,7 @@ _convoy = _leadv call ws_fnc_collectObjectsNum;
 _waypoints = _marker call ws_fnc_collectMarkers;
 _run = true;
 _wasInterrupted = false;
+_passengerGroups = [];
 
 // Check if the convoy is in a condition to move at all
 if (({!canMove _x || !alive _x || (!isNull (_x findNearestEnemy (getPosATL _x)))} count _convoy) > 0) then {_run = false;};
