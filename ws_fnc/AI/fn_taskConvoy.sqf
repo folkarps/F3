@@ -13,35 +13,38 @@ true once convoy has reached the destination or made contact
 USAGE
 Place an ungrouped selection of vehicles. All trailing vehicles should share the name of the leading vehicle followed by _n, where n is an incrementing number (e.g.: veh, veh_1, veh_2).
 Place markers indicating the convoy route, ideally on roads. All markers should share the name of the first marker followed by _n, where n is an incrementing number (e.g.: mkr, mkr_1, mkr_2).
-You can change which waypoint type the units will be assigned on dismounting below as _finalWP
+You can change whether the convoy can be interrupted by contact, and which waypoint type the units will be assigned on dismounting by passing them as additional parameters, as described below.
+You can also pass arbitrary code to be executed when the convoy completes..
 
 Minimal:
 [leadingVehicle,"firstMarker"] spawn ws_fnc_taskConvoy
 
 Full:
-[leadingVehicle,"firstMarker",speedLimit] spawn ws_fnc_taskConvoy
+[leadingVehicle,"firstMarker",speedLimit,allowInterrupt,"finalWaypointMode",{codeOnEnd}] spawn ws_fnc_taskConvoy
 
 PARAMETERS
 1. The leading vehicle (all other vehicles should share the same naming template) 					 	| MANDATORY - object
 2. The first marker indicating the convoy route (all other markers should share the naming template) 	| MANDATORY - can be marker, object or positional array
 3. Speed limit in km/h (the slower the more reliably the convoy will move) 								| OPTIONAL - any number (default: 15)
+4. Whether the convoy will be interrupted by being attacked. If false, the convoy will ignore contact and try to proceed. 	| OPTIONAL - bool (default true)
+5. What waypoint type to assign to passenger units after they dismount .						| OPTIONAL - string  waypoint type https://community.bistudio.com/wiki/setWaypointType (default "SENTRY")
+6. Arbitrary code to executed when the convoy script completes. Will be executed in a scheduled environment. 	| OPTIONAL - code (default {}).  The arguments passed to the code will be [_vehiclesInConvoy,_passengerGroups,_wasInterrupted] (array of objects, array of groups, bool) - access them with params.
 
 EXAMPLE
 [cv,"cvwp"] spawn ws_fnc_taskConvoy - All vehicles sharing the cv-name (cv,cv_1,cv_2...) would follow the route indicated by the markers sharing the "cvwp"-name ("cvwp","cvwp_1","cvwp_2"...)
 
 */
 
-private ["_finalwp","_convoy","_waypoints","_run","_wp","_veh","_vfront","_vback","_vback","_dir"];
+private ["_finalwp","_convoy","_waypoints","_run","_wp","_veh","_vfront","_vback","_vback","_dir","_wasInterrupted","_passengerGroups"];
 
 params [
 	["_leadv", objNull],
 	["_marker", "", ["",objNull,[]]],
-	["_speedLimit", 15, [0]]
+	["_speedLimit", 15, [0]],
+	["_allowInterrupt",false],
+	["_finalwp","SENTRY"],
+	["_endCode",{}]
 ];
-
-
-// What waypoint-type the final/combat waypoint will be. Sentry or Hold work best
-_finalwp = "SENTRY";
 
 // Exit the script if any of the required variables is invalid
 if (isNull _leadv || _marker == "" || !local _leadV) exitWith {};
@@ -134,10 +137,13 @@ while {_run} do {
 
 	} forEach _convoy;
 
-	// If convoy was engaged exit the loop and set the convoy to combat mode
-	if (({!canMove _x || !alive _x || (!isNull (_x findNearestEnemy (getPosATL _x)))} count _convoy) > 0) then {
-		_run = false;
-		{[(group (driver _x)),"COMBAT","NORMAL"] call ws_fnc_setAIMode;} forEach _convoy;
+	if _allowInterrupt then {
+		// If convoy was engaged exit the loop and set the convoy to combat mode
+		if (({!canMove _x || !alive _x || (!isNull (_x findNearestEnemy (getPosATL _x)))} count _convoy) > 0) then {
+			_run = false;
+			{[(group (driver _x)),"COMBAT","NORMAL"] call ws_fnc_setAIMode;} forEach _convoy;
+			_wasInterrupted = true;
+		};
 	};
 
 	uisleep 0.5;
@@ -167,10 +173,13 @@ _veh doMove (getPosATL _veh);
 			(group _x) leaveVehicle _veh;
 			[group _x,_veh,[_finalwp,50]] call ws_fnc_addWaypoint;
 			[(group _x),"AWARE","DIAMOND","YELLOW"] call ws_fnc_setAIMode;
+			_passengerGroups pushbackUnique (group _x);
 		};
 
 	} forEach crew _veh;
 
 } forEach _convoy;
+
+[_convoy,_passengerGroups,_wasInterrupted] spawn _endCode;
 
 true
