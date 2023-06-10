@@ -20,7 +20,7 @@ Minimal:
 [leadingVehicle,"firstMarker"] spawn ws_fnc_taskConvoy
 
 Full:
-[leadingVehicle,"firstMarker",speedLimit,allowInterrupt,"finalWaypointMode",{codeOnEnd}] spawn ws_fnc_taskConvoy
+[leadingVehicle,"firstMarker",speedLimit,allowInterrupt,"finalWaypointMode1","finalWaypointMode2",{codeOnEnd}] spawn ws_fnc_taskConvoy
 
 PARAMETERS
 1. The leading vehicle (all other vehicles should share the same naming template) 					 	| MANDATORY - object
@@ -28,7 +28,8 @@ PARAMETERS
 3. Speed limit in km/h (the slower the more reliably the convoy will move) 								| OPTIONAL - any number (default: 15)
 4. Whether the convoy will be interrupted by being attacked. If false, the convoy will ignore contact and try to proceed. 	| OPTIONAL - bool (default true)
 5. What waypoint type to assign to passenger units after they dismount .						| OPTIONAL - string  waypoint type https://community.bistudio.com/wiki/setWaypointType (default "SENTRY")
-6. Arbitrary code to executed when the convoy script completes. Will be executed in a scheduled environment. 	| OPTIONAL - code (default {}).  The arguments passed to the code will be [_vehiclesInConvoy,_passengerGroups,_wasInterrupted] (array of objects, array of groups, bool) - access them with params.
+6. What waypoint type to assign to fighting vehicles after reaching the destination.						| OPTIONAL - string  waypoint type https://community.bistudio.com/wiki/setWaypointType (default "SENTRY")
+7. Arbitrary code to executed when the convoy script completes. Will be executed in a scheduled environment. 	| OPTIONAL - code (default {}).  The arguments passed to the code will be [_vehiclesInConvoy,_passengerGroups,_wasInterrupted] (array of objects, array of groups, bool) - access them with params.
 
 EXAMPLE
 [cv,"cvwp"] spawn ws_fnc_taskConvoy - All vehicles sharing the cv-name (cv,cv_1,cv_2...) would follow the route indicated by the markers sharing the "cvwp"-name ("cvwp","cvwp_1","cvwp_2"...)
@@ -43,6 +44,7 @@ params [
 	["_speedLimit", 15, [0]],
 	["_allowInterrupt",false],
 	["_finalwp","SENTRY"],
+	["_finalwpcrew","SENTRY"],
 	["_endCode",{}]
 ];
 
@@ -161,7 +163,7 @@ _veh doMove (getPosATL _veh);
 
 			// If yes, only give it a sentry WP
 			if (canFire _veh) then {
-				[(group _x),_veh,[_finalwp,5]] call ws_fnc_addWaypoint;
+				[(group _x),_veh,[_finalwpCrew,5]] call ws_fnc_addWaypoint;
 			} else {
 				// If the vehicle can't shoot, let the crew dismount too
 				(group driver _veh) leaveVehicle _veh;
