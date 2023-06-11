@@ -52,6 +52,8 @@ if(_sideorgrps isEqualType sideUnknown) then
     _side = _sideorgrps;
 	_factionsOnly = count _factions > 0;
 	_countAliveUnits = {
+        // swicthableUnits is to support SP; there playableUnits is empty
+        // Conversely swichableUnits is empty in MP on the DS. So, one of these will always be empty
 	    private _eligibleUnits = if(_onlyPlayable) then {(playableUnits + switchableUnits)} else {allUnits};
 		private _filteredUnits = if(_factionsOnly) then
 		{
