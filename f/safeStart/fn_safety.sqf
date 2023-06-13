@@ -5,6 +5,8 @@
 //Exit if server
 if(isDedicated) exitwith {};
 
+if !(player isKindOf "CAManBase") exitWith {};
+
 params [["_enableSafeStart", true, [true]]];
 
 switch (_enableSafeStart) do
