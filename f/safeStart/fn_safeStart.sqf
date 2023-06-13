@@ -18,7 +18,7 @@ if (f_param_mission_timer > 0) then
 {
 	// The server will handle the loop and notifications
 	if (isServer) then {
-		[] execVM "f\safeStart\f_safeStartLoop.sqf";
+		[] spawn f_fnc_safeStartLoop;
 	};
 
 	// Enable invincibility for players

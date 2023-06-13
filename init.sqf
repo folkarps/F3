@@ -26,7 +26,7 @@ enableSaving [false, false];
 // F3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\safeStart\f_safeStart.sqf";
+[] spawn f_fnc_safeStart;
 
 // ====================================================================================
 

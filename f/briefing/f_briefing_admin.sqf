@@ -74,7 +74,7 @@ Increase Safe Start timer by 30 seconds</execute><br/>
 |- <execute expression=""f_param_mission_timer = f_param_mission_timer - 30; publicVariable 'f_param_mission_timer'; hintsilent format ['Mission Timer: %1',f_param_mission_timer];"">
 Decrease Safe Start timer by 30 seconds</execute><br/>
 
-|- <execute expression=""[[],'f\safeStart\f_safeStart.sqf'] remoteExec ['BIS_fnc_execVM', 0]; hintsilent 'Safe Start started!';"">
+|- <execute expression=""[] remoteExec ['f_fnc_safeStart', 0]; hintsilent 'Safe Start started!';"">
 Begin Safe Start timer</execute><br/>
 
 |- <execute expression=""f_param_mission_timer = -1; publicVariable 'f_param_mission_timer';
