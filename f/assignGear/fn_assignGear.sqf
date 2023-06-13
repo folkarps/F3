@@ -263,13 +263,6 @@ if (_faction in (["3ifb"] apply {toLower _x})) then {
 // This block needs only to be run on an infantry unit
 if (_isMan) then {
 
-	// Add extra FAKs,
-	// because the assignGear files were made when the sws was still existing.
-	private _numExtraFAK = 2;
-	for "_i" from 1 to _numExtraFAK do {
-		_unit addItem _firstaid;
-	};
-
 	// Handle weapon attachments
 	#include "f_assignGear_attachments.sqf";
 

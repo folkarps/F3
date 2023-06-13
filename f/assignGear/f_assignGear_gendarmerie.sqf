@@ -188,12 +188,15 @@ if (_isMan) then {
 	// Add items universal to all units of this faction
 
 	// _unit linkItem _nvg;			// Add and equip the faction's nvg
-	_unit addItem _firstaid;		// Add a single first aid kit (FAK)
 	_unit linkItem "ItemMap";		// Add and equip the map
 	_unit linkItem "ItemCompass";	// Add and equip a compass
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
+	
+	for "_i" from 1 to 4 do { // Add 4 first aid kit (FAK)
+		_unit addItem _firstAid;
+	};
 
 };
 
@@ -219,7 +222,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -233,7 +235,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -247,7 +248,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -261,7 +261,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_DMriflemag, 1];
 		_unit addweapon _DMrifle;
 		_attachments = [_bipod1,_scope3]; // Overwrites default attachments to add a bipod and scope 2
-		_unit addItem _firstaid;
 		_unit addmagazines [_DMriflemag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -277,7 +276,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 4];
 	};
 // Carbineer Loadout:
@@ -286,7 +284,6 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
 		_unit addmagazines [_carbinemag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -302,7 +299,6 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
 		_unit addmagazines [_smgmag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -320,7 +316,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addmagazines [_riflemag, 7];
 		_attachments pushback (_silencer1); // Adds silencer
 		_hg_attachments pushback (_hg_silencer1); // Adds pistol silencer
