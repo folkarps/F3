@@ -89,7 +89,7 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // F3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\briefing\f_loadoutNotes.sqf";
+[] spawn f_fnc_loadoutNotes;
 
 // ====================================================================================
 

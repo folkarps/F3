@@ -14,6 +14,7 @@ class F // Defines the "owner"
 	{
 		file = "f\briefing";
 		class createBriefing{};
+		class loadoutNotes{};
 	};
 	class mpEnd
 	{
