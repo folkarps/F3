@@ -272,6 +272,17 @@ class Params
 		default = 0;
 	};
 	
+// F3 - Disable Thermals Parameters
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+	class f_param_disableThermals
+	{
+		title = "Disable Thermals mode";
+		values[] = {0,1,2};
+		texts[] = {"Mission whitelist (default)","Ignore mission whitelist","Allow all thermals"};
+		default = 0;
+	};
+	
 // ============================================================================================
 
 // F3 - Caching
