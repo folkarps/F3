@@ -279,7 +279,7 @@ class Params
 	{
 		title = "Disable Thermals mode";
 		values[] = {0,1,2};
-		texts[] = {"Mission whitelist (default)","Ignore mission whitelist","Allow all thermals"};
+		texts[] = {"Mission allow list (default)","Disable all vehicle thermals","Allow all vehicle thermals"};
 		default = 0;
 	};
 	
