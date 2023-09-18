@@ -35,8 +35,8 @@ private _healCodeStart = {
 		// prone
 		if (_caller == _target) then {
 			_caller playMove "ainvpknlmstpslaywnondnon_medic";
-		} else {	
-			_caller playMove "ainvppnemstpslaywrondnon_medicother";
+		} else {	        
+			_caller playMove "ainvppnemstpslaywrondnon_medicother"; 
 		};
 	} else {
 		// standing/crouched
