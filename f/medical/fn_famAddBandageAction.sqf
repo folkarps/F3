@@ -24,24 +24,39 @@ private _bdgCodeStart = {
 
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1 * FAM_MEDICMOD;
+		_caller setAnimSpeedCoef 1.5;
 	};
 
-	// Set an appropriate animation by stance
 	if (stance _caller == "PRONE") then {
-		// prone
-		if (_caller == _target) then {
-			_caller playMove "ainvpknlmstpslaywnondnon_medic";
-		} else {	
+		// Rifle
+		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvppnemstpslaywrfldnon_medicother"; 
+		};
+		// Nothing
+		if (currentWeapon _caller == "") exitWith {
+			_caller playMove "ainvppnemstpslaywnondnon_medicother";
+		};
+		// Pistol
+		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvppnemstpslaywpstdnon_medicother";
+		};
+	} else { 
+		// Rifle
+		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvpknlmstpslaywrfldnon_medicother"; 
+		};
+		// Nothing
+		if (currentWeapon _caller == "") exitWith {
 			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
 		};
-	} else {
-		// standing/crouched
-		if (_caller == _target) then {
-			_caller playMove "ainvpknlmstpslaywnondnon_medic";
-		} else {	
-			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
+		// Launcher
+		if (currentWeapon _caller == secondaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvpknlmstpslaywlnrdnon_medicother";
 		};
+		// Pistol
+		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvpknlmstpslaywpstdnon_medicother";
+		};	
 	}; 
 
 	// Let the wounded know someone is trying to save them. 
@@ -113,18 +128,41 @@ if (_unit == player) then {
 			_caller setVariable ["FAM_FLAG",true];
 
 			if (stance _caller == "PRONE") then {
-				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) then {
-					_caller playMove "ainvppnemstpslaywrfldnon_medic";
-				} else {
+
+				// Rifle
+				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+					_caller playMove "ainvppnemstpslaywrfldnon_medic"; 
+				};
+				// Nothing
+				if (currentWeapon _caller == "") exitWith {
 					_caller playMove "ainvppnemstpslaywnondnon_medic";
 				};
+				// Pistol
+				if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+					_caller playMove "ainvppnemstpslaywpstdnon_medic";
+				};
+
 			} else { 
-				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) then {
-					_caller playMove "ainvpknlmstpslaywrfldnon_medic";
-				} else {
+
+				// Rifle
+				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+					_caller playMove "ainvpknlmstpslaywrfldnon_medic"; 
+				};
+				// Nothing
+				if (currentWeapon _caller == "") exitWith {
 					_caller playMove "ainvpknlmstpslaywnondnon_medic";
 				};
+				// Launcher
+				if (currentWeapon _caller == secondaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+					_caller playMove "ainvpknlmstpslaywlnrdnon_medic";
+				};
+				// Pistol
+				if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+					_caller playMove "ainvpknlmstpslaywpstdnon_medic";
+				};
+				
 			}; 
+
 			_caller spawn {
 				sleep 5;
 					if (_this getVariable ["FAM_CONSCIOUS",true]) then {

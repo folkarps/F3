@@ -3,7 +3,7 @@
 // ====================================================================================
 
 //global stuff:
-FAM_MEDICMOD = 2;
+
 FAM_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
 FAM_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
 FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
@@ -37,6 +37,24 @@ FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
             
         };
     };
+
+    // Trying this as an event handler.
+    _x addEventHandler ["Killed", {
+	    params ["_unit"];
+        // EXIT
+        // This occurs after death, make sure that none of the wounded affects carry over.
+
+        // Give them their gear back
+        if !(_unit getVariable ["FAM_CONSCIOUS",true]) then {
+            _unit call f_fnc_famWakeUp;
+        }; 
+
+        _unit setPosATL [getPosATL _unit select 0, getPosATL _unit select 1, (getPosATL _unit select 2) + 0.25];
+        _unit enableSimulation true;
+        _unit addForce [[0,20,200], [2,0,2]]; 
+
+    }];
+
 } forEach playableUnits;
 
 

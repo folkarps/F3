@@ -14,7 +14,7 @@ private _desaturate = false;
 while {alive _unit && {local _unit}} do {
 // ====================================================================================
 	// if you were desaturated last tick and got healed, remove that.
-	if (_desaturate) then {
+	if (_desaturate && {isPlayer _unit && damage _unit < 0.5}) then {
 		_desaturate = false;
 		[4] spawn f_fnc_famWoundedEffect;
 	};
@@ -38,7 +38,7 @@ while {alive _unit && {local _unit}} do {
 	if (damage _unit >= 0.5 && {_unit getVariable ["FAM_CONSCIOUS",true]}) then {
 
 		// desaturate screen to indicate you risk passing out.
-		if !(_desaturate) then {
+		if (!_desaturate && {isPlayer _unit}) then {
 			_desaturate = true;
 			[5] spawn f_fnc_famWoundedEffect;
 		};
@@ -53,7 +53,6 @@ while {alive _unit && {local _unit}} do {
 
 				// _unit setVariable ["FAM_CONSCIOUS",false]; 
 				_unit call f_fnc_famPassOut;
-
 				_nextSave = _nextSave + 20; 
 			};
 
@@ -73,6 +72,7 @@ while {alive _unit && {local _unit}} do {
 		// wake up if you have been treated with a FAK or by Medic.
 		if (damage _unit <= 0.25) exitWith {	
 			_unit call f_fnc_famWakeUp;
+			_desaturate = false;
 		};
 		
 		// check to wake up otherwise.
@@ -88,6 +88,7 @@ while {alive _unit && {local _unit}} do {
 					_unit setDamage 0.85; 
 				};
 				_unit call f_fnc_famWakeUp;
+				_desaturate = false;
 				_nextSave = _nextSave + 20; 
 
 			};
@@ -146,23 +147,5 @@ if (f_param_debugMode == 1) then
 {
 	systemChat "medical loop exiting";
 };
-
-// EXIT
-// This occurs after death, make sure that none of the wounded affects carry over.
-
-// Give them their gear back
-if !(_unit getVariable ["FAM_CONSCIOUS",true]) then {
-	_unit call f_fnc_famWakeUp;
-}; 
-
+missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
 _unit enableSimulation true;
-_unit addForce [[0,20,200], [2,0,2]]; 
-for "_i" from 2 to 5 do {
-    _i enableChannel true;
-};
-
-if (local _unit && isPlayer _unit) then {
-	1 fadeSound 1;
-	1 fadeSpeech 1;
-	1 fadeRadio 1;
-};

@@ -20,6 +20,8 @@ _unit addEventHandler ["AnimStateChanged", {
         {
             systemChat "belly";
         };
+        // delay dragging until later
+        _unit setVariable ['f_wound_being_dragged',true,true];
 
         [_unit, _thisEvent, _thisEventHandler] spawn {
 
@@ -38,6 +40,7 @@ _unit addEventHandler ["AnimStateChanged", {
                 // Wait a little for animation to set, then disable simulation to lock player.
                 sleep 2;
                 _unit enableSimulation false;
+                _unit setVariable ['f_wound_being_dragged',false,true];
 
             };
             // Remove this eventHandler once it happens.
@@ -50,19 +53,12 @@ _unit addEventHandler ["AnimStateChanged", {
 
 
 // this bit avoid a BI bug that removes all actions if you ragdoll while healing.
-if ((animationState _unit == "ainvpknlmstpslaywrfldnon_medic" || 
-    { animationState _unit == "ainvppnemstpslaywrfldnon_medic" || 
-     animationState _unit == "ainvpknlmstpslaywnondnon_medic" || 
-     animationState _unit == "ainvpknlmstpslaywnondnon_medicother"}) && 
-     {!(_unit getVariable ["FAM_FLAG",false])}) then {
+if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["FAM_FLAG",false])}) then {
 
     _unit setCaptive true;
     private _dmg = damage _unit;
 
-    waitUntil {sleep 0.1; ( animationState _unit != "ainvpknlmstpslaywrfldnon_medic" && 
-                            {animationState _unit != "ainvppnemstpslaywrfldnon_medic" && 
-                            animationState _unit != "ainvpknlmstpslaywnondnon_medic" && 
-                            animationState _unit != "ainvpknlmstpslaywnondnon_medicother"})};
+    waitUntil {sleep 0.1; !(["medic",animationState _unit] call BIS_fnc_inString)};
 
     _unit setDamage _dmg;
     _unit addItem "FirstAidKit"; //replace the one they won't know they lost.

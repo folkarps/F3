@@ -27,26 +27,40 @@ private _healCodeStart = {
 	
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1 * FAM_MEDICMOD;
+		_caller setAnimSpeedCoef 1.5;
 	};
 
-	// Set an appropriate animation by stance
 	if (stance _caller == "PRONE") then {
-		// prone
-		if (_caller == _target) then {
-			_caller playMove "ainvpknlmstpslaywnondnon_medic";
-		} else {	        
-			_caller playMove "ainvppnemstpslaywrondnon_medicother"; 
+		// Rifle
+		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvppnemstpslaywrfldnon_medicother"; 
 		};
-	} else {
-		// standing/crouched
-		if (_caller == _target) then {
-			_caller playMove "ainvpknlmstpslaywnondnon_medic";
-		} else {	
-			_caller playMove "ainvpknlmstpslaywrondnon_medicother";
+		// Nothing
+		if (currentWeapon _caller == "") exitWith {
+			_caller playMove "ainvppnemstpslaywnondnon_medicother";
 		};
+		// Pistol
+		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvppnemstpslaywpstdnon_medicother";
+		};
+	} else { 
+		// Rifle
+		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvpknlmstpslaywrfldnon_medicother"; 
+		};
+		// Nothing
+		if (currentWeapon _caller == "") exitWith {
+			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
+		};
+		// Launcher
+		if (currentWeapon _caller == secondaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvpknlmstpslaywlnrdnon_medicother";
+		};
+		// Pistol
+		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+			_caller playMove "ainvpknlmstpslaywpstdnon_medicother";
+		};	
 	}; 
-
 	// Let the wounded know someone is trying to save them. 
 	if !(_target getVariable ['FAM_CONSCIOUS',true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; // TODO Test?
 }; 

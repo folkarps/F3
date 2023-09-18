@@ -50,9 +50,17 @@ if(local _unit) then
     _unit setUnconscious false;
     _unit enableSimulation true;
     
+    // exit if they are dead
+    if (damage _unit >= 1) exitWith {};
+
     if (vehicle _unit == _unit)  then {
 
-        _unit playMove "amovppnemstpsraswrfldnon";
+        _unit selectWeapon primaryWeapon _unit;
+        if (primaryWeapon _unit != "") then {   
+            _unit playMove "amovppnemstpsraswrfldnon";
+        } else {
+            _unit playMove "amovppnemstpsnonwnondnon";
+        };
 
     } else {
 
@@ -61,6 +69,8 @@ if(local _unit) then
     };
 };
 
+// exit if they are dead
+if (damage _unit >= 1) exitWith {};
 // ====================================================================================
 
 // DELAYED RESETS
