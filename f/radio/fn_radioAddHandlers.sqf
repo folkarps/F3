@@ -100,11 +100,21 @@ if (typeOf player != "VirtualSpectator_F") then {
 // Set a variable on the player to prove they've got handlers
 player setVariable ["f_var_radioHandlersAdded",true];
 
+// Add persistent check
+f_var_radioPersistentCheck = true;
+[] spawn {
+	while {f_var_radioPersistentCheck} do {
+		sleep 10;
+		[player] spawn f_fnc_radioCheckChannels;
+	};
+};
+
 // DEBUG
 if (f_param_debugMode == 1) then
 {
 	systemChat "DEBUG (fn_radioAddHandlers.sqf): added radio event handlers to local player";
 };
 
+// Check again!
 sleep 1;
 [player] spawn f_fnc_radioCheckChannels;
