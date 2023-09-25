@@ -9,6 +9,10 @@ params ["_unit"];
 // Skip if the unit is an AI, so formerly-player AI units can't break the radio channels of players they're local to.
 if !(isPlayer _unit) exitWith {};
 
+// Queue checks, don't let them overlap
+waitUntil {!(missionNamespace getVariable ["f_var_radioIsChecking",false])};
+f_var_radioIsChecking = true;
+
 _splitMode = f_var_radioSplitMode;
 
 // Initialise variables
@@ -110,3 +114,5 @@ for "_i" from 1 to 2 do {
 	// Delay between the two check cycles
 	sleep 1;
 };
+
+f_var_radioIsChecking = false;
