@@ -35,7 +35,7 @@ _channelList1 = [
 
 // Channel 2 (default: AAF)
 _channelName2 = "¤  LR Channel 2";
-_channelColour2 = [0.06,0.9,0,1];
+_channelColour2 = [0,0.9,0,1];
 _channelList2 = [
 	"B_RadioBag_01_digi_F",
 	"vehAAF_COV",
@@ -59,7 +59,7 @@ _channelList2 = [
 
 // Channel 3 (default: LDF)
 _channelName3 = "¤  LR Channel 3";
-_channelColour3 = [0.06,0.9,0,1];
+_channelColour3 = [0,0.9,0,1];
 _channelList3 = [
 	"B_RadioBag_01_eaf_F",
 	"vehLDF_COV",
