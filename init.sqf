@@ -219,3 +219,20 @@ f_var_viewDistance_crewOnly = true;
 // [[UnitName1, "UnitClass1"]] spawn f_fnc_disableThermals;
 
 // ====================================================================================
+
+if (isServer) then {
+
+    {
+        _obj = _x;
+        if ("" != (_obj getVariable ["f_var_assignGear", ""]) && { !(_obj getVariable ["f_var_assignGear_done", false]) }) then {
+            systemChat "TODO assign gear wasnt done after all o.O";
+            _obj spawn {
+                waitUntil { sleep 1; _this getVariable ["f_var_assignGear_done", false]; };
+                [_this] call f_fnc_famMedSwap;
+            }
+        }else{
+            [_obj] call f_fnc_famMedSwap;
+        };
+    } forEach (allMissionObjects "ALL" select {!isPlayer _x});
+
+};

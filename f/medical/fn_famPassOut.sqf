@@ -107,7 +107,7 @@ _unit spawn {
         sleep 2.5;
         
         if (_duration == 0) then { 
-            _stage = selectRandom [0,0,0,0,1,1,1,2,2,3,4];
+            _stage = selectRandom [0,0,0,0,1,1,1,2,2,3,5];
             _duration = round random 4;
         } else {
             _duration = _duration - 1;

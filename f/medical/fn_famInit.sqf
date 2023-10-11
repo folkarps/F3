@@ -49,15 +49,25 @@ FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
             _unit call f_fnc_famWakeUp;
         }; 
 
-        _unit setPosATL [getPosATL _unit select 0, getPosATL _unit select 1, (getPosATL _unit select 2) + 0.25];
+        
+        if (vehicle _unit == _unit) then {
+            _unit setPosATL [getPosATL _unit select 0, getPosATL _unit select 1, (getPosATL _unit select 2) + 0.25];
+        };
         _unit enableSimulation true;
-        _unit addForce [[0,20,200], [2,0,2]]; 
+        
+        if (animationState _unit == "Unconscious") then {
+            _unit switchMove "deadState";
+        };
 
     }];
 
 } forEach playableUnits;
 
+if (isNil "f_var_fam_briefingDone") then {
+	[] call f_fnc_famBriefing;
+};
 
+/*
 if (isServer) then {
 
     {
@@ -73,7 +83,7 @@ if (isServer) then {
         };
     } forEach (allMissionObjects "ALL" select {!isPlayer _x});
 };
-
+*/
 
 /* OLD TO DELETE
 

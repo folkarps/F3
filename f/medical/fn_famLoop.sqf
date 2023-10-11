@@ -109,7 +109,7 @@ while {alive _unit && {local _unit}} do {
 		private _currentDamage = damage _unit;
 		private _newDamage = 0;
 	
-		if (f_param_debugMode == 1) then
+		if (f_param_debugMode == 1 && {isPlayer _unit}) then
 		{
 			systemChat format ["(medical loop): Unit %1 | Current Damage %2 | Bleed %3 | Conscious %4",_unit,(damage _unit) toFixed 4,_unit getVariable ["FAM_BLEED",0],_unit getVariable ["FAM_CONSCIOUS",true]];
 		};
@@ -127,14 +127,27 @@ while {alive _unit && {local _unit}} do {
 		} else {
 			
 			if (damage _unit > 0) then { 
-				_newDamage = _currentDamage - selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
-				_unit setDamage _newDamage; 
+				if (damage _unit <= 0.26) then { // if you have been FAKed or lightly harmed you will eventually heal to full.
+					_newDamage = _currentDamage - selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
+					_unit setDamage _newDamage; 
+				}; 
+				if (damage _unit >= 0.52) then { // can auto heal to ~ 50% without any medical attention.
+					_newDamage = _currentDamage - selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
+					_unit setDamage _newDamage; 
+				}; 
 			};
 		};
 
 		_nextSave = _nextSave + 10;
 	};
+// ====================================================================================
 
+	// STAMINA FEATURE
+	if (!(_unit getVariable ["FAM_FLAG",false])) then { // this check allows the medic animation speed to change while healing.
+		_coef = 0.90 - (getFatigue _unit * 0.1);          
+		_unit setAnimSpeedCoef _coef;  
+	};
+			
 // ====================================================================================
 
 	// LOOP RESTART
@@ -147,5 +160,6 @@ if (f_param_debugMode == 1) then
 {
 	systemChat "medical loop exiting";
 };
-missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
+// missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
 _unit enableSimulation true;
+forceRespawn _unit;

@@ -265,9 +265,13 @@ if (_isMan) then {
 
 	// Add extra Bandages,
 	// because the assignGear files were made when the sws was still existing.
-	private _numExtraBandage = 2;
+	private _numExtraBandage = 4;
+	private _numExtraFAK = 2;
 	for "_i" from 1 to _numExtraBandage do {
 		_unit addItem _bandage;
+	};
+	for "_i" from 1 to _numExtraFAK do {
+		_unit addItem _firstaid;
 	};
 
 	// Handle weapon attachments

@@ -1,4 +1,4 @@
-// Vehicle & Box LOADOUTS - LDF
+// Vehicle & Box LOADOUTS - CSAT
 
 // CARGO: CAR - room for 10 weapons and 50 cargo items
 	case "v_car":
@@ -18,7 +18,8 @@
 		_unit addMagazineCargoGlobal [_smokegrenadegreen, 2];
 		_unit addMagazineCargoGlobal [_glmag, 4];
 		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
-		_unit addItemCargoGlobal [_bandage,4];
+		_unit addItemCargoGlobal [_bandage,6];
+		_unit addItemCargoGlobal [_firstaid,2];
 	};
 
 // CARGO: TRUCK - room for 50 weapons and 200 cargo items
@@ -41,7 +42,8 @@
 		_unit addMagazineCargoGlobal [_glmag, 12];
 		_unit addMagazineCargoGlobal [_glsmokewhite, 12];
 		_unit addBackpackCargoGlobal [_bag,4];
-		_unit addItemCargoGlobal [_bandage,8];
+		_unit addItemCargoGlobal [_bandage,12];
+		_unit addItemCargoGlobal [_firstaid,4];
 	};
 
 // CARGO: IFV - room for 10 weapons and 100 cargo items
@@ -64,7 +66,8 @@
 		_unit addMagazineCargoGlobal [_glmag, 8];
 		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
 		_unit addBackpackCargoGlobal [_bag,2];
-		_unit addItemCargoGlobal [_bandage,6];
+		_unit addItemCargoGlobal [_bandage,8];
+		_unit addItemCargoGlobal [_firstaid,3];
 	};
 
 //CARGO: TANK
@@ -96,8 +99,8 @@
 	    _unit addMagazineCargoGlobal [_smokegrenade,4];
 	    _unit addMagazineCargoGlobal [_smokegrenadegreen,2];
 	    _unit addMagazineCargoGlobal [_chemgreen,4];
-	    _unit addItemCargoGlobal [_bandage,2];
-	    _unit addBackpackCargoGlobal ["B_Parachute",2];
+	    _unit addItemCargoGlobal [_bandage,6];
+		_unit addItemCargoGlobal [_firstaid,2];
 	    _unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -122,8 +125,8 @@
 		_unit addMagazineCargoGlobal [_glmag,12];
 		_unit addMagazineCargoGlobal [_chemgreen,4];
 		_unit addBackpackCargoGlobal [_bag,2];
-		_unit addItemCargoGlobal [_bandage,4];
-		_unit addBackpackCargoGlobal ["B_Parachute",2];
+		_unit addItemCargoGlobal [_bandage,8];
+		_unit addItemCargoGlobal [_firstaid,3];
 		_unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -149,8 +152,8 @@
 		_unit addMagazineCargoGlobal [_glsmokewhite,12];
 		_unit addMagazineCargoGlobal [_chemgreen,4];
 		_unit addBackpackCargoGlobal [_bag,4];
-		_unit addItemCargoGlobal [_bandage,6];
-		_unit addBackpackCargoGlobal ["B_Parachute",4];
+		_unit addItemCargoGlobal [_bandage,12];
+		_unit addItemCargoGlobal [_firstaid,4];
 		_unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -178,7 +181,6 @@
 		_unit addMagazineCargoGlobal [_smokegrenadegreen,1];
 		_unit addMagazineCargoGlobal [_chemgreen,2];
 		_unit addItemCargoGlobal [_bandage,1];
-		_unit addBackpackCargoGlobal ["B_Parachute",1];
 		_unit addBackpackCargoGlobal [_bag,1];
 		_unit addItemCargoGlobal ["Toolkit",1];
     };

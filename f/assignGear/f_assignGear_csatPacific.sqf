@@ -163,6 +163,7 @@ _smokegrenadeblue = "SmokeShellBlue";
 _smokegrenadepurple = "SmokeShellPurple";
 
 // misc medical items.
+_bandage = "Bandage";
 _firstaid = "FirstAidKit";
 _medkit = "Medikit";
 
@@ -364,7 +365,7 @@ if (_isMan) then {
 	// Add items universal to all units of this faction
 
 	_unit linkItem _nvg;			// Add and equip the faction's nvg
-	_unit addItem _firstaid;		// Add a single bandage
+	// _unit addItem _bandage;		// Add a single bandage
 	_unit linkItem "ItemMap";		// Add and equip the map
 	_unit linkItem "ItemCompass";	// Add and equip a compass
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio

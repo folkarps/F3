@@ -25,33 +25,37 @@ private _diag = {
 	// Set Variables 
 	private _bleed = "";
 	private _conscious = "";
+	private _passout = "";
+	private _awake = true;
 	private _injuries = "";
 
 	if (_target getVariable ["FAM_BLEED",false]) then {
-		_bleed = "bleeding";
+		_bleed = "<t color='#fb3830'>Bleeding</t>";
 	} else {
-		_bleed = "not bleeding";
+		_bleed = "Not Bleeding";
 	};
 	if (_target getVariable ["FAM_CONSCIOUS",true]) then {
-		_conscious = "conscious";
+		_awake = true;
+		_conscious = "Conscious";
 	} else {
-		_conscious = "unconscious"; 
+		_awake = false;
+		_conscious = "<t color='#fb8100'>Unconscious</t>"; 
 	};
 
 	switch (round (damage _target * 10)) do {
-		case 0: {_injuries = "apparently unharmed"};
-		case 1: {_injuries = "barely hurt"};
-		case 2;
+		case 0: {_injuries = "<t color='#53a800'>In Good Condition</t>"; if (_awake) then {_passout = "<t color='#53a800'>not going to pass out</t>";} else {_passout = "<t color='#53a800'>will wake up soon.</t>";}};
+		case 1; 
+		case 2: {_injuries = "Suffering from minor wounds."; if (_awake) then {_passout = "<t color='#53a800'>not going to pass out</t>";} else {_passout = "likely to wake up soon.";}};
 		case 3;
-		case 4: {_injuries = "lightly injured"};
+		case 4: {_injuries = "Lightly Injured"; if (_awake) then {_passout = "not likely to pass out";} else {_passout = "could wake up soon.";}};
 		case 5; 
 		case 6;
-		case 7: {_injuries = "moderately wounded"}; 
+		case 7: {_injuries = "<t color='#fb8100'>Moderately Wounded</t>"; if (_awake) then {_passout = "<t color='#fb8100'>may pass out</t>";} else {_passout = "<t color='#fb8100'>could wake up.</t>";}}; 
 		case 8;
-		case 9: {_injuries = "heavily wounded"};
-		case 10: {_injuries = "dying"};
+		case 9: {_injuries = "<t color='#fb3830'>Heavily Wounded</t>"; if (_awake) then {_passout = "<t color='#fb3830'>likely to pass out</t>";} else {_passout = "<t color='#fb3830'>not likely to wake up.</t>";}};
+		case 10: {_injuries = "<t color='#fb3830'>Close to Death</t>"; if (_awake) then {_passout = "<t color='#fb3830'>about to pass out</t>";} else {_passout = "<t color='#fb3830'>not likely to wake up.</t>";}};
 	};
-	hint format ["%1 %2, %3, and %4.", _tgt, _conscious, _bleed,_injuries];
+	hint parseText format ["%1:<br/>%2 and %3<br/>%4<br/>%5", _tgt, _conscious, _passout, _bleed,_injuries];
 
 };
 

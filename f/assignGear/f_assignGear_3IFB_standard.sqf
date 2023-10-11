@@ -17,7 +17,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_ARmag, 1];
 		_unit addweapon _AR;
 		_attachments pushback (_bipod1); // Adds the bipod
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_ARmag, 3];
 		_unit addmagazines [_ARmag_tr, 2];
@@ -31,7 +31,7 @@ switch (_typeofUnit) do
 		_unit addweapon _carbine;
 		_unit addmagazines [_RATmag1, 1];
 		_unit addweapon _RAT;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -59,7 +59,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glmag, 1];
 		_unit addweapon _glrifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
@@ -77,7 +77,7 @@ switch (_typeofUnit) do
 		_unit addweapon _glrifle;
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
@@ -98,7 +98,7 @@ switch (_typeofUnit) do
 		_unit addweapon _glrifle;
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
@@ -119,7 +119,7 @@ switch (_typeofUnit) do
 		_unit addweapon _glrifle;
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
@@ -132,24 +132,23 @@ switch (_typeofUnit) do
 		_unit addWeapon _laserdesignator;
 	};
 // Medic Loadout:
-	case "m":
+case "m":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
 		_unit addItem _medkit;
-		for "_i" from 1 to 9 do {
+		for "_i" from 1 to 10 do {
 			_unit addItem _firstaid;
 		};
 		for "_i" from 1 to 20 do {
 			_unit addItem _bandage;
 		};
-		_unit addItem _firstaid;
 	};
 // Combat Life Saver Loadout:
 	case "cls":
@@ -158,11 +157,11 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
-		for "_i" from 1 to 9 do {
+		for "_i" from 1 to 10 do {
 			_unit addItem _firstaid;
 		};
 		_unit addmagazines [_grenade, 2];
@@ -173,7 +172,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_DMriflemag, 1];
 		_unit addweapon _DMrifle;
 		_attachments = [_bipod1,_scope2]; // Overwrites default attachments to add a bipod and scope 2
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_DMriflemag, 4];
 		_unit addmagazines [_DMriflemag_tr, 2];
@@ -186,7 +185,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_MMGmag, 1];
 		_unit addweapon _MMG;
 		_attachments pushback (_bipod1); // Adds the bipod
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_MMGmag, 1];
 		_unit addmagazines [_MMGmag_tr, 1];
@@ -197,7 +196,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -211,7 +210,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -226,7 +225,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _baghmgg;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -237,7 +236,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _baghmgag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -252,7 +251,7 @@ switch (_typeofUnit) do
 		_unit addweapon _carbine;
         _unit addmagazines [_MATmag1, 1];
 		_unit addweapon _MAT;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 2];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -265,7 +264,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -279,7 +278,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -296,7 +295,7 @@ switch (_typeofUnit) do
 		_unit addweapon _carbine;
 		_unit addmagazines [_HATmag1, 1];
 		_unit addweapon _HAT;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -308,7 +307,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -321,7 +320,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -335,7 +334,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagmtrg;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 2];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -346,7 +345,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagmtrag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -361,7 +360,7 @@ switch (_typeofUnit) do
 		_unit addweapon _carbine;
 		_unit addmagazines [_SAMmag, 1];
 		_unit addweapon _SAM;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -372,7 +371,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -385,7 +384,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -399,7 +398,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _baghsamg;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -410,7 +409,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _baghsamag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -425,7 +424,7 @@ switch (_typeofUnit) do
 		_attachments = [_bipod1,_scope3]; // Overwrites default attachments to add a bipod and scope 3
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_SNrifleMag, 4];
 		_unit addmagazines [_pistolmag, 5];
@@ -435,7 +434,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -449,7 +448,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addweapon _binoculars;
@@ -461,7 +460,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addItem "ToolKit";
@@ -472,7 +471,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 		_unit addweapon _binoculars;
@@ -482,7 +481,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 	};
@@ -493,7 +492,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 		_unit addItem "ToolKit";
@@ -504,7 +503,7 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["engineer",true]; // Can repair
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 3];
 	};
@@ -517,7 +516,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 		_unit addItem "ToolKit";
@@ -528,7 +527,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -543,7 +542,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -559,7 +558,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _baguav;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -571,7 +570,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagdiver;
 		_unit addmagazines [_diverMag1, 1];
 		_unit addweapon _diverWep;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_diverMag1, 4];
 		_unit addmagazines [_diverMag2, 2];
@@ -583,7 +582,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -594,7 +593,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
@@ -605,7 +604,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_smgmag, 6];
 		_unit addmagazines [_grenade, 2];
@@ -616,7 +615,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glmag, 1];
 		_unit addweapon _glrifle;
-		_unit addItem _firstaid;
+		// _unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];

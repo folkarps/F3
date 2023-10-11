@@ -131,6 +131,7 @@ class F // Defines the "owner"
 		class famWakeUp{};
 		class famReset{};
 		class famMedSwap{};
+		class famBriefing{};
 	};
 	class disableThermals
 	{

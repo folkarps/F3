@@ -35,9 +35,9 @@ f_var_skillError = 99;
 // These values define the total skill level as set by the parameter
 private _skillLevels = [
 	1.00,            // 0 Super
-	0.8,             // 1 High
-	0.7,             // 2 Medium
-	0.6,             // 3 Low
+	0.7,             // 1 High
+	0.6,             // 2 Medium
+	0.5,             // 3 Low
 	f_var_skillError // last: Default
 ];
 
@@ -50,10 +50,10 @@ private _skillLevels = [
 //       then this means that this particular skill will always be 1
 //       for all possible skillLevels that were set via parameter.
 f_var_skillSet = [
-	0.55, // aimingAccuracy
-	0.6,  // aimingShake
-	0.7,  // aimingSpeed
-	0.7,  // spotDistance
+	0.45, // aimingAccuracy
+	0.55,  // aimingShake
+	0.55,  // aimingSpeed
+	0.65,  // spotDistance
 	0.7,  // spotTime
 	1.2,  // courage
 	2,    // reloadSpeed

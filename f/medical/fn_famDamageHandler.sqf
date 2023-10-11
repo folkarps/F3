@@ -35,9 +35,12 @@ _eh = _unit addEventHandler ["HandleDamage",{
 
 	if (_hitSize > 0) then {
 		// Nonlinear damage reduction expression
+		/*
 		private _mod = (1 - _currentDamage) * 0.8;
-		if (_mod > 0.5) then {_mod = 0.5};
-		_newDamage = _currentDamage + (_mod * (_hitSize ^ .1));  //TODO bake in support for CDLC mission values.
+		if (_mod > 0.7) then {_mod = 0.7};
+		_newDamage = _currentDamage + (_mod * (_hitSize ^ .2));  //TODO bake in support for CDLC mission values.
+		*/
+		_newDamage = _currentDamage + (.5 * (_hitSize ^ .4));
 	};
 
 	// Down you on a big hit.
@@ -47,7 +50,7 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	};
 
 	// Set bleed but only update if unit is not already bleeding. TODO Maybe bleed should be its own dice roll.
-	if (_projectile != "" && {!(_unit getVariable ["FAM_BLEED",false] && _newDamage > 0.8)}) then {
+	if (_projectile != "" && {isDamageAllowed _unit && {!(_unit getVariable ["FAM_BLEED",false] && _newDamage > 0.8)}}) then {
 		_unit setVariable ["FAM_BLEED",true,true];
 		_unit setBleedingRemaining 400;
 	};
@@ -82,6 +85,7 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	};
 	
 	// RETURN FINAL DAMAGE VALUE
+
 	_newDamage
 
 }];

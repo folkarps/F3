@@ -12,12 +12,13 @@ if (_unit == player) exitWith {};
 private _healIcon = "a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa"; //Icon to Display
 private _healProg = "(_target distance _caller < 3) && {alive _target && !(_target getVariable ['FAM_CONSCIOUS',true])}"; // This one is always the same, start condition varies by unit type.
 private _healTime = 6; // Action Duration
-
+private _healMedicTime = 4.5; // Action Duration
+/*
 // Medic bandages faster
 if (_unit getUnitTrait "medic") then {
-	_bdgTime = _healTime / FAM_MEDICMOD;
+	_healTime = _healTime * .5;
 };
-
+*/
 // Starting Code
 private _healCodeStart = { 
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
@@ -27,7 +28,7 @@ private _healCodeStart = {
 	
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1.5;
+		_caller setAnimSpeedCoef 1.25;
 	};
 
 	if (stance _caller == "PRONE") then {
@@ -76,18 +77,20 @@ private _healCodeComp = {
 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["FAM_FLAG",false];
-
+/*
 	// Return medic animation speed to normal.
 	if (_caller getUnitTrait 'medic') then {
 		_caller setAnimSpeedCoef 1;
 	};
-	
+*/	
 	// Medic heals to full only if they have a medikit. TODO CLS Support?
 	if (_caller getUnitTrait 'Medic' && 'Medikit' in items _caller) then {
 		_target setDamage 0;
+		hint "Patient healed fully with Medikit"; // feedback on resource consumption.
 	} else {
 		_target setDamage 0.25;
 		_caller removeItem "FirstAidKit";
+		hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (magazines _caller select {_x == "FirstAidKit"})]; // feedback on resource consumption.
 	};
 }; 
 
@@ -97,17 +100,17 @@ private _healCodeInt = {
 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["FAM_FLAG",false];
-		
+/*		
 	// Return medic animation speed to normal.
 	if (_caller getUnitTrait 'medic') then {
 		_caller setAnimSpeedCoef 1;
 	};
-
+*/
 	// Exit animation 
-	if (stance _caller == "PRONE") then {
+	if (animationState _caller find "ppne" != -1) then { 
 		_caller switchMove "AinvPpneMstpSlayWnonDnon_medicOut";
 	} else {
-		_caller switchMove "AinvPknlMstpSlayWrflDnon_AmovPknlMstpSrasWrflDnon";
+		_caller switchMove "AinvPknlMstpSlayWnonDnon_medicOut";
 	};
 };
 
@@ -131,5 +134,5 @@ private _healCodeInt = {
 	_healIcon, 
 	_healIcon, 
 	"(_this getUnitTrait 'medic' && 'Medikit' in items _this) && {alive _target && _target distance _this < 3 && !(_target getVariable ['FAM_CONSCIOUS',true])}", 
-	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime, 19, false, false, false
+	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healMedicTime, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;

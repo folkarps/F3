@@ -9,12 +9,13 @@ params ["_unit"];
 private _bdgIcon = "a3\ui_f\data\igui\cfg\actions\ico_cpt_thtl_off_ca.paa"; //Icon to Display
 private _bdgProg = "(_this distance _target < 3) && {alive _target && _target getVariable ['FAM_BLEED',false]}"; // This one is always the same, start condition varies by unit type.
 private _bdgTime = 6; // Action Duration
-
+private _bdgMedicTime = 4.5; // Action Duration
+/*
 // Medic bandages faster
 if (_unit getUnitTrait "medic") then {
-	_bdgTime = _bdgTime / FAM_MEDICMOD;
+	_bdgTime = _bdgTime * 0.5;
 };
-
+*/
 // Starting Code
 private _bdgCodeStart = { 
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
@@ -24,7 +25,7 @@ private _bdgCodeStart = {
 
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1.5;
+		_caller setAnimSpeedCoef 1.25;
 	};
 
 	if (stance _caller == "PRONE") then {
@@ -74,15 +75,18 @@ private _bdgCodeComp = {
 	
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["FAM_FLAG",false];
-
+/*
 	// Return medic animation speed to normal.
 	if (_caller getUnitTrait 'medic') then {
 		_caller setAnimSpeedCoef 1;
-	};
-	if ("bandage" in magazines _caller) then {
+	};*/
+	if ("Bandage" in magazines _caller) then {
 		_caller removeItem "Bandage"; // It costs a bandage to stop bleeding.
+		hint format ["Bandage consumed, %1 remaining.",count (magazines _caller select {_x == "Bandage"})]; // feedback on resource consumption.
 	} else {
 		_target removeItem "Bandage"; // It costs a bandage to stop bleeding.
+		hint "Bandage used from patient's inventory";
+		[format ["Bandage consumed, %1 remaining.", count (magazines player select {_x == "Bandage"})]] remoteExec ["hint",_target]; // feedback on resource consumption.
 	};
 
 	_target setVariable ["FAM_BLEED",false,true]; // Sets BLEED to NOT
@@ -96,17 +100,17 @@ private _bdgCodeInt = {
 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["FAM_FLAG",false];
-	
+/*	
 	// Return medic animation speed to normal.
 	if (_caller getUnitTrait 'medic') then {
 		_caller setAnimSpeedCoef 1;
 	};
-
+*/
 	// Exit animation 
-	if (stance _caller == "PRONE") then {
+	if (animationState _caller find "ppne" != -1) then { 
 		_caller switchMove "AinvPpneMstpSlayWnonDnon_medicOut";
 	} else {
-		_caller switchMove "AinvPknlMstpSlayWrflDnon_AmovPknlMstpSrasWrflDnon";
+		_caller switchMove "AinvPknlMstpSlayWnonDnon_medicOut";
 	};
 
 };
@@ -202,13 +206,26 @@ if (_unit == player) then {
 if (_unit != player) then {
 
 	// HOLD ACTION
-	// Every Unit Has Actions, medic gets speed boost.
 	[ 
 		_unit, 
 		format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 		_bdgIcon, _bdgIcon, 
-		"(_target != _this) && {alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
+		"(_target != _this) && {!(_this getUnitTrait 'medic') && alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
 		_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime, 20, false, false, true
+	] call BIS_fnc_holdActionAdd;
+
+}; 
+
+// Second action on every unit required for medic to have speed difference.
+if (_unit != player) then {
+
+	// HOLD ACTION
+	[ 
+		_unit, 
+		format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
+		_bdgIcon, _bdgIcon, 
+		"(_target != _this) && {_this getUnitTrait 'medic' && alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
+		_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgMedicTime, 20, false, false, true
 	] call BIS_fnc_holdActionAdd;
 
 }; 
