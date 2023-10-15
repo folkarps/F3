@@ -150,6 +150,19 @@ if (count _veharray > 0) then {
 
 };
 
+// Add button to take control of group when Arma does not update leadership correctly.
+// TO DO find better spot for this and/or don't show until after mission launch.
+_orbatText = _orbatText + "<br/>
+OVERRIDE GROUP CONTROL: <br/> 
+ | <execute expression=""
+	if (leader group player != player) then {
+		hintsilent 'Taking control of your group';group player selectLeader player;
+	} else {
+		hintsilent 'You are already the leader of your group';
+	};"">
+Take control of my group</execute> | <br/>
+Please note: this is only to be used if Arma has not updated your group leader accurately after casaulties or group merging.";
+
 // Insert final result into subsection ORBAT of section Notes
 waitUntil {scriptDone f_script_briefing};
 player createDiaryRecord ["diary", ["ORBAT", _orbatText]];
