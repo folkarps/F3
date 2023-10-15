@@ -161,7 +161,7 @@ OVERRIDE GROUP CONTROL: <br/>
 		hintsilent 'You are already the leader of your group';
 	};"">
 Take control of my group</execute> | <br/>
-Please note: this is only to be used if Arma has not updated your group leader accurately after casaulties or group merging.";
+Please note: this is only to be used if Arma has not updated your group leader accurately after casualties or group merging.";
 
 // Insert final result into subsection ORBAT of section Notes
 waitUntil {scriptDone f_script_briefing};
