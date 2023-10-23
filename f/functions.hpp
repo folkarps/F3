@@ -26,6 +26,7 @@ class F // Defines the "owner"
 		file = "f\assignGear";
 		class assignGear{};
 		class assignInsignia{};
+		class assignEODflags{};
 	};
 	class setGroupID
 	{
