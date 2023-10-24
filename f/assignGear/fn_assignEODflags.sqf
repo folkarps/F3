@@ -13,7 +13,8 @@ private _actionID = _unit addAction [
 	false,		// showWindow
 	true,		// hideOnUse
 	"",			// shortcut
-	"(_originalTarget == _this) && {(vehicle _this == _this) && (isTouchingGround _this)}"
+	"(_originalTarget == _this) && {(vehicle _this == _this) && (isTouchingGround _this)}",
+	0.1
 ];
 _unit setVariable ["f_var_eodFlagAction",_actionID];
 
