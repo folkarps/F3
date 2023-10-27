@@ -3,13 +3,29 @@ params ["_unit"];
 private _actionID = _unit addAction [
 	"Place EOD marker",	// title
 	{
-		params ["_target", "_caller", "_actionId", "_arguments"]; // script
+		params ["_target", "_caller"]; // script
 		_caller playActionNow "PutDown";
 		private _flag = createVehicle ["FlagMarker_01_F", _caller modelToWorld [0,1.5,0], [], 0, "CAN_COLLIDE"];
 		if ((getPos _flag select 2) > 0.5) then {
 			deleteVehicle _flag;
 		} else {
 			playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,getPosASL _flag, 2, 1, 25];
+			[_flag,[
+				"Remove EOD marker",
+				{
+					params ["_target","_caller"];
+					_target playActionNow "PutDown";
+					playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,getPosASL _target, 2, 1, 25];
+					deleteVehicle _target;
+				},
+				nil,
+				1.5,
+				true,
+				true,
+				"",
+				"(vehicle _this == _this)",
+				3
+			]] remoteExec ["addAction",0,_flag];
 		};
 	},
 	nil,		// arguments
