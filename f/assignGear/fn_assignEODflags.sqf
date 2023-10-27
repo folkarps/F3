@@ -14,8 +14,8 @@ private _actionID = _unit addAction [
 				"Remove EOD marker",
 				{
 					params ["_target","_caller"];
-					_target playActionNow "PutDown";
-					playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,getPosASL _target, 2, 1, 25];
+					_caller playActionNow "PutDown";
+					playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_target,false,getPosASL _target, 2, 1, 25];
 					deleteVehicle _target;
 				},
 				nil,
