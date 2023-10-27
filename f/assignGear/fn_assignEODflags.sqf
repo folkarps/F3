@@ -10,6 +10,7 @@ private _actionID = _unit addAction [
 			deleteVehicle _flag;
 		} else {
 			playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,getPosASL _flag, 2, 1, 25];
+			_flag setDir (getDir _caller - 90);
 			[_flag,[
 				"Remove EOD marker",
 				{
