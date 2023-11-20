@@ -9,8 +9,8 @@ params ["_unit"];
 
 // RESET
 _unit call f_fnc_famWakeUp;
-_unit setVariable ["FAM_BLEED",false,true];
-_unit setVariable ["FAM_CONSCIOUS",true,true];
+_unit setVariable ["f_fam_bleed",false,true];
+_unit setVariable ["f_fam_conscious",true,true];
 _unit setDamage 0;
 
 if (local _unit && isPlayer _unit) then {

@@ -23,7 +23,7 @@ playSound3d [_sound,_unit];
 // If in a vehicle
 if (vehicle _unit != _unit) then {
   
-    _unit setVariable ["FAM_VEHICLE_ANIMATION",animationstate _unit];
+    _unit setVariable ["f_fam_vehicle_animation",animationstate _unit];
     _animCfg = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
 
     if (isArray (_animCfg >> "interpolateTo") && {count getArray (_animCfg >> "interpolateTo") != 0}) then {
@@ -45,39 +45,32 @@ if (vehicle _unit != _unit) then {
 
 // INSTANT EFFECTS
 // Broadcast unit is unconscious.
-_unit setVariable ["FAM_CONSCIOUS",false,true]; 
+_unit setVariable ["f_fam_conscious",false,true]; 
 
 // If the unit is local and a player, remove their magazines (otherwise they can throw grenades while down)
 if(local _unit && isPlayer _unit) then
 {   
 
     // keep a bandage and FAK in unit inventory so they can be picked up
-	if ("bandage" in magazines _unit) then {
-		_unit setVariable ["FAM_HASBANDAGE",true];  
+	if ("Bandage" in magazines _unit) then {
+		_unit setVariable ["f_fam_hasbandage",true,true];  
     }; 
-	if ("firstAidKit" in magazines _unit) then {
-		_unit setVariable ["FAM_HASFAK",true];  
+	if ("FirstAidKit" in items _unit) then {
+		_unit setVariable ["f_fam_hasfak",true,true];  
     }; 
 
-    _unit setVariable ["FAM_wound_down_mags",magazines _unit];
+    _unit setVariable ["f_fam_wound_down_mags",magazines _unit];
     {
         _unit removeMagazine _x;
     } foreach magazines _unit;
 
-    _unit setVariable ["FAM_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
+    _unit setVariable ["f_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
     {
         _unit unassignItem _x;
         _unit removeItem _x;
     } foreach (assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"});
-    
-	if (_unit getVariable ["FAM_HASBANDAGE",false]) then {
-        _unit addItemToUniform "bandage";
-    }; 
-	if (_unit getVariable ["FAM_HASFAK",false]) then {
-        _unit addItemToUniform "firstaidkit";
-    }; 
 
-    // this disables the actionmenu for the users
+    // this disables the actionmenu for the users 
     showHud false;
 
 };
@@ -100,7 +93,7 @@ _unit spawn {
     private _stage = 0;
     private _duration = 4;
 
-    while {!(_unit getVariable ["FAM_CONSCIOUS",true]) && isPlayer _unit} do
+    while {!(_unit getVariable ["f_fam_conscious",true]) && isPlayer _unit} do
     {   
 
         [_stage] call f_fnc_famWoundedEffect;
@@ -113,7 +106,7 @@ _unit spawn {
             _duration = _duration - 1;
         };
 
-        if (_unit getVariable ["FAM_CONSCIOUS",true]) exitWith {
+        if (_unit getVariable ["f_fam_conscious",true]) exitWith {
             // reset the PP
             [4] spawn f_fnc_famWoundedEffect;
         };

@@ -20,7 +20,7 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	// Skip damage processing if the result doesn't matter.
 	// Also yes, the event handler still triggers if the unit is not local.
 	if (!local _unit) exitWith {_damage};
-
+	if (!isDamageAllowed _unit) exitWith {0};
 // ====================================================================================
 
 	// HANDLE DAMAGE
@@ -32,31 +32,33 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	
 	private _hitSize = _damage - _currentDamage;
 	private _newDamage = _damage;
-
+/*
 	if (_hitSize > 0) then {
 		// Nonlinear damage reduction expression
-		/*
+		
 		private _mod = (1 - _currentDamage) * 0.8;
 		if (_mod > 0.7) then {_mod = 0.7};
 		_newDamage = _currentDamage + (_mod * (_hitSize ^ .2));  //TODO bake in support for CDLC mission values.
-		*/
-		_newDamage = _currentDamage + (.5 * (_hitSize ^ .4));
+		
+		if (f_param_damage == 1) then {
+			_newDamage = _currentDamage + (.5 * (_hitSize ^ .4));
+		}; // else adjust nothing
 	};
-
+*/
 	// Down you on a big hit.
     if (_selection != "" && {_newDamage >= 0.8}) then { 
-		_unit setVariable ["FAM_FORCEDOWN",true];
+		_unit setVariable ["f_fam_forcedown",true];
 		
 	};
 
-	// Set bleed but only update if unit is not already bleeding. TODO Maybe bleed should be its own dice roll.
-	if (_projectile != "" && {isDamageAllowed _unit && {!(_unit getVariable ["FAM_BLEED",false] && _newDamage > 0.8)}}) then {
-		_unit setVariable ["FAM_BLEED",true,true];
+	// Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
+	if (_projectile != "" && _damage >= 0 && {!(_unit getVariable ["f_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
+		_unit setVariable ["f_fam_bleed",true,true];
 		_unit setBleedingRemaining 400;
 	};
 
 	// Check if the player is in an aircraft, and redirect damage to the player to the airframe.
-	if (vehicle _unit isKindof "Air") then {
+	if (vehicle _unit isKindof "Air" && {driver vehicle _unit == _unit}) then {
 		if (_hitSize > 0) then {
 			
 			if (_hitSize > 1) then {

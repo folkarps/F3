@@ -7,7 +7,7 @@ params ["_unit"];
 
 // Action components
 private _bdgIcon = "a3\ui_f\data\igui\cfg\actions\ico_cpt_thtl_off_ca.paa"; //Icon to Display
-private _bdgProg = "(_this distance _target < 3) && {alive _target && _target getVariable ['FAM_BLEED',false]}"; // This one is always the same, start condition varies by unit type.
+private _bdgProg = "(_this distance _target < 3) && {alive _target && _target getVariable ['f_fam_bleed',false]}"; // This one is always the same, start condition varies by unit type.
 private _bdgTime = 6; // Action Duration
 private _bdgMedicTime = 4.5; // Action Duration
 /*
@@ -21,7 +21,7 @@ private _bdgCodeStart = {
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
 
 	// this is needed to protect against BI bugs that remove all actions.
-	_caller setVariable ["FAM_FLAG",true];
+	_caller setVariable ["f_fam_flag",true];
 
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
@@ -61,7 +61,7 @@ private _bdgCodeStart = {
 	}; 
 
 	// Let the wounded know someone is trying to save them. 
-	if !(_target getVariable ["FAM_CONSCIOUS",true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; // TODO Test?
+	if !(_target getVariable ["f_fam_conscious",true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; 
 }; 
 
 // Progress Code
@@ -74,22 +74,19 @@ private _bdgCodeComp = {
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
 	
 	// this is needed to protect against BI bugs that remove all actions.
-	_caller setVariable ["FAM_FLAG",false];
-/*
-	// Return medic animation speed to normal.
-	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1;
-	};*/
+	_caller setVariable ["f_fam_flag",false];
+
 	if ("Bandage" in magazines _caller) then {
 		_caller removeItem "Bandage"; // It costs a bandage to stop bleeding.
 		hint format ["Bandage consumed, %1 remaining.",count (magazines _caller select {_x == "Bandage"})]; // feedback on resource consumption.
 	} else {
-		_target removeItem "Bandage"; // It costs a bandage to stop bleeding.
 		hint "Bandage used from patient's inventory";
-		[format ["Bandage consumed, %1 remaining.", count (magazines player select {_x == "Bandage"})]] remoteExec ["hint",_target]; // feedback on resource consumption.
+		// [format ["Bandage consumed, %1 remaining.", count (magazines _target select {_x == "Bandage"})]] remoteExec ["hint",_target]; // feedback on resource consumption.
+		_target setVariable ["f_fam_used_bandage",true,true];
 	};
+	[["You are no longer bleeding", "PLAIN"]] remoteExec ["titleText",_target];
 
-	_target setVariable ["FAM_BLEED",false,true]; // Sets BLEED to NOT
+	_target setVariable ["f_fam_bleed",false,true]; // Sets BLEED to NOT
 	[_target,0] remoteExec ["setBleedingRemaining",_target]; 
 
 }; 
@@ -99,13 +96,8 @@ private _bdgCodeInt = {
 	params ["_target", "_caller", "_actionId", "_arguments"];
 
 	// this is needed to protect against BI bugs that remove all actions.
-	_caller setVariable ["FAM_FLAG",false];
-/*	
-	// Return medic animation speed to normal.
-	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1;
-	};
-*/
+	_caller setVariable ["f_fam_flag",false];
+
 	// Exit animation 
 	if (animationState _caller find "ppne" != -1) then { 
 		_caller switchMove "AinvPpneMstpSlayWnonDnon_medicOut";
@@ -129,7 +121,7 @@ if (_unit == player) then {
 			// Set an appropriate animation by stance
 
 			// this is needed to protect against BI bugs that remove all actions.
-			_caller setVariable ["FAM_FLAG",true];
+			_caller setVariable ["f_fam_flag",true];
 
 			if (stance _caller == "PRONE") then {
 
@@ -169,13 +161,15 @@ if (_unit == player) then {
 
 			_caller spawn {
 				sleep 5;
-					if (_this getVariable ["FAM_CONSCIOUS",true]) then {
+					if (_this getVariable ["f_fam_conscious",true]) then {
 					_this removeItem "Bandage";
-					_this setVariable ["FAM_BLEED",false,true]; // Sets BLEED to NOT
+					_this setVariable ["f_fam_bleed",false,true]; // Sets BLEED to NOT
 					_this setBleedingRemaining 0;
+					hint format ["Bandage consumed, %1 remaining. You are no longer bleeding.",count (magazines _this select {_x == "Bandage"})]; // feedback on resource consumption.
+					// titleText ["You are no longer bleeding","PLAIN"];
 
 					// this is needed to protect against BI bugs that remove all actions.
-					_this setVariable ["FAM_FLAG",false];
+					_this setVariable ["f_fam_flag",false];
 
 				};
 			};
@@ -185,8 +179,8 @@ if (_unit == player) then {
 		true,		// showWindow
 		true,		// hideOnUse
 		"",			// shortcut
-		"(_target == _this) && {_target getVariable ['FAM_BLEED',false]}", 	// condition
-		50,			// radius
+		"(_target == _this) && {_target getVariable ['f_fam_bleed',false] && ('Bandage' in magazines player)}", 	// condition
+		0,			// radius
 		false,		// unconscious
 		"",			// selection
 		""			// memoryPoint
@@ -210,7 +204,7 @@ if (_unit != player) then {
 		_unit, 
 		format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 		_bdgIcon, _bdgIcon, 
-		"(_target != _this) && {!(_this getUnitTrait 'medic') && alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
+		"(_target != _this) && {!(_this getUnitTrait 'medic') && alive _target && _this distance _target < 3 && _target getVariable ['f_fam_bleed',false] && ('Bandage' in magazines _this || _target getVariable ['f_fam_hasbandage',false])}", 
 		_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime, 20, false, false, true
 	] call BIS_fnc_holdActionAdd;
 
@@ -224,8 +218,8 @@ if (_unit != player) then {
 		_unit, 
 		format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 		_bdgIcon, _bdgIcon, 
-		"(_target != _this) && {_this getUnitTrait 'medic' && alive _target && _this distance _target < 3 && _target getVariable ['FAM_BLEED',false] && ('Bandage' in magazines _this || 'Bandage' in magazines _target)}", 
+		"(_target != _this) && {_this getUnitTrait 'medic' && alive _target && _this distance _target < 3 && _target getVariable ['f_fam_bleed',false] && ('Bandage' in magazines _this || _target getVariable ['f_fam_hasbandage',false])}", 
 		_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgMedicTime, 20, false, false, true
 	] call BIS_fnc_holdActionAdd;
 
-}; 
+};

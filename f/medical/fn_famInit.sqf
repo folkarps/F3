@@ -4,24 +4,24 @@
 
 //global stuff:
 
-FAM_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
-FAM_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
-FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
+f_fam_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
+f_fam_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
+f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
 
 {
     if (local _x) then { 
     
     // MEDICAL VARIABLES
     // These become global later.
-    _x setVariable ["FAM_BLEED",false]; 
-    _x setVariable ["FAM_CONSCIOUS",true]; 
+    _x setVariable ["f_fam_bleed",false]; 
+    _x setVariable ["f_fam_conscious",true]; 
 
     // These are local only.
-    _x setVariable ["FAM_FORCEDOWN",false]; 
-    _x setVariable ["FAM_HASFAK",false]; 
-    _x setVariable ["FAM_HASBANDAGE",false]; 
-    _x getVariable ["FAM_FLAG",false];
-    _x setVariable ["FAM_ACTIONS",false];
+    _x setVariable ["f_fam_forcedown",false]; 
+    _x setVariable ["f_fam_hasfak",false]; 
+    _x setVariable ["f_fam_hasbandage",false]; 
+    _x getVariable ["f_fam_flag",false];
+    _x setVariable ["f_fam_actions",false];
 
     [_x] spawn f_fnc_famLoop; 
     [_x] spawn f_fnc_famDamageHandler;
@@ -30,10 +30,10 @@ FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
     // Add actions for this player on everyone else's machine.
     // These are also executed for JIPed players
  
-    if (!(_x getVariable ["FAM_ACTIONS",false]) && {hasInterface}) then {
+    if (!(_x getVariable ["f_fam_actions",false]) && {hasInterface}) then {
             
             [_x, f_fnc_famAddAllActions ] remoteExec ["spawn", 0, _x];
-            _x setVariable ["FAM_ACTIONS",true,true];
+            _x setVariable ["f_fam_actions",true,true];
             
         };
     };
@@ -45,7 +45,7 @@ FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
         // This occurs after death, make sure that none of the wounded affects carry over.
 
         // Give them their gear back
-        if !(_unit getVariable ["FAM_CONSCIOUS",true]) then {
+        if !(_unit getVariable ["f_fam_conscious",true]) then {
             _unit call f_fnc_famWakeUp;
         }; 
 
@@ -59,99 +59,38 @@ FAM_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
             _unit switchMove "deadState";
         };
 
+        // store name on corpse for future diagnosis.
+        _unit setVariable ["f_fam_corpse",name _unit,true];
+
+    }];
+
+  
+    _x addEventHandler ["HandleHeal", {
+
+        // notification correction for self FAK usage.
+        params ["_injured", "_healer"];
+        if (_injured == _healer) exitWith { 
+            _healer setVariable ["f_fam_selffak", true];
+        };
+
+        // information for using vanilla heal on others.
+        ["_injured", "_healer"] spawn {
+            _damage = damage _injured;
+            params ["_injured", "_healer"];
+            waitUntil{sleep 1; damage _injured <= _damage};
+
+            if (damage _injured == 0) then {
+                hint "Patient healed with Medikit";
+            } else {
+                hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _healer select {_x == "FirstAidKit"})];
+            };
+
+        };
+
     }];
 
 } forEach playableUnits;
 
-if (isNil "f_var_fam_briefingDone") then {
+if (isNil "f_fam_briefingDone") then {
 	[] call f_fnc_famBriefing;
 };
-
-/*
-if (isServer) then {
-
-    {
-        _obj = _x;
-        if ("" != (_obj getVariable ["f_var_assignGear", ""]) && { !(_obj getVariable ["f_var_assignGear_done", false]) }) then {
-            systemChat "TODO assign gear wasnt done after all o.O";
-            _obj spawn {
-                waitUntil { sleep 1; _this getVariable ["f_var_assignGear_done", false]; };
-                [_this] call f_fnc_famMedSwap;
-            }
-        }else{
-            [_obj] call f_fnc_famMedSwap;
-        };
-    } forEach (allMissionObjects "ALL" select {!isPlayer _x});
-};
-*/
-
-/* OLD TO DELETE
-
-// INITIALIZE
-_unit = _this;
-
-// Exit when not local.
-if !(local _unit) exitWith {};
-
-// ====================================================================================
-
-// MEDICAL SCRIPTS
-// Start Health Loop for monitoring bleed/consciouness
-_unit spawn f_fnc_famLoop;
-
-// Make downed players draggable
-[player] remoteExec ["f_fnc_famAddDragAction", 0, player]; 
-
-// Handle damage appropriately for the system.
-_unit call f_fnc_famDamageHandler;
-
-// ====================================================================================
-
-// MEDICAL VARIABLES
-// These become global later.
-_unit setVariable ["FAM_BLEED",false]; 
-_unit setVariable ["FAM_CONSCIOUS",true]; 
-
-// These are local only.
-_unit setVariable ["FAM_FORCEDOWN",false]; 
-_unit setVariable ["FAM_HASFAK",false]; 
-_unit setVariable ["FAM_HASBANDAGE",false]; 
-_unit getVariable ["FAM_FLAG",false];
-FAM_MEDICMOD = 0.5;
-
-// defines the PP effects for the downed effect.  TODO These are stolen from SWS
-FAM_uncCC = ppEffectCreate ["ColorCorrections", 1603];
-FAM_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
-FAM_uncBlur = ppEffectCreate ["DynamicBlur", 180];
-
-// ====================================================================================
-
-// MEDICAL ACTIONS
-// Add actions to unit
-#include "fam_bandage.sqf";
-#include "fam_heal.sqf";
-#include "fam_diagnose.sqf";
-
-// ====================================================================================
-
-/* todo implement carry */
-
-/* in progress 
-player switchMove "AcinPercMrunSrasWrflDf"; 
-dummy switchMove "AinjPfalMstpSnonWnonDnon_carried_still"; 
-dummy attachTo [player,[0.2,0.2,0]]; 
-dummy enableSimulation false; dummy setDir 180
-*/
-
-/* exit
-player playMove "AcinPercMrunSnonWnonDf_AmovPercMstpSnonWnonDnon";
-dummy playMove "AinjPfalMstpSnonWnonDnon_carried_Down"; 
-detach dummy; 
-dummy enableSimulation true;
-dummy setDir 270;
-[] spawn {
-    sleep 4.5;
-    dummy setPosWorld getPosWorld dummy;
-    player switchMove "";
-}
-*/

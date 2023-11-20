@@ -31,7 +31,7 @@ _unit addEventHandler ["AnimStateChanged", {
     
             _unit setPosWorld getPosWorld _unit;
 
-            if !(_unit getVariable ["FAM_CONSCIOUS",false]) then {
+            if !(_unit getVariable ["f_fam_conscious",false]) then {
 
                 // Set preferred animation.
                 _unit playMove "Unconscious"; 
@@ -53,7 +53,7 @@ _unit addEventHandler ["AnimStateChanged", {
 
 
 // this bit avoid a BI bug that removes all actions if you ragdoll while healing.
-if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["FAM_FLAG",false])}) then {
+if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["f_fam_flag",false])}) then {
 
     _unit setCaptive true;
     private _dmg = damage _unit;

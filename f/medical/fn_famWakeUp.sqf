@@ -8,7 +8,7 @@ params ["_unit"];
 // ====================================================================================
 
 // BROADCAST STATUS
-_unit setVariable ["FAM_CONSCIOUS",true,true];
+_unit setVariable ["f_fam_conscious",true,true];
 
 // ====================================================================================
 
@@ -19,28 +19,31 @@ for "_i" from 2 to 5 do {
 };
 if(local _unit) then
 {
-    // Remove temporary medical supplies 
-	if (_unit getVariable ["FAM_HASBANDAGE",false]) then {
-        _unit removeItem "bandage";
-		_unit setVariable ["FAM_HASBANDAGE",false];  
-    }; 
-	if (_unit getVariable ["FAM_HASFAK",false]) then {
-        _unit removeItem "firstAidKit";
-		_unit setVariable ["FAM_HASFAK",false];  
-    }; 
-
+    
     // return unit ammo.
-    private _mags = _unit getVariable ["FAM_wound_down_mags",magazines _unit];
+    private _mags = _unit getVariable ["f_fam_wound_down_mags",magazines _unit];
     {
         _unit addMagazine _x;
     } foreach _mags;
 
     // return unit items.
-    private _items = _unit getVariable ["FAM_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
+    private _items = _unit getVariable ["f_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
     {   
         _unit addItem _x;
         _unit assignItem _x;
     } foreach _items;
+
+    if (_unit getVariable ["f_fam_used_bandage",false]) then {
+        _unit removeItem "Bandage";
+        _unit setVariable ["f_fam_used_bandage",false];
+    };
+    if (_unit getVariable ["f_fam_used_fak",false]) then {
+        _unit removeItem "FirstAidKit";
+        _unit setVariable ["f_fam_used_fak",false];
+    };
+    // reset these
+    _unit setVariable ["f_fam_hasbandage",false,true];  
+    _unit setVariable ["f_fam_hasbandage",false,true];  
 
     // reset the screen effects
     [4] spawn f_fnc_famWoundedEffect;
@@ -64,7 +67,7 @@ if(local _unit) then
 
     } else {
 
-       _unit switchMove (_unit getVariable ["FAM_VEHICLE_ANIMATION",""]);
+       _unit switchMove (_unit getVariable ["f_fam_vehicle_animation",""]);
         
     };
 };
@@ -87,7 +90,7 @@ _unit spawn {
     _unit = _this;
     sleep 6;
 
-    if (_unit getVariable ["FAM_CONSCIOUS",true]) then {
+    if (_unit getVariable ["f_fam_conscious",true]) then {
         _unit setCaptive false;
         if (local _unit && isPlayer _unit) then {
             10 fadeSound 1;

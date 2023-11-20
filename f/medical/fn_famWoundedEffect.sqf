@@ -19,9 +19,9 @@ switch (_stage) do {
 		5 fadeSpeech 0.75;
 		5 fadeRadio 0.4;
 		_adjust = [0.01,1,0,[0,0,0,0],[1, 0.0008, 1,1],[1, 1, 1, 0]];
-		FAM_UncBlur ppEffectAdjust [0.5];
-		FAM_UncBlur ppEffectEnable true;
-		FAM_UncBlur ppEffectCommit 0;
+		f_fam_UncBlur ppEffectAdjust [0.5];
+		f_fam_UncBlur ppEffectEnable true;
+		f_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
 	};
 	case 1: {
@@ -30,9 +30,9 @@ switch (_stage) do {
 		5 fadeSpeech 0.75;
 		5 fadeRadio 0.4;
 		_adjust = [0.08,1,0,[0.05,0,0,0],[1, 0.0008, 1,1],[1, 1, 1, 0]];
-		FAM_UncBlur ppEffectAdjust [0.5];
-		FAM_UncBlur ppEffectEnable true;
-		FAM_UncBlur ppEffectCommit 0;
+		f_fam_UncBlur ppEffectAdjust [0.5];
+		f_fam_UncBlur ppEffectEnable true;
+		f_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
 
 	};
@@ -42,9 +42,9 @@ switch (_stage) do {
 		5 fadeSpeech 0.75;
 		5 fadeRadio 0.4;
 		_adjust = [0.10,1,0,[0.25,0,0,0.4],[1, 0.0008, 1,1],[1, 1, 1, 0]]; 
-		FAM_UncBlur ppEffectAdjust [0.5];
-		FAM_UncBlur ppEffectEnable true;
-		FAM_UncBlur ppEffectCommit 0;
+		f_fam_UncBlur ppEffectAdjust [0.5];
+		f_fam_UncBlur ppEffectEnable true;
+		f_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
 
 	};
@@ -54,9 +54,9 @@ switch (_stage) do {
 		5 fadeSpeech 0.95;
 		5 fadeRadio 0.8;
 		_adjust = [0.01,1,0,[0,0,0,0],[1, 0.0008, 1,1],[1, 1, 1, 0]];
-		FAM_UncBlur ppEffectAdjust [0.5];
-		FAM_UncBlur ppEffectEnable true;
-		FAM_UncBlur ppEffectCommit 0;
+		f_fam_UncBlur ppEffectAdjust [0.5];
+		f_fam_UncBlur ppEffectEnable true;
+		f_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
 
 	};
@@ -66,11 +66,11 @@ switch (_stage) do {
 		10 fadeSpeech 1;
 		10 fadeRadio 1;
 		_adjust = [1,1,0,[0,0,0,0],[1,1,1,1],[0,0,0,0]];
-		FAM_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
-		FAM_UncRadialBlur ppEffectCommit 1;  //2.5
-		FAM_UncBlur ppEffectAdjust [0];
-		FAM_UncBlur ppEffectCommit 1;  //2.5
-		FAM_UncBlur ppEffectEnable false;
+		f_fam_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
+		f_fam_UncRadialBlur ppEffectCommit 1;  //2.5
+		f_fam_UncBlur ppEffectAdjust [0];
+		f_fam_UncBlur ppEffectCommit 1;  //2.5
+		f_fam_UncBlur ppEffectEnable false;
 		5 enableChannel true;
 	};
 	case 5: {
@@ -79,11 +79,11 @@ switch (_stage) do {
 		10 fadeSpeech 1;
 		10 fadeRadio 1;
 		_adjust = [1,1,0,[0,0,0,0],[1,1,1,0],[0.5,0.5,0,0]];
-		FAM_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
-		FAM_UncRadialBlur ppEffectCommit 1;  //2.5
-		FAM_UncBlur ppEffectAdjust [0.1];
-		FAM_UncBlur ppEffectCommit 1;  //2.5
-		FAM_UncBlur ppEffectEnable false;
+		f_fam_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
+		f_fam_UncRadialBlur ppEffectCommit 1;  //2.5
+		f_fam_UncBlur ppEffectAdjust [0.1];
+		f_fam_UncBlur ppEffectCommit 1;  //2.5
+		f_fam_UncBlur ppEffectEnable false;
 		5 enableChannel true;
 	};
 	default {
@@ -92,11 +92,11 @@ switch (_stage) do {
 		10 fadeSpeech 1;
 		10 fadeRadio 1;
 		_adjust = [1,1,0,[0,0,0,0],[1,1,1,1],[0,0,0,0]];
-		FAM_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
-		FAM_UncRadialBlur ppEffectCommit 1;  //2.5
-		FAM_UncBlur ppEffectAdjust [0];
-		FAM_UncBlur ppEffectCommit 1;  //2.5
-		FAM_UncBlur ppEffectEnable false;
+		f_fam_UncRadialBlur ppEffectAdjust [0.0, 0.0, 0.5, 0.5];
+		f_fam_UncRadialBlur ppEffectCommit 1;  //2.5
+		f_fam_UncBlur ppEffectAdjust [0];
+		f_fam_UncBlur ppEffectCommit 1;  //2.5
+		f_fam_UncBlur ppEffectEnable false;
 		5 enableChannel true;
 	};
 };
@@ -104,11 +104,11 @@ switch (_stage) do {
 // ====================================================================================
 
 // DO EFFECT 
-FAM_UncCC ppEffectAdjust _adjust; 
-FAM_UncCC ppEffectEnable true; 
-FAM_UncCC ppEffectCommit 1;
-FAM_UncCC ppEffectEnable true;
-FAM_UncCC ppEffectForceInNVG true;
+f_fam_UncCC ppEffectAdjust _adjust; 
+f_fam_UncCC ppEffectEnable true; 
+f_fam_UncCC ppEffectCommit 1;
+f_fam_UncCC ppEffectEnable true;
+f_fam_UncCC ppEffectForceInNVG true;
 
 
 

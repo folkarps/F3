@@ -43,4 +43,4 @@ Diagnosis will report whether the individual is bleeding, awake, and their overa
 "]];
 
 // Set a variable so this won't be generated again by subsequent inits
-f_var_fam_briefingDone = true;
+f_fam_briefingDone = true;

@@ -47,8 +47,8 @@ waitUntil {
 	(
 		isNil "_dragged_unit" //unit is released
 		|| !(_unit getVariable ["f_wound_being_dragged", false])
-		|| (_unit getVariable ["FAM_CONSCIOUS",true]) // unit isn't incapacitated anymore
-		|| !(_dragger getVariable ["FAM_CONSCIOUS",true]) // dragger is incapacitated
+		|| (_unit getVariable ["f_fam_conscious",true]) // unit isn't incapacitated anymore
+		|| !(_dragger getVariable ["f_fam_conscious",true]) // dragger is incapacitated
 		|| !alive _unit
 		|| !alive _dragger
 		|| !(isPlayer _dragger)
@@ -72,7 +72,7 @@ if (f_param_debugMode == 1) then {
 };
 
 if (_isDragger) then {
-	if !(_dragger getVariable ["FAM_CONSCIOUS",true]) then {
+	if !(_dragger getVariable ["f_fam_conscious",true]) then {
 		// _dragger switchMove ANIM_WOUNDED;
 	} else {
 	    if(vehicle _dragger == _dragger) then {

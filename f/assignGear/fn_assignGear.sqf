@@ -274,6 +274,16 @@ if (_isMan) then {
 		_unit addItem _firstaid;
 	};
 
+	// extras for riflemen.
+	if (_typeofUnit in ["aar","r"]) then {
+		for "_i" from 1 to 2 do {
+			_unit addItem _firstaid;
+		};
+		for "_i" from 1 to 2 do {
+			_unit addItem _bandage;
+		};
+	};
+
 	// Handle weapon attachments
 	#include "f_assignGear_attachments.sqf";
 
