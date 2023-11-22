@@ -4,14 +4,34 @@ private _actionID = _unit addAction [
 	"Place EOD marker",	// title
 	{
 		params ["_target", "_caller"]; // script
+		
 		_caller playActionNow "PutDown";
-		private _flag = createVehicle ["FlagMarker_01_F", _caller modelToWorld [0,1.5,0], [], 0, "CAN_COLLIDE"];
-		if ((getPos _flag select 2) > 0.5) then {
-			deleteVehicle _flag;
-		} else {
-			playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,getPosASL _flag, 2, 1, 25];
+		
+		// Aim about waist height
+		private _position = _caller modelToWorldWorld [0,1.5,1];
+		private _positionATL = ASLtoATL _position;
+		private _heightATL = _positionATL select 2;
+		// Can't place flag below terrain
+		if (_heightATL < -2.5) exitWith {};
+		// If it's not too far below terrain, adjust up
+		if (_heightATL < 0.1) then {
+			_position = _position vectorAdd [0,0, - _heightATL];
+		};
+		// Determine whether a valid surface is within vertical range
+		private _intersects = lineIntersectsSurfaces [_position, _position vectorAdd [0,0,-2.5], _caller, objNull, true, 1, "GEOM"];
+		if (count _intersects > 0) then {
+			private _intersection = _intersects select 0;
+			// Can't place on or in vehicles
+			if (["Air","LandVehicle","Ship"] findIf {(_intersection select 2) isKindOf _x} > -1) exitWith {};
+			
+			_position = _intersection select 0;
+			private _flag = createVehicle ["FlagMarker_01_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+			_flag setPosASL _position;
+			
+			playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,_position, 2, 1, 25];
 			_flag setVectorUp [0,0,1];
 			_flag setDir (getDir _caller - 90);
+			// Add removal action
 			[_flag,[
 				"Remove EOD marker",
 				{
@@ -29,6 +49,7 @@ private _actionID = _unit addAction [
 				3
 			]] remoteExec ["addAction",0,_flag];
 		};
+
 	},
 	nil,		// arguments
 	1.5,		// priority
