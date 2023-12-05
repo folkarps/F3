@@ -17,7 +17,12 @@ f_fnc_coldBreathLoop = compileFinal {
 };
 
 {
-   _x spawn {
-     
-  };
+   _x spawn f_fnc_coldBreathLoop;
 } forEach allUnits;
+
+addMissionEventHandler ["EntityCreated",{
+	params ["_entity"];
+	if (_entity isKindOf "CAManBase") then {
+		_entity spawn f_fnc_coldBreathLoop;
+	};
+}];
