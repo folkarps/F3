@@ -35,16 +35,16 @@ if (isServer) then {
 	#include "f_channelsList.sqf";
 	
 	f_var_radioChannels = createHashmap;
-	f_var_radioChannels set [1, [_channelName1,_channelColour1, (_channelList1 apply {toLower _x})]];
-	f_var_radioChannels set [2, [_channelName2,_channelColour2, (_channelList2 apply {toLower _x})]];
-	f_var_radioChannels set [3, [_channelName3,_channelColour3, (_channelList3 apply {toLower _x})]];
-	f_var_radioChannels set [4, [_channelName4,_channelColour4, (_channelList4 apply {toLower _x})]];
-	f_var_radioChannels set [5, [_channelName5,_channelColour5, (_channelList5 apply {toLower _x})]];
-	f_var_radioChannels set [6, [_channelName6,_channelColour6, (_channelList6 apply {toLower _x})]];
-	f_var_radioChannels set [7, [_channelName7,_channelColour7, (_channelList7 apply {toLower _x})]];
-	f_var_radioChannels set [8, [_channelName8,_channelColour8, (_channelList8 apply {toLower _x})]];
-	f_var_radioChannels set [9, [_channelName9,_channelColour9, (_channelList9 apply {toLower _x})]];
-	f_var_radioChannels set [10, [_channelName10,_channelColour10,(_channelList10 apply {toLower _x})]];
+	f_var_radioChannels set [1, [_channelName1,_channelColour1, (_channelList1 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [2, [_channelName2,_channelColour2, (_channelList2 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [3, [_channelName3,_channelColour3, (_channelList3 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [4, [_channelName4,_channelColour4, (_channelList4 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [5, [_channelName5,_channelColour5, (_channelList5 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [6, [_channelName6,_channelColour6, (_channelList6 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [7, [_channelName7,_channelColour7, (_channelList7 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [8, [_channelName8,_channelColour8, (_channelList8 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [9, [_channelName9,_channelColour9, (_channelList9 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [10, [_channelName10,_channelColour10,(_channelList10 apply {toLowerANSI _x})]];
 	
 	// You can also tag a specific unit or vehicle for access to specific channels by setting a variable on them:
 	// _unit setVariable ["f_var_radioChannelsObjectSpecific",[1,2,3],true];
