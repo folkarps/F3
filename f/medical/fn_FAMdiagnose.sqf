@@ -27,7 +27,7 @@ if (_unit getVariable ["f_fam_conscious",true]) then {
 
 if (!alive _unit) exitWith {
 	_color = [0.7,0.7,0.7,1];
-	_healthstate = "Dead";
+	_healthstate = selectRandomWeighted ["Dead",1,"Expired",0.01,"Deceased",0.01,"Dead, Jim",0.01,"Croaked",0.01,"Perished",0.01];
 	_bleed = "";
 	[_healthState,_bleed,_color]
 };
