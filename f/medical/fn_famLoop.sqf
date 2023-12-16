@@ -31,12 +31,12 @@ while {alive _unit && {local _unit}} do {
 	if ((_unit getVariable ["f_fam_forcedown",false]) && {_unit getVariable ["f_fam_conscious",true]}) then {
 
 		_unit call f_fnc_famPassOut;
-		_nextSave = time + 10; 
+		_nextSave = time + 20; 
 	};
 	
 	_unit setVariable ["f_fam_forcedown",false];
 
-	if (damage _unit >= 0.5 && {_unit getVariable ["f_fam_conscious",true]}) then {
+	if (damage _unit >= 0.51 && {_unit getVariable ["f_fam_conscious",true]}) then {
 
 		// desaturate screen to indicate you risk passing out.
 		if (!_desaturate && {isPlayer _unit}) then {
@@ -53,7 +53,7 @@ while {alive _unit && {local _unit}} do {
 			if (_save >= _dc) then {
 
 				_unit call f_fnc_famPassOut;
-				_nextSave = time + 20; 
+				_nextSave = time + 40; 
 			};
 
 
@@ -185,3 +185,4 @@ if (f_param_debugMode == 1) then
 // missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
 _unit enableSimulation true;
 forceRespawn _unit;
+

@@ -132,6 +132,8 @@ class F // Defines the "owner"
 		class famReset{};
 		class famMedSwap{};
 		class famBriefing{};
+		class FAMdiagnose{};
+		class FAMdiagnoseInitUI{};
 	};
 	class disableThermals
 	{

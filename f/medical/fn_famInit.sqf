@@ -74,12 +74,12 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
         };
 
         // information for using vanilla heal on others.
-        ["_injured", "_healer"] spawn {
-            _damage = damage _injured;
+        [_injured, _healer] spawn {
             params ["_injured", "_healer"];
+            _damage = damage _injured;
             waitUntil{sleep 1; damage _injured <= _damage};
 
-            if (damage _injured == 0) then {
+            if (_healer getUnitTrait "Medic") then {
                 hint "Patient healed with Medikit";
             } else {
                 hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _healer select {_x == "FirstAidKit"})];
@@ -91,6 +91,26 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
 
 } forEach playableUnits;
 
+// ====================================================================================
+// Initialize UI stuff
+
+["f_layer_FAMdiagnoseUI"] call BIS_fnc_rscLayer;
+["f_layer_FAMdiagnoseSelfUI"] call BIS_fnc_rscLayer;
+
+0 spawn {
+	while {uisleep 0.1; true} do {
+		waitUntil {uisleep 0.05; !isNull (findDisplay 602)};
+		"f_layer_FAMdiagnoseSelfUI" cutRsc ["f_FAMdiagnoseUI","PLAIN"];
+
+		waitUntil {uisleep 0.05; isNull (findDisplay 602)};
+		"f_layer_FAMdiagnoseSelfUI" cutFadeOut 0;
+	};
+};
+
+// ====================================================================================
+
+// Add a briefing tab explaining the system.
 if (isNil "f_fam_briefingDone") then {
 	[] call f_fnc_famBriefing;
 };
+

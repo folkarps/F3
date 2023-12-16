@@ -76,6 +76,9 @@ if(local _unit) then
 if (damage _unit >= 1) exitWith {};
 // ====================================================================================
 
+// Clear messages as they wake up.
+titleText ["","PLAIN"];
+
 // DELAYED RESETS
 // Only set captive false when they fire...
 _unit addEventHandler ["Fired", { 

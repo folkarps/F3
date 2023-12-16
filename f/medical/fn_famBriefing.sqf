@@ -36,7 +36,7 @@ If you have significant wounds, you may pass out.
 <br/><br/>
 <font size='18'>DIAGNOSING</font>
 <br/>
-You can diagnose yourself by lowering your weapon. Diagnose others by using an add-action on their player.
+You can diagnose yourself opening your inventory. Diagnose others by using an add-action on their player.
 <br/>
 <br/>
 Diagnosis will report whether the individual is bleeding, awake, and their overall health. Or it will tell you that the individual has died...

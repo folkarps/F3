@@ -85,6 +85,11 @@ for "_i" from 2 to 5 do {
 
 // ====================================================================================
 
+[] spawn {
+    sleep 3;
+    titleText ["You have passed out...","PLAIN"];
+};
+
 // VISUAL EFFECTS
 // Create a loop for the wounded visual effects. 
 _unit spawn {
