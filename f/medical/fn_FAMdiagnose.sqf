@@ -26,7 +26,7 @@ if (_unit getVariable ["f_fam_conscious",true]) then {
 };
 
 if (!alive _unit) exitWith {
-	_color = [0.9,0.9,0.9,1];
+	_color = [0.7,0.7,0.7,1];
 	_healthstate = "Dead";
 	_bleed = "";
 	[_healthState,_bleed,_color]
