@@ -361,3 +361,9 @@ class CfgRemoteExec
             mode = 2;
         };
 };
+
+#include "f\common\f_ui_defines.hpp"
+class RscTitles
+{
+	#include "f\medical\f_FAMUI.hpp"
+};
