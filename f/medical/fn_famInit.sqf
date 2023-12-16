@@ -32,7 +32,7 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
  
     if (!(_x getVariable ["f_fam_actions",false]) && {hasInterface}) then {
             
-            [_x, f_fnc_famAddAllActions ] remoteExec ["spawn", 0, _x];
+            [_x] remoteExec ["f_fnc_famAddAllActions", 0, _x];
             _x setVariable ["f_fam_actions",true,true];
             
         };
