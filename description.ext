@@ -362,8 +362,16 @@ class CfgRemoteExec
         };
 };
 
+// ============================================================================================
+
+// F3 - GUI elements
+// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
+
+// This line includes some basic definitions of UI constants. They are useful for all custom UIs.
 #include "f\common\f_ui_defines.hpp"
+
 class RscTitles
 {
+	// UI elements for the medical system
 	#include "f\medical\f_FAMUI.hpp"
 };
