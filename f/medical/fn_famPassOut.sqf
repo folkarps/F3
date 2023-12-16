@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Pass Out  Effects component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -23,7 +23,7 @@ playSound3d [_sound,_unit];
 // If in a vehicle
 if (vehicle _unit != _unit) then {
   
-    _unit setVariable ["f_fam_vehicle_animation",animationstate _unit];
+    _unit setVariable ["f_var_fam_vehicle_animation",animationstate _unit];
     _animCfg = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
 
     if (isArray (_animCfg >> "interpolateTo") && {count getArray (_animCfg >> "interpolateTo") != 0}) then {
@@ -45,7 +45,7 @@ if (vehicle _unit != _unit) then {
 
 // INSTANT EFFECTS
 // Broadcast unit is unconscious.
-_unit setVariable ["f_fam_conscious",false,true]; 
+_unit setVariable ["f_var_fam_conscious",false,true]; 
 
 // If the unit is local and a player, remove their magazines (otherwise they can throw grenades while down)
 if(local _unit && isPlayer _unit) then
@@ -53,18 +53,18 @@ if(local _unit && isPlayer _unit) then
 
     // keep a bandage and FAK in unit inventory so they can be picked up
 	if ("Bandage" in magazines _unit) then {
-		_unit setVariable ["f_fam_hasbandage",true,true];  
+		_unit setVariable ["f_var_fam_hasbandage",true,true];  
     }; 
 	if ("FirstAidKit" in items _unit) then {
-		_unit setVariable ["f_fam_hasfak",true,true];  
+		_unit setVariable ["f_var_fam_hasfak",true,true];  
     }; 
 
-    _unit setVariable ["f_fam_wound_down_mags",magazines _unit];
+    _unit setVariable ["f_var_fam_wound_down_mags",magazines _unit];
     {
         _unit removeMagazine _x;
     } foreach magazines _unit;
 
-    _unit setVariable ["f_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
+    _unit setVariable ["f_var_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
     {
         _unit unassignItem _x;
         _unit removeItem _x;
@@ -98,7 +98,7 @@ _unit spawn {
     private _stage = 0;
     private _duration = 4;
 
-    while {!(_unit getVariable ["f_fam_conscious",true]) && isPlayer _unit} do
+    while {!(_unit getVariable ["f_var_fam_conscious",true]) && isPlayer _unit} do
     {   
 
         [_stage] call f_fnc_famWoundedEffect;
@@ -111,7 +111,7 @@ _unit spawn {
             _duration = _duration - 1;
         };
 
-        if (_unit getVariable ["f_fam_conscious",true]) exitWith {
+        if (_unit getVariable ["f_var_fam_conscious",true]) exitWith {
             // reset the PP
             [4] spawn f_fnc_famWoundedEffect;
         };

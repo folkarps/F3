@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Wake Up component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -8,7 +8,7 @@ params ["_unit"];
 // ====================================================================================
 
 // BROADCAST STATUS
-_unit setVariable ["f_fam_conscious",true,true];
+_unit setVariable ["f_var_fam_conscious",true,true];
 
 // ====================================================================================
 
@@ -21,29 +21,29 @@ if(local _unit) then
 {
     
     // return unit ammo.
-    private _mags = _unit getVariable ["f_fam_wound_down_mags",magazines _unit];
+    private _mags = _unit getVariable ["f_var_fam_wound_down_mags",magazines _unit];
     {
         _unit addMagazine _x;
     } foreach _mags;
 
     // return unit items.
-    private _items = _unit getVariable ["f_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
+    private _items = _unit getVariable ["f_var_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
     {   
         _unit addItem _x;
         _unit assignItem _x;
     } foreach _items;
 
-    if (_unit getVariable ["f_fam_used_bandage",false]) then {
+    if (_unit getVariable ["f_var_fam_used_bandage",false]) then {
         _unit removeItem "Bandage";
-        _unit setVariable ["f_fam_used_bandage",false];
+        _unit setVariable ["f_var_fam_used_bandage",false];
     };
-    if (_unit getVariable ["f_fam_used_fak",false]) then {
+    if (_unit getVariable ["f_var_fam_used_fak",false]) then {
         _unit removeItem "FirstAidKit";
-        _unit setVariable ["f_fam_used_fak",false];
+        _unit setVariable ["f_var_fam_used_fak",false];
     };
     // reset these
-    _unit setVariable ["f_fam_hasbandage",false,true];  
-    _unit setVariable ["f_fam_hasbandage",false,true];  
+    _unit setVariable ["f_var_fam_hasbandage",false,true];  
+    _unit setVariable ["f_var_fam_hasbandage",false,true];  
 
     // reset the screen effects
     [4] spawn f_fnc_famWoundedEffect;
@@ -67,7 +67,7 @@ if(local _unit) then
 
     } else {
 
-       _unit switchMove (_unit getVariable ["f_fam_vehicle_animation",""]);
+       _unit switchMove (_unit getVariable ["f_var_fam_vehicle_animation",""]);
         
     };
 };
@@ -93,7 +93,7 @@ _unit spawn {
     _unit = _this;
     sleep 6;
 
-    if (_unit getVariable ["f_fam_conscious",true]) then {
+    if (_unit getVariable ["f_var_fam_conscious",true]) then {
         _unit setCaptive false;
         if (local _unit && isPlayer _unit) then {
             10 fadeSound 1;

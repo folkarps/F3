@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Ragdoll Effects component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -21,7 +21,7 @@ _unit addEventHandler ["AnimStateChanged", {
             systemChat "belly";
         };
         // delay dragging until later
-        _unit setVariable ['f_wound_being_dragged',true,true];
+        _unit setVariable ['f_var_wound_being_dragged',true,true];
 
         [_unit, _thisEvent, _thisEventHandler] spawn {
 
@@ -31,7 +31,7 @@ _unit addEventHandler ["AnimStateChanged", {
     
             _unit setPosWorld getPosWorld _unit;
 
-            if !(_unit getVariable ["f_fam_conscious",false]) then {
+            if !(_unit getVariable ["f_var_fam_conscious",false]) then {
 
                 // Set preferred animation.
                 _unit playMove "Unconscious"; 
@@ -40,7 +40,7 @@ _unit addEventHandler ["AnimStateChanged", {
                 // Wait a little for animation to set, then disable simulation to lock player.
                 sleep 2;
                 _unit enableSimulation false;
-                _unit setVariable ['f_wound_being_dragged',false,true];
+                _unit setVariable ['f_var_wound_being_dragged',false,true];
 
             };
             // Remove this eventHandler once it happens.
@@ -53,7 +53,7 @@ _unit addEventHandler ["AnimStateChanged", {
 
 
 // this bit avoid a BI bug that removes all actions if you ragdoll while healing.
-if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["f_fam_flag",false])}) then {
+if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["f_var_fam_flag",false])}) then {
 
     _unit setCaptive true;
     private _dmg = damage _unit;

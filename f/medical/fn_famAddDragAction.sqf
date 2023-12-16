@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Drag Action adder
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -20,8 +20,8 @@ private _drag_action_cond = str {
 	//_target (object to which action is attached to)
 	// _this (caller/executing person)
 	_target distance _this < 2 && {
-		!(_target getVariable ['f_fam_conscious',true]) && {
-			!(_target getVariable ['f_wound_being_dragged',false])
+		!(_target getVariable ['f_var_fam_conscious',true]) && {
+			!(_target getVariable ['f_var_wound_being_dragged',false])
 		}
 	}
 };

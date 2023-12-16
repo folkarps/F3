@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Diagnose Action adder
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -14,7 +14,7 @@ private _diag = {
 
 	// Exit if target is dead.
 	if (!alive _target) exitWith {
-		_tgt = _target getVariable ["f_fam_corpse","Unknown"];
+		_tgt = _target getVariable ["f_var_fam_corpse","Unknown"];
 		hint format ["%1 is dead.", _tgt];
 
 	};
@@ -32,12 +32,12 @@ private _diag = {
 	private _awake = true;
 	private _injuries = "";
 
-	if (_target getVariable ["f_fam_bleed",false]) then {
+	if (_target getVariable ["f_var_fam_bleed",false]) then {
 		_bleed = "<t color='#fb3830'>Bleeding<br/></t>";
 	} else {
 		//_bleed = "<br/>Not Bleeding";
 	};
-	if (_target getVariable ["f_fam_conscious",true]) then {
+	if (_target getVariable ["f_var_fam_conscious",true]) then {
 		_awake = true;
 		//_conscious = "<br/>Conscious";
 	} else {

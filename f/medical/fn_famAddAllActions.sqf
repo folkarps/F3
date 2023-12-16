@@ -1,3 +1,7 @@
+// FA3 FA Medical - Actions remoteExec wrapper
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+// ====================================================================================
+
 params ["_unit"];
 
 if (!hasInterface) exitWith {};

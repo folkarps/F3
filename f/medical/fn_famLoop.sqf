@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Status Update Loop component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -23,20 +23,20 @@ while {alive _unit && {local _unit}} do {
 	
 	// PASSOUT TEST 
 	// Force Unit Down above damage threshold. 
-	if (damage _unit >= 0.9 && {_unit getVariable ["f_fam_conscious",true]}) then { 
+	if (damage _unit >= 0.9 && {_unit getVariable ["f_var_fam_conscious",true]}) then { 
 
-		_unit setVariable ["f_fam_forcedown",true];
+		_unit setVariable ["f_var_fam_forcedown",true];
 	}; 
 
-	if ((_unit getVariable ["f_fam_forcedown",false]) && {_unit getVariable ["f_fam_conscious",true]}) then {
+	if ((_unit getVariable ["f_var_fam_forcedown",false]) && {_unit getVariable ["f_var_fam_conscious",true]}) then {
 
 		_unit call f_fnc_famPassOut;
 		_nextSave = time + 20; 
 	};
 	
-	_unit setVariable ["f_fam_forcedown",false];
+	_unit setVariable ["f_var_fam_forcedown",false];
 
-	if (damage _unit >= 0.51 && {_unit getVariable ["f_fam_conscious",true]}) then {
+	if (damage _unit >= 0.51 && {_unit getVariable ["f_var_fam_conscious",true]}) then {
 
 		// desaturate screen to indicate you risk passing out.
 		if (!_desaturate && {isPlayer _unit}) then {
@@ -67,7 +67,7 @@ while {alive _unit && {local _unit}} do {
 // ====================================================================================
 
 	// WAKEUP TEST 
-	if (!(_unit getVariable ["f_fam_conscious",true])) then {
+	if (!(_unit getVariable ["f_var_fam_conscious",true])) then {
 
 		// wake up if you have been treated with a FAK or by Medic.
 		if (damage _unit <= 0.25) exitWith {	
@@ -111,11 +111,11 @@ while {alive _unit && {local _unit}} do {
 	
 		if (f_param_debugMode == 1 && {isPlayer _unit}) then
 		{
-			systemChat format ["(medical loop): Unit %1 | Current Damage %2 | Bleed %3 | Conscious %4",_unit,(damage _unit) toFixed 4,_unit getVariable ["f_fam_bleed",0],_unit getVariable ["f_fam_conscious",true]];
+			systemChat format ["(medical loop): Unit %1 | Current Damage %2 | Bleed %3 | Conscious %4",_unit,(damage _unit) toFixed 4,_unit getVariable ["f_var_fam_bleed",0],_unit getVariable ["f_var_fam_conscious",true]];
 		};
 
 		// If Unit is bleeding, apply bleed damage.
-		if (_unit getVariable ["f_fam_bleed",false]) then {  
+		if (_unit getVariable ["f_var_fam_bleed",false]) then {  
 
 				if (_currentDamage > 0.95) then {
 					_newDamage = _currentDamage + selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
@@ -143,7 +143,7 @@ while {alive _unit && {local _unit}} do {
 // ====================================================================================
 
 	// STAMINA FEATURE
-	if (!(_unit getVariable ["f_fam_flag",false])) then { // this check allows the medic animation speed to change while healing.
+	if (!(_unit getVariable ["f_var_fam_flag",false])) then { // this check allows the medic animation speed to change while healing.
 		_coef = 0.90 - (getFatigue _unit * 0.1);          
 		_unit setAnimSpeedCoef _coef;  
 	};
@@ -153,7 +153,7 @@ while {alive _unit && {local _unit}} do {
 	if (_damage_last_tick - damage _unit > 0.1) then {
 
 		// split added here to handle vanilla healing, and to keep self heal notifications to hints, healed by others as title text.
-		if !(_unit getVariable ["f_fam_selffak",false]) then {
+		if !(_unit getVariable ["f_var_fam_selffak",false]) then {
 			if (damage _unit == 0) then {
 				titleText ["You have been fully healed by a Medic","PLAIN"];
 			} else {
@@ -165,7 +165,7 @@ while {alive _unit && {local _unit}} do {
 			} else {
 				hint format ["Healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _unit select {_x == "FirstAidKit"})]
 			};
-			_unit setVariable ["f_fam_selffak", false];
+			_unit setVariable ["f_var_fam_selffak", false];
 		};
 	};
 

@@ -1,4 +1,4 @@
-// FAM - Briefing Generator component
+// FA3 FA Medical - Briefing Generator component
 /*
 This function adds a briefing page to explain the Folk ARPS Medical System
 */
@@ -43,4 +43,4 @@ Diagnosis will report whether the individual is bleeding, awake, and their overa
 "]];
 
 // Set a variable so this won't be generated again by subsequent inits
-f_fam_briefingDone = true;
+f_var_fam_briefingDone = true;

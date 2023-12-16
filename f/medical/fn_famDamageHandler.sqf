@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Damage Handler
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -47,13 +47,13 @@ _eh = _unit addEventHandler ["HandleDamage",{
 */
 	// Down you on a big hit.
     if (_selection != "" && {_newDamage >= 0.8}) then { 
-		_unit setVariable ["f_fam_forcedown",true];
+		_unit setVariable ["f_var_fam_forcedown",true];
 		
 	};
 
 	// Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
-	if (_projectile != "" && _damage >= 0 && {!(_unit getVariable ["f_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
-		_unit setVariable ["f_fam_bleed",true,true];
+	if (_projectile != "" && _damage >= 0 && {!(_unit getVariable ["f_var_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
+		_unit setVariable ["f_var_fam_bleed",true,true];
 		_unit setBleedingRemaining 400;
 	};
 
@@ -92,4 +92,4 @@ _eh = _unit addEventHandler ["HandleDamage",{
 
 }];
 
-_unit setVariable ["f_reduceDamageEH",_eh];
+_unit setVariable ["f_var_reduceDamageEH",_eh];

@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Medical Item Swapper component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

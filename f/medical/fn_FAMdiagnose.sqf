@@ -1,3 +1,7 @@
+// FA3 FA Medical - Diagnosis component
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+// ====================================================================================
+
 params ["_unit"];
 
 // insert check of unit's vitals here
@@ -12,12 +16,12 @@ private _healthState = "";
 private _color = [1,1,0.302,1];
 
 
-if (_unit getVariable ["f_fam_bleed",false]) then {
+if (_unit getVariable ["f_var_fam_bleed",false]) then {
 	_bleed = "<t color='#fb3830'>Bleeding<br/></t>";
 } else {
 	_bleed = "<br/>Not Bleeding";
 };
-if (_unit getVariable ["f_fam_conscious",true]) then {
+if (_unit getVariable ["f_var_fam_conscious",true]) then {
 	_awake = true;
 	//_conscious = "<br/>Conscious";
 } else {

@@ -1,27 +1,27 @@
-// F3 FA Medical
+// FA3 FA Medical - Main Init component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
 //global stuff:
 
-f_fam_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
-f_fam_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
-f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
+f_var_fam_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
+f_var_fam_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
+f_var_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
 
 {
     if (local _x) then { 
     
     // MEDICAL VARIABLES
     // These become global later.
-    _x setVariable ["f_fam_bleed",false]; 
-    _x setVariable ["f_fam_conscious",true]; 
+    _x setVariable ["f_var_fam_bleed",false]; 
+    _x setVariable ["f_var_fam_conscious",true]; 
 
     // These are local only.
-    _x setVariable ["f_fam_forcedown",false]; 
-    _x setVariable ["f_fam_hasfak",false]; 
-    _x setVariable ["f_fam_hasbandage",false]; 
-    _x getVariable ["f_fam_flag",false];
-    _x setVariable ["f_fam_actions",false];
+    _x setVariable ["f_var_fam_forcedown",false]; 
+    _x setVariable ["f_var_fam_hasfak",false]; 
+    _x setVariable ["f_var_fam_hasbandage",false]; 
+    _x getVariable ["f_var_fam_flag",false];
+    _x setVariable ["f_var_fam_actions",false];
 
     [_x] spawn f_fnc_famLoop; 
     [_x] spawn f_fnc_famDamageHandler;
@@ -30,10 +30,10 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
     // Add actions for this player on everyone else's machine.
     // These are also executed for JIPed players
  
-    if (!(_x getVariable ["f_fam_actions",false]) && {hasInterface}) then {
+    if (!(_x getVariable ["f_var_fam_actions",false]) && {hasInterface}) then {
             
             [_x] remoteExec ["f_fnc_famAddAllActions", 0, _x];
-            _x setVariable ["f_fam_actions",true,true];
+            _x setVariable ["f_var_fam_actions",true,true];
             
         };
     };
@@ -45,7 +45,7 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
         // This occurs after death, make sure that none of the wounded affects carry over.
 
         // Give them their gear back
-        if !(_unit getVariable ["f_fam_conscious",true]) then {
+        if !(_unit getVariable ["f_var_fam_conscious",true]) then {
             _unit call f_fnc_famWakeUp;
         }; 
 
@@ -60,7 +60,7 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
         };
 
         // store name on corpse for future diagnosis.
-        _unit setVariable ["f_fam_corpse",name _unit,true];
+        _unit setVariable ["f_var_fam_corpse",name _unit,true];
 
     }];
 
@@ -70,7 +70,7 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
         // notification correction for self FAK usage.
         params ["_injured", "_healer"];
         if (_injured == _healer) exitWith { 
-            _healer setVariable ["f_fam_selffak", true];
+            _healer setVariable ["f_var_fam_selffak", true];
         };
 
         // information for using vanilla heal on others.
@@ -110,7 +110,7 @@ f_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
 // ====================================================================================
 
 // Add a briefing tab explaining the system.
-if (isNil "f_fam_briefingDone") then {
+if (isNil "f_var_fam_briefingDone") then {
 	[] call f_fnc_famBriefing;
 };
 

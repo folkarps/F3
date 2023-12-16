@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Dragging handler
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -23,7 +23,7 @@ if (_isDragger) then {
 			["_ID", -1, [0]],
 			["_arguments", nil]
 		];
-		_caller setVariable ["f_wound_dragging",nil,true];
+		_caller setVariable ["f_var_wound_dragging",nil,true];
 	}, nil, 6, false, true, "", "true"];
 	_dragger playMoveNow "AcinPknlMstpSnonWnonDnon";
 } else {
@@ -34,8 +34,8 @@ if (_isDragger) then {
 //setting these here to prevent race cconditions
 //although there will be a race condition between the 2 different execs, if the waitUntil
 //on the target finishes before we reach here (at the dragger), which really should never happen.
-_dragger setVariable ["f_wound_dragging",      _unit, false];
-_unit    setVariable ["f_wound_being_dragged", true,  false];
+_dragger setVariable ["f_var_wound_dragging",      _unit, false];
+_unit    setVariable ["f_var_wound_being_dragged", true,  false];
 
 // ====================================================================================
 
@@ -43,12 +43,12 @@ _unit    setVariable ["f_wound_being_dragged", true,  false];
 private _dragged_unit = nil;
 waitUntil {
 	sleep 0.1;
-	_dragged_unit =  _dragger getVariable ["f_wound_dragging",nil];
+	_dragged_unit =  _dragger getVariable ["f_var_wound_dragging",nil];
 	(
 		isNil "_dragged_unit" //unit is released
-		|| !(_unit getVariable ["f_wound_being_dragged", false])
-		|| (_unit getVariable ["f_fam_conscious",true]) // unit isn't incapacitated anymore
-		|| !(_dragger getVariable ["f_fam_conscious",true]) // dragger is incapacitated
+		|| !(_unit getVariable ["f_var_wound_being_dragged", false])
+		|| (_unit getVariable ["f_var_fam_conscious",true]) // unit isn't incapacitated anymore
+		|| !(_dragger getVariable ["f_var_fam_conscious",true]) // dragger is incapacitated
 		|| !alive _unit
 		|| !alive _dragger
 		|| !(isPlayer _dragger)
@@ -64,15 +64,15 @@ if (_isDragger) then {
 	detach _unit;
 };
 
-_dragger setVariable ["f_wound_dragging", nil, true];
-_unit    setVariable ["f_wound_being_dragged", false, true];
+_dragger setVariable ["f_var_wound_dragging", nil, true];
+_unit    setVariable ["f_var_wound_being_dragged", false, true];
 
 if (f_param_debugMode == 1) then {
     diag_log format ["releasing unit on %1", ["target", "dragger"] select _isDragger];
 };
 
 if (_isDragger) then {
-	if !(_dragger getVariable ["f_fam_conscious",true]) then {
+	if !(_dragger getVariable ["f_var_fam_conscious",true]) then {
 		// _dragger switchMove ANIM_WOUNDED;
 	} else {
 	    if(vehicle _dragger == _dragger) then {

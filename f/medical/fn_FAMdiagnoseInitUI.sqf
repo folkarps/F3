@@ -1,3 +1,7 @@
+// FA3 FA Medical - Diagnosis UI generator
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+// ====================================================================================
+
 params ["_controlGroup"];
 
 private _unit = objNull;

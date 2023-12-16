@@ -1,4 +1,4 @@
-// F3 FA Medical
+// FA3 FA Medical - Bandage Action adder
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -21,7 +21,7 @@ private _bdgCodeStart = {
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
 
 	// this is needed to protect against BI bugs that remove all actions.
-	_caller setVariable ["f_fam_flag",true];
+	_caller setVariable ["f_var_fam_flag",true];
 
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
@@ -61,7 +61,7 @@ private _bdgCodeStart = {
 	}; 
 
 	// Let the wounded know someone is trying to save them. 
-	if !(_target getVariable ["f_fam_conscious",true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; 
+	if !(_target getVariable ["f_var_fam_conscious",true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; 
 }; 
 
 // Progress Code
@@ -74,7 +74,7 @@ private _bdgCodeComp = {
 	params ["_target", "_caller", "_actionId", "_arguments"]; 
 	
 	// this is needed to protect against BI bugs that remove all actions.
-	_caller setVariable ["f_fam_flag",false];
+	_caller setVariable ["f_var_fam_flag",false];
 
 	if ("Bandage" in magazines _caller) then {
 		_caller removeItem "Bandage"; // It costs a bandage to stop bleeding.
@@ -86,7 +86,7 @@ private _bdgCodeComp = {
 	};
 	[["You are no longer bleeding", "PLAIN"]] remoteExec ["titleText",_target];
 
-	_target setVariable ["f_fam_bleed",false,true]; // Sets BLEED to NOT
+	_target setVariable ["f_var_fam_bleed",false,true]; // Sets BLEED to NOT
 	[_target,0] remoteExec ["setBleedingRemaining",_target]; 
 
 }; 
@@ -96,7 +96,7 @@ private _bdgCodeInt = {
 	params ["_target", "_caller", "_actionId", "_arguments"];
 
 	// this is needed to protect against BI bugs that remove all actions.
-	_caller setVariable ["f_fam_flag",false];
+	_caller setVariable ["f_var_fam_flag",false];
 
 	// Exit animation 
 	if (animationState _caller find "ppne" != -1) then { 
@@ -121,7 +121,7 @@ if (_unit == player) then {
 			// Set an appropriate animation by stance
 
 			// this is needed to protect against BI bugs that remove all actions.
-			_caller setVariable ["f_fam_flag",true];
+			_caller setVariable ["f_var_fam_flag",true];
 
 			if (stance _caller == "PRONE") then {
 
@@ -161,15 +161,15 @@ if (_unit == player) then {
 
 			_caller spawn {
 				sleep 5;
-					if (_this getVariable ["f_fam_conscious",true]) then {
+					if (_this getVariable ["f_var_fam_conscious",true]) then {
 					_this removeItem "Bandage";
-					_this setVariable ["f_fam_bleed",false,true]; // Sets BLEED to NOT
+					_this setVariable ["f_var_fam_bleed",false,true]; // Sets BLEED to NOT
 					_this setBleedingRemaining 0;
 					hint format ["Bandage consumed, %1 remaining. You are no longer bleeding.",count (magazines _this select {_x == "Bandage"})]; // feedback on resource consumption.
 					// titleText ["You are no longer bleeding","PLAIN"];
 
 					// this is needed to protect against BI bugs that remove all actions.
-					_this setVariable ["f_fam_flag",false];
+					_this setVariable ["f_var_fam_flag",false];
 
 				};
 			};
@@ -179,7 +179,7 @@ if (_unit == player) then {
 		true,		// showWindow
 		true,		// hideOnUse
 		"",			// shortcut
-		"(_target == _this) && {_target getVariable ['f_fam_bleed',false] && ('Bandage' in magazines player)}", 	// condition
+		"(_target == _this) && {_target getVariable ['f_var_fam_bleed',false] && ('Bandage' in magazines player)}", 	// condition
 		0,			// radius
 		false,		// unconscious
 		"",			// selection
@@ -204,7 +204,7 @@ if (_unit != player) then {
 		_unit, 
 		format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 		_bdgIcon, _bdgIcon, 
-		"(_target != _this) && {!(_this getUnitTrait 'medic') && alive _target && _this distance _target < 3 && _target getVariable ['f_fam_bleed',false] && ('Bandage' in magazines _this || _target getVariable ['f_fam_hasbandage',false])}", 
+		"(_target != _this) && {!(_this getUnitTrait 'medic') && alive _target && _this distance _target < 3 && _target getVariable ['f_var_fam_bleed',false] && ('Bandage' in magazines _this || _target getVariable ['f_var_fam_hasbandage',false])}", 
 		_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgTime, 20, false, false, true
 	] call BIS_fnc_holdActionAdd;
 
@@ -218,7 +218,7 @@ if (_unit != player) then {
 		_unit, 
 		format ["<t color='#FF0000'>Bandage %1</t>", name _unit],
 		_bdgIcon, _bdgIcon, 
-		"(_target != _this) && {_this getUnitTrait 'medic' && alive _target && _this distance _target < 3 && _target getVariable ['f_fam_bleed',false] && ('Bandage' in magazines _this || _target getVariable ['f_fam_hasbandage',false])}", 
+		"(_target != _this) && {_this getUnitTrait 'medic' && alive _target && _this distance _target < 3 && _target getVariable ['f_var_fam_bleed',false] && ('Bandage' in magazines _this || _target getVariable ['f_var_fam_hasbandage',false])}", 
 		_bdgProg,_bdgCodeStart, _bdgCodeProg, _bdgCodeComp, _bdgCodeInt, [], _bdgMedicTime, 20, false, false, true
 	] call BIS_fnc_holdActionAdd;
 
