@@ -37,12 +37,12 @@ if (!alive _unit) exitWith {
 };
 
 switch (ceil (damage _unit * 10)) do {
-	case 0: {_color = [0.32,0.66,0,1]; _injuries = "<t color='#53a800'>Good Condition</t>";};// if (!_awake) then {_passout = "<t color='#53a800'>Will wake up soon.<br/></t>";}};
+	case 0: {_color = [1,1,1,1]; _injuries = "<t color='#53a800'>Good Condition</t>";};// if (!_awake) then {_passout = "<t color='#53a800'>Will wake up soon.<br/></t>";}};
 	case 1; 
 	case 2; 
-	case 3: {_color = [0.9,0.9,0.9,1]; _injuries = "Lightly Injured";}; // if (!_awake) then {_passout = "Will wake up soon.<br/>";}};
+	case 3: {_color = [1,0.96,0.6,1]; _injuries = "Lightly Injured";}; // if (!_awake) then {_passout = "Will wake up soon.<br/>";}};
 	case 4;
-	case 5: {_color = [0.94,0.89,0.26,1]; _injuries = "Moderately Wounded";}; // if (!_awake) then {_passout = "Will wake up soon.<br/>";}};
+	case 5: {_color = [0.97,0.81,0.26,1]; _injuries = "Moderately Wounded";}; // if (!_awake) then {_passout = "Will wake up soon.<br/>";}};
 	case 6;
 	case 7: {_color = [0.98,0.51,0,1]; _injuries = "<t color='#fb8100'>Heavily Wounded</t>"; if (_awake) then {_passout = "<t color='#fb8100'> | May pass out<br/></t>";}}; //else {_passout = "<t color='#fb8100'>Could wake up.<br/></t>";}}; 
 	case 8;

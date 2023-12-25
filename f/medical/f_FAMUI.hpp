@@ -89,7 +89,7 @@ class f_FAMdiagnoseUI
 					style = 0;
 					text = "";
 					colorBackground[] = {0.1,0.1,0.1,1};
-					colorText[] = {1,1,0.302,1};
+					colorText[] = {1,1,1,1};
 					font = "PuristaMedium";
 					sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1);
 				};
