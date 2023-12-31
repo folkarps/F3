@@ -19,7 +19,7 @@ private _color = [1,1,0.302,1];
 if (_unit getVariable ["f_var_fam_bleed",false]) then {
 	_bleed = "<t color='#fb3830'>Bleeding<br/></t>";
 } else {
-	_bleed = "<br/>Not Bleeding";
+	_bleed = "";
 };
 if (_unit getVariable ["f_var_fam_conscious",true]) then {
 	_awake = true;
