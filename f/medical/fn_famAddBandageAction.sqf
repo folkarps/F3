@@ -82,7 +82,7 @@ private _bdgCodeComp = {
 	} else {
 		hint "Bandage used from patient's inventory";
 		// [format ["Bandage consumed, %1 remaining.", count (magazines _target select {_x == "Bandage"})]] remoteExec ["hint",_target]; // feedback on resource consumption.
-		_target setVariable ["f_fam_used_bandage",true,true];
+		_target setVariable ["f_var_fam_used_bandage",true,true];
 	};
 	[["You are no longer bleeding", "PLAIN"]] remoteExec ["titleText",_target];
 

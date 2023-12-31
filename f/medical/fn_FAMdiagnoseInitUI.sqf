@@ -22,7 +22,7 @@ if !_inventoryOpen then {
 	if !(isNull _unit) then {
 		_healthState = [_unit] call f_fnc_FAMdiagnose;
 		if (!alive _unit) then {
-			_unitName = _unit getVariable ["f_fam_corpse","Unknown"];
+			_unitName = _unit getVariable ["f_var_fam_corpse","Unknown"];
 		} else {
 			_unitName = name _unit;
 		};
