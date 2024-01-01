@@ -1,9 +1,10 @@
 // F3 - Cold Breath
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
+f_var_coldBreathLoop = true;
 
 f_fnc_coldBreathLoop = compileFinal {
-	while {alive _this} do {
+	while {alive _this && f_var_coldBreathLoop} do {
 		if (vehicle _this == _this) then {
 			sleep (4*(1 - getFatigue _this) + random 1);
 			drop [["\A3\data_f\ParticleEffects\Universal\Universal", 16, 12, 8,1], "", "Billboard", 1,
