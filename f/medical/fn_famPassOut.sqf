@@ -84,10 +84,13 @@ for "_i" from 2 to 5 do {
 };
 
 // ====================================================================================
+
 if (isPlayer _unit) then {
-    [] spawn {
+    _unit spawn {
         sleep 3;
-        titleText ["You have passed out...","PLAIN"];
+        if (alive _this) then {
+            titleText ["You have passed out...","PLAIN"];
+        };
     };
 };
 

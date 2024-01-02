@@ -183,6 +183,7 @@ if (f_param_debugMode == 1) then
 	systemChat "medical loop exiting";
 };
 // missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
+titleText ["","PLAIN"];
 _unit enableSimulation true;
 forceRespawn _unit;
 
