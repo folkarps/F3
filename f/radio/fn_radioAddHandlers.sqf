@@ -71,7 +71,8 @@ player addAction [
 	false,
 	true,
 	"",
-	"vehicle _this != _this && {vehicle _this getVariable ['f_var_radioIsOn',true]}"
+	"vehicle _this != _this && {vehicle _this getVariable ['f_var_radioIsOn',true]}",
+	0
 ];
 
 player addAction [
@@ -87,7 +88,8 @@ player addAction [
 	false,
 	true,
 	"",
-	"vehicle _this != _this && {!(vehicle _this getVariable ['f_var_radioIsOn',true])}"
+	"vehicle _this != _this && {!(vehicle _this getVariable ['f_var_radioIsOn',true])}",
+	0
 ];
 
 // Just to be sure...
