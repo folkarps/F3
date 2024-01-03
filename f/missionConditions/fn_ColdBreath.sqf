@@ -5,8 +5,8 @@ f_var_coldBreathLoop = true;
 
 f_fnc_coldBreathLoop = compileFinal {
 	while {alive _this && f_var_coldBreathLoop} do {
+		sleep (4*(1 - getFatigue _this) + random 1);
 		if (vehicle _this == _this) then {
-			sleep (4*(1 - getFatigue _this) + random 1);
 			drop [["\A3\data_f\ParticleEffects\Universal\Universal", 16, 12, 8,1], "", "Billboard", 1,
 			   (1-((vectorMagnitude velocity _this) / 35)) *.75 max .05,
 			   _this selectionPosition "Head" vectorAdd [0,.02,0],
