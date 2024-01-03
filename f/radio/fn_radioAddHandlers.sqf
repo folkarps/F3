@@ -100,12 +100,13 @@ if (typeOf player != "VirtualSpectator_F") then {
 // Set a variable on the player to prove they've got handlers
 player setVariable ["f_var_radioHandlersAdded",true];
 
-// Add persistent check
-f_var_radioPersistentCheck = true;
-[] spawn {
-	while {f_var_radioPersistentCheck} do {
-		sleep 10;
-		[player] spawn f_fnc_radioCheckChannels;
+if (isNil "f_var_radioPersistentCheck") then {
+	f_var_radioPersistentCheck = true;
+	[] spawn {
+		while {f_var_radioPersistentCheck} do {
+			sleep 10;
+			[player] spawn f_fnc_radioCheckChannels;
+		};
 	};
 };
 
