@@ -24,6 +24,9 @@ player addAction [
     "(driver (vehicle _this) == _this) && {(!brakesDisabled vehicle _this) && ((vehicle _this) isKindOf 'LandVehicle') && !((vehicle _this) isKindOf 'StaticWeapon')}"
 ];
 
+// If this is a respawn then we don't need anything else
+if _respawned exitWith {};
+
 player addEventHandler ["Respawn", {
 	true call f_fnc_brakeOverride;
 }];
