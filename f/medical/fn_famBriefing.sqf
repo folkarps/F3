@@ -30,7 +30,7 @@ FAKs and Medikits restore your health.
 <br/>
 If you have significant wounds, you may pass out. 
 <br/>
-- While unconscious you may lose vision and the ability to speak. (Downed people don't use Ts3).<br/>
+- While unconscious you may lose vision and the ability to speak. (Downed people don't use TS3).<br/>
 - Stay close to your team so they can find you when you pass out. <br/>
 - You may regain consciousness depending on your wounds. If so, find cover, find your team, and find a medic.
 <br/><br/>
