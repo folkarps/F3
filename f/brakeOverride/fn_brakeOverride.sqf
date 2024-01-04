@@ -4,8 +4,10 @@
 This component allows players to disable the automatic brakes of any ground vehicle they're driving. It is enabled by default in init.sqf.
 */
 
+params [["_respawned",false]];
+
 // Don't add the action if it's already got one
-if (player getVariable ["f_var_hasDriverAction",false]) exitWith { diag_log "brakeOverride: tried to add driver action on something that already has it"};
+if (player getVariable ["f_var_hasDriverAction",false] && !_respawned) exitWith { diag_log "brakeOverride: tried to add driver action on something that already has it"};
 
 // Add the action
 player addAction [
@@ -21,6 +23,10 @@ player addAction [
     "",
     "(driver (vehicle _this) == _this) && {(!brakesDisabled vehicle _this) && ((vehicle _this) isKindOf 'LandVehicle') && !((vehicle _this) isKindOf 'StaticWeapon')}"
 ];
+
+player addEventHandler ["Respawn", {
+	true call f_fnc_brakeOverride;
+}];
 
 // Add the variable to prove it's already done
 player setVariable ["f_var_hasDriverAction",true];
