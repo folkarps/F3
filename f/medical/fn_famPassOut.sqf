@@ -7,6 +7,10 @@ params ["_unit"];
 
 // ====================================================================================
 
+// INSTANT EFFECTS
+// Broadcast unit is unconscious.
+_unit setVariable ["f_var_fam_conscious",false,true]; 
+
 // SOUND EFFECTS
 private _sound = selectRandom [
     "A3\Missions_F_EPA\data\sounds\WoundedGuyB_05.wss",
@@ -42,10 +46,6 @@ if (vehicle _unit != _unit) then {
 };
 
 // ====================================================================================
-
-// INSTANT EFFECTS
-// Broadcast unit is unconscious.
-_unit setVariable ["f_var_fam_conscious",false,true]; 
 
 // If the unit is local and a player, remove their magazines (otherwise they can throw grenades while down)
 if(local _unit && isPlayer _unit) then

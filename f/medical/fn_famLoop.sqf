@@ -120,7 +120,8 @@ while {alive _unit && {local _unit}} do {
 				if (_currentDamage > 0.95) then {
 					_newDamage = _currentDamage + selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
 				} else {
-					_newDamage = _currentDamage + selectRandom [0.008,0.010,0.015]; // faster rate until you are forced down. 
+					_newDamage = _currentDamage + selectRandom [0.04,0.05,0.1]; // faster rate until you are forced down. 
+					if (_newDamage >= 1) then {_newDamage = 0.97};
 				};
 
 				_unit setDamage _newDamage; 
