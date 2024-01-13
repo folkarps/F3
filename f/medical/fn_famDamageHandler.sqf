@@ -33,6 +33,12 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	private _hitSize = _damage - _currentDamage;
 	private _newDamage = _damage;
 
+	// Down you on a big hit.
+    if (_selection != "" && {_newDamage >= 0.7}) then { 
+		_unit setVariable ["f_var_fam_forcedown",true];
+		
+	};
+
 	// Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
 	if (_projectile != "" && _damage >= 0 && {!(_unit getVariable ["f_var_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
 		_unit setVariable ["f_var_fam_bleed",true,true];
@@ -41,7 +47,7 @@ _eh = _unit addEventHandler ["HandleDamage",{
 
 	if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 		// reduce damage heavily while unconscious
-		_newDamage = _currentDamage + (.1 * (_hitSize ^ .1));
+		_newDamage = _currentDamage + (0.5 * _hitSize);
 
 	} else {
 		// Check if the player is in an aircraft, and redirect damage to the player to the airframe.
@@ -56,27 +62,33 @@ _eh = _unit addEventHandler ["HandleDamage",{
 						selectRandom [1,2,3,4,5,6,7,8,9,10,11,12]; // Fuel, Engines, Various control surfaces for Wipeout
 					};
 					vehicle _unit setHitIndex [_hitPlace, _hitSize / 3];
-					_newDamage = _currentDamage + (.1 * (_hitSize ^ .2));
+					_newDamage = _currentDamage + (.1 * _hitSize);
 				};
 			} else {
 				
-				_newDamage = _currentDamage + (.2 * (_hitSize ^ .2));
+				_newDamage = _currentDamage + (.2 * _hitSize);
 			};
 		} else {
-			if (!(isPlayer _source) && {_selection == "head" || _selection == "face_hub" || _selection == "neck"}) then {
-				_newDamage = _currentDamage + (.7 * (_hitSize ^ .2));
+
+			/*
+			if ((isPlayer _source) && {_selection == "head" || _selection == "face_hub" || _selection == "neck"}) then {
+				_newDamage = _currentDamage + (0.95 * (_hitsize / 4.8));
 			} else {
-				_newDamage = _currentDamage + (.9 * (_hitSize ^ .9));
+				_newDamage = _currentDamage + (0.95 * _hitSize);
 			};
-
-		}
+			*/
+			
+			_damageReductionThreshold = .5;
+			if(!(isPlayer _source)) then {
+				if(_hitSize <= _damageReductionThreshold) then {
+					_newDamage = _currentDamage + _hitSize;
+				} else {
+					_newDamage = _currentDamage + ((_hitSize*(1/_damageReductionThreshold))^.35)*_damageReductionThreshold*.9;
+				};
+			};
+		};
 	};
 
-	// Down you on a big hit.
-    if (_selection != "" && {_newDamage >= 0.7}) then { 
-		_unit setVariable ["f_var_fam_forcedown",true];
-		
-	};
 
 // ====================================================================================
 

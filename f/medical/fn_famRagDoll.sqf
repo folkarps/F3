@@ -30,6 +30,7 @@ _unit addEventHandler ["AnimStateChanged", {
             _tEH = _this select 2;
     
             _unit setPosWorld getPosWorld _unit;
+            _unit setVelocity [0,0,0];
 
             if !(_unit getVariable ["f_var_fam_conscious",false]) then {
 

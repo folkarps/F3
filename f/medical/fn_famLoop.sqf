@@ -31,6 +31,7 @@ while {alive _unit && {local _unit}} do {
 	if ((_unit getVariable ["f_var_fam_forcedown",false]) && {_unit getVariable ["f_var_fam_conscious",true]}) then {
 
 		_unit call f_fnc_famPassOut;
+		_unit setVariable ["f_var_fam_conscious",false];
 		_nextSave = time + 20; 
 	};
 	
@@ -53,6 +54,7 @@ while {alive _unit && {local _unit}} do {
 			if (_save >= _dc) then {
 
 				_unit call f_fnc_famPassOut;
+				_unit setVariable ["f_var_fam_conscious",false];
 				_nextSave = time + 40; 
 			};
 

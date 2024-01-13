@@ -1,7 +1,7 @@
 // FA3 FA Medical - Main Init component
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
-
+waitUntil{!isNull player};
 //global stuff:
 
 f_var_fam_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
