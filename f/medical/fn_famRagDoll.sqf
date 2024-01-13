@@ -25,9 +25,7 @@ _unit addEventHandler ["AnimStateChanged", {
 
         [_unit, _thisEvent, _thisEventHandler] spawn {
 
-            _unit = _this select 0;
-            _tE = _this select 1;
-            _tEH = _this select 2;
+            params ["_unit","_tE","_tEH"];
     
             _unit setPosWorld getPosWorld _unit;
             _unit setVelocity [0,0,0];
@@ -42,10 +40,9 @@ _unit addEventHandler ["AnimStateChanged", {
                 sleep 2;
 
                 //_unit enableSimulation false;
-                _group = createGroup sideLogic;
-                _object = _group createUnit ["Logic", position _unit, [], 0, "CAN_COLLIDE"];
-                _dir = getDir _unit;
-                _object setDir _dir;
+                private _group = createGroup sideLogic;
+                private _object = _group createUnit ["Logic", position _unit, [], 0, "CAN_COLLIDE"];
+                _object setVectorDirAndUp [vectorDir _unit, vectorUp _unit];
                 _unit attachTo [_object,[0,0,0]];
 
                 _unit setVariable ["f_var_fake_group",[_group,_object]];
