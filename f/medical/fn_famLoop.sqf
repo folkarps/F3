@@ -31,7 +31,6 @@ while {alive _unit && {local _unit}} do {
 	if ((_unit getVariable ["f_var_fam_forcedown",false]) && {_unit getVariable ["f_var_fam_conscious",true]}) then {
 
 		_unit call f_fnc_famPassOut;
-		_unit setVariable ["f_var_fam_conscious",false];
 		_nextSave = time + 20; 
 	};
 	
@@ -54,7 +53,6 @@ while {alive _unit && {local _unit}} do {
 			if (_save >= _dc) then {
 
 				_unit call f_fnc_famPassOut;
-				_unit setVariable ["f_var_fam_conscious",false];
 				_nextSave = time + 40; 
 			};
 
@@ -71,12 +69,12 @@ while {alive _unit && {local _unit}} do {
 	// WAKEUP TEST 
 	if (!(_unit getVariable ["f_var_fam_conscious",true])) then {
 
-		// wake up if you have been treated with a FAK or by Medic.
-		if (damage _unit <= 0.25) exitWith {	
+		// wake up if you have been treated by Medic.
+		if (damage _unit <= 0 || {time > _nextSave && {damage _unit <= 0.25}}) exitWith {	
 			_unit call f_fnc_famWakeUp;
 			_desaturate = false;
 		};
-		
+	
 		// check to wake up otherwise.
 		if (time > _nextSave) then {
 
@@ -187,6 +185,11 @@ if (f_param_debugMode == 1) then
 };
 // missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
 titleText ["","PLAIN"];
-_unit enableSimulation true;
+//_unit enableSimulation true;
+detach _unit;
+if (count (_unit getVariable ["f_var_fake_group",[]]) != 0) then {
+	deleteVehicle ((_unit getVariable ["f_var_fake_group",[]]) select 1);
+	deleteGroup ((_unit getVariable ["f_var_fake_group",[]]) select 0);
+};
 forceRespawn _unit;
 
