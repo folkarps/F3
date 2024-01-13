@@ -153,7 +153,6 @@ case "m":
 // Combat Life Saver Loadout:
 	case "cls":
 	{
-		_unit setUnitTrait ["f3_cls",true,true]; // Used in F3 CLS Event Handler
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
