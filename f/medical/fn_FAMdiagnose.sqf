@@ -29,7 +29,7 @@ if (_unit getVariable ["f_var_fam_conscious",true]) then {
 
 if (!alive _unit) exitWith {
 	_color = [0.6,0.6,0.6,1];
-	_healthstate = selectRandomWeighted ["Dead",1,"Expired",0.01,"Deceased",0.01,"Dead, Jim",0.01,"Croaked",0.01,"Perished",0.01];
+	_healthstate = selectRandomWeighted ["Dead",1,"Expired",0.01,"Deceased",0.01,"Dead, Jim",0.01,"Croaked",0.01,"Perished",0.01,"Dead + ratio + cringe + no pulse",0.001,"Super dead",0.01];
 	_bleed = "";
 	[format ["<t color = '%1'>%2</t>", _color call BIS_fnc_colorRGBAtoHTML, _healthState],_bleed,_color]
 };
