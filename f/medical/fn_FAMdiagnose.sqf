@@ -46,7 +46,7 @@ switch (ceil (damage _unit * 10)) do {
 	case 8;
 	case 9: {_color = [0.98,0.22,0.19,1]; _injuries = "<t color='%1'>Urgent Wounds</t>"; if (_awake) then {_passout = "<t color='%1'> | Likely to pass out<br/></t>";}};// else {_passout = "<t color='#fb3830'>Not likely to wake up.<br/></t>";}};
 	case 10: {_color = [0.98,0.22,0.19,1]; _injuries = "<t color='%1'>Critical Condition</t>"; if (_awake) then {_passout = "<t color='%1'> | About to pass out<br/></t>";}};// else {_passout = "<t color='#fb3830'>Not likely to wake up.<br/></t>";}};
-};
+}; 
 _injuries = format [_injuries, _color call BIS_fnc_colorRGBAtoHTML];
 _passOut = format [_passout, _color call BIS_fnc_colorRGBAtoHTML];
 // hint parseText format ["%1:<br/>%2%3%4%5", _tgt, _conscious, _passout, _bleed,_injuries];

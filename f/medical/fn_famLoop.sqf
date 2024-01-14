@@ -48,7 +48,7 @@ while {alive _unit && {local _unit}} do {
 		if (time > _nextSave) then { 
 
 			private _save = random 100;
-			private _dc = round (100 - (20 * damage _unit));
+			private _dc = round (100 - (20 * (damage _unit)));
 
 			if (_save >= _dc) then {
 
@@ -79,7 +79,12 @@ while {alive _unit && {local _unit}} do {
 		if (time > _nextSave) then {
 
 			private _save =  random 100;
-			private _dc = (100 * damage _unit);
+			private _adjust = 1 - damage _unit;
+			private _dc = round (100 - (100 * _adjust));
+
+			if (damage _unit > 0.5) then {
+				_dc = round (100 - (50 * _adjust));
+			};			
 
 			if (_save >= _dc && {damage _unit < 0.95}) then {
 
@@ -183,13 +188,7 @@ if (f_param_debugMode == 1) then
 {
 	systemChat "medical loop exiting";
 };
-// missionnamespace setvariable ["BIS_fnc_feedback_allowDeathScreen", true];
+
 titleText ["","PLAIN"];
-//_unit enableSimulation true;
-detach _unit;
-if (count (_unit getVariable ["f_var_fake_group",[]]) != 0) then {
-	deleteVehicle ((_unit getVariable ["f_var_fake_group",[]]) select 1);
-	deleteGroup ((_unit getVariable ["f_var_fake_group",[]]) select 0);
-};
 forceRespawn _unit;
 

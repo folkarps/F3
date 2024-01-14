@@ -33,21 +33,7 @@ _unit addEventHandler ["AnimStateChanged", {
             if !(_unit getVariable ["f_var_fam_conscious",false]) then {
 
                 // Set preferred animation.
-                //_unit playMove "Unconscious"; 
                 _unit switchmove "Unconscious"; 
-
-                // Wait a little for animation to set, then disable simulation to lock player.
-                sleep 2;
-
-                //_unit enableSimulation false;
-                private _group = createGroup sideLogic;
-                private _object = _group createUnit ["Logic", position _unit, [], 0, "CAN_COLLIDE"];
-                _object setVectorDirAndUp [vectorDir _unit, vectorUp _unit];
-                _unit attachTo [_object,[0,0,0]];
-
-                _unit setVariable ["f_var_fake_group",[_group,_object]];
-
-                _unit setVariable ['f_var_wound_being_dragged',false,true];
 
             };
             // Remove this eventHandler once it happens.

@@ -51,13 +51,7 @@ if(local _unit) then
     
     // force them into prone otherwise they can get stuck in the rolltofrontanimation. 
     _unit setUnconscious false;
-    //_unit enableSimulation true;
-    detach _unit;
-    if (count (_unit getVariable ["f_var_fake_group",[]]) != 0) then {
-        deleteVehicle ((_unit getVariable ["f_var_fake_group",[]]) select 1);
-        deleteGroup ((_unit getVariable ["f_var_fake_group",[]]) select 0);
-    };
-
+    
     // exit if they are dead
     if (damage _unit >= 1) exitWith {};
 
