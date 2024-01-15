@@ -36,6 +36,7 @@ _eh = _unit addEventHandler ["HandleDamage",{
 	// Down you on a big hit.
     if (_selection != "" && {_newDamage >= 0.7}) then { 
 		_unit setVariable ["f_var_fam_forcedown",true];
+		_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];
 		
 	};
 

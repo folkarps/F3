@@ -59,5 +59,18 @@ if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable
 };
 
 // RAGDOLL
+private _forcedownParams = _unit getVariable ["f_var_forcedownParams",[_unit,"","B_556x45_Ball"]];
+_forcedownParams params ["_shooter","_selection","_projectile"];
+private _projectileForce = ([configFile >> "CfgAmmo" >> _projectile,"hit",1] call BIS_fnc_returnConfigEntry) + ([configFile >> "CfgAmmo" >> _projectile,"indirecthit",0] call BIS_fnc_returnConfigEntry);
+private _forceMultiplier = [250, 500] select (_projectileForce > 10);
+private _force = ((getPosASL _unit) vectorFromTo (getPosASL _shooter)) vectorMultiply _forceMultiplier;
+private _position = _unit selectionPosition _selection;
 
-_unit addForce [[0,20,200], [2,0,2]]; 
+if (_unit == _shooter) then {
+	_force = [0,20,200];
+	_position = [2,0,2];
+};
+
+_unit addForce [_force, _position];
+
+_unit setVariable ["f_var_forcedownParams",nil]];
