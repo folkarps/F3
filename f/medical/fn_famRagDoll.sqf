@@ -63,7 +63,7 @@ private _forcedownParams = _unit getVariable ["f_var_forcedownParams",[_unit,"",
 _forcedownParams params ["_shooter","_selection","_projectile"];
 private _projectileForce = ([configFile >> "CfgAmmo" >> _projectile,"hit",1] call BIS_fnc_returnConfigEntry) + ([configFile >> "CfgAmmo" >> _projectile,"indirecthit",0] call BIS_fnc_returnConfigEntry);
 private _forceMultiplier = [250, 500] select (_projectileForce > 10);
-private _force = ((getPosASL _unit) vectorFromTo (getPosASL _shooter)) vectorMultiply _forceMultiplier;
+private _force = ((getPosASL _shooter) vectorFromTo (getPosASL _unit)) vectorMultiply _forceMultiplier;
 private _position = _unit selectionPosition _selection;
 
 if (_unit == _shooter) then {
