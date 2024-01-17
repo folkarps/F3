@@ -107,6 +107,8 @@ player addEventHandler ["Respawn", {
 if (typeOf player != "VirtualSpectator_F") then {
 	5 enableChannel true;
 };
+// Disable AI voice
+[player,"NoVoice"] remoteExec ["setSpeaker",0,true];
 
 // Set a variable on the player to prove they've got handlers
 player setVariable ["f_var_radioHandlersAdded",true];

@@ -16,13 +16,6 @@ enableSaving [false, false];
 
 // ====================================================================================
 
-// F3 - Mute Orders and Reports
-// Credits and documentation: https://github.com/folkarps/F3/wiki
-
-{_x setSpeaker "NoVoice"} forEach playableUnits;
-
-// ====================================================================================
-
 // F3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
