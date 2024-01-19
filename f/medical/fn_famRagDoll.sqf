@@ -73,4 +73,4 @@ if (_unit == _shooter) then {
 
 _unit addForce [_force, _position];
 
-_unit setVariable ["f_var_forcedownParams",nil]];
+_unit setVariable ["f_var_forcedownParams",nil];

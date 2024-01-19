@@ -13,11 +13,23 @@ _unit setVariable ["f_var_fam_conscious",false,true];
 
 // SOUND EFFECTS
 private _sound = selectRandom [
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyA_03.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyA_02.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyA_06.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyA_07.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyA_08.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyB_02.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyB_03.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyB_04.wss",
     "A3\Missions_F_EPA\data\sounds\WoundedGuyB_05.wss",
     "A3\Missions_F_EPA\data\sounds\WoundedGuyB_06.wss",
     "A3\Missions_F_EPA\data\sounds\WoundedGuyB_07.wss",
     "A3\Missions_F_EPA\data\sounds\WoundedGuyB_08.wss",
-    "A3\Missions_F_EPA\data\sounds\WoundedGuyB_09.wss"
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyC_01.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyC_02.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyC_03.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyC_04.wss",
+    "A3\Missions_F_EPA\data\sounds\WoundedGuyC_05.wss"
 ];
 playSound3d [_sound,_unit];
 
