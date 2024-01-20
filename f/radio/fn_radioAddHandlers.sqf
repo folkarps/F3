@@ -51,6 +51,9 @@ player addAction [
 	0
 ];
 
+// Disable AI voice
+[player,"NoVoice"] remoteExec ["setSpeaker",0,true];
+
 // EHs are persistent on respawn so if we respawned, we don't need to add those
 if _respawned exitWith {};
 
@@ -107,8 +110,6 @@ player addEventHandler ["Respawn", {
 if (typeOf player != "VirtualSpectator_F") then {
 	5 enableChannel true;
 };
-// Disable AI voice
-[player,"NoVoice"] remoteExec ["setSpeaker",0,true];
 
 // Set a variable on the player to prove they've got handlers
 player setVariable ["f_var_radioHandlersAdded",true];
