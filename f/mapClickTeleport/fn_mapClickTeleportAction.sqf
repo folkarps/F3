@@ -28,10 +28,10 @@ f_var_mapClickTeleport_EHMap = addMissionEventHandler ["Map", {
 
 ["MapClickTeleport",[f_var_mapClickTeleport_textSelect]] call BIS_fnc_showNotification;
 
-["mapClickTeleportEH", "onMapSingleClick", {f_var_mapClickTeleport_telePos = _pos;}] call BIS_fnc_addStackedEventHandler;
+f_var_mapClickTeleport_EHClick = addMissionEventHandler ["MapSingleClick",{f_var_mapClickTeleport_telePos = _pos;}];
 openMap [true, false];
 waitUntil {f_var_mapClickTeleport_MapClosed || !isNil "f_var_mapClickTeleport_telePos"};
-["mapClickTeleportEH", "onMapSingleClick"] call BIS_fnc_removeStackedEventHandler;
+removeMissionEventHandler ["MapSingleClick",f_var_mapClickTeleport_EHClick];
 
 removeMissionEventHandler ["Map", f_var_mapClickTeleport_EHMap];
 
