@@ -74,6 +74,7 @@ class F // Defines the "owner"
 	class mapClickTeleport
 	{
 		file = "f\mapClickTeleport";
+		class mapClickTeleport{};
 		class mapClickTeleportAction{};
 		class mapClickTeleportSetPos{};
 		class mapClickTeleportParachute{};
