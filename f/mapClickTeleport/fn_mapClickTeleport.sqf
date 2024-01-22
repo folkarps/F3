@@ -43,7 +43,7 @@ f_var_mapClickTeleport_Units = f_var_mapClickTeleport_Units select {! isNil _x} 
 // Add a briefing page for everyone if HALO is being used
 
 if (f_var_mapClickTeleport_Height > 0) then {
-        [] call f_fnc_mapClickTeleportBriefing;
+        call f_fnc_mapClickTeleportBriefing;
 };
 
 // ====================================================================================

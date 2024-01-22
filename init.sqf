@@ -196,6 +196,7 @@ f_var_viewDistance_crewOnly = true;
 // f_var_mapClickTeleport_Units = [];               // Restrict map click teleport to these units.
 // f_var_mapClickTeleport_Height = 0;               // If > 0 map click teleport will act as a HALO drop and automatically assign parachutes to units.
 // f_var_mapClickTeleport_SaferVehicleHALO = false; // If HALO-ing (f_var_mapClickTeleport_Height > 0), False: crew remain in vehicle during drop. True: crew drop separately with their own parachutes.
+// f_var_mapClickTeleport_Smoke = true; // If HALO-ing, True: attach a decorative smoke tracer to falling units.
 // 0 spawn f_fnc_mapClickTeleport;
 
 // ====================================================================================
