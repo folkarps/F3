@@ -24,6 +24,7 @@ if (isNil "f_var_mapClickTeleport_GroupTeleport")    then {f_var_mapClickTelepor
 if (isNil "f_var_mapClickTeleport_Units")            then {f_var_mapClickTeleport_Units = []};
 if (isNil "f_var_mapClickTeleport_Height")           then {f_var_mapClickTeleport_Height = 0};
 if (isNil "f_var_mapClickTeleport_SaferVehicleHALO") then {f_var_mapClickTeleport_SaferVehicleHALO = false};
+if (isNil "f_var_mapClickTeleport_Smoke")			 then {f_var_mapClickTeleport_Smoke = true};
 
 // Setup the localized strings for the various stages of the component
 // Depending on the setting of the height variable the strings either use the teleport or the HALO option.
