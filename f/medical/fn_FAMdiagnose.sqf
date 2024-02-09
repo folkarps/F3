@@ -35,8 +35,8 @@ if (!alive _unit) exitWith {
 };
 
 switch (ceil (damage _unit * 10)) do {
-	case 0: {_color = [1,1,1,1]; _injuries = "<t color='%1'>Good Condition</t>";};// if (!_awake) then {_passout = "<t color='#53a800'>Will wake up soon.<br/></t>";}};
-	case 1; 
+	case 0; 
+	case 1: {_color = [1,1,1,1]; _injuries = "<t color='%1'>Good Condition</t>";};// if (!_awake) then {_passout = "<t color='#53a800'>Will wake up soon.<br/></t>";}}; 
 	case 2; 
 	case 3: {_color = [1,0.96,0.6,1]; _injuries = "<t color='%1'>Lightly Injured</t>";}; // if (!_awake) then {_passout = "Will wake up soon.<br/>";}};
 	case 4;
