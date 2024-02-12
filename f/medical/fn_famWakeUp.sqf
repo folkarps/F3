@@ -17,6 +17,8 @@ _unit setVariable ["f_var_fam_conscious",true,true];
 for "_i" from 2 to 5 do {
     _i enableChannel true;
 };
+// [_unit] spawn f_fnc_radioCheckChannels; // If on a branch with radio
+
 if(local _unit) then
 {
     
@@ -78,26 +80,20 @@ if (damage _unit >= 1) exitWith {};
 // Clear messages as they wake up.
 titleText ["","PLAIN"];
 
-// DELAYED RESETS
-// Only set captive false when they fire...
-_unit addEventHandler ["Fired", { 
-    params ["_unit"];
-    _unit setCaptive false;
-    _unit removeEventHandler [_thisEvent, _thisEventHandler];
-}];
+_unit setCaptive false;
 
-// ...Or setCaptive false after a few seconds and return senses if unit stays awake long enough.
+// DELAYED RESETS
 _unit spawn {
 
     _unit = _this;
     sleep 6;
 
     if (_unit getVariable ["f_var_fam_conscious",true]) then {
-        _unit setCaptive false;
         if (local _unit && isPlayer _unit) then {
             10 fadeSound 1;
             10 fadeSpeech 1;
             10 fadeRadio 1;
         };
     };
+}; 
 }; 
