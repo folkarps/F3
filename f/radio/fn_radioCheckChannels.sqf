@@ -85,6 +85,11 @@ for "_i" from 1 to 2 do {
 			_channelsToAddTalk = [1];
 		};
 	};
+	
+	// Can't talk if you're down!
+	if !(_unit getVariable ["f_var_fam_conscious",true]) then {
+		_channelsToAddTalk = [];
+	};
 		
 	// Remove channels player shouldn't have access to
 	for "_i" from 1 to f_var_radioChannelCount do {
