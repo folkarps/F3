@@ -51,7 +51,7 @@ _unit setVariable ["f_var_fam_actions",false];
 
 if (!(_unit getVariable ["f_var_fam_actions",false]) && {hasInterface}) then {
         
-        [_unit] remoteExec ["f_fnc_famAddAllActions", 0, _unit];
+        [_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + (_unit call BIS_fnc_netId))];
         _unit setVariable ["f_var_fam_actions",true,true];
         
 };
