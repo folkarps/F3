@@ -20,8 +20,6 @@ _unit addEventHandler ["AnimStateChanged", {
         {
             systemChat "belly";
         };
-        // delay dragging until later
-        _unit setVariable ['f_var_wound_being_dragged',true,true];
 
         [_unit, _thisEvent, _thisEventHandler] spawn {
 
@@ -44,6 +42,8 @@ _unit addEventHandler ["AnimStateChanged", {
 
 // ====================================================================================
 
+// Delay drag until after ragdoll.
+_unit setVariable ["f_var_wound_being_dragged", true, true];
 
 // this bit avoid a BI bug that removes all actions if you ragdoll while healing.
 if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["f_var_fam_flag",false])}) then {
@@ -72,5 +72,14 @@ if (_unit == _shooter) then {
 };
 
 _unit addForce [_force, _position];
+
+// Make dragable after ragdoll.
+[_unit] spawn {
+    params ["_unit"];
+    waitUntil {sleep 0.2; isAwake _unit};
+    if (alive _unit) then {
+        _unit setVariable ["f_var_wound_being_dragged", false, true];
+    }
+};
 
 _unit setVariable ["f_var_forcedownParams",nil];

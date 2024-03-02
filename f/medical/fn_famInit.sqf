@@ -43,7 +43,12 @@ _unit getVariable ["f_var_fam_flag",false];
 _unit setVariable ["f_var_fam_actions",false];
 
 [_unit] spawn f_fnc_famLoop; 
-[_unit] spawn f_fnc_famDamageHandler;
+[_unit] spawn {
+    params ["_unit"];
+    waitUntil {sleep 0.1; f_param_mission_timer <= 0};
+    _eh = _unit addEventHandler ["HandleDamage",{_this call f_fnc_famDamageHandler;}];
+    _unit setVariable ["f_var_reduceDamageEH",_eh];
+};
 
 // Let all others know that we (this unit/player) exists.
 // Add actions for this player on everyone else's machine.
