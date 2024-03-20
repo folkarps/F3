@@ -51,10 +51,10 @@ private _skillLevels = [
 //       for all possible skillLevels that were set via parameter. 
 
 f_var_skillSet = [
-	0.45, // aimingAccuracy
-	0.55,  // aimingShake
+	0.5, // aimingAccuracy
+	0.6,  // aimingShake
 	0.55,  // aimingSpeed
-	0.65,  // spotDistance
+	0.7,  // spotDistance
 	0.7,  // spotTime
 	1.2,  // courage
 	2,    // reloadSpeed
