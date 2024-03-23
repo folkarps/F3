@@ -112,6 +112,10 @@ while {alive _unit && {local _unit}} do {
 	if (time > _nextSave) then {
 
 		private _currentDamage = damage _unit;
+		private _newLimbDamage = 0;
+		private _tick = 0;
+		private _hands_n_legs_damage = [];
+		private _hands_n_legs = ["hitHands","hitLegs"];
 		private _newDamage = 0;
 	
 		if (f_param_debugMode == 1 && {isPlayer _unit}) then
@@ -123,24 +127,55 @@ while {alive _unit && {local _unit}} do {
 		if (_unit getVariable ["f_var_fam_bleed",false]) then {  
 
 				if (_currentDamage > 0.95) then {
-					_newDamage = _currentDamage + selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
+					_tick = selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
 				} else {
-					_newDamage = _currentDamage + selectRandom [0.04,0.05,0.1]; // faster rate until you are forced down. 
-					if (_newDamage >= 1) then {_newDamage = 0.97};
+					_tick = selectRandom [0.04,0.05,0.1]; // faster rate until you are forced down. 
+					if (_currentDamage + _tick >= 1) then {_tick = 0.01}; //careful not to overdamage you with the bleed.
 				};
 
-				_unit setDamage _newDamage; 
+				{ // save current hands and legs damage.
+					_hands_n_legs_damage pushback (_unit getHitpointDamage _x);
+				} foreach _hands_n_legs;
+
+				_newDamage = _currentDamage + _tick;
+				_unit setDamage _newDamage;
+
+				{ // restore then apply tick to hands and legs
+					_newLimbDamage = (_hands_n_legs_damage select _foreachIndex) + _tick;
+					if (_newLimbDamage > 1) then {
+						_newLimbDamage = 1;
+					};
+					_unit setHitpointDamage [_x,_newLimbDamage];
+				} foreach _hands_n_legs;
+
 		} else {
 			
 			if (damage _unit > 0) then { 
+
 				if (damage _unit < 0.5) then { // if you have been FAKed or lightly harmed you will eventually heal to full.
-					_newDamage = _currentDamage - selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
-					_unit setDamage _newDamage; 
+					_tick = selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
 				}; 
 				if (damage _unit >= 0.52) then { // can auto heal to ~ 50% without any medical attention.
-					_newDamage = _currentDamage - selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
-					_unit setDamage _newDamage; 
+					_tick = selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
 				}; 
+
+				{ // save current hands and legs damage.
+					_hands_n_legs_damage pushback (_unit getHitpointDamage _x);
+				} foreach _hands_n_legs;
+
+				_newDamage = _currentDamage - _tick;
+				_unit setDamage _newDamage;
+
+				{ // restore then apply tick to hands and legs
+					_newLimbDamage = (_hands_n_legs_damage select _foreachIndex) - _tick;
+					if (_newLimbDamage < 0) then {
+						_newLimbDamage = 0;
+					};
+					if ((_hands_n_legs_damage select _foreachIndex) >= 0.5 && {_newLimbDamage < 0.5}) then {
+						_newLimbDamage = 0.5;
+					};
+					_unit setHitpointDamage [_x,_newLimbDamage];
+				} foreach _hands_n_legs;
 			};
 		};
 

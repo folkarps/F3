@@ -50,10 +50,19 @@ if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable
 
     _unit setCaptive true;
     private _dmg = damage _unit;
+    private _hands_n_legs = ["hithands","hitlegs"];
+    private _hitPointDamage = [];
+
+    {
+        _hitPointDamage pushback (_unit getHitPointDamage _x);
+    } foreach _hands_n_legs;
 
     waitUntil {sleep 0.1; !(["medic",animationState _unit] call BIS_fnc_inString)};
 
     _unit setDamage _dmg;
+    {
+        _unit setHitPointDamage [_x,(_hitPointDamage select _forEachIndex)];
+    } foreach _hands_n_legs;
     _unit addItem "FirstAidKit"; //replace the one they won't know they lost.
     
 };
