@@ -29,10 +29,9 @@ if(local _unit) then
     } foreach _mags;
 
     // return unit items.
-    private _items = _unit getVariable ["f_var_fam_wound_down_items",(assignedItems _unit select {_x == "ItemGPS" || _x == "ItemMap"})];
+    private _items = _unit getVariable ["f_var_fam_wound_down_items",[]];
     {   
-        _unit addItem _x;
-        _unit assignItem _x;
+        _unit linkItem _x;
     } foreach _items;
 
     if (_unit getVariable ["f_var_fam_used_bandage",false]) then {

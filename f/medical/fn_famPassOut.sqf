@@ -76,10 +76,9 @@ if(local _unit && isPlayer _unit) then
         _unit removeMagazine _x;
     } foreach magazines _unit;
 
-    _unit setVariable ["f_var_fam_wound_down_items",(assignedItems _unit select {_x in ["I_UavTerminal","B_UavTerminal","O_UavTerminal","I_E_UavTerminal","C_UavTerminal","ItemMap","ItemGPS"]})];
+    _unit setVariable ["f_var_fam_wound_down_items",["ItemMap", _unit getSlotItemName 612]];
     {
-        _unit unassignItem _x;
-        _unit removeItem _x;
+        _unit unlinkItem _x;
     } foreach (_unit getVariable ["f_var_fam_wound_down_items",[]]);
 
     // this disables the actionmenu for the users 
