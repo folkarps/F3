@@ -16,41 +16,6 @@ waitUntil {(!isNull player && {player == player}) && !(isNil "f_var_radioChannel
 // Now bail if they've already been handled, unless they respawned in which case they do need the actions adding
 if (player getVariable ["f_var_radioHandlersAdded",false] && !_respawned) exitWith {};
 
-// Players can manually toggle the radio of the vehicle they're in (for themselves only). This is persistent and per-vehicle. The unit's own channels (from items and variables) aren't affected.
-player addAction [
-	"Turn off vehicle radio",
-	{
-		params ["_target", "_caller", "_actionId", "_arguments"];
-		private _radioOn = (vehicle _caller) getVariable ["f_var_radioIsOn",true];
-		(vehicle _caller) setVariable ["f_var_radioIsOn",!_radioOn];
-		[_caller] spawn f_fnc_radioCheckChannels;
-	},
-	nil,
-	0,
-	false,
-	true,
-	"",
-	"vehicle _this != _this && {vehicle _this getVariable ['f_var_radioIsOn',true]}",
-	0
-];
-
-player addAction [
-	"Turn on vehicle radio",
-	{
-		params ["_target", "_caller", "_actionId", "_arguments"];
-		private _radioOn = (vehicle _caller) getVariable ["f_var_radioIsOn",true];
-		(vehicle _caller) setVariable ["f_var_radioIsOn",!_radioOn];
-		[_caller] spawn f_fnc_radioCheckChannels;
-	},
-	nil,
-	0,
-	false,
-	true,
-	"",
-	"vehicle _this != _this && {!(vehicle _this getVariable ['f_var_radioIsOn',true])}",
-	0
-];
-
 // Disable AI voice
 [player,"NoVoice"] remoteExec ["setSpeaker",0,true];
 
