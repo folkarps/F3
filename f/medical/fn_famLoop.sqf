@@ -117,11 +117,6 @@ while {alive _unit && {local _unit}} do {
 		private _hands_n_legs_damage = [];
 		private _hands_n_legs = ["hitHands","hitLegs"];
 		private _newDamage = 0;
-	
-		if (f_param_debugMode == 1 && {isPlayer _unit}) then
-		{
-			systemChat format ["(medical loop): Unit %1 | Current Damage %2 | Bleed %3 | Conscious %4",_unit,(damage _unit) toFixed 4,_unit getVariable ["f_var_fam_bleed",0],_unit getVariable ["f_var_fam_conscious",true]];
-		};
 
 		// If Unit is bleeding, apply bleed damage.
 		if (_unit getVariable ["f_var_fam_bleed",false]) then {  
@@ -129,7 +124,7 @@ while {alive _unit && {local _unit}} do {
 				if (_currentDamage > 0.95) then {
 					_tick = selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
 				} else {
-					_tick = selectRandom [0.04,0.05,0.1]; // faster rate until you are forced down. 
+					_tick = selectRandom [0.06,0.08,0.11]; // faster rate until you are forced down. 
 					if (_currentDamage + _tick >= 1) then {_tick = 0.01}; //careful not to overdamage you with the bleed.
 				};
 
@@ -150,13 +145,13 @@ while {alive _unit && {local _unit}} do {
 
 		} else {
 			
-			if (damage _unit > 0) then { 
+			if (_currentDamage > 0) then { 
 
 				if (damage _unit < 0.5) then { // if you have been FAKed or lightly harmed you will eventually heal to full.
-					_tick = selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
+					_tick = selectRandom [0.002, 0.003, 0.004]; // Slow regen while not bleeding.
 				}; 
 				if (damage _unit >= 0.52) then { // can auto heal to ~ 50% without any medical attention.
-					_tick = selectRandom [0.006,0.008,0.012]; // Slow regen while not bleeding.
+					_tick = selectRandom [0.002, 0.003, 0.004]; // Slow regen while not bleeding.
 				}; 
 
 				{ // save current hands and legs damage.
@@ -180,6 +175,11 @@ while {alive _unit && {local _unit}} do {
 		};
 
 		_nextSave = time + 10;
+
+		if (f_param_debugMode == 1 && {isPlayer _unit}) then
+		{
+			systemChat format ["(medical loop): Unit %1 | Current Damage %2 | Bleed %3 | Conscious %4",_unit,(damage _unit) toFixed 4,_unit getVariable ["f_var_fam_bleed",0],_unit getVariable ["f_var_fam_conscious",true]];
+		};
 	};
 // ====================================================================================
 
