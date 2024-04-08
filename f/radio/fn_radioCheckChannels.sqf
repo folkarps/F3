@@ -16,8 +16,6 @@ f_var_radioIsChecking = true;
 _splitMode = f_var_radioSplitMode;
 
 // Initialise variables
-private _radioChannels_unitSpecific = [];
-private _radioChannelsVehicleSpecific = [];
 private _channelObjects = [];
 private _channelsToAddListen = [];
 private _channelsToAddTalk = [];
