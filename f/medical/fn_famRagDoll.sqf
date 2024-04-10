@@ -8,7 +8,7 @@ params ["_unit"];
 // ====================================================================================
 
 // EVENT HANDLER 
-_unit addEventHandler ["AnimStateChanged", {
+_eh = _unit addEventHandler ["AnimStateChanged", {
     
     // EH PARAMS
 	params ["_unit", "_anim"];
@@ -39,6 +39,8 @@ _unit addEventHandler ["AnimStateChanged", {
         };
     };
 }]; 
+
+_unit setVariable ["f_var_fam_ragEH",_eh];
 
 // ====================================================================================
 

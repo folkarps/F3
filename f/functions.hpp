@@ -126,6 +126,7 @@ class F // Defines the "owner"
 		class famInit{};
 		class famLoop{};
 		class famDamageHandler{};
+		class famEH{};
 		class famRagDoll{};
 		class famPassOut{};
 		class famWakeUp{};

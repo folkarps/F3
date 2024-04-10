@@ -21,6 +21,7 @@ if (player getVariable ["f_var_fam_initDone",false]) exitWith {
     systemChat "FAM init already run!";
 };
 
+// ====================================================================================
 //global stuff:
 
 f_var_fam_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
@@ -28,10 +29,10 @@ f_var_fam_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
 f_var_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
 
 
-private _unit = player;
-
+// ====================================================================================
 // MEDICAL VARIABLES
 // These become global later.
+private _unit = player;
 _unit setVariable ["f_var_fam_bleed",false]; 
 _unit setVariable ["f_var_fam_conscious",true]; 
 
@@ -43,13 +44,15 @@ _unit getVariable ["f_var_fam_flag",false];
 _unit setVariable ["f_var_fam_actions",false];
 
 [_unit] spawn f_fnc_famLoop; 
-[_unit] spawn {
-    params ["_unit"];
-    waitUntil {sleep 0.1; f_param_mission_timer <= 0};
-    _eh = _unit addEventHandler ["HandleDamage",{_this call f_fnc_famDamageHandler;}];
-    _unit setVariable ["f_var_reduceDamageEH",_eh];
+
+// ====================================================================================
+// Event Handlers must not be run twice on respawned units.
+
+if (count (_unit getVariable ["f_var_fam_allEHs",[]]) == 0) then {
+    [_unit] spawn f_fnc_famEH;
 };
 
+// ====================================================================================
 // Let all others know that we (this unit/player) exists.
 // Add actions for this player on everyone else's machine.
 // These are also executed for JIPed players
@@ -60,57 +63,6 @@ if (!(_unit getVariable ["f_var_fam_actions",false]) && {hasInterface}) then {
         _unit setVariable ["f_var_fam_actions",true,true];
         
 };
-
-// Trying this as an event handler.
-_unit addEventHandler ["Killed", {
-    params ["_unit"];
-    // EXIT
-    // This occurs after death, make sure that none of the wounded affects carry over.
-
-    // Give them their gear back
-    if !(_unit getVariable ["f_var_fam_conscious",true]) then {
-        _unit call f_fnc_famWakeUp;
-    }; 
-
-    
-    if (vehicle _unit == _unit) then {
-        _unit setPosATL [getPosATL _unit select 0, getPosATL _unit select 1, (getPosATL _unit select 2) + 0.25];
-    };
-    _unit enableSimulation true;
-    
-    if (animationState _unit == "Unconscious") then {
-        _unit switchMove "deadState";
-    };
-
-    // store name on corpse for future diagnosis.
-    _unit setVariable ["f_var_fam_corpse",name _unit,true];
-
-}];
-
-_unit addEventHandler ["HandleHeal", {
-
-    // notification correction for self FAK usage.
-    params ["_injured", "_healer"];
-    if (_injured == _healer) exitWith { 
-        _healer setVariable ["f_var_fam_selffak", true];
-    };
-
-    // information for using vanilla heal on others.
-    [_injured, _healer] spawn {
-        params ["_injured", "_healer"];
-        _damage = damage _injured;
-        waitUntil{sleep 1; damage _injured <= _damage};
-
-        if (_healer getUnitTrait "Medic") then {
-            hint "Patient healed with Medikit";
-        } else {
-            hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _healer select {_unit == "FirstAidKit"})];
-        };
-
-    };
-
-}];
-
 
 // ====================================================================================
 // Initialize UI stuff

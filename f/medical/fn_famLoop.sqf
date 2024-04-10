@@ -224,6 +224,10 @@ if (f_param_debugMode == 1) then
 	systemChat "medical loop exiting";
 };
 
+// I think this needs to be reset for respawn
+_unit setVariable ["f_var_fam_initDone",false];
+
+
 titleText ["","PLAIN"];
 forceRespawn _unit;
 
