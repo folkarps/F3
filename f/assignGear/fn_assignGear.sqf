@@ -263,27 +263,6 @@ if (_faction in ["3ifb"]) then {
 // This block needs only to be run on an infantry unit
 if (_isMan) then {
 
-	// Add extra Bandages,
-	// because the assignGear files were made when the sws was still existing.
-	private _numExtraBandage = 4;
-	private _numExtraFAK = 2;
-	for "_i" from 1 to _numExtraBandage do {
-		_unit addItem _bandage;
-	};
-	for "_i" from 1 to _numExtraFAK do {
-		_unit addItem _firstaid;
-	};
-
-	// extras for riflemen.
-	if (_typeofUnit in ["aar","r"]) then {
-		for "_i" from 1 to 2 do {
-			_unit addItem _firstaid;
-		};
-		for "_i" from 1 to 2 do {
-			_unit addItem _bandage;
-		};
-	};
-
 	// Handle weapon attachments
 	#include "f_assignGear_attachments.sqf";
 

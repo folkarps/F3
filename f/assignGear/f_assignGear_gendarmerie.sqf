@@ -169,12 +169,16 @@ _vipGlasses = [];
 if (_isMan) then {
 
 	// PREPARE UNIT FOR GEAR ADDITION
-	// The following code removes all existing weapons, items, magazines and backpacks
+	// The following code removes all existing weapons, items, magazines, traits, and backpacks
 
 	removeBackpack _unit;
 	removeAllWeapons _unit;
 	removeAllItemsWithMagazines _unit;
 	removeAllAssignedItems _unit;
+	
+	{
+		_unit setUnitTrait [_x, false];
+	} forEach ["engineer","explosiveSpecialist","medic","UAVHacker"];
 
 	// ====================================================================================
 
@@ -195,6 +199,14 @@ if (_isMan) then {
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
+
+	for "_i" from 1 to 2 do {
+		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
+	};
+
+	for "_i" from 1 to 4 do {
+		_unit addItem _bandage; // Add 4 bandages
+	};
 
 };
 
@@ -220,7 +232,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -234,7 +245,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -248,7 +258,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -278,7 +287,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 4];
 	};
 // Carbineer Loadout:
@@ -287,7 +295,6 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
 		_unit addmagazines [_carbinemag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -303,7 +310,6 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
 		_unit addmagazines [_smgmag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -321,7 +327,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addmagazines [_riflemag, 7];
 		_attachments pushback (_silencer1); // Adds silencer
 		_hg_attachments pushback (_hg_silencer1); // Adds pistol silencer
@@ -346,6 +351,7 @@ switch (_typeofUnit) do
 	    _unit addMagazineCargoGlobal [_chemyellow,4];
 		_unit addItemCargoGlobal ["Toolkit",1];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal [_medkit,1];
 	};
 //CARGO: Rotary Transport Light
@@ -361,9 +367,9 @@ switch (_typeofUnit) do
 	    _unit addMagazineCargoGlobal [_chemred,4];
 	    _unit addMagazineCargoGlobal [_chemyellow,4];
 		_unit addItemCargoGlobal [_firstaid,4];
-	    _unit addBackpackCargoGlobal ["B_Parachute",2];
 		_unit addItemCargoGlobal ["Toolkit",1];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal [_medkit,1];
 	};
 
