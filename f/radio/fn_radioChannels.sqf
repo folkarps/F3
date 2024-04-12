@@ -102,7 +102,7 @@ if (hasInterface) then {
 	
 	waitUntil {scriptDone f_script_briefing};
 	
-	player createDiaryRecord ["fa3_actions","FA3 Radio",
+	player createDiaryRecord ["fa3_actions",["FA3 Radio",
 		format ["
 			<br/>
 			The FA3 Radio system provides long-range radio channels based on items in your inventory and the vehicle you're in.
@@ -114,6 +114,6 @@ if (hasInterface) then {
 			VEHICLE RADIO - controls channels you have access to because of the vehicle you're in. Only affects you, is vehicle-specific, and is persistent within this mission.
 			<execute expression='%2'>Toggle off/on</execute>
 		",_personalRadioCode,_vehicleRadioCode]
-	];
+	]];
 };
 
