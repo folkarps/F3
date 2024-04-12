@@ -23,11 +23,10 @@ if (_selection != "") then {
 private _hitSize = _damage - _currentDamage;
 private _newDamage = _damage;
 
-// Down you on a big hit.
-if (_selection != "" && {_newDamage >= 2}) then { 
+// Down you on a big hit, sometimes.
+if (_selection != "" && {_selection != "arms" && _selection != "hands" && {_newDamage >= 0.8 && random 2 > 1}}) then { 
 	_unit setVariable ["f_var_fam_forcedown",true];
-	_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];
-	
+	_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];	
 };
 
 // Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
