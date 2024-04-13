@@ -13,12 +13,7 @@ private _healIcon = "a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa"
 private _healProg = "(_target distance _caller < 3) && {alive _target && !(_target getVariable ['f_var_fam_conscious',true])}"; // This one is always the same, start condition varies by unit type.
 private _healTime = 6; // Action Duration
 private _healMedicTime = 4.5; // Action Duration
-/*
-// Medic bandages faster
-if (_unit getUnitTrait "medic") then {
-	_healTime = _healTime * .5;
-};
-*/
+
 // Starting Code
 private _healCodeStart = { 
 	params ["_target", "_caller", "_actionId", "_arguments"]; 

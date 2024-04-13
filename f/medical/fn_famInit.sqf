@@ -2,8 +2,8 @@
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
-// Maybe this is what is required for init call to work as JIP.
 if (isServer) then {
+	// Maybe this is what is required for init call to work as JIP.
 	// Add server EH for JIP
 	addMissionEventHandler ["OnUserClientStateChanged",
 	{
@@ -12,6 +12,21 @@ if (isServer) then {
 			[] remoteExec ["f_fnc_famInit",_networkId];
 		};
 	}];
+
+	// replace editor placed object's default FAKs with a mix of FAKs and Bandages
+    {
+        _obj = _x;
+        if ("" != (_obj getVariable ["f_var_assignGear", ""]) && { !(_obj getVariable ["f_var_assignGear_done", false]) }) then {
+            systemChat "TODO assign gear wasnt done after all o.O";
+            _obj spawn {
+                waitUntil { sleep 1; _this getVariable ["f_var_assignGear_done", false]; };
+                [_this] call f_fnc_famMedSwap;
+            }
+        }else{
+            [_obj] call f_fnc_famMedSwap;
+        };
+    } forEach (allMissionObjects "ALL" select {!isPlayer _x});
+
 };
 
 waitUntil{!isNull player && {player == player}};

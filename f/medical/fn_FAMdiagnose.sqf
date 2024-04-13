@@ -4,8 +4,6 @@
 
 params ["_unit"];
 
-// insert check of unit's vitals here
-
 // Set Variables 
 private _bleed = "";
 private _conscious = "";
@@ -21,7 +19,6 @@ if (_unit getVariable ["f_var_fam_bleed",false]) then {
 };
 if (_unit getVariable ["f_var_fam_conscious",true]) then {
 	_awake = true;
-	//_conscious = "<br/>Conscious";
 } else {
 	_awake = false;
 	_conscious = "<t color='#fb8100'> | Unconscious</t>  "; 

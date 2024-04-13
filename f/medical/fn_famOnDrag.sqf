@@ -72,9 +72,7 @@ if (f_param_debugMode == 1) then {
 };
 
 if (_isDragger) then {
-	if !(_dragger getVariable ["f_var_fam_conscious",true]) then {
-		// _dragger switchMove ANIM_WOUNDED;
-	} else {
+	if (_dragger getVariable ["f_var_fam_conscious",true]) then {
 	    if(vehicle _dragger == _dragger) then {
 		    _dragger switchMove "";
 	    }

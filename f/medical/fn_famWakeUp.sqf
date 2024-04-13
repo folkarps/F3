@@ -21,7 +21,9 @@ _unit removeEventHandler ["AnimStateChanged", _unit getVariable ["f_var_fam_ragE
 for "_i" from 2 to 5 do {
     _i enableChannel true;
 };
-// [_unit] spawn f_fnc_radioCheckChannels; // If on a branch with radio
+
+// check for radio channels
+[_unit] spawn f_fnc_radioCheckChannels;
 
 if(local _unit) then
 {

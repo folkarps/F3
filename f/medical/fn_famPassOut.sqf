@@ -93,7 +93,9 @@ _unit setCaptive true;
 for "_i" from 2 to 5 do {
     _i enableChannel false;
 };
-// [_unit] spawn f_fnc_radioCheckChannels; // If on a branch with radio
+
+// check for radio channels
+[_unit] spawn f_fnc_radioCheckChannels;
 
 // ====================================================================================
 

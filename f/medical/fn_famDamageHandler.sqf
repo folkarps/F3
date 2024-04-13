@@ -77,7 +77,7 @@ if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 // debug
 if (f_param_debugMode == 1) then
 {
-	systemChat format ["(fnc_famDamageHandler): %1 | %2 | %3 | %4 | %5",_unit,_selection,_currentDamage /*toFixed 4*/,_damage /*toFixed 4*/,_newDamage /*toFixed 4*/];
+	systemChat format ["(fnc_famDamageHandler): %1 | %2 | %3 | %4 | %5",_unit,_selection,_currentDamage,_damage,_newDamage];
 };
 
 // RETURN FINAL DAMAGE VALUE

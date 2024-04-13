@@ -10,12 +10,7 @@ private _bdgIcon = "a3\ui_f\data\igui\cfg\actions\ico_cpt_thtl_off_ca.paa"; //Ic
 private _bdgProg = "(_this distance _target < 3) && {alive _target && _target getVariable ['f_var_fam_bleed',false]}"; // This one is always the same, start condition varies by unit type.
 private _bdgTime = 6; // Action Duration
 private _bdgMedicTime = 4.5; // Action Duration
-/*
-// Medic bandages faster
-if (_unit getUnitTrait "medic") then {
-	_bdgTime = _bdgTime * 0.5;
-};
-*/
+
 // Starting Code
 private _bdgCodeStart = { 
 	params ["_target", "_caller", "_actionId", "_arguments"]; 

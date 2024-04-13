@@ -62,7 +62,5 @@ _ehHeal = _unit addEventHandler ["HandleHeal", {
 waitUntil {sleep 0.1; f_param_mission_timer <= 0}; // need to wait until post safeStart for this.
 // Handle Damage 
 _ehDamage = _unit addEventHandler ["HandleDamage",{_this call f_fnc_famDamageHandler;}];
-// _unit setVariable ["f_var_reduceDamageEH",_eh];
-
 
 _unit setVariable ["f_var_fam_allEHs",[_ehDamage,_ehKilled,_ehHeal]];
