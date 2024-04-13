@@ -15,7 +15,7 @@ _unit setVariable ["f_var_fam_conscious",true,true];
 // INITIAL RESETS
 
 // Remove this if it still exists.
-_unit removeEventHandler ["AnimStateChanged", _unit getVariable ["f_var_fam_ragEH",[]]];
+_unit removeEventHandler ["AnimStateChanged", _unit getVariable ["f_var_fam_ragEH",0]];
 
 // Instantly return unit channels so they can call for help.
 for "_i" from 2 to 5 do {
