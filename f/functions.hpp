@@ -89,6 +89,9 @@ class F // Defines the "owner"
 		class nametagCache {};
 		class nametagResetFont {};
 		class getZoom {};
+		class nametagInit {
+			file = "f\nametag\fn_nametagInit.sqf";
+		};
 	};
 	class preMount
 	{

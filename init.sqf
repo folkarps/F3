@@ -203,7 +203,7 @@ f_var_viewDistance_crewOnly = true;
 // F3 - Name Tags
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\nametag\f_nametagInit.sqf";
+0 spawn f_fnc_nametagInit;
 
 // ====================================================================================
 
