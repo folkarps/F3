@@ -134,7 +134,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_shotgunmag1, 1];
 		_unit addweapon _shotgun;
-		_unit addmagazines [_smokegrenade, 3];
+		_unit addmagazines [_smokegrenade, 6];
 		_unit addmagazines [_shotgunmag1, 10];
 		_unit addmagazines [_shotgunmag2, 6];
 		_unit addItem _medkit;

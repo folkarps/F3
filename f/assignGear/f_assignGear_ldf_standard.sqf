@@ -128,14 +128,14 @@ switch (_typeofUnit) do
 		_unit addWeapon _laserdesignator;
 	};
 // Medic Loadout:
-case "m":
+	case "m":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
 		_unit addmagazines [_smokegrenade, 3];
-		_unit addmagazines [_carbinemag, 4];
+		_unit addmagazines [_carbinemag, 6];
 		_unit addmagazines [_carbinemag_tr, 2];
 		_unit addItem _medkit;
 		for "_i" from 1 to 10 do {
