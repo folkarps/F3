@@ -163,6 +163,7 @@ _smokegrenadeblue = "SmokeShellBlue";
 _smokegrenadepurple = "SmokeShellPurple";
 
 // misc medical items.
+_bandage = "Bandage";
 _firstaid = "FirstAidKit";
 _medkit = "Medikit";
 
@@ -336,6 +337,7 @@ if (_isMan) then {
 	removeAllWeapons _unit;
 	removeAllItemsWithMagazines _unit;
 	removeAllAssignedItems _unit;
+	
 	{
 		_unit setUnitTrait [_x, false];
 	} forEach ["engineer","explosiveSpecialist","medic","UAVHacker"];
@@ -358,11 +360,24 @@ if (_isMan) then {
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
-	
-	for "_i" from 1 to 4 do {
-		_unit addItem _firstaid; // Add 4 first aid kit (FAK)
+
+	for "_i" from 1 to 2 do {
+		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
 	};
 
+	for "_i" from 1 to 4 do {
+		_unit addItem _bandage; // Add 4 bandages
+	};
+
+	// extras for riflemen.
+	if (_typeofUnit in ["aar","r"]) then {
+		for "_i" from 1 to 2 do {
+			_unit addItem _firstaid;
+		};
+		for "_i" from 1 to 2 do {
+			_unit addItem _bandage;
+		};
+	};
 };
 
 // ====================================================================================
