@@ -51,7 +51,7 @@ if (isServer) then {
 
 	// Flatten all these arrays into one single list for potential later use
 	f_var_radioChannelsUnified = [];
-	f_var_radioChannelsUnified append (flatten (values f_var_radioChannels apply {_x select 1}));
+	f_var_radioChannelsUnified append (flatten (values f_var_radioChannels apply {_x select 2}));
 	f_var_radioChannelsUnified = f_var_radioChannelsUnified arrayIntersect f_var_radioChannelsUnified;
 	
 	// If channels are not to be split, only create one.
