@@ -1,4 +1,4 @@
-// F3 - SetWind
+// FA3 - SetWind
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

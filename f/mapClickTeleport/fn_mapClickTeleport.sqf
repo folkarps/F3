@@ -1,4 +1,4 @@
-// F3 - Mission Maker Teleport
+// FA3 - Mission Maker Teleport
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

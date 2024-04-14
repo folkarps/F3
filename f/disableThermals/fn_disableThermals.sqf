@@ -1,4 +1,4 @@
-// F3 - Disable Thermals
+// FA3 - Disable Thermals
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

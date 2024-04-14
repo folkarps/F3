@@ -1,4 +1,4 @@
-// F3 - Caching Script Group Cacher
+// FA3 - Caching Script Group Cacher
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

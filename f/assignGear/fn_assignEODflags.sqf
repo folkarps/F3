@@ -1,3 +1,5 @@
+// FA3 - Assign EOD flags
+// Called by fn_assignGear.sqf. Gives a unit the action to place EOD marker flags.
 params ["_unit"];
 
 private _actionID = _unit addAction [

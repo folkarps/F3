@@ -1,4 +1,4 @@
-// F3 - Safe Start, Safety Toggle
+// FA3 - Safe Start, Safety Toggle
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 //=====================================================================================
 

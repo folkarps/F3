@@ -1,4 +1,4 @@
-// F3 - Mission Conditions
+// FA3 - Mission Conditions
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

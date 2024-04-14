@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - 3IFB
+// FA3 - Folk ARPS Assign Gear Script - 3IFB
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

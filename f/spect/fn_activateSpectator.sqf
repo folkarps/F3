@@ -1,3 +1,4 @@
+// FA3 - Spectator component
 if (f_param_debugMode == 1) then {
     diag_log "activating spectator";
 };

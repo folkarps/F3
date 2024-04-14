@@ -1,4 +1,4 @@
-// F3 - Loadout Notes
+// FA3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

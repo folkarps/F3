@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - NATO (PACIFIC)
+// FA3 - Folk ARPS Assign Gear Script - NATO (PACIFIC)
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

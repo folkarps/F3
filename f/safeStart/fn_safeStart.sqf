@@ -1,4 +1,4 @@
-// F3 - Safe Start
+// FA3 - Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 //	This script inits the Mission Timer and the Safe Start, has the server setup the publicVariable

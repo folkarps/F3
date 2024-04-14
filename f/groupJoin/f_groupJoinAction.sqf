@@ -1,4 +1,4 @@
-// F3 - Add group join option to action menu
+// FA3 - Add group join option to action menu
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

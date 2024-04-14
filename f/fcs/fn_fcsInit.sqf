@@ -1,4 +1,4 @@
-// F3 - FCS/Commander's Override system
+// FA3 - FCS/Commander's Override system
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // Originally from: https://github.com/NikkoJT/njt_fcs (integrated with permission)
 

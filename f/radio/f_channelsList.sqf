@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Long-Range Radio Module
+// FA3 -Long-Range Radio Module
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 /* 

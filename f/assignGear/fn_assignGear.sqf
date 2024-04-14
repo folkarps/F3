@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script (Server-side)
+// FA3 - Folk ARPS Assign Gear Script (Server-side)
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
