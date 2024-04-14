@@ -57,11 +57,17 @@ if ( ! (_obj isKindOf "CAManBase") ) then {
 	// Replace the backpack with a parachute
 	removeBackpack _obj;
 	_obj addBackpack "B_parachute";
+	if f_var_mapClickTeleport_Smoke then {
+		private _smoke = "SmokeShellRed" createVehicle [0,0,0];
+		_smoke attachTo [_obj,[0,0,0]];
+		_obj setVariable ["f_var_mapClickHALOsmoke",_smoke];
+	};
 
 	// Once on the ground, remove the parachute
 	// and re-add the backpack with all its content
 	waitUntil {sleep 0.1; isTouchingGround _obj};
 	if (alive _obj) then {
+		deleteVehicle (_obj getVariable ["f_var_mapClickHALOsmoke",objNull]);
 		removeBackpack _obj;
 		_obj addBackPack _backpack;
 		{
