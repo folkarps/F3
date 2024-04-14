@@ -296,7 +296,7 @@ class ScenarioData
 {
 	author="*** Insert mission author name here. ***";
 	overViewPicture="overviewLogo.jpg";
-	onLoadMission="Made with the F3 Mission Development Framework.";
+	onLoadMission="Made with the FA3 Mission Development Framework.";
 	loadScreen="loadLogo.jpg";
 };
 class CustomAttributes
