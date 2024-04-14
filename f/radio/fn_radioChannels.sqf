@@ -35,16 +35,16 @@ if (isServer) then {
 	#include "f_channelsList.sqf";
 	
 	f_var_radioChannels = createHashmap;
-	f_var_radioChannels set [1, [_channelName1,_channelColour1, (_channelList1 apply {toLower _x})]];
-	f_var_radioChannels set [2, [_channelName2,_channelColour2, (_channelList2 apply {toLower _x})]];
-	f_var_radioChannels set [3, [_channelName3,_channelColour3, (_channelList3 apply {toLower _x})]];
-	f_var_radioChannels set [4, [_channelName4,_channelColour4, (_channelList4 apply {toLower _x})]];
-	f_var_radioChannels set [5, [_channelName5,_channelColour5, (_channelList5 apply {toLower _x})]];
-	f_var_radioChannels set [6, [_channelName6,_channelColour6, (_channelList6 apply {toLower _x})]];
-	f_var_radioChannels set [7, [_channelName7,_channelColour7, (_channelList7 apply {toLower _x})]];
-	f_var_radioChannels set [8, [_channelName8,_channelColour8, (_channelList8 apply {toLower _x})]];
-	f_var_radioChannels set [9, [_channelName9,_channelColour9, (_channelList9 apply {toLower _x})]];
-	f_var_radioChannels set [10, [_channelName10,_channelColour10,(_channelList10 apply {toLower _x})]];
+	f_var_radioChannels set [1, [_channelName1,_channelColour1, (_channelList1 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [2, [_channelName2,_channelColour2, (_channelList2 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [3, [_channelName3,_channelColour3, (_channelList3 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [4, [_channelName4,_channelColour4, (_channelList4 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [5, [_channelName5,_channelColour5, (_channelList5 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [6, [_channelName6,_channelColour6, (_channelList6 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [7, [_channelName7,_channelColour7, (_channelList7 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [8, [_channelName8,_channelColour8, (_channelList8 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [9, [_channelName9,_channelColour9, (_channelList9 apply {toLowerANSI _x})]];
+	f_var_radioChannels set [10, [_channelName10,_channelColour10,(_channelList10 apply {toLowerANSI _x})]];
 	
 	// You can also tag a specific unit or vehicle for access to specific channels by setting a variable on them:
 	// _unit setVariable ["f_var_radioChannelsObjectSpecific",[1,2,3],true];
@@ -63,7 +63,7 @@ if (isServer) then {
 	for "_i" from 1 to (_channelCount) do {
 		_channelName = format ["%1",((f_var_radioChannels get _i) select 0)];
 		_channelColour = ((f_var_radioChannels get _i) select 1);
-		_channelID = (radioChannelCreate [_channelColour, _channelName, "%UNIT_NAME", []]);
+		_channelID = (radioChannelCreate [_channelColour, _channelName, "%CHANNEL_LABEL - %UNIT_GRP_NAME %UNIT_NAME", []]);
 		if (_channelID != _i) exitWith {diag_log format ["F3 Radio: Channel %1 creation failed - unacceptable change to channel list in f\radio\f_radioChannels.sqf or too many channels", _channelName]};
 	};
 
@@ -85,5 +85,35 @@ if (isServer) then {
 // Run clientside stuff
 if (hasInterface) then {
 	[] call f_fnc_radioAddHandlers;
+	
+	private _personalRadioCode = "
+		private _radioOn = player getVariable [""f_var_radioIsOn"",true];
+		player setVariable [""f_var_radioIsOn"",!_radioOn];
+		[player] spawn f_fnc_radioCheckChannels;
+	";
+	
+	private _vehicleRadioCode = "
+		if (!isNull objectParent player) then {
+			private _radioOn = (objectParent player) getVariable [""f_var_radioIsOn"",true];
+			(objectParent player) setVariable [""f_var_radioIsOn"",!_radioOn];
+			[player] spawn f_fnc_radioCheckChannels;
+		};
+	";
+	
+	waitUntil {scriptDone f_script_briefing};
+	
+	player createDiaryRecord ["fa3_actions",["FA3 Radio",
+		format ["
+			<br/>
+			The FA3 Radio system provides long-range radio channels based on items in your inventory and the vehicle you're in.
+			<br/><br/>
+			PERSONAL RADIO - controls channels you have access to because of your inventory. Only affects you, and is persistent within this mission.
+			<br/><br/>
+			<execute expression='%1'>Toggle off/on</execute>
+			<br/><br/>
+			VEHICLE RADIO - controls channels you have access to because of the vehicle you're in. Only affects you, is vehicle-specific, and is persistent within this mission.
+			<execute expression='%2'>Toggle off/on</execute>
+		",_personalRadioCode,_vehicleRadioCode]
+	]];
 };
 

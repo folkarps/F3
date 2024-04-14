@@ -27,16 +27,18 @@ There is a maximum of 10 channels at any time. Add in these radios for GM and CS
 */
 
 // Channel 1 (default: generic)
-_channelName1 = "LR Channel 1";
+_channelName1 = "¤  LR Channel 1";
 _channelColour1 = [1, 0.3, 0.1, 1];
 _channelList1 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_black_F"
 ];
 
 // Channel 2 (default: AAF)
-_channelName2 = "LR Channel 2";
-_channelColour2 = [0.06,0.9,0,1];
+_channelName2 = "¤  LR Channel 2";
+_channelColour2 = [0,0.9,0,1];
 _channelList2 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_digi_F",
 	"vehAAF_COV",
 	"vehAAF_IFV1",
@@ -58,9 +60,10 @@ _channelList2 = [
 ];
 
 // Channel 3 (default: LDF)
-_channelName3 = "LR Channel 3";
-_channelColour3 = [0.06,0.9,0,1];
+_channelName3 = "¤  LR Channel 3";
+_channelColour3 = [0,0.9,0,1];
 _channelList3 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_eaf_F",
 	"vehLDF_COV",
 	"vehLDF_IFV1",
@@ -82,9 +85,10 @@ _channelList3 = [
 ];
 
 // Channel 4 (default: CSAT Pacific)
-_channelName4 = "LR Channel 4";
+_channelName4 = "¤  LR Channel 4";
 _channelColour4 = [0.9,0,0,1];
 _channelList4 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_ghex_F",
 	"vehCSAT_COV",
 	"vehCSAT_IFV1",
@@ -106,9 +110,10 @@ _channelList4 = [
 ];
 
 // Channel 5 (default: CSAT Mediterranean)
-_channelName5 = "LR Channel 5";
+_channelName5 = "¤  LR Channel 5";
 _channelColour5 = [0.9,0,0,1];
 _channelList5 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_hex_F",
 	"vehCSAT_COV",
 	"vehCSAT_IFV1",
@@ -130,9 +135,10 @@ _channelList5 = [
 ];
 
 // Channel 6 (default: CSAT Urban)
-_channelName6 = "LR Channel 6";
+_channelName6 = "¤  LR Channel 6";
 _channelColour6 = [0.9,0,0,1];
 _channelList6 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_oucamo_F",
 	"vehCSAT_COV",
 	"vehCSAT_IFV1",
@@ -154,9 +160,10 @@ _channelList6 = [
 ];
 
 // Channel 7 (default: NATO Mediterranean)
-_channelName7 = "LR Channel 7";
+_channelName7 = "¤  LR Channel 7";
 _channelColour7 = [0.1,0.5,1,1];
 _channelList7 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_mtp_F",
 	"vehNATO_COV",
 	"vehNATO_IFV1",
@@ -178,9 +185,10 @@ _channelList7 = [
 ];
 
 // Channel 8 (default: NATO Woodland)
-_channelName8 = "LR Channel 8";
+_channelName8 = "¤  LR Channel 8";
 _channelColour8 = [0.1,0.5,1,1];
 _channelList8 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_wdl_F",
 	"vehNATO_COV",
 	"vehNATO_IFV1",
@@ -202,9 +210,10 @@ _channelList8 = [
 ];
 
 // Channel 9 (default: NATO Pacific)
-_channelName9 = "LR Channel 9";
+_channelName9 = "¤  LR Channel 9";
 _channelColour9 = [0.1,0.5,1,1];
 _channelList9 = [
+	"VirtualCurator_F",
 	"B_RadioBag_01_tropic_F",
 	"vehNATO_COV",
 	"vehNATO_IFV1",
@@ -226,8 +235,9 @@ _channelList9 = [
 ];
 
 // Channel 10 (default: unused)
-_channelName10 = "LR Channel 10";
+_channelName10 = "¤  LR Channel 10";
 _channelColour10 = [0.9,0.2,0.9,1];
 _channelList10 = [
+	"VirtualCurator_F",
 	"Your stuff here!"
 ];

@@ -22,6 +22,11 @@ private _fnc_debug = {
 
 // ====================================================================================
 
+// Create briefing section for other components to use
+player createDiarySubject ["fa3_actions","Player Actions"];
+
+// ====================================================================================
+
 // DETECT PLAYER FACTION (use faction from group leader)
 private _unitfaction = toLower ([leader group player] call f_fnc_virtualFaction);
 
