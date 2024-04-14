@@ -16,17 +16,10 @@ enableSaving [false, false];
 
 // ====================================================================================
 
-// F3 - Mute Orders and Reports
-// Credits and documentation: https://github.com/folkarps/F3/wiki
-
-{_x setSpeaker "NoVoice"} forEach playableUnits;
-
-// ====================================================================================
-
 // F3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\safeStart\f_safeStart.sqf";
+[] spawn f_fnc_safeStart;
 
 // ====================================================================================
 
@@ -89,7 +82,7 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // F3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\briefing\f_loadoutNotes.sqf";
+[] spawn f_fnc_loadoutNotes;
 
 // ====================================================================================
 
@@ -158,6 +151,28 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
+// F3 - Commander's Override and FCS failure
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+// [vehicleName] call f_fnc_fcsInit;
+// { _x call f_fnc_fcsInit; } forEach [vehicle1,vehicle2,vehicle3];
+
+// ====================================================================================
+
+// F3 - Driver's Brake Override
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+[] spawn f_fnc_brakeOverride;
+
+// ====================================================================================
+
+// F3 - Skulls
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+[] spawn f_fnc_skullsInit;
+
+// ====================================================================================
+
 // F3 - MapClick Teleport
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
@@ -167,14 +182,15 @@ f_var_viewDistance_crewOnly = true;
 // f_var_mapClickTeleport_Units = [];               // Restrict map click teleport to these units.
 // f_var_mapClickTeleport_Height = 0;               // If > 0 map click teleport will act as a HALO drop and automatically assign parachutes to units.
 // f_var_mapClickTeleport_SaferVehicleHALO = false; // If HALO-ing (f_var_mapClickTeleport_Height > 0), False: crew remain in vehicle during drop. True: crew drop separately with their own parachutes.
-// [] execVM "f\mapClickTeleport\f_mapClickTeleport.sqf";
+// f_var_mapClickTeleport_Smoke = true; // If HALO-ing, True: attach a decorative smoke tracer to falling units.
+// 0 spawn f_fnc_mapClickTeleport;
 
 // ====================================================================================
 
 // F3 - Name Tags
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\nametag\f_nametagInit.sqf";
+0 spawn f_fnc_nametagInit;
 
 // ====================================================================================
 
@@ -211,3 +227,20 @@ f_var_viewDistance_crewOnly = true;
 // [[UnitName1, "UnitClass1"]] spawn f_fnc_disableThermals;
 
 // ====================================================================================
+
+// F3 - Radio Channels
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+// True to split channels by radio backpack type. Else one channel for all.
+// Optional second parameter (number): limit the channel count to this number. This frees up space for any other custom channels. Defaults to 10 (max) if not set, or 1 (minimum) if channels not split.
+// You can also tag a specific unit or vehicle for access to specific channels by setting a variable on them:
+// _unit setVariable ["f_var_radioChannelsObjectSpecific",[1,2,3],true];
+
+// This component is enabled by default and it's recommended to leave it enabled. The default configuration provides an in-game CC-like function and prevents issues with reslotted players and the Direct channel.
+
+[false] spawn f_fnc_radioChannels;
+
+// If you are creating other custom channels, you must wait for F3 Radio Channels to finish to avoid conflicts:
+//  waitUntil {(!isNil f_var_radioChannelsUnified)}
+
+// ====================================================================================
+

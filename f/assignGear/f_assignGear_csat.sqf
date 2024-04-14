@@ -374,7 +374,7 @@ if (_isMan) then {
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
-
+	
 	for "_i" from 1 to 2 do {
 		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
 	};

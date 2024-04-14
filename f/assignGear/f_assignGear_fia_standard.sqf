@@ -16,7 +16,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_ARmag, 1];
 		_unit addweapon _AR;
-		_attachments pushback (_bipod1); // Adds the bipod;
+		_attachments pushback (_bipod1); // Adds the bipod
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_ARmag, 1];
 		_unit addmagazines [_ARmag_tr, 1];
@@ -43,7 +43,6 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
-		_unit addItem _firstaid;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
@@ -69,6 +68,7 @@ switch (_typeofUnit) do
 // Squad Leader / DC Loadout:
 	case "dc":
 	{
+		_unit addBackpack _bagRadio;
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glmag, 1];
 		_unit addweapon _glrifle;
@@ -88,6 +88,7 @@ switch (_typeofUnit) do
 // Platoon CO Loadout:
 	case "co":
 	{
+		_unit addBackpack _bagRadio;
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glsmokewhite, 1];
 		_unit addweapon _glrifle;
@@ -107,6 +108,7 @@ switch (_typeofUnit) do
 // JTAC Loadout:
 	case "jtac":
 	{
+		_unit addBackpack _bagRadio;
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glsmokered, 1];
 		_unit addweapon _glrifle;
@@ -160,7 +162,7 @@ case "m":
 	{
 		_unit addmagazines [_DMriflemag, 1];
 		_unit addweapon _DMrifle;
-		_attachments = [_bipod1,_scope2]; // Overwrites default attachments to add a bipod and scope 2;
+		_attachments = [_bipod1,_scope2]; // Overwrites default attachments to add a bipod and scope 2
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_DMriflemag, 4];
 		_unit addmagazines [_DMriflemag_tr, 2];
@@ -172,7 +174,7 @@ case "m":
 		_unit addBackpack _bag;
 		_unit addmagazines [_MMGmag, 1];
 		_unit addweapon _MMG;
-		_attachments pushback (_bipod1); // Adds the bipod;
+		_attachments pushback (_bipod1); // Adds the bipod
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_MMGmag, 1];
 		_unit addmagazines [_MMGmag_tr, 1];
@@ -485,6 +487,8 @@ case "m":
 // Engineer (Demo) Loadout:
 	case "eng":
 	{
+		_unit setUnitTrait ["engineer",true]; // Can repair
+		_unit setUnitTrait ["explosiveSpecialist",true]; // Can defuse explosives
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
@@ -499,6 +503,8 @@ case "m":
 // Engineer (Mines) Loadout:
 	case "engm":
 	{
+		_unit setUnitTrait ["engineer",true]; // Can repair
+		_unit setUnitTrait ["explosiveSpecialist",true]; // Can defuse explosives
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;

@@ -199,7 +199,7 @@ if (_isMan) then {
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
-
+	
 	for "_i" from 1 to 2 do {
 		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
 	};
@@ -271,7 +271,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_DMriflemag, 1];
 		_unit addweapon _DMrifle;
 		_attachments = [_bipod1,_scope3]; // Overwrites default attachments to add a bipod and scope 2
-		_unit addItem _firstaid;
 		_unit addmagazines [_DMriflemag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -344,7 +343,7 @@ switch (_typeofUnit) do
 		clearMagazineCargoGlobal _unit;
 		clearItemCargoGlobal _unit;
 		clearBackpackCargoGlobal _unit;
-		_unit addWeaponCargoGlobal [_smg, 2];
+		_unit addWeaponWithAttachmentsCargoGlobal [[_smg,"","","",[_smgmag,500],[],""],2];
 		_unit addMagazineCargoGlobal [_smgmag, 12];
 	    _unit addMagazineCargoGlobal [_chemgreen,4];
 	    _unit addMagazineCargoGlobal [_chemred,4];
@@ -361,7 +360,7 @@ switch (_typeofUnit) do
 	    clearMagazineCargoGlobal _unit;
 	    clearItemCargoGlobal _unit;
 	    clearBackpackCargoGlobal _unit;
-		_unit addWeaponCargoGlobal [_smg, 2];
+		_unit addWeaponWithAttachmentsCargoGlobal [[_smg,"","","",[_smgmag,500],[],""],2];
 	    _unit addMagazineCargoGlobal [_smgmag, 12];
 	    _unit addMagazineCargoGlobal [_chemgreen,4];
 	    _unit addMagazineCargoGlobal [_chemred,4];

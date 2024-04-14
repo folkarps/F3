@@ -14,6 +14,7 @@ class F // Defines the "owner"
 	{
 		file = "f\briefing";
 		class createBriefing{};
+		class loadoutNotes{};
 	};
 	class mpEnd
 	{
@@ -26,6 +27,7 @@ class F // Defines the "owner"
 		file = "f\assignGear";
 		class assignGear{};
 		class assignInsignia{};
+		class assignEODflags{};
 	};
 	class setGroupID
 	{
@@ -39,6 +41,7 @@ class F // Defines the "owner"
 		class SetFog{};
 		class SetWeather{};
 		class SetWind{};
+		class ColdBreath{};
 	};
 	class cache
 	{
@@ -73,6 +76,7 @@ class F // Defines the "owner"
 	class mapClickTeleport
 	{
 		file = "f\mapClickTeleport";
+		class mapClickTeleport{};
 		class mapClickTeleportAction{};
 		class mapClickTeleportSetPos{};
 		class mapClickTeleportParachute{};
@@ -88,6 +92,9 @@ class F // Defines the "owner"
 		class nametagCache {};
 		class nametagResetFont {};
 		class getZoom {};
+		class nametagInit {
+			file = "f\nametag\fn_nametagInit.sqf";
+		};
 	};
 	class preMount
 	{
@@ -105,7 +112,9 @@ class F // Defines the "owner"
 	class safeStart
 	{
 		file = "f\safeStart";
+		class safeStart{};
 		class safety{};
+		class safeStartLoop{};
 	};
 	class spect
 	{
@@ -145,5 +154,33 @@ class F // Defines the "owner"
 	{
 		file = "f\dynamicViewDistance";
 		class ehSetViewDistance {};
+	};
+	class fcs
+	{
+		file = "f\fcs";
+		class fcsInit{};
+		class fcsCommanderOverride{};
+		class fcsFailure{};
+		class fcsPersistentEffects{};
+		class fcsLocalWarning{};
+		class fcsBriefing{};
+	};
+	class brakeOverride
+	{
+		file = "f\brakeOverride";
+		class brakeOverride{};
+	};
+	class radio
+	{
+		file = "f\radio";
+		class radioChannels{};
+		class radioAddHandlers {};
+		class radioCheckChannels {};
+	};
+	class skulls
+	{
+		file = "f\skulls";
+		class skullsInit{};
+		class gruntBirthdayParty{};
 	};
 };

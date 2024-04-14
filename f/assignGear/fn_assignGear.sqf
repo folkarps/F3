@@ -37,6 +37,14 @@ _insignia_styles = [_insignia_style_NATO,_insignia_style_CSAT];
 
 // ====================================================================================
 
+// Universal: assign EOD flags to engineer classes
+if (_typeofUnit in ["eng","engm"]) then {
+	[_unit] call f_fnc_assignEODflags;
+};
+
+
+// ====================================================================================
+
 // DECIDE IF THE SCRIPT SHOULD RUN
 // Depending on locality the script decides if it should run
 
@@ -77,7 +85,7 @@ if (f_param_debugMode == 1) then
 // The following block of code executes only if the unit belongs to the NATO faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["blu_f","nato"]) then {
+if (_faction in (["blu_f","nato"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_nato.sqf")
 		#include "f_assignGear_nato.sqf"
 	#endif
@@ -99,7 +107,7 @@ if (_faction in ["blu_f","nato"]) then {
 // The following block of code executes only if the unit belongs to the NATO (Pacific) faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["blu_t_f","natopacific"]) then {
+if (_faction in (["blu_t_f","natopacific"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_natoPacific.sqf")
 		#include "f_assignGear_natoPacific.sqf"
 	#endif
@@ -111,7 +119,7 @@ if (_faction in ["blu_t_f","natopacific"]) then {
 // The following block of code executes only if the unit belongs to the NATO (Woodland) faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["blu_w_f","natowoodland"]) then {
+if (_faction in (["blu_w_f","natowoodland"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_natoWoodland.sqf")
 		#include "f_assignGear_natoWoodland.sqf"
 	#endif
@@ -123,7 +131,7 @@ if (_faction in ["blu_w_f","natowoodland"]) then {
 // The following block of code executes only if the unit belongs to the gendarmerie faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["blu_gen_f"]) then {
+if (_faction in (["blu_gen_f"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_gendarmerie.sqf")
 		#include "f_assignGear_gendarmerie.sqf"
 	#endif
@@ -135,7 +143,7 @@ if (_faction in ["blu_gen_f"]) then {
 // The following block of code executes only if the unit belongs to the CSAT faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["opf_f","csat"]) then {
+if (_faction in (["opf_f","csat"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_csat.sqf")
 		#include "f_assignGear_csat.sqf"
 	#endif
@@ -152,7 +160,7 @@ if (_faction in ["opf_f","csat"]) then {
 // The following block of code executes only if the unit belongs to the CSAT (Pacific) faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["opf_t_f","csatpacific"]) then {
+if (_faction in (["opf_t_f","csatpacific"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_csatPacific.sqf")
 		#include "f_assignGear_csatPacific.sqf"
 	#endif
@@ -164,7 +172,7 @@ if (_faction in ["opf_t_f","csatpacific"]) then {
 // The following block of code executes only if the unit belongs to the Spetsnaz faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["opf_r_f","spetsnaz"]) then {
+if (_faction in (["opf_r_f","spetsnaz"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_spetsnaz.sqf")
 		#include "f_assignGear_spetsnaz.sqf"
 	#endif
@@ -176,7 +184,7 @@ if (_faction in ["opf_r_f","spetsnaz"]) then {
 // The following block of code executes only if the unit belongs to the AAF faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["ind_f","aaf"]) then {
+if (_faction in (["ind_f","aaf"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_aaf.sqf")
 		#include "f_assignGear_aaf.sqf"
 	#endif
@@ -188,7 +196,7 @@ if (_faction in ["ind_f","aaf"]) then {
 // The following block of code executes only if the unit belongs to the FIA slot (any side); it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["blu_g_f","opf_g_f","ind_g_f","fia"]) then {
+if (_faction in (["blu_g_f","opf_g_f","ind_g_f","fia"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_fia.sqf")
 		#include "f_assignGear_fia.sqf"
 	#endif
@@ -200,7 +208,7 @@ if (_faction in ["blu_g_f","opf_g_f","ind_g_f","fia"]) then {
 // The following block of code executes only if the unit belongs to the CTRG faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["blu_ctrg_f","ctrg"]) then {
+if (_faction in (["blu_ctrg_f","ctrg"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_ctrg.sqf")
 		#include "f_assignGear_ctrg.sqf"
 	#endif
@@ -212,7 +220,7 @@ if (_faction in ["blu_ctrg_f","ctrg"]) then {
 // The following block of code executes only if the unit is manually assigned the Syndikat faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["ind_c_f","syndikat"]) then {
+if (_faction in (["ind_c_f","syndikat"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_syndikat.sqf")
 		#include "f_assignGear_syndikat.sqf"
 	#endif
@@ -224,7 +232,7 @@ if (_faction in ["ind_c_f","syndikat"]) then {
 // The following block of code executes only if the unit belongs to the LDF faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["ind_e_f","ldf"]) then {
+if (_faction in (["ind_e_f","ldf"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_ldf.sqf")
 		#include "f_assignGear_ldf.sqf"
 	#endif
@@ -236,7 +244,7 @@ if (_faction in ["ind_e_f","ldf"]) then {
 // The following block of code executes only if the unit belongs to the NPR faction; it
 // automatically includes a file which contains the appropriate equipment data.
 
-if (_faction in ["ind_l_f","npr"]) then {
+if (_faction in (["ind_l_f","npr"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_npr.sqf")
 		#include "f_assignGear_npr.sqf"
 	#endif
@@ -250,7 +258,7 @@ if (_faction in ["ind_l_f","npr"]) then {
 // The following block of code executes only if the unit is assigned to the 3IFB virtual faction
 // with f_fnc_setVirtualFaction; it automatically includes a file which contains the appropriate
 // equipment data.
-if (_faction in ["3ifb"]) then {
+if (_faction in (["3ifb"] apply {toLower _x})) then {
 	#if __has_include("f_assignGear_3IFB.sqf")
 		#include "f_assignGear_3IFB.sqf"
 	#endif
@@ -271,7 +279,6 @@ if (_isMan) then {
 
 };
 
-
 // ====================================================================================
 
 // This variable simply tracks the progress of the gear assignation process, for other
@@ -288,7 +295,7 @@ if (isNil "_carbine") then { //_carbine should exist unless no faction has been 
 	player globalchat format ["DEBUG (assignGear.sqf): Faction %1 is not defined.",_faction];
 } else {
  	if (f_param_debugMode == 1) then	{
-		player sideChat format ["DEBUG (assignGear.sqf): Gear for %1: %1 slot selected.",_unit,_faction,_typeofUnit];
+		player sideChat format ["DEBUG (assignGear.sqf): Gear for %1: faction %2, role %3",_unit,_faction,_typeofUnit];
 	};
 };
 
