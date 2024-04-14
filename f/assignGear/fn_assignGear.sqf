@@ -37,6 +37,14 @@ _insignia_styles = [_insignia_style_NATO,_insignia_style_CSAT];
 
 // ====================================================================================
 
+// Universal: assign EOD flags to engineer classes
+if (_typeofUnit in ["eng","engm"]) then {
+	[_unit] call f_fnc_assignEODflags;
+};
+
+
+// ====================================================================================
+
 // DECIDE IF THE SCRIPT SHOULD RUN
 // Depending on locality the script decides if it should run
 
@@ -277,7 +285,6 @@ if (_isMan) then {
 	_unit selectweapon primaryweapon _unit;
 
 };
-
 
 // ====================================================================================
 
