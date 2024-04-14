@@ -46,13 +46,14 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
-		_unit addmagazines [_grenade, 2];
+		_unit addmagazines [_grenade, 4];
 		_unit addmagazines [_ARmag, 2];
 		_unit addmagazines [_RATmag1, 1];
 	};
 // Fire Team Leader Loadout:
 	case "ftl":
 	{
+		_unit addBackpack _bag;
 		_unit addVest _radioRig;
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glmag, 1];
@@ -60,8 +61,9 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
-		_unit addmagazines [_glmag, 5];
+		_unit addmagazines [_glmag, 10];
 		_unit addmagazines [_glsmokewhite, 3];
+		_unit addmagazines [_grenade, 2];
 		_attachments pushback (_attach1); // Adds laser pointer, keeps default scope
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenadegreen, 2];
@@ -79,7 +81,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
-		_unit addmagazines [_glmag, 5];
+		_unit addmagazines [_glmag, 10];
 		_unit addmagazines [_glsmokewhite, 3];
 		_unit addmagazines [_glsmokered, 3];
 		_unit addmagazines [_pistolmag, 2];
@@ -130,13 +132,13 @@ switch (_typeofUnit) do
 		_unit addWeapon _laserdesignator;
 	};
 // Medic Loadout:
-case "m":
+	case "m":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addBackpack _bagLarge;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addmagazines [_smokegrenade, 3];
+		_unit addmagazines [_smokegrenade, 6];
 		_unit addmagazines [_carbinemag, 4];
 		_unit addmagazines [_carbinemag_tr, 2];
 		_unit addItem _medkit;
@@ -159,7 +161,7 @@ case "m":
 		for "_i" from 1 to 10 do {
 			_unit addItem _firstaid;
 		};
-		_unit addmagazines [_grenade, 2];
+		_unit addmagazines [_grenade, 4];
 	};
 // Designated Marksman Loadout:
 	case "dm":
@@ -552,7 +554,7 @@ case "m":
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
-		_unit addmagazines [_grenade, 2];
+		_unit addmagazines [_grenade, 4];
 	};
 // Carbineer Loadout:
 	case "car":
@@ -582,7 +584,8 @@ case "m":
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
-		_unit addmagazines [_glmag, 5];
+		_unit addmagazines [_glmag, 10];
+		_unit addmagazines [_grenade, 2];
 	};
 
 // Include the loadouts for vehicles and crates:
