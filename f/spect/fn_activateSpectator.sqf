@@ -7,7 +7,7 @@ sleep 3;
 
 // Disable post-processing effects
 // Borrowed from BIS_fnc_respawnSpectator
-waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
+    waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
 BIS_fnc_feedback_allowPP = false;
 
 // Create a new (alive) unit to prevent draw3D bug with floating head tags

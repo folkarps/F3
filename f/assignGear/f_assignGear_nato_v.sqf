@@ -19,6 +19,7 @@
 		_unit addMagazineCargoGlobal [_glmag, 4];
 		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 	};
 
 // CARGO: TRUCK - room for 50 weapons and 200 cargo items
@@ -42,6 +43,7 @@
 		_unit addMagazineCargoGlobal [_glsmokewhite, 12];
 		_unit addBackpackCargoGlobal [_bag,4];
 		_unit addItemCargoGlobal [_firstaid,8];
+		_unit addItemCargoGlobal [_bandage,24];
 	};
 
 // CARGO: IFV - room for 10 weapons and 100 cargo items
@@ -65,6 +67,7 @@
 		_unit addMagazineCargoGlobal [_glsmokewhite, 4];
 		_unit addBackpackCargoGlobal [_bag,2];
 		_unit addItemCargoGlobal [_firstaid,6];
+		_unit addItemCargoGlobal [_bandage,18];
 	};
 
 //CARGO: TANK
@@ -79,6 +82,7 @@
 		_unit addMagazineCargoGlobal [_chemgreen,4];
 		_unit addBackpackCargoGlobal [_bag,2];
 		_unit addItemCargoGlobal [_firstaid,2];
+		_unit addItemCargoGlobal [_bandage,6];
 		_unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -97,6 +101,7 @@
 	    _unit addMagazineCargoGlobal [_smokegrenadegreen,2];
 	    _unit addMagazineCargoGlobal [_chemgreen,4];
 	    _unit addItemCargoGlobal [_firstaid,2];
+		_unit addItemCargoGlobal [_bandage,6];
 	    _unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -121,6 +126,7 @@
 		_unit addMagazineCargoGlobal [_chemgreen,4];
 		_unit addBackpackCargoGlobal [_bag,2];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -147,6 +153,7 @@
 		_unit addMagazineCargoGlobal [_chemgreen,4];
 		_unit addBackpackCargoGlobal [_bag,4];
 		_unit addItemCargoGlobal [_firstaid,6];
+		_unit addItemCargoGlobal [_bandage,18];
 		_unit addItemCargoGlobal ["Toolkit",1];
 	};
 
@@ -161,6 +168,7 @@
 		_unit addMagazineCargoGlobal [_smokegrenadegreen,2];
 		_unit addMagazineCargoGlobal [_chemgreen,4];
 		_unit addItemCargoGlobal [_firstaid,2];
+		_unit addItemCargoGlobal [_bandage,6];
 	};
 
 //CARGO: Jet
@@ -174,6 +182,7 @@
 		_unit addMagazineCargoGlobal [_smokegrenadegreen,1];
 		_unit addMagazineCargoGlobal [_chemgreen,2];
 		_unit addItemCargoGlobal [_firstaid,1];
+		_unit addItemCargoGlobal [_bandage,2];
 		_unit addBackpackCargoGlobal ["B_Parachute",1];
 		_unit addBackpackCargoGlobal [_bag,1];
 		_unit addItemCargoGlobal ["Toolkit",1];
@@ -198,6 +207,7 @@
 		_unit addMagazineCargoGlobal [_smokegrenade, 8];
 		_unit addMagazineCargoGlobal [_smokegrenadegreen, 2];
 		_unit addItemCargoGlobal [_firstaid, 6];
+		_unit addItemCargoGlobal [_bandage,18];
     };
 
 // CRATE: Medium, ammo for 1 squad
@@ -219,6 +229,7 @@
 		_unit addMagazineCargoGlobal [_smokegrenade, 25];
 		_unit addMagazineCargoGlobal [_smokegrenadegreen, 6];
 		_unit addItemCargoGlobal [_firstaid, 25];
+		_unit addItemCargoGlobal [_bandage,75];
     };
 
 // CRATE: Large, ammo for 1 platoon
@@ -240,4 +251,5 @@
 		_unit addMagazineCargoGlobal [_smokegrenade, 75];
 		_unit addMagazineCargoGlobal [_smokegrenadegreen, 20];
 		_unit addItemCargoGlobal [_firstaid, 75];
+		_unit addItemCargoGlobal [_bandage,225];
     };

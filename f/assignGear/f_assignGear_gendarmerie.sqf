@@ -93,6 +93,7 @@ _smokegrenadepurple = "SmokeShellPurple";
 _binoculars = "Rangefinder";
 
 // misc medical items.
+_bandage = "Bandage";
 _firstaid = "FirstAidKit";
 _medkit = "Medikit";
 
@@ -174,6 +175,7 @@ if (_isMan) then {
 	removeAllWeapons _unit;
 	removeAllItemsWithMagazines _unit;
 	removeAllAssignedItems _unit;
+	
 	{
 		_unit setUnitTrait [_x, false];
 	} forEach ["engineer","explosiveSpecialist","medic","UAVHacker"];
@@ -191,14 +193,19 @@ if (_isMan) then {
 	// Add items universal to all units of this faction
 
 	// _unit linkItem _nvg;			// Add and equip the faction's nvg
+	// _unit addItem _bandage;		// Add a single bandage
 	_unit linkItem "ItemMap";		// Add and equip the map
 	_unit linkItem "ItemCompass";	// Add and equip a compass
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
 	
-	for "_i" from 1 to 4 do { // Add 4 first aid kit (FAK)
-		_unit addItem _firstAid;
+	for "_i" from 1 to 2 do {
+		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
+	};
+
+	for "_i" from 1 to 4 do {
+		_unit addItem _bandage; // Add 4 bandages
 	};
 
 };
@@ -343,6 +350,7 @@ switch (_typeofUnit) do
 	    _unit addMagazineCargoGlobal [_chemyellow,4];
 		_unit addItemCargoGlobal ["Toolkit",1];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal [_medkit,1];
 	};
 //CARGO: Rotary Transport Light
@@ -360,6 +368,7 @@ switch (_typeofUnit) do
 		_unit addItemCargoGlobal [_firstaid,4];
 		_unit addItemCargoGlobal ["Toolkit",1];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal [_medkit,1];
 	};
 

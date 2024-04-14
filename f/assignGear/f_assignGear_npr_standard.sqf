@@ -129,25 +129,30 @@ switch (_typeofUnit) do
 	case "m":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
-		_unit addBackpack _bag;
+		_unit addBackpack _bagLarge;
 		_unit addmagazines [_shotgunmag1, 1];
 		_unit addweapon _shotgun;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_shotgunmag1, 10];
 		_unit addmagazines [_shotgunmag2, 6];
 		_unit addItem _medkit;
+		for "_i" from 1 to 10 do {
+			_unit addItem _firstaid;
+		};
+		for "_i" from 1 to 20 do {
+			_unit addItem _bandage;
+		};
 	};
 // Combat Life Saver Loadout:
 	case "cls":
 	{
-		_unit setUnitTrait ["f3_cls",true,true]; // Used in F3 CLS Event Handler
 		_unit addBackpack _bag;
 		_unit addmagazines [_riflemag, 1];
 		_unit addweapon _rifle;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
-		for "_i" from 1 to 6 do {
+		for "_i" from 1 to 10 do {
 			_unit addItem _firstaid;
 		};
 		_unit addmagazines [_grenade, 2];
