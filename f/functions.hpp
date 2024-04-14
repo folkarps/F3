@@ -112,7 +112,9 @@ class F // Defines the "owner"
 	class safeStart
 	{
 		file = "f\safeStart";
+		class safeStart{};
 		class safety{};
+		class safeStartLoop{};
 	};
 	class spect
 	{
