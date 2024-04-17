@@ -44,7 +44,7 @@ f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_setLocalGroupMarkers.sqf"
 
 // ====================================================================================
 
-// F3 - Buddy Team Colours
+// FA3 - Buddy Team Colours
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
@@ -239,7 +239,7 @@ f_var_viewDistance_crewOnly = true;
 
 [false] spawn f_fnc_radioChannels;
 
-// If you are creating other custom channels, you must wait for F3 Radio Channels to finish to avoid conflicts:
+// If you are creating other custom channels, you must wait for FA3 Radio Channels to finish to avoid conflicts:
 //  waitUntil {(!isNil f_var_radioChannelsUnified)}
 
 // ====================================================================================

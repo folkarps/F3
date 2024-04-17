@@ -1,6 +1,6 @@
 //====================================================================================
 //
-//	fn_nametagUpdate.sqf - Updates values for F3 nametags
+//	fn_nametagUpdate.sqf - Updates values for FA3 nametags
 //							Intended to be run each frame.
 //
 //	> 	_data = [_player,_playerGroup,_cameraPositionAGL,_cameraPositionASL,_entities,
@@ -247,7 +247,7 @@ private _zoom = 1;
 					//	...For normal people...
 					if (_role isEqualTo "") then 							
 					{
-						//	Grab the variable set in F3 AssignGear, if present.
+						//	Grab the variable set in FA3 AssignGear, if present.
 						//	If it's not there, grab the possibly-ugly name from configs.
 						_role = (_x getVariable ["f_var_assignGear_friendly",
 								getText (configFile >> "CfgVehicles" >> typeOf _x >> "displayname")]);

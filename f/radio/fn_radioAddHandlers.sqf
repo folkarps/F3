@@ -71,7 +71,7 @@ player addEventHandler ["Respawn", {
 
 // Just to be sure...
 2 enableChannel false;
-// Force enable direct chat, mostly in case they're a reslot - F3 Spectator turns off direct chat
+// Force enable direct chat, mostly in case they're a reslot - FA3 Spectator turns off direct chat
 if (typeOf player != "VirtualSpectator_F") then {
 	5 enableChannel true;
 };

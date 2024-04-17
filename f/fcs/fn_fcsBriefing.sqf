@@ -21,7 +21,7 @@ The commander must be aiming directly at an object to activate the override. Ope
 <br/>
 When the vehicle is struck by high-calibre weapons, there's a chance the FCS will suffer damage. If the FCS is damaged, the Commander's Override will be disabled, as well as the gun zeroing and auto-leading functions and all night vision equipment.
 <br/>
-The FCS can be repaired by a player with engineering training (for example, an F3 vehicle driver) when they are in the gunner's seat.
+The FCS can be repaired by a player with engineering training (for example, an FA3 vehicle driver) when they are in the gunner's seat.
 "]];
 
 // Set a variable so this won't be generated again by subsequent inits
