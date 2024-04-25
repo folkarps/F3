@@ -4788,7 +4788,7 @@ class Mission
 					{
 						skill=0.60000002;
 						init="[""sn"",this] call f_fnc_assignGear; ";
-						name="UnitLDF_ST1_G";
+						name="UnitLDF_ST1_SN";
 						description="LDF Sniper Team 1 Sniper";
 						isPlayable=1;
 						reportRemoteTargets=1;
@@ -10221,7 +10221,7 @@ class Mission
 						health=0.99000001;
 						skill=0.60000002;
 						init="[this,""npr""] call f_fnc_setVirtualFaction; [""sn"",this] call f_fnc_assignGear; ";
-						name="UnitNPR_ST1_G";
+						name="UnitNPR_ST1_SN";
 						description="NPR Sniper Team 1 Sniper";
 						isPlayable=1;
 						reportRemoteTargets=1;
@@ -35771,7 +35771,7 @@ class Mission
 						health=0.99000001;
 						skill=0.60000002;
 						init="[""sn"",this] call f_fnc_assignGear; ";
-						name="UnitFIA_ST1_G";
+						name="UnitFIA_ST1_SN";
 						description="FIA Sniper Team 1 Sniper";
 						isPlayable=1;
 						reportRemoteTargets=1;
@@ -41232,7 +41232,7 @@ class Mission
 					class Attributes
 					{
 						init="[""sn"",this] call f_fnc_assignGear; ";
-						name="UnitSyn_ST1_G";
+						name="UnitSyn_ST1_SN";
 						description="Syndikat Sniper Team 1 Sniper";
 						isPlayable=1;
 						reportRemoteTargets=1;
@@ -49933,7 +49933,7 @@ class Mission
 						health=0.99000001;
 						skill=0.60000002;
 						init="[this,""3ifb""] call f_fnc_setVirtualFaction; [""sn"",this] call f_fnc_assignGear; ";
-						name="Unit3IFB_ST1_G";
+						name="Unit3IFB_ST1_SN";
 						description="3IFB Sniper Team 1 Sniper";
 						isPlayable=1;
 						reportRemoteTargets=1;
