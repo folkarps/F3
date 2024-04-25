@@ -1,4 +1,4 @@
-// F3 - Set Virtual Faction Function
+// FA3 - Set Virtual Faction Function
 // Scope: Argument Global, Effect Local
 // Credits: Please see the FA3 online manual (https://github.com/folkarps/F3/wiki)
 // ====================================================================================

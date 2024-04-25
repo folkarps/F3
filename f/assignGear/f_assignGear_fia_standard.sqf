@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - FIA - Standard Loadout
+// FA3 - Folk ARPS Assign Gear Script - FIA - Standard Loadout
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

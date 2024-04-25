@@ -1,6 +1,6 @@
 //====================================================================================
 //
-//	fn_nametagUpdate.sqf - Updates values for F3 nametags
+//	fn_nametagUpdate.sqf - Updates values for FA3 nametags
 //							Intended to be run each frame.
 //
 //	> 	F_NT_EVENTHANDLER = addMissionEventHandler 

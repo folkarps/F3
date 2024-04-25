@@ -1,4 +1,4 @@
-// F3 - Authorised Crew Check
+// FA3 - Authorised Crew Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

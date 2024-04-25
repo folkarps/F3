@@ -1,4 +1,4 @@
-// F3 - Assign Gear Script - AI
+// FA3 - Assign Gear Script - AI
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -22,7 +22,7 @@ private _excludeFactions = ["civ_f","blu_gen_f"];
 //["blu_f","blu_t_f","opf_f","opf_t_f","ind_f","ind_c_f","blu_g_f","opf_g_f","ind_g_f"
 
 
-// The unit classes and their corresponding F3 Assign Gear Component type
+// The unit classes and their corresponding FA3 Assign Gear Component type
 private _unitClasses = [
 
 	["_unarmed_"	,	""		],
@@ -107,7 +107,7 @@ private _unitClasses = [
 // Interpret parameters
 private _units = if (count _this == 0) then [{waitUntil {scriptDone f_script_setLocalVars};f_var_men},{_this}];
 
-//Only process units that have not been touched by the F3 Assign Gear Component
+//Only process units that have not been touched by the FA3 Assign Gear Component
 _units = _units select { ! (_x getvariable ["f_var_assignGear_done", false]) };
 //Only process non-playerableUnits
 _units = _units select {!(_x in playableUnits) && (_x isKindOf "Man")};

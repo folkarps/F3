@@ -1,4 +1,4 @@
-// F3 - AI Skill Selector
+// FA3 - AI Skill Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

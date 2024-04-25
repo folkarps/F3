@@ -12,8 +12,8 @@ if F_NT_MOD_CBA then
 	[
 		"F_NT_NAMETAGS_ON",		// Internal setting name and value set.
 		"CHECKBOX", 				// Setting type.
-		"F3 Nametag System", 		// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametag System", 		// Name shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		true 						// Setting type-specific data.
 	] call CBA_Settings_fnc_init;
 
@@ -22,7 +22,7 @@ if F_NT_MOD_CBA then
 		"F_NT_FONT_FACE",			// Internal setting name and value set.
 		"LIST", 					// Setting type.
 		"Font Face", 				// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		[
 			[F_NT_FONT_FACE,"Roboto","RobotoLight","Purista","PuristaLight","Etelka","Tahoma"],
 			["Default","Roboto (Bold) *","Roboto (Light)","Purista (Bold)","Purista (Light)","Etelka Narrow","Tahoma (Bold)"],
@@ -38,7 +38,7 @@ if F_NT_MOD_CBA then
 		"F_NT_FONT_COLOR",			// Internal setting name and value set.
 		"LIST", 					// Setting type.
 		"Font Color", 				// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		[
 			[F_NT_FONT_COLOR,"WHGreen","ACERust","TMTMTeal","COALCrimson","FAWhite","STSand","BromaPurple"],
 			["Default","WH Green *","ACE Rust","TMTM Teal","COAL Crimson","FA White","ST Sand","BromA Purple"],
@@ -54,7 +54,7 @@ if F_NT_MOD_CBA then
 		"F_NT_FONT_SIZE_MULTI",	// Internal setting name and value set.
 		"SLIDER", 					// Setting type.
 		"Font Size", 				// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		[0.75, 1.25, 1, 2], 		// Setting type-specific data.
 		nil, 						// Nil or 0 for changeable, 1 to reset to default, 2 to lock.
 		{ call f_fnc_nametagResetFont; }
@@ -66,7 +66,7 @@ if F_NT_MOD_CBA then
 		"F_NT_FONT_SPREAD_MULTI",	// Internal setting name and value set.
 		"SLIDER", 					// Setting type.
 		"Font Spread", 				// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		[0.75, 1.25, 1, 2], 		// Setting type-specific data.
 		nil, 						// Nil or 0 for changeable, 1 to reset to default, 2 to lock.
 		{ call f_fnc_nametagResetFont; }
@@ -78,7 +78,7 @@ if F_NT_MOD_CBA then
 		"F_NT_DRAWCURSORONLY",		// Internal setting name and value set.
 		"CHECKBOX", 				// Setting type.
 		"Cursor Only (Saves FPS)",	// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		F_NT_DRAWCURSORONLY 		// Setting type-specific data.
 	] call CBA_Settings_fnc_init;
 
@@ -88,7 +88,7 @@ if F_NT_MOD_CBA then
 		"F_NT_SHOW_GROUP",			// Internal setting name and value set.
 		"CHECKBOX", 				// Setting type.
 		"Show Group Names",			// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		F_NT_SHOW_GROUP, 						// Setting type-specific data.
 		nil, 						// Nil or 0 for changeable.
 		{}
@@ -99,7 +99,7 @@ if F_NT_MOD_CBA then
 		"F_NT_SHOW_ROLE",			// Internal setting name and value set.
 		"CHECKBOX", 				// Setting type.
 		"Show Unit Roles",			// Name shown in menu.
-		"F3 Nametags", 				// Category shown in menu.
+		"FA3 Nametags", 				// Category shown in menu.
 		F_NT_SHOW_ROLE, 			// Setting type-specific data.
 		nil, 						// Nil or 0 for changeable.
 		{}
@@ -111,7 +111,7 @@ if F_NT_MOD_CBA then
 	"F_NT_FONT_HEIGHT_ONHEAD",	// Internal setting name and value set.
 	"CHECKBOX", 				// Setting type.
 	"Show Above Head",			// Name shown in menu.
-	"F3 Nametags", 				// Category shown in menu.
+	"FA3 Nametags", 				// Category shown in menu.
 	F_NT_FONT_HEIGHT_ONHEAD 	// Setting type-specific data.
 	] call CBA_Settings_fnc_init;
 };

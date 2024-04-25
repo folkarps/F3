@@ -1,4 +1,4 @@
-// F3 - F3 Folk ARPS Assign Gear
+// FA3 - Folk ARPS Assign Gear
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

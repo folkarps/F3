@@ -1,4 +1,4 @@
-// F3 - Multiplayer Ending Controller
+// FA3 - Multiplayer Ending Controller
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

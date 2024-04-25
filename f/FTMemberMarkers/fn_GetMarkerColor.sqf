@@ -1,4 +1,4 @@
-// 	F3 - Convert teamcolors to markercolor.
+// 	FA3 - Convert teamcolors to markercolor.
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 //  Description: Converts group team colors to Marker colors
 //  Parameters

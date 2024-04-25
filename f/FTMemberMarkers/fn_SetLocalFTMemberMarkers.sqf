@@ -1,4 +1,4 @@
-// 	F3 - Fireteam Member Markers
+// 	FA3 - Fireteam Member Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 //  Description: Launches the main part of the FireTeam Member markers.
 //  Parameters

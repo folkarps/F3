@@ -1,4 +1,4 @@
-// F3 - Group E&E Check
+// FA3 - Group E&E Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

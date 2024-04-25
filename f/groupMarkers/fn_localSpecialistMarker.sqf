@@ -1,4 +1,4 @@
-// F3 - Folk Unit Markers for Specialists
+// FA3 -Unit Markers for Specialists
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

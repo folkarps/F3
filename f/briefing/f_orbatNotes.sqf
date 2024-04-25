@@ -1,4 +1,4 @@
-// F3 - ORBAT Notes
+// FA3 - ORBAT Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

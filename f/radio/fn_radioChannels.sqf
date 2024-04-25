@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Long-Range Radio Module
+// FA3 - Long-Range Radio Module
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 /* ========================
@@ -64,7 +64,7 @@ if (isServer) then {
 		_channelName = format ["%1",((f_var_radioChannels get _i) select 0)];
 		_channelColour = ((f_var_radioChannels get _i) select 1);
 		_channelID = (radioChannelCreate [_channelColour, _channelName, "%CHANNEL_LABEL - %UNIT_GRP_NAME %UNIT_NAME", []]);
-		if (_channelID != _i) exitWith {diag_log format ["F3 Radio: Channel %1 creation failed - unacceptable change to channel list in f\radio\f_radioChannels.sqf or too many channels", _channelName]};
+		if (_channelID != _i) exitWith {diag_log format ["FA3 Radio: Channel %1 creation failed - unacceptable change to channel list in f\radio\f_radioChannels.sqf or too many channels", _channelName]};
 	};
 
 	// Broadcast variables for client use

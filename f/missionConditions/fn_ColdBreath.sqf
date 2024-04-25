@@ -1,4 +1,4 @@
-// F3 - Cold Breath
+// FA3 - Cold Breath
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 f_var_coldBreathLoop = true;

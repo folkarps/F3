@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - GENDARMERIE
+// FA3 - Folk ARPS Assign Gear Script - GENDARMERIE
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -212,7 +212,7 @@ if (_isMan) then {
 
 // ====================================================================================
 
-// F3 - Folk ARPS Assign Gear Script - AAF - Light Loadout
+// FA3 - Folk ARPS Assign Gear Script - AAF - Light Loadout
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

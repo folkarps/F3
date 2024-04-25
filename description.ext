@@ -1,14 +1,14 @@
 fa3_version[] = {3,5,7}; // WARNING: DO NOT CHANGE THIS LINE
 
 // ============================================================================================
-// F3 - Loading Screen
+// FA3 - Loading Screen
 // Set Author, overview image/text, loading image/text from Eden Editor
 
 onLoadName = "*** Insert Mission Name Here. ***";
 
 // ============================================================================================
 
-// F3 - Body Removal Settings
+// FA3 - Body Removal Settings
 
 //Corpses
 corpseManagerMode = 1; //0 = None, 1 = All, 2 = None_But_Respawned, 3 = All_But_Respawned
@@ -25,7 +25,7 @@ minPlayerDistance = 500; // The minimum distance between corpse or wreck and nea
 
 // ============================================================================================
 
-// F3 - Respawn Settings
+// FA3 - Respawn Settings
 
 respawn = 1;
 respawndelay = 3;
@@ -34,7 +34,7 @@ respawnTemplates[] = {"F_Spectator"};
 
 // ============================================================================================
 
-// F3 - Start of Notifications block.
+// FA3 - Start of Notifications block.
 
 class cfgNotifications
 {
@@ -61,7 +61,7 @@ class cfgNotifications
 		priority = 9;
 	};
 
-	// Notifications for the F3 Safe Start Component
+	// Notifications for the FA3 Safe Start Component
 	class SafeStart
 	{
 		title = "SAFE START";
@@ -79,7 +79,7 @@ class cfgNotifications
 		priority = 1;
 	};
 
-	// Notification for the F3 Authorised Crew Component
+	// Notification for the FA3 Authorised Crew Component
 	class UnauthorisedCrew {
 		title= "NON-AUTHORISED CREW!";
 		description= "%1";
@@ -88,7 +88,7 @@ class cfgNotifications
 		priority = 5;
 	};
 
-	// Notification for the F3 Mapclick Teleport component
+	// Notification for the FA3 Mapclick Teleport component
 	class MapClickTeleport {
 		title= "NOTE";
 		description= "%1";
@@ -97,7 +97,7 @@ class cfgNotifications
 		priority = 5;
 	};
 
-	// Notification for the F3 Group Join Component
+	// Notification for the FA3 Group Join Component
 	class GroupJoin {
 		title= "JOIN";
 		description= "%1";
@@ -109,7 +109,7 @@ class cfgNotifications
 
 // ============================================================================================
 
-// F3 - Custom sounds configuration
+// FA3 - Custom sounds configuration
 
 class CfgSounds
 {
@@ -122,7 +122,7 @@ class CfgSounds
 
 // ============================================================================================
 
-// F3 - Start of Params code blocks.
+// FA3 - Start of Params code blocks.
 // WARNING: DO NOT DELETE OR COMMENT OUT THIS CODE BLOCK
 
 class Params
@@ -130,7 +130,7 @@ class Params
 
 // ============================================================================================
 
-// F3 - Debug Mode
+// FA3 - Debug Mode
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // WARNING: DO NOT DISABLE THIS COMPONENT
 
@@ -144,7 +144,7 @@ class Params
 
 // ============================================================================================
 
-// F3 - Folk Assign Gear Script
+// FA3 - Assign Gear Script
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // To add an alternate loadout parameter, you must uncomment this block, uncomment the relevant block in a faction assignGear file, and add a new assignGear loadout file named according to that block.
@@ -160,7 +160,7 @@ class Params
 
 // ============================================================================================
 
-// F3 - Mission Timer/Safe Start
+// FA3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
     class f_param_mission_timer
@@ -173,7 +173,7 @@ class Params
 
 // ============================================================================================
 
-// F3 - Mission Conditions Selector
+// FA3 - Mission Conditions Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 	class f_param_weather
@@ -218,7 +218,7 @@ class Params
 
 // ============================================================================================
 
-// F3 - AI Skill Selector
+// FA3 - AI Skill Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 	class f_param_AISkill_BLUFOR
@@ -247,7 +247,7 @@ class Params
 
 // ============================================================================================
 
-// F3 - Special Effects Parameters
+// FA3 - Special Effects Parameters
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 	class f_param_gruntBirthdayParty
@@ -258,7 +258,7 @@ class Params
 		default = 0;
 	};
 	
-// F3 - Disable Thermals Parameters
+// FA3 - Disable Thermals Parameters
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 	class f_param_disableThermals
@@ -271,7 +271,7 @@ class Params
 	
 // ============================================================================================
 
-// F3 - Caching
+// FA3 - Caching
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 //	class f_param_caching
@@ -283,14 +283,14 @@ class Params
 
 // ============================================================================================
 
-// F3 - End of Params code blocks.
+// FA3 - End of Params code blocks.
 // WARNING: DO NOT DELETE OR COMMENT OUT THIS CODE BLOCK
 
 };
 
 // ============================================================================================
 
-// F3 - Briefing Template
+// FA3 - Briefing Template
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 class CfgDebriefing
@@ -361,7 +361,7 @@ class CfgDebriefing
 
 // ============================================================================================
 
-// F3 - Respawn templates
+// FA3 - Respawn templates
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
 
@@ -376,7 +376,7 @@ class CfgRespawnTemplates
 
 // ============================================================================================
 
-// F3 - Functions
+// FA3 - Functions
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
 class CfgFunctions
@@ -388,7 +388,7 @@ class CfgFunctions
 
 // ============================================================================================
 
-// F3 - Custom Insignia
+// FA3 - Custom Insignia
 
 class CfgUnitInsignia {
 	#include "f\assignGear\insignia\define.hpp"
@@ -409,7 +409,7 @@ class CfgRemoteExec
 
 // ============================================================================================
 
-// F3 - GUI elements
+// FA3 - GUI elements
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
 // This line includes some basic definitions of UI constants. They are useful for all custom UIs.

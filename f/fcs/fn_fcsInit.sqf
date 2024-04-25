@@ -1,4 +1,4 @@
-// F3 - FCS/Commander's Override system
+// FA3 - FCS/Commander's Override system
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // Originally from: https://github.com/NikkoJT/njt_fcs (integrated with permission)
 
@@ -18,7 +18,7 @@
 	_fcsvehicles = vehicles select {typeOf _x in ["I_APC_Wheeled_03_cannon_F","I_APC_tracked_03_cannon_F"]};
 	{[_x] call f_fnc_fcsInit} forEach _fcsvehicles;
 	
-	An option to activate this component is pre-placed in the F3 init.sqf
+	An option to activate this component is pre-placed in the FA3 init.sqf
 
 */
 
@@ -84,7 +84,7 @@ _vehicle setVariable ["f_var_fcs_hasEH",true];
 		// Retrieve saved info on the previous TI/NV equipment state
 		private _equipInfo = _target getVariable ["f_var_fcs_equipInfo",[false,false]];
 		_target disableNVGEquipment (_equipInfo#0);
-		// Re-enable TI unless F3 says we shouldn't
+		// Re-enable TI unless FA3 says we shouldn't
 	    _target disableTIEquipment ((_equipInfo#1) || (_target getVariable ["f_var_TIDisabled",false]));
 	}, // Code on completed
 	{}, // Code on interrupt

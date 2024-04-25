@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - NATO (Woodland)
+// FA3 - Folk ARPS Assign Gear Script - NATO (Woodland)
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
