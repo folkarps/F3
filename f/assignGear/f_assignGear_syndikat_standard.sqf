@@ -53,6 +53,7 @@ switch (_typeofUnit) do
 // Fire Team Leader Loadout:
 	case "ftl":
 	{
+		_unit addBackpack _bag;
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glmag, 1];
 		_unit addweapon _glrifle;
