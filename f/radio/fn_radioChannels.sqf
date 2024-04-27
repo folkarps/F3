@@ -84,10 +84,9 @@ if (isServer) then {
 
 // Run clientside stuff
 if (hasInterface) then {
-	[] call f_fnc_radioAddHandlers;
-	
 	private _personalRadioCode = "
 		private _radioOn = player getVariable [""f_var_radioIsOn"",true];
+		if _radioOn then { systemChat ""Turned off personal radio."" } else { systemChat ""Turned on personal radio."" };
 		player setVariable [""f_var_radioIsOn"",!_radioOn];
 		[player] spawn f_fnc_radioCheckChannels;
 	";
@@ -95,6 +94,7 @@ if (hasInterface) then {
 	private _vehicleRadioCode = "
 		if (!isNull objectParent player) then {
 			private _radioOn = (objectParent player) getVariable [""f_var_radioIsOn"",true];
+			if _radioOn then { systemChat ""Turned off vehicle radio."" } else { systemChat ""Turned on vehicle radio."" };
 			(objectParent player) setVariable [""f_var_radioIsOn"",!_radioOn];
 			[player] spawn f_fnc_radioCheckChannels;
 		};
@@ -102,18 +102,21 @@ if (hasInterface) then {
 	
 	waitUntil {scriptDone f_script_briefing};
 	
+	private _radioText = "
+<br/>
+The FA3 Radio system provides long-range radio channels based on items in your inventory and the vehicle you're in.
+<br/><br/>
+PERSONAL RADIO - controls channels you have access to because of your inventory. Only affects you, and is persistent within this mission.
+<br/>
+<execute expression='%1'>Toggle off/on</execute>
+<br/><br/>
+VEHICLE RADIO - controls channels you have access to because of the vehicle you're in. Only affects you, is vehicle-specific, and is persistent within this mission.
+<br/>
+<execute expression='%2'>Toggle off/on</execute>";
+	
 	player createDiaryRecord ["fa3_actions",["FA3 Radio",
-		format ["
-			<br/>
-			The FA3 Radio system provides long-range radio channels based on items in your inventory and the vehicle you're in.
-			<br/><br/>
-			PERSONAL RADIO - controls channels you have access to because of your inventory. Only affects you, and is persistent within this mission.
-			<br/><br/>
-			<execute expression='%1'>Toggle off/on</execute>
-			<br/><br/>
-			VEHICLE RADIO - controls channels you have access to because of the vehicle you're in. Only affects you, is vehicle-specific, and is persistent within this mission.
-			<execute expression='%2'>Toggle off/on</execute>
-		",_personalRadioCode,_vehicleRadioCode]
+		format [_radioText,_personalRadioCode,_vehicleRadioCode]
 	]];
+	[] call f_fnc_radioAddHandlers;
 };
 
