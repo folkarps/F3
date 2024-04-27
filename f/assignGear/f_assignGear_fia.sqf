@@ -78,7 +78,7 @@ _silencer1 = "muzzle_snds_M";	// 5.56 suppressor
 _silencer2 = "muzzle_snds_H";	// 6.5 suppressor
 
 _scope1 = "optic_ACO";			// ACO
-_scope2 = "optic_MRCO";			// MRCO Scope - 1x - 6x
+_scope2 = "optic_VRCO_khk_RF";			// VRCO Scope - 1x - 6x
 _scope3 = "optic_SOS";			// SOS Scope - 18x - 75x
 
 _bipod1 = "bipod_02_F_blk";		// Default bipod
@@ -225,8 +225,8 @@ _MMGmag_tr = "100Rnd_762x51_S77_Red_Tracer_lxWS";
 
 // Marksman rifle
 _DMrifle = "srifle_h6_oli_rf";
-_DMriflemag = "20Rnd_556x45_AP_Stanag_red_RF";
-_DMriflemag_tr = "20Rnd_556x45_AP_Stanag_red_RF";
+_DMriflemag = "10Rnd_556x45_AP_Stanag_red_RF";
+_DMriflemag_tr = "10Rnd_556x45_AP_Stanag_red_RF";
 
 // Rifleman AT
 _RAT = "launch_RPG32_green_F";

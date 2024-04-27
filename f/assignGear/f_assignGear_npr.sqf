@@ -196,7 +196,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_FieldPack_green_F";
 _bagLarge = "B_Carryall_oli";
-_bagMedic = "B_TacticalPack_oli";		// Medium bag for medics
+_bagMedic = "B_TacticalPack_blk";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "O_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_G_HMG_02_weapon_F";			// used by Heavy MG gunner

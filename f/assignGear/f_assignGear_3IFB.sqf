@@ -272,7 +272,7 @@ _baseUniform = ["U_BG_Guerrilla_6_1","U_BG_Guerilla2_2","U_BG_Guerilla2_1","U_BG
 				"U_I_C_Soldier_Bandit_3_F","U_I_C_Soldier_Para_2_F","U_I_C_Soldier_Para_3_F","U_I_C_Soldier_Para_4_F","U_I_C_Soldier_Para_1_F",
 				"U_I_G_Story_Protagonist_F","U_I_G_resistanceLeader_F","U_C_WorkerCoveralls",
 				"U_C_Uniform_Farmer_01_F","U_I_L_Uniform_01_camo_F","U_I_L_Uniform_01_deserter_F","U_I_L_Uniform_01_tshirt_black_F","U_I_L_Uniform_01_tshirt_olive_F","U_I_L_Uniform_01_tshirt_skull_F",
-				"U_O_R_Gorka_01_black_F","U_lxWS_Djella_02_Brown","U_lxWS_Djella_02_Grey","U_lxWS_Djella_02_Green","U_lxWS_Djella_02_Sand","U_lxWS_ION_Casual5","U_lxWS_SFIA_deserter","U_lxWS_SFIA_Tanker_O",
+				"U_O_R_Gorka_01_black_F","U_lxWS_Djella_02_Brown","U_lxWS_Djella_02_Grey","U_lxWS_Djella_03_Green","U_lxWS_Djella_02_Sand","U_lxWS_ION_Casual5","U_lxWS_SFIA_deserter","U_lxWS_SFIA_Tanker_O",
 				"U_SFIA_deserter_lxWS","U_C_PilotJacket_black_RF","U_C_PilotJacket_brown_RF","U_C_PilotJacket_lbrown_RF","U_BG_Guerrilla_RF","U_BG_leader_RF"
 ];
 _baseHelmet = ["H_Beret_Colonel"];

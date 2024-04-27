@@ -85,7 +85,7 @@ _bipod1 = "bipod_01_F_mtp";		// Default bipod
 _bipod2 = "bipod_02_F_blk";		// Black bipod
 
 // Default setup
-_attachments = [_scope1]; // The default attachment set for most units, overwritten in the individual unitType
+_attachments = []; // The default attachment set for most units, overwritten in the individual unitType
 
 // [] = remove all
 // [_attach1,_scope1,_silencer] = remove all, add items assigned in _attach1, _scope1 and _silencer1
@@ -226,7 +226,7 @@ _RATmag1 = "RPG32_F";
 _RATmag2 = "RPG32_HE_F";
 
 // Medium AT
-_MAT = "launch_RPG32_ghex_F";
+_MAT = "launch_RPG32_green_F";
 _MATmag1 = "RPG32_F";
 _MATmag2 = "RPG32_HE_F";
 
