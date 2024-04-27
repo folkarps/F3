@@ -152,8 +152,8 @@ _glflareyellow = "UGL_FlareYellow_F";
 _glflaregreen = "UGL_FlareGreen_F";
 
 // Pistols (CO, DC, Automatic Rifleman, Medium MG Gunner)
-_pistol = "hgun_Pistol_heavy_01_green_F";
-_pistolmag = "11Rnd_45ACP_Mag";
+_pistol = "hgun_Glock19_RF";
+_pistolmag = "17Rnd_9x19_red_Mag_RF";
 
 // Grenades
 _grenade = "HandGrenade";
@@ -190,6 +190,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_AssaultPack_eaf_F";			// The standard bag for most classes
 _bagLarge = "B_Carryall_eaf_F";				// Larger bag for some special purpose classes
+_bagMedic = "B_TacticalPack_oli";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "I_E_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_E_HMG_02_weapon_F";				// used by Heavy MG gunner
@@ -269,7 +270,7 @@ _vip = [];
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
 
-_baseUniform = ["U_I_E_Uniform_01_F","U_I_E_Uniform_01_shortsleeve_F","U_I_E_Uniform_01_tanktop_F"];
+_baseUniform = ["U_I_E_Uniform_01_F","U_I_E_Uniform_01_shortsleeve_F","U_I_E_Uniform_01_F","U_I_E_Uniform_01_shortsleeve_F","U_I_E_Uniform_01_tanktop_F"]; // bias against the tanktop.
 _baseHelmet = ["H_HelmetHBK_headset_F","H_HelmetHBK_F","H_HelmetHBK_ear_F","H_HelmetHBK_headset_F"]; //50% chance of the best looking helmet.
 _baseGlasses = [];
 
@@ -372,6 +373,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

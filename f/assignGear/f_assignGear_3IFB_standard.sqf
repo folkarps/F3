@@ -130,7 +130,7 @@ switch (_typeofUnit) do
 	case "m":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
-		_unit addBackpack _bagLarge;
+		_unit addBackpack _bagMedic;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
 		_unit addmagazines [_smokegrenade, 6];
