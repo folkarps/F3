@@ -82,14 +82,14 @@ f_script_briefing = 0 spawn f_fnc_createBriefing;
 // FA3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-0 spawn f_fnc_loadoutNotes;
+f_script_loadoutNotes = 0 spawn f_fnc_loadoutNotes;
 
 // ====================================================================================
 
 // FA3 - FA Medical 
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-0 spawn f_fnc_famInit;
+f_script_famInit = 0 spawn f_fnc_famInit;
 
 // ====================================================================================
 
