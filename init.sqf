@@ -162,7 +162,7 @@ f_var_viewDistance_crewOnly = true;
 // FA3 - Driver's Brake Override
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-0 spawn f_fnc_brakeOverride;
+[] spawn f_fnc_brakeOverride;
 
 // ====================================================================================
 
