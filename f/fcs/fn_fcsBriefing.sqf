@@ -6,6 +6,8 @@ This function generates a briefing tab describing the operation of the FA3 FCS. 
 // ====================================================================================
 
 if (!hasInterface) exitWith {}; // Exit if not a player.
+waitUntil {!isNil "f_script_loadoutNotes"};
+waitUntil {scriptDone f_script_loadoutNotes};
 
 _fcs = player createDiaryRecord ["diary", ["FA3 Enhanced FCS","
 <br/>

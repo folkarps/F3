@@ -19,7 +19,7 @@ enableSaving [false, false];
 // FA3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] spawn f_fnc_safeStart;
+0 spawn f_fnc_safeStart;
 
 // ====================================================================================
 
@@ -54,7 +54,7 @@ f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
 // FA3 - Fireteam Member Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] spawn f_fnc_SetLocalFTMemberMarkers;
+0 spawn f_fnc_SetLocalFTMemberMarkers;
 
 // ====================================================================================
 
@@ -68,7 +68,7 @@ f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
 // FA3 - Briefing
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_script_briefing = [] spawn f_fnc_createBriefing;
+f_script_briefing = 0 spawn f_fnc_createBriefing;
 
 // ====================================================================================
 
@@ -82,14 +82,14 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 // FA3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] spawn f_fnc_loadoutNotes;
+f_script_loadoutNotes = 0 spawn f_fnc_loadoutNotes;
 
 // ====================================================================================
 
 // FA3 - FA Medical 
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
- [] spawn f_fnc_famInit;
+f_script_famInit = 0 spawn f_fnc_famInit;
 
 // ====================================================================================
 
@@ -169,7 +169,7 @@ f_var_viewDistance_crewOnly = true;
 // FA3 - Skulls
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] spawn f_fnc_skullsInit;
+0 spawn f_fnc_skullsInit;
 
 // ====================================================================================
 
