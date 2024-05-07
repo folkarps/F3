@@ -134,7 +134,7 @@ _diverMag2 = "30Rnd_556x45_Stanag_Tracer_Yellow";
 _diverMag3 = "20Rnd_556x45_UW_mag";
 
 // Rifle with GL and HE grenades (CO, DC, FTLs)
-_glrifle = "arifle_AK12_GL_F"; // Slight randomization, biased towards TRG
+_glrifle = "arifle_AK12_GL_F"; 
 _glriflemag = "30Rnd_762x39_Mag_F";
 _glriflemag_tr = "30Rnd_762x39_Mag_Tracer_F";
 _glmag = "1Rnd_HE_Grenade_shell";
@@ -206,7 +206,7 @@ _bagRadio = selectRandom ["B_RadioBag_01_eaf_F","B_RadioBag_01_black_F","B_Radio
 // UNIQUE, ROLE-SPECIFIC EQUIPMENT
 
 // Automatic Rifleman
-_AR = selectRandom ["arifle_RPK12_F","arifle_Galat_lxWS"];
+_AR = selectRandom ["arifle_RPK12_F","arifle_Galat_lxWS","arifle_Galat_lxWS"];
 _ARmag = "75Rnd_762x39_Mag_F";
 _ARmag_tr = "75Rnd_762x39_Mag_Tracer_F";
 
