@@ -23,10 +23,11 @@ if (_selection != "") then {
 private _hitSize = _damage - _currentDamage;
 private _newDamage = _damage;
 
-// Down you on a big hit, sometimes.
-if (_selection != "" && {_selection != "arms" && _selection != "hands" && {_newDamage >= 0.8 && random 2 > 1}}) then { 
+// Down you on a big hit to the head.
+if (_selection in ["head","face_hub","neck"] && {_damage > 0.5}) then { 
 	_unit setVariable ["f_var_fam_forcedown",true];
 	_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];	
+	systemChat 'forceDown';
 };
 
 // Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
@@ -40,35 +41,31 @@ if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 	_newDamage = _currentDamage + (0.5 * _hitSize);
 
 } else {
+
+	private _newHit = _hitSize; 
+
+	_damageReductionThreshold = 0.4;
+	if (!(isPlayer _source) && {_hitSize > (_damageReductionThreshold * 0.86026478317711282203611337005077)}) then {  // Hund's Constant
+			_newHit = ((_hitSize*(1/_damageReductionThreshold))^0.3)*_damageReductionThreshold*0.9;
+	};
+
 	// Check if the player is in an aircraft, and redirect damage to the player to the airframe.
 	if (vehicle _unit isKindof "Air" && {driver vehicle _unit == _unit}) then {
-		if (_hitSize > 0) then {
 			
-			if (_hitSize > 1) then {
-				private _hitPlace = 0;
-				if (vehicle _unit isKindof "Helicopter") then {
-					selectRandom [2,4,5]; // Fuel, Engine, AntiTorque, Mrot for Pawnee
-				} else {
-					selectRandom [1,2,3,4,5,6,7,8,9,10,11,12]; // Fuel, Engines, Various control surfaces for Wipeout
-				};
-				vehicle _unit setHitIndex [_hitPlace, _hitSize / 3];
-				_newDamage = _currentDamage + (.1 * _hitSize);
-			};
-		} else {
-			
-			_newDamage = _currentDamage + (.2 * _hitSize);
-		};
-	} else {
-		
-		_damageReductionThreshold = .45;
-		if(!(isPlayer _source)) then {
-			if(_hitSize <= _damageReductionThreshold) then {
-				_newDamage = _currentDamage + _hitSize;
+		_newHit = _newHit * 0.5;
+
+		if (_hitSize > 1) then {
+			private _hitPlace = 0;
+			if (vehicle _unit isKindof "Helicopter") then {
+				selectRandom [2,4,5]; // Engine, AntiTorque, Mrot for Pawnee
 			} else {
-				_newDamage = _currentDamage + ((_hitSize*(1/_damageReductionThreshold))^.35)*_damageReductionThreshold*.9;
+				selectRandom [2,3,4,5,6,7,8,9,10,11,12]; // Engines, Various control surfaces for Wipeout
 			};
+			vehicle _unit setHitIndex [_hitPlace, _newHit * 0.1];
 		};
 	};
+
+	_newDamage = _currentDamage + _newHit;
 };
 
 
