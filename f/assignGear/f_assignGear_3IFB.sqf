@@ -216,9 +216,9 @@ _MMGmag = "150Rnd_762x54_Box";
 _MMGmag_tr = "150Rnd_762x54_Box_Tracer";
 
 // Marksman rifle
-_DMrifle = "srifle_h6_blk_rf";
-_DMriflemag = "10Rnd_556x45_AP_Stanag_RF";
-_DMriflemag_tr = "10Rnd_556x45_AP_Stanag_RF";
+_DMrifle = "arifle_SLR_V_lxWS";
+_DMriflemag = "20Rnd_762x51_slr_reload_tracer_green_lxWS";
+_DMriflemag_tr = "20Rnd_762x51_slr_tracer_green_lxWS";
 
 // Rifleman AT
 _RAT = "launch_RPG32_green_F";

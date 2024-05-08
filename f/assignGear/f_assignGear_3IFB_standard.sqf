@@ -165,8 +165,8 @@ switch (_typeofUnit) do
 		_unit addweapon _DMrifle;
 		_attachments = [_bipod1,_scope2]; // Overwrites default attachments to add a bipod and scope 2
 		_unit addmagazines [_smokegrenade, 3];
-		_unit addmagazines [_DMriflemag, 8];
-		_unit addmagazines [_DMriflemag_tr, 4];
+		_unit addmagazines [_DMriflemag, 4];
+		_unit addmagazines [_DMriflemag_tr, 2];
 		_unit addmagazines [_grenade, 2];
 	};
 // Medium MG Gunner Loadout:
