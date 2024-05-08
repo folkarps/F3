@@ -54,11 +54,11 @@ if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 		_newHit = _newHit * 0.5;
 
 		if (_hitSize > 1) then {
-			private _hitPlace = 0;
+			private _hitPlace = 2;
 			if (vehicle _unit isKindof "Helicopter") then {
-				selectRandom [2,4,5]; // Engine, AntiTorque, Mrot for Pawnee
+				_hitPlace = selectRandom [2,4,5]; // Engine, AntiTorque, Mrot for Pawnee
 			} else {
-				selectRandom [2,3,4,5,6,7,8,9,10,11,12]; // Engines, Various control surfaces for Wipeout
+				_hitPlace = selectRandom [2,3,4,5,6,7,8,9,10,11,12]; // Engines, Various control surfaces for Wipeout
 			};
 			vehicle _unit setHitIndex [_hitPlace, _newHit * 0.1];
 		};
