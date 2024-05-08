@@ -27,7 +27,6 @@ private _newDamage = _damage;
 if (_selection in ["head","face_hub","neck"] && {_damage > 0.5}) then { 
 	_unit setVariable ["f_var_fam_forcedown",true];
 	_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];	
-	systemChat 'forceDown';
 };
 
 // Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
