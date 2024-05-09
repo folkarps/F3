@@ -60,7 +60,7 @@ if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 			} else {
 				_hitPlace = selectRandom [2,3,4,5,6,7,8,9,10,11,12]; // Engines, Various control surfaces for Wipeout
 			};
-			vehicle _unit setHitIndex [_hitPlace, _newHit * 0.1];
+			vehicle _unit setHitIndex [_hitPlace, (vehicle _unit getHitIndex _hitPlace) + _newHit];
 		};
 	};
 
