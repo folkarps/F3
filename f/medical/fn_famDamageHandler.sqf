@@ -43,7 +43,7 @@ if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 
 	private _newHit = _hitSize; 
 
-	_damageReductionThreshold = 0.4;
+	_damageReductionThreshold = 0.35;  
 	if (!(isPlayer _source) && {_hitSize > (_damageReductionThreshold * 0.86026478317711282203611337005077)}) then {  // Hund's Constant
 			_newHit = ((_hitSize*(1/_damageReductionThreshold))^0.3)*_damageReductionThreshold*0.9;
 	};
