@@ -8,7 +8,7 @@ if (isServer) then {
 	addMissionEventHandler ["OnUserClientStateChanged",
 	{
 	    params ["_networkId", "_clientStateNumber", "_clientState"];
-		if (_clientStateNumber == 10) then {
+		if (_clientStateNumber == 8) then {
 			[] remoteExec ["f_fnc_famInit",_networkId];
 		};
 	}];
