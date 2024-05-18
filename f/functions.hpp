@@ -144,6 +144,7 @@ class F // Defines the "owner"
 		class famBriefing{};
 		class FAMdiagnose{};
 		class FAMdiagnoseInitUI{};
+		class famHasFAK{};
 	};
 	class disableThermals
 	{
