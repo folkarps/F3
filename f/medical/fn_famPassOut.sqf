@@ -67,7 +67,7 @@ if(local _unit && isPlayer _unit) then
 	if ("Bandage" in magazines _unit) then {
 		_unit setVariable ["f_var_fam_hasbandage",true,true];  
     }; 
-	if ("FirstAidKit" in items _unit) then {
+	if (_unit call f_fnc_famHasFAK > -1) then {
 		_unit setVariable ["f_var_fam_hasfak",true,true];  
     }; 
 
