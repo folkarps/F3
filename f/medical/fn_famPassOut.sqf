@@ -76,7 +76,7 @@ if(local _unit && isPlayer _unit) then
         _unit removeMagazine _x;
     } foreach magazines _unit;
 
-    _unit setVariable ["f_var_fam_wound_down_items",["ItemMap", _unit getSlotItemName 612]];
+    _unit setVariable ["f_var_fam_wound_down_items",[_unit getSlotItemName 608, _unit getSlotItemName 612]];
     {
         _unit unlinkItem _x;
     } foreach (_unit getVariable ["f_var_fam_wound_down_items",[]]);
