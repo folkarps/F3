@@ -16,8 +16,6 @@ private _healMedicTime = 4.5; // Action Duration
 
 // Starting Code
 private _healCodeStart = { 
-	params ["_target", "_caller", "_actionId", "_arguments"]; 
-
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",true];
 	
@@ -62,14 +60,10 @@ private _healCodeStart = {
 }; 
 
 // Progress Code
-private _healCodeProg = { 
-	params ["_target", "_caller", "_actionId", "_arguments"]; 
-}; 
+private _healCodeProg = {}; 
 
 // Completed Code
 private _healCodeComp = { 
-	params ["_target", "_caller", "_actionId", "_arguments"]; 
-
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
 
@@ -92,8 +86,6 @@ private _healCodeComp = {
 
 // Interrupt Code
 private _healCodeInt = { 
-	params ["_target", "_caller", "_actionId", "_arguments"];
-
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
 
