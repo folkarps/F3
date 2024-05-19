@@ -51,7 +51,8 @@ if(local _unit) then
     };
     // reset these
     _unit setVariable ["f_var_fam_hasbandage",false,true];  
-    _unit setVariable ["f_var_fam_hasfak",false,true];  
+    _unit setVariable ["f_var_fam_hasfak",false,true]; 
+	_unit setVariable ["f_var_fam_hasfak_requiremedic",false,true];
 
     // reset the screen effects
     [4] spawn f_fnc_famWoundedEffect;
