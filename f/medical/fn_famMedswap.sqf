@@ -4,29 +4,27 @@
 
 params ["_obj"];
 
-// This is only to be used on the server-side preplaced AI or vehicles, with the expectation that anyone running headless client is capable of fixing things there.
-if !(isServer) exitWith {};
+// Exit if assignGear was run on this object
 if (_obj getVariable ["f_var_assignGear_done", false]) exitWith {};
 
 // MEDSWAP
-// Run through everything server side and replace FAKs (or equivalents) with Bandages. This also replaces all CDLC stuff with vanilla stuff.
+// Run through everything server side and replace some FAKs (or equivalents) with Bandages. 
+
+private _itemType = "";
 
 // INFANTRY
 {
 	if (_x == "FirstAidKit" || {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 401}) then {
+		_itemType = _x;
 		_obj removeItem _x;
 		_roll = round random 10;
 		if (_roll >= 8) then {
 			_obj addItem "Bandage"; // 30% chance to get a bandage
 		} else {
 			if (_roll == 0) then {
-				_obj addItem "FirstAidKit"; // 10% chance of a FAK.
+				_obj addItem _itemType; // 10% chance of a FAK.
 			};
 		};
-	};
-	if (_x != "Medikit" && {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 619}) then {
-		_obj removeItem _x;
-		_obj addItem "Medikit";
 	};
 } forEach items _obj;
 
@@ -40,14 +38,10 @@ _itemsNeedUpdate = false;
 {
 	_itemReplaced = false;
 	if (_x == "FirstAidKit" || {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 401}) then {
+		_itemType = _x;
 		_itemsQty = _existingCargo #1 #_forEachIndex;
 		_itemsCargo pushback ["Bandage",round _itemsQty * .75];
-		_itemsCargo pushback ["FirstAidKit",round _itemsQty * .25];
-		_itemReplaced = true;
-		_itemsNeedUpdate = true;
-	};
-	if (_x != "Medikit" && {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 619}) then {
-		_itemsCargo pushback "Medikit";
+		_itemsCargo pushback [_itemType,round _itemsQty * .25];
 		_itemReplaced = true;
 		_itemsNeedUpdate = true;
 	};
@@ -70,19 +64,16 @@ if (vehicle _obj == _obj) exitWith {};
 	_crew = _x;
 	{
 		if (_x == "FirstAidKit" || {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 401}) then {
+			_itemType = _x;
 			_crew removeItem _x;
 			_roll = round random 10;
 			if (_roll >= 8) then {
 				_obj addItem "Bandage"; // 30% chance to get a bandage
 			} else {
 				if (_roll == 1) then {
-					_obj addItem "FirstAidKit"; // 10% chance of a FAK.
+					_obj addItem _itemType; // 10% chance of a FAK.
 				};
 			};
-		};
-		if (_x != "Medikit" && {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 619}) then {
-			_crew removeItem _x;
-			_crew addItem "Medikit";
 		};
 	} forEach items _crew;
 } foreach crew _obj;
