@@ -106,7 +106,7 @@ private _healCodeInt = {
 	format ["Heal %1", name _unit],
 	_healIcon, 
 	_healIcon, 
-	"(!(_this getUnitTrait 'medic') || (_this call f_fnc_famHasFAK <= 0)) && {alive _target && _target distance _this < 3 && {damage _target > 0.25 && !(_target getVariable ['f_var_fam_conscious',true]) && {(_this call f_fnc_famHasFAK == 0) || (_target getVariable ['f_var_fam_hasfak',false] && {!(_target getVariable ['f_var_fam_hasfak_requiremedic',false]) || (_this getUnitTrait 'medic'))}}}", 
+	"(!(_this getUnitTrait 'medic') || (_this call f_fnc_famHasFAK <= 0)) && {alive _target && _target distance _this < 3 && {damage _target > 0.25 && !(_target getVariable ['f_var_fam_conscious',true]) && {(_this call f_fnc_famHasFAK == 0) || (_target getVariable ['f_var_fam_hasfak',false] && {!(_target getVariable ['f_var_fam_hasfak_requiremedic',false]) || (_this getUnitTrait 'medic'))}}}}", 
 	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;
 
