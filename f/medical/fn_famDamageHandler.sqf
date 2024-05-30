@@ -25,7 +25,7 @@ private _newDamage = _damage;
 
 
 // Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
-if (_projectile != "" && _damage >= 0 && {!(_unit getVariable ["f_var_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
+if (_projectile != "" && _damage >= 0.1 && {!(_unit getVariable ["f_var_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
 	_unit setVariable ["f_var_fam_bleed",true,true];
 	_unit setBleedingRemaining 400;
 };
