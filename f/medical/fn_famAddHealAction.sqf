@@ -74,7 +74,7 @@ private _healCodeComp = {
 	} else {	
 		_target setDamage 0.25;
 		if (_caller call f_fnc_famHasFAK == 0) then {
-			private _FAKs = (items _caller select {(getNumber (configFile >> "CfgMagazines" >> _x >> "ItemInfo" >> "type")) == 401});
+			private _FAKs = (items _caller select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401});
 			_caller removeItem (selectRandom _FAKs);
 			hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",(count _FAKs) - 1]; // feedback on resource consumption.
 		} else {
