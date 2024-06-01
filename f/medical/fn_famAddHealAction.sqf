@@ -68,7 +68,7 @@ private _healCodeComp = {
 	_caller setVariable ["f_var_fam_flag",false];
 
 	// Medic heals to full only if they have a medikit. TODO CLS Support?
-	if (_caller getUnitTrait 'Medic' && (_caller call f_fnc_famHasFAK => 1)) then {
+	if (_caller getUnitTrait 'Medic' && (_caller call f_fnc_famHasFAK >= 1)) then {
 		_target setDamage 0;
 		hint "Patient healed fully with Medikit"; // feedback on resource consumption.
 	} else {	
