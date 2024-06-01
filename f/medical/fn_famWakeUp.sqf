@@ -45,8 +45,8 @@ if(local _unit) then
         _unit setVariable ["f_var_fam_used_bandage",false];
     };
     if (_unit getVariable ["f_var_fam_used_fak",false]) then {
-        private _FAKs = (items _caller select {(getNumber (configFile >> "CfgMagazines" >> _x >> "ItemInfo" >> "type")) == 401});
-		_caller removeItem (selectRandom _FAKs);
+        private _FAKs = (items _unit select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401});
+		_unit removeItem (selectRandom _FAKs);
         _unit setVariable ["f_var_fam_used_fak",false];
     };
     // reset these
