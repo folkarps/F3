@@ -160,7 +160,10 @@ player createDiaryRecord ["fa3_actions", ["Group Leadership",
 	OVERRIDE GROUP CONTROL: <br/> 
 	 | <execute expression=""
 		if (leader group player != player) then {
-			hintsilent 'Taking control of your group';group player selectLeader player;
+			hintsilent 'Taking control of your group';
+			leader (group player) setUnitRank 'PRIVATE'; 
+			player setUnitRank 'COLONEL';
+			group player selectLeader player; 
 		} else {
 			hintsilent 'You are already the leader of your group';
 		};"">

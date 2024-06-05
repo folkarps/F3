@@ -52,6 +52,9 @@ while {true} do {
 
 				_unit = player;
 
+				// Set rank to private so that they don't accidently take over the group.
+				player setUnitRank 'PRIVATE';
+
 				// Player joins new group
 				[player] joinSilent _grp;
 
