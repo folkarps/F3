@@ -28,7 +28,7 @@ f_var_mapClickTeleport_EHMap = addMissionEventHandler ["Map", {
 
 ["MapClickTeleport",[f_var_mapClickTeleport_textSelect]] call BIS_fnc_showNotification;
 
-f_var_mapClickTeleport_EHClick = addMissionEventHandler ["MapSingleClick",{f_var_mapClickTeleport_telePos = _pos;}];
+f_var_mapClickTeleport_EHClick = addMissionEventHandler ["MapSingleClick",{f_var_mapClickTeleport_telePos = _this#1;}];
 openMap [true, false];
 waitUntil {f_var_mapClickTeleport_MapClosed || !isNil "f_var_mapClickTeleport_telePos"};
 removeMissionEventHandler ["MapSingleClick",f_var_mapClickTeleport_EHClick];
