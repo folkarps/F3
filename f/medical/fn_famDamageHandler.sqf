@@ -25,7 +25,7 @@ private _newDamage = _damage;
 
 
 // Set bleed but only update if unit is not already bleeding. // Trying as dice roll.
-if (_projectile != "" && _damage >= 0.1 && {!(_unit getVariable ["f_var_fam_bleed",false]) && {_damage > 1 || random 5 > 4}}) then {
+if (_projectile != "" && _hitSize >= 0.1 && {!(_unit getVariable ["f_var_fam_bleed",false]) && {_hitSize > 1 || random 5 > 4}}) then {
 	_unit setVariable ["f_var_fam_bleed",true,true];
 	_unit setBleedingRemaining 400;
 };
@@ -61,7 +61,7 @@ if (vehicle _unit isKindof "Air" && {driver vehicle _unit == _unit}) then {
 _newDamage = _currentDamage + _newHit;
 
 // Down you on a big hit.
-if (!(_selection in ["hands","arms"]) && {_damage > 2 || {_damage > 1 && random 5 > 4}}) then { 
+if (!(_selection in ["hands","arms"]) && {_hitSize > 2 || {_hitSize > 1 && random 5 > 4}}) then { 
 	_unit setVariable ["f_var_fam_forcedown",true];
 	_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];	
 };
