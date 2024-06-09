@@ -50,7 +50,7 @@ _ehHeal = _unit addEventHandler ["HandleHeal", {
         if (_healer getUnitTrait "Medic") then {
             hint "Patient healed with Medikit";
         } else {
-            hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _healer select {_unit == "FirstAidKit"})];
+            hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _unit select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401})];
         };
 
     };
