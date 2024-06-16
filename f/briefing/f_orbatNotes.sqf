@@ -167,6 +167,6 @@ OVERRIDE GROUP CONTROL: <br/>
 		hintsilent 'You are already the leader of your group';
 	};"">
 Take control of my group</execute> | <br/>
-Please note: this is only to be used if Arma has not updated your group leader accurately after casualties or group merging."
+Please note: this is only to be used if Arma has not updated your group leader accurately after casualties or group merging.";
 
 player createDiaryRecord ["fa3_actions", ["Group Leadership",_leaderString]];
