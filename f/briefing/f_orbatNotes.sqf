@@ -155,8 +155,7 @@ waitUntil {scriptDone f_script_briefing};
 player createDiaryRecord ["diary", ["ORBAT", _orbatText]];
 
 // Add button to take control of group when Arma does not update leadership correctly.
-player createDiaryRecord ["fa3_actions", ["Group Leadership",
-"<br/>
+private _leaderString = "<br/>
 OVERRIDE GROUP CONTROL: <br/> 
  | <execute expression=""
 	if (leader group player != player) then {
@@ -169,4 +168,5 @@ OVERRIDE GROUP CONTROL: <br/>
 	};"">
 Take control of my group</execute> | <br/>
 Please note: this is only to be used if Arma has not updated your group leader accurately after casualties or group merging."
-]];
+
+player createDiaryRecord ["fa3_actions", ["Group Leadership",_leaderString]];
