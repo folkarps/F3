@@ -156,17 +156,17 @@ player createDiaryRecord ["diary", ["ORBAT", _orbatText]];
 
 // Add button to take control of group when Arma does not update leadership correctly.
 player createDiaryRecord ["fa3_actions", ["Group Leadership",
-	"<br/>
-	OVERRIDE GROUP CONTROL: <br/> 
-	 | <execute expression=""
-		if (leader group player != player) then {
-			hintsilent 'Taking control of your group';
-			leader (group player) setUnitRank 'PRIVATE'; 
-			player setUnitRank 'COLONEL';
-			group player selectLeader player; 
-		} else {
-			hintsilent 'You are already the leader of your group';
-		};"">
-	Take control of my group</execute> | <br/>
-	Please note: this is only to be used if Arma has not updated your group leader accurately after casualties or group merging."
+"<br/>
+OVERRIDE GROUP CONTROL: <br/> 
+ | <execute expression=""
+	if (leader group player != player) then {
+		hintsilent 'Taking control of your group';
+		leader (group player) setUnitRank 'PRIVATE'; 
+		player setUnitRank 'COLONEL';
+		group player selectLeader player; 
+	} else {
+		hintsilent 'You are already the leader of your group';
+	};"">
+Take control of my group</execute> | <br/>
+Please note: this is only to be used if Arma has not updated your group leader accurately after casualties or group merging."
 ]];
