@@ -48,7 +48,7 @@ _vehicle addAction
 	1.5,	
 	false,	
 	true,	
-	"",	
+	"TacticalPing",	
 	"(_this == commander _target) && {!(isNull gunner _target) && !(_target getVariable [""f_var_fcsCommanderOverride_cooldown"",false]) && !(_target getVariable [""f_var_fcs_failure"",false])}", 
 	0,		
 	false,	
