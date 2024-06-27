@@ -1,4 +1,4 @@
-// F3 - Near Player Function
+// FA3 - Near Player Function
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

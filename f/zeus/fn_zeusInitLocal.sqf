@@ -1,4 +1,4 @@
-// F3 Zeus Support - Add Addons
+// FA3 Zeus Support - Add Addons
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -24,5 +24,8 @@ _curatorEH = _curator addEventHandler ['CuratorObjectPlaced',{
 	if(!isNil "f_var_disableThermals_enabled" && {f_var_disableThermals_enabled}) then {
 		_entity disableTIEquipment true;
 	};
+
+	// FAM medical supply balance.
+	[_entity] call f_fnc_famMedSwap;
 }];
 _curator setVariable ["f_curator_EH", _curatorEH];

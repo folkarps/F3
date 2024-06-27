@@ -1,9 +1,11 @@
-// F3 - Safe Start, Safety Toggle
+// FA3 - Safe Start, Safety Toggle
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 //=====================================================================================
 
 //Exit if server
 if(isDedicated) exitwith {};
+
+if !(player isKindOf "CAManBase") exitWith {};
 
 params [["_enableSafeStart", true, [true]]];
 

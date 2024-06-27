@@ -1,4 +1,4 @@
-// F3 - Group E&E Check
+// FA3 - Group E&E Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -52,7 +52,9 @@ if (_objects isEqualType sideUnknown) then {
 		if(!isnil _x) then
 		{
 			_temp = call compile format ["%1",_x];
-			player globalchat format ["%1",typeName _temp];
+			if (f_param_debugMode == 1) then {
+				player sideChat format ["DEBUG (f\EandECheck\f_EandECheckLoop.sqf): Identified %1 %2",typeName _temp,str _temp];
+			};
 			if (_temp isEqualType grpNull) then {
 				{
 					if !(_x in _units) then {

@@ -1,4 +1,4 @@
-// F3 - Buddy Team Colours
+// FA3 - Buddy Team Colours
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

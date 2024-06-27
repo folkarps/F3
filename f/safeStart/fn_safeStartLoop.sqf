@@ -1,4 +1,4 @@
-// F3 - Safe Start, Server Loop
+// FA3 - Safe Start, Server Loop
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 //=====================================================================================
 

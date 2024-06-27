@@ -1,4 +1,4 @@
-// F3 - Caching Script Init
+// FA3 - Caching Script Init
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

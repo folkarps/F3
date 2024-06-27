@@ -1,4 +1,4 @@
-// F3 Zeus Support - Add Addons
+// FA3 Zeus Support - Add Addons
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

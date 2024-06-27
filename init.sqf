@@ -1,6 +1,6 @@
 // ====================================================================================
 
-// F3 - Common Local Variables
+// FA3 - Common Local Variables
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // WARNING: DO NOT DISABLE THIS COMPONENT
 if(isServer) then {
@@ -9,105 +9,91 @@ if(isServer) then {
 
 // ====================================================================================
 
-// F3 - Disable Saving and Auto Saving
+// FA3 - Disable Saving and Auto Saving
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 enableSaving [false, false];
 
 // ====================================================================================
 
-// F3 - Mute Orders and Reports
+// FA3 - Mission Timer/Safe Start
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-{_x setSpeaker "NoVoice"} forEach playableUnits;
+0 spawn f_fnc_safeStart;
 
 // ====================================================================================
 
-// F3 - Mission Timer/Safe Start
-// Credits and documentation: https://github.com/folkarps/F3/wiki
-
-[] execVM "f\safeStart\f_safeStart.sqf";
-
-// ====================================================================================
-
-// F3 - F3 Mission Conditions Selector
+// FA3 - Mission Conditions Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_script_setMissionConditions = [] execVM "f\missionConditions\f_setMissionConditions.sqf";
 
 // ====================================================================================
 
-// F3 - Folk ARPS Group IDs
+// FA3 - Group IDs
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_script_setGroupIDs = [] execVM "f\setGroupID\f_setGroupIDs.sqf";
 
 // ====================================================================================
 
-// F3 - F3 Folk ARPS Group Markers
+// FA3 - Group Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_script_setGroupMarkers = [] execVM "f\groupMarkers\f_setLocalGroupMarkers.sqf";
 
 // ====================================================================================
 
-// F3 - Buddy Team Colours
+// FA3 - Buddy Team Colours
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_script_setTeamColours = [] execVM "f\setTeamColours\f_setTeamColours.sqf";
 
 // ====================================================================================
 
-// F3 - Fireteam Member Markers
+// FA3 - Fireteam Member Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] spawn f_fnc_SetLocalFTMemberMarkers;
+0 spawn f_fnc_SetLocalFTMemberMarkers;
 
 // ====================================================================================
 
-// F3 - Join Group Action
+// FA3 - Join Group Action
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 [false] execVM "f\groupJoin\f_groupJoinAction.sqf";
 
 // ====================================================================================
 
-// F3 - Briefing
+// FA3 - Briefing
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-f_script_briefing = [] spawn f_fnc_createBriefing;
+f_script_briefing = 0 spawn f_fnc_createBriefing;
 
 // ====================================================================================
 
-// F3 - ORBAT Notes
+// FA3 - ORBAT Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 [] execVM "f\briefing\f_orbatNotes.sqf";
 
 // ====================================================================================
 
-// F3 - Loadout Notes
+// FA3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\briefing\f_loadoutNotes.sqf";
+f_script_loadoutNotes = 0 spawn f_fnc_loadoutNotes;
 
 // ====================================================================================
 
-// F3 - Revive
+// FA3 - FA Medical 
 // Credits and documentation: https://github.com/folkarps/F3/wiki
-[] execVM "f\medical\init.sqf";
+
+f_script_famInit = 0 spawn f_fnc_famInit;
 
 // ====================================================================================
 
-// F3 - Combat Life Saver EH
-// Credits and documentation: https://github.com/folkarps/F3/wiki
-// Uncomment the line below to enable the Combat Life Saver heal handler. Does nothing unless you have player units using the "cls" assignGear role.
-
-// [] execVM "f\medical\f_clsEH.sqf";
-
-// ====================================================================================
-
-// F3 - AI Unit Caching
+// FA3 - AI Unit Caching
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 //[30] spawn f_fnc_cInit;
@@ -120,7 +106,7 @@ f_script_briefing = [] spawn f_fnc_createBriefing;
 
 // ====================================================================================
 
-// F3 - Automatic Body Removal
+// FA3 - Automatic Body Removal
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 //Exclude units from automatic body/wreck removal:
@@ -129,7 +115,7 @@ removeFromRemainsCollector playableUnits;
 
 // ====================================================================================
 
-// F3 - AI Skill Selector
+// FA3 - AI Skill Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_var_civAI = independent; 		// Optional: The civilian AI will use this side's settings
@@ -137,14 +123,14 @@ f_var_civAI = independent; 		// Optional: The civilian AI will use this side's s
 
 // ====================================================================================
 
-// F3 - Assign Gear AI
+// FA3 - Assign Gear AI
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // [] execVM "f\assignGear\f_assignGear_AI.sqf";
 
 // ====================================================================================
 
-// F3 - Dynamic View Distance
+// FA3 - Dynamic View Distance
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 f_var_viewDistance_default = 1600;
@@ -157,7 +143,7 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
-// F3 - Authorised Crew Check
+// FA3 - Authorised Crew Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // VehicleName addEventhandler ["GetIn", {[_this,[UnitName1,UnitName2],false] call f_fnc_authorisedCrewCheck}];
@@ -165,7 +151,7 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
-// F3 - Commander's Override and FCS failure
+// FA3 - Commander's Override and FCS failure
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // [vehicleName] call f_fnc_fcsInit;
@@ -173,21 +159,21 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
-// F3 - Driver's Brake Override
+// FA3 - Driver's Brake Override
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 [] spawn f_fnc_brakeOverride;
 
 // ====================================================================================
 
-// F3 - Skulls
+// FA3 - Skulls
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] spawn f_fnc_skullsInit;
+0 spawn f_fnc_skullsInit;
 
 // ====================================================================================
 
-// F3 - MapClick Teleport
+// FA3 - MapClick Teleport
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // f_var_mapClickTeleport_Uses = 1;                 // How often the teleport action can be used. 0 = infinite usage.
@@ -196,18 +182,19 @@ f_var_viewDistance_crewOnly = true;
 // f_var_mapClickTeleport_Units = [];               // Restrict map click teleport to these units.
 // f_var_mapClickTeleport_Height = 0;               // If > 0 map click teleport will act as a HALO drop and automatically assign parachutes to units.
 // f_var_mapClickTeleport_SaferVehicleHALO = false; // If HALO-ing (f_var_mapClickTeleport_Height > 0), False: crew remain in vehicle during drop. True: crew drop separately with their own parachutes.
-// [] execVM "f\mapClickTeleport\f_mapClickTeleport.sqf";
+// f_var_mapClickTeleport_Smoke = true; // If HALO-ing, True: attach a decorative smoke tracer to falling units.
+// 0 spawn f_fnc_mapClickTeleport;
 
 // ====================================================================================
 
-// F3 - Name Tags
+// FA3 - Name Tags
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
-[] execVM "f\nametag\f_nametagInit.sqf";
+0 spawn f_fnc_nametagInit;
 
 // ====================================================================================
 
-// F3 - Group E&E Check
+// FA3 - Group E&E Check
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // [side,ObjectName or "MarkerName",100,1] execVM "f\EandEcheck\f_EandECheckLoop.sqf";
@@ -217,7 +204,7 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
-// F3 - Casualties Cap
+// FA3 - Casualties Cap
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 // [[GroupName or SIDE],100,1] execVM "f\casualtiesCap\f_CasualtiesCapCheck.sqf";
@@ -234,14 +221,14 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
-// F3 - Disable Thermals
+// FA3 - Disable Thermals
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 [] spawn f_fnc_disableThermals;
 // [[UnitName1, "UnitClass1"]] spawn f_fnc_disableThermals;
 
 // ====================================================================================
 
-// F3 - Radio Channels
+// FA3 - Radio Channels
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // True to split channels by radio backpack type. Else one channel for all.
 // Optional second parameter (number): limit the channel count to this number. This frees up space for any other custom channels. Defaults to 10 (max) if not set, or 1 (minimum) if channels not split.
@@ -252,7 +239,7 @@ f_var_viewDistance_crewOnly = true;
 
 [false] spawn f_fnc_radioChannels;
 
-// If you are creating other custom channels, you must wait for F3 Radio Channels to finish to avoid conflicts:
+// If you are creating other custom channels, you must wait for FA3 Radio Channels to finish to avoid conflicts:
 //  waitUntil {(!isNil f_var_radioChannelsUnified)}
 
 // ====================================================================================

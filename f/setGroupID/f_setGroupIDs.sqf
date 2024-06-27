@@ -1,4 +1,4 @@
-// F3 - Set Group IDs
+// FA3 - Set Group IDs
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

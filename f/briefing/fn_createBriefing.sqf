@@ -1,4 +1,4 @@
-// F3 - Briefing
+// FA3 - Briefing
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -19,6 +19,11 @@ private _fnc_debug = {
 		player sideChat format ["DEBUG (fn_createBriefing.sqf): Briefing for %1 selected.",_faction];
 	};
 };
+
+// ====================================================================================
+
+// Create briefing section for other components to use
+player createDiarySubject ["fa3_actions","Player Actions"];
 
 // ====================================================================================
 

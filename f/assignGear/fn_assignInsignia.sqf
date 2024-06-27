@@ -1,4 +1,4 @@
-// F3 - Assign Insignia
+// FA3 - Assign Insignia
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

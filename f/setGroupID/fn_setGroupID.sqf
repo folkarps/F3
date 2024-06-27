@@ -1,4 +1,4 @@
-// F3 - Set Group ID Function
+// FA3 - Set Group ID Function
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

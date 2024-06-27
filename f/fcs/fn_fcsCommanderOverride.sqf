@@ -1,4 +1,4 @@
-// F3 - FCS/Commander's Override system
+// FA3 - FCS/Commander's Override system
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // Originally from: https://github.com/NikkoJT/njt_fcs (integrated with permission)
 
@@ -10,8 +10,17 @@ params ["_vehicle","_caller"];
 if (isNull cursorObject) then {
 	["NO TARGET",1] remoteExec ["f_fnc_fcsLocalWarning",commander _vehicle];
 } else {
-	// Get the position of the centre of the targeted object at the time of the override
-	_overrideTarget = (cursorObject modelToWorldWorld (boundingCenter cursorObject));
+	// Get the position of the targeted object at the time of the override
+	private _positionATL = getPosATL cursorObject;
+	// If the position is below ground level (partially sunken object) make the targeted position just above ground level
+	if ((_positionATL select 2) < 0) then {
+		_positionATL set [2,1];
+	} else {
+		// otherwise, try to aim approximately for the vertical middle and not at its feet
+		_positionATL = _positionATL vectorAdd [0,0,1.5];
+	};
+	// Convert to ASL for lockCameraTo
+	private _overrideTarget = ATLtoASL _positionATL;
 	// Order the gunner to aim their camera at the target position
 	[_vehicle,[_overrideTarget,_vehicle unitTurret (gunner _vehicle),true]] remoteExec ["lockCameraTo",gunner _vehicle];
 	// Display a HUD indicator for the gunner

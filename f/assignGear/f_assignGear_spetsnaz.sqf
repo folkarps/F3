@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - Spetsnaz
+// FA3 - Folk ARPS Assign Gear Script - Spetsnaz
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -167,6 +167,7 @@ _smokegrenadeblue = "SmokeShellBlue";
 _smokegrenadepurple = "SmokeShellPurple";
 
 // misc medical items.
+_bandage = "Bandage";
 _firstaid = "FirstAidKit";
 _medkit = "Medikit";
 
@@ -338,12 +339,16 @@ _vipGlasses = ["G_Aviator"];
 if (_isMan) then {
 
 	// PREPARE UNIT FOR GEAR ADDITION
-	// The following code removes all existing weapons, items, magazines and backpacks
+	// The following code removes all existing weapons, items, magazines, traits, and backpacks
 
 	removeBackpack _unit;
 	removeAllWeapons _unit;
 	removeAllItemsWithMagazines _unit;
 	removeAllAssignedItems _unit;
+	
+	{
+		_unit setUnitTrait [_x, false];
+	} forEach ["engineer","explosiveSpecialist","medic","UAVHacker"];
 
 	// ====================================================================================
 
@@ -358,13 +363,29 @@ if (_isMan) then {
 	// Add items universal to all units of this faction
 
 	_unit linkItem _nvg;			// Add and equip the faction's nvg
-	_unit addItem _firstaid;		// Add a single first aid kit (FAK)
 	_unit linkItem "ItemMap";		// Add and equip the map
 	_unit linkItem "ItemCompass";	// Add and equip a compass
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
+	
+	for "_i" from 1 to 2 do {
+		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
+	};
 
+	for "_i" from 1 to 4 do {
+		_unit addItem _bandage; // Add 4 bandages
+	};
+
+	// extras for riflemen.
+	if (_typeofUnit in ["aar","r"]) then {
+		for "_i" from 1 to 2 do {
+			_unit addItem _firstaid;
+		};
+		for "_i" from 1 to 2 do {
+			_unit addItem _bandage;
+		};
+	};
 };
 
 // ====================================================================================

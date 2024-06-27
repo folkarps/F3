@@ -1,6 +1,6 @@
 //====================================================================================
 //
-//	fn_nametagDraw.sqf - Initializes values for WH nametags (heavily based on F3 and ST)
+//	fn_nametagDraw.sqf - Initializes values for WH nametags (heavily based on FA3 and ST)
 //
 //	[_name,_nameColor,_locationData,_role,_groupName,_drawRoleAndGroup,_isCommander,
 //	_cameraPositionAGL,_zoom] call f_fnc_nametagDraw;

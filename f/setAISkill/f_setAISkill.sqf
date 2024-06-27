@@ -1,4 +1,4 @@
-// F3 - AI Skill Selector
+// FA3 - AI Skill Selector
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -35,9 +35,9 @@ f_var_skillError = 99;
 // These values define the total skill level as set by the parameter
 private _skillLevels = [
 	1.00,            // 0 Super
-	0.7,             // 1 High
-	0.6,             // 2 Medium
-	0.5,             // 3 Low
+	0.8,             // 1 High
+	0.7,             // 2 Medium
+	0.6,             // 3 Low
 	f_var_skillError // last: Default
 ];
 
@@ -48,12 +48,13 @@ private _skillLevels = [
 // Note: setSkill takes values between 0 and 1. Other values will be rounded to the nearest valid value.
 //       e.g. If we have 2 in this array and then 0.5 as the lowest value in _skillLevels,
 //       then this means that this particular skill will always be 1
-//       for all possible skillLevels that were set via parameter.
+//       for all possible skillLevels that were set via parameter. 
+
 f_var_skillSet = [
-	0.45, // aimingAccuracy
-	0.5,  // aimingShake
-	0.5,  // aimingSpeed
-	0.65,  // spotDistance
+	0.5, // aimingAccuracy
+	0.6,  // aimingShake
+	0.55,  // aimingSpeed
+	0.7,  // spotDistance
 	0.7,  // spotTime
 	1.2,  // courage
 	2,    // reloadSpeed
@@ -61,7 +62,7 @@ f_var_skillSet = [
 	1.2   // general
 ];
 
-// The final skill will be within +/- this range
+// The final skill will be within +/- this range  
 f_var_skillRandom = 0.08;
 
 // ====================================================================================

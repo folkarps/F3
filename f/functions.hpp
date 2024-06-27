@@ -1,4 +1,4 @@
-// F3 Functions
+// FA3 Functions
 
 class F // Defines the "owner"
 {
@@ -14,6 +14,7 @@ class F // Defines the "owner"
 	{
 		file = "f\briefing";
 		class createBriefing{};
+		class loadoutNotes{};
 	};
 	class mpEnd
 	{
@@ -26,6 +27,7 @@ class F // Defines the "owner"
 		file = "f\assignGear";
 		class assignGear{};
 		class assignInsignia{};
+		class assignEODflags{};
 	};
 	class setGroupID
 	{
@@ -74,6 +76,7 @@ class F // Defines the "owner"
 	class mapClickTeleport
 	{
 		file = "f\mapClickTeleport";
+		class mapClickTeleport{};
 		class mapClickTeleportAction{};
 		class mapClickTeleportSetPos{};
 		class mapClickTeleportParachute{};
@@ -89,6 +92,9 @@ class F // Defines the "owner"
 		class nametagCache {};
 		class nametagResetFont {};
 		class getZoom {};
+		class nametagInit {
+			file = "f\nametag\fn_nametagInit.sqf";
+		};
 	};
 	class preMount
 	{
@@ -106,7 +112,9 @@ class F // Defines the "owner"
 	class safeStart
 	{
 		file = "f\safeStart";
+		class safeStart{};
 		class safety{};
+		class safeStartLoop{};
 	};
 	class spect
 	{
@@ -117,8 +125,25 @@ class F // Defines the "owner"
 	class woundingsystem
 	{
 		file = "f\medical";
-		class addDragAction {};
-		class onDrag {};
+		class famWoundedEffect{};
+		class famAddAllActions{};
+		class famAddDragAction{};
+		class famAddBandageAction{};
+		class famAddHealAction{};
+		class famAddDiagnoseAction{};
+		class famOnDrag{};
+		class famInit{};
+		class famLoop{};
+		class famDamageHandler{};
+		class famEH{};
+		class famRagDoll{};
+		class famPassOut{};
+		class famWakeUp{};
+		class famReset{};
+		class famMedSwap{};
+		class famBriefing{};
+		class FAMdiagnose{};
+		class FAMdiagnoseInitUI{};
 	};
 	class disableThermals
 	{

@@ -1,4 +1,4 @@
-// F3 - Briefing
+// FA3 - Briefing
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

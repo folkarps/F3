@@ -1,4 +1,4 @@
-// F3 - SetWeather
+// FA3 - SetWeather
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

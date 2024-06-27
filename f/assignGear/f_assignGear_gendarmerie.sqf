@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - GENDARMERIE
+// FA3 - Folk ARPS Assign Gear Script - GENDARMERIE
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -93,6 +93,7 @@ _smokegrenadepurple = "SmokeShellPurple";
 _binoculars = "Rangefinder";
 
 // misc medical items.
+_bandage = "Bandage";
 _firstaid = "FirstAidKit";
 _medkit = "Medikit";
 
@@ -168,12 +169,16 @@ _vipGlasses = [];
 if (_isMan) then {
 
 	// PREPARE UNIT FOR GEAR ADDITION
-	// The following code removes all existing weapons, items, magazines and backpacks
+	// The following code removes all existing weapons, items, magazines, traits, and backpacks
 
 	removeBackpack _unit;
 	removeAllWeapons _unit;
 	removeAllItemsWithMagazines _unit;
 	removeAllAssignedItems _unit;
+	
+	{
+		_unit setUnitTrait [_x, false];
+	} forEach ["engineer","explosiveSpecialist","medic","UAVHacker"];
 
 	// ====================================================================================
 
@@ -188,18 +193,26 @@ if (_isMan) then {
 	// Add items universal to all units of this faction
 
 	// _unit linkItem _nvg;			// Add and equip the faction's nvg
-	_unit addItem _firstaid;		// Add a single first aid kit (FAK)
+	// _unit addItem _bandage;		// Add a single bandage
 	_unit linkItem "ItemMap";		// Add and equip the map
 	_unit linkItem "ItemCompass";	// Add and equip a compass
 	_unit linkItem "ItemRadio";		// Add and equip A3's default radio
 	_unit linkItem "ItemWatch";		// Add and equip a watch
 	_unit linkItem "ItemGPS"; 	// Add and equip a GPS
+	
+	for "_i" from 1 to 2 do {
+		_unit addItem _firstaid; // Add 2 first aid kit (FAK)
+	};
+
+	for "_i" from 1 to 4 do {
+		_unit addItem _bandage; // Add 4 bandages
+	};
 
 };
 
 // ====================================================================================
 
-// F3 - Folk ARPS Assign Gear Script - AAF - Light Loadout
+// FA3 - Folk ARPS Assign Gear Script - AAF - Light Loadout
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -219,7 +232,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -233,7 +245,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -247,7 +258,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenade, 1];
 		_unit addmagazines [_chemgreen,1];
@@ -261,7 +271,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_DMriflemag, 1];
 		_unit addweapon _DMrifle;
 		_attachments = [_bipod1,_scope3]; // Overwrites default attachments to add a bipod and scope 2
-		_unit addItem _firstaid;
 		_unit addmagazines [_DMriflemag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -277,7 +286,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addmagazines [_smokegrenadeblue, 4];
 	};
 // Carbineer Loadout:
@@ -286,7 +294,6 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
-		_unit addItem _firstaid;
 		_unit addmagazines [_carbinemag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -302,7 +309,6 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["medic",true]; // Can use medkit
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
-		_unit addItem _firstaid;
 		_unit addmagazines [_smgmag, 7];
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
@@ -320,7 +326,6 @@ switch (_typeofUnit) do
 		_unit addmagazines [_pistolmag, 1];
 		_unit addweapon _pistol;
 		_unit addmagazines [_pistolmag, 7];
-		_unit addItem _firstaid;
 		_unit addmagazines [_riflemag, 7];
 		_attachments pushback (_silencer1); // Adds silencer
 		_hg_attachments pushback (_hg_silencer1); // Adds pistol silencer
@@ -345,6 +350,7 @@ switch (_typeofUnit) do
 	    _unit addMagazineCargoGlobal [_chemyellow,4];
 		_unit addItemCargoGlobal ["Toolkit",1];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal [_medkit,1];
 	};
 //CARGO: Rotary Transport Light
@@ -362,6 +368,7 @@ switch (_typeofUnit) do
 		_unit addItemCargoGlobal [_firstaid,4];
 		_unit addItemCargoGlobal ["Toolkit",1];
 		_unit addItemCargoGlobal [_firstaid,4];
+		_unit addItemCargoGlobal [_bandage,12];
 		_unit addItemCargoGlobal [_medkit,1];
 	};
 

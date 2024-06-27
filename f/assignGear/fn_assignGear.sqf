@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script (Server-side)
+// FA3 - Folk ARPS Assign Gear Script (Server-side)
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -37,6 +37,14 @@ _insignia_styles = [_insignia_style_NATO,_insignia_style_CSAT];
 
 // ====================================================================================
 
+// Universal: assign EOD flags to engineer classes
+if (_typeofUnit in ["eng","engm"]) then {
+	[_unit] call f_fnc_assignEODflags;
+};
+
+
+// ====================================================================================
+
 // DECIDE IF THE SCRIPT SHOULD RUN
 // Depending on locality the script decides if it should run
 
@@ -45,7 +53,7 @@ if !(local _unit) exitWith {};
 // ====================================================================================
 
 // SET A PUBLIC VARIABLE
-// A public variable is set on the unit, indicating their type. This is mostly relevant for the F3 respawn component
+// A public variable is set on the unit, indicating their type. This is mostly relevant for the FA3 respawn component
 
 _unit setVariable ["f_var_assignGear",_typeofUnit,true];
 
@@ -54,7 +62,7 @@ _unit setVariable ["f_var_assignGear",_typeofUnit,true];
 // DECLARE VARIABLES AND FUNCTIONS 2
 // Used by the faction-specific scripts
 
-private ["_binoculars","_lau_attach1","_lau_attachments","_attach1","_attach2","_silencer1","_silencer2","_scope1","_scope2","_scope3","_bipod1","_bipod2","_attachments","_silencer","_hg_silencer1","_hg_scope1","_hg_attachments","_rifle","_riflemag","_riflemag_tr","_carbine","_carbinemag","_carbinemag_tr","_shotgun","_shotgunmag1","_shotgunmag2","_smg","_smgmag","_smgmag_tr","_diverWep","_diverMag1","_diverMag2","_glrifle","_glriflemag","_glriflemag_tr","_glmag","_glsmokewhite","_glsmokegreen","_glsmokered","_glflarewhite","_glflarered","_glflareyellow","_glflaregreen","_pistol","_pistolmag","_grenade","_Mgrenade","_smokegrenade","_smokegrenadegreen","_smokegrenadeblue","_smokegrenadepurple","_firstaid","_medkit","_nvg","_nvgPilot","_uavterminal","_chemgreen","_chemred","_chemyellow","_chemblue","_bag","_bagLarge","_bagmediumdiver","_baguav","_baghmgg","_baghmgag","_baghatg","_baghatag","_bagmtrg","_bagmtrag","_baghsamg","_baghsamag","_bagRadio","_AR","_ARmag","_ARmag_tr","_MMG","_MMGmag","_MMGmag_tr","_Tracer","_DMrifle","_DMriflemag","_RAT","_RATmag1","_RATmag2","_MAT","_MATmag1","_MATmag2","_SAM","_SAMmag","_HAT","_HATmag1","_HATmag2","_SNrifle","_SNrifleMag","_ATmine","_satchel","_APmine1","_APmine2","_diver","_pilot","_crew","_ghillie","_specOp","_baseUniform","_baseHelmet","_baseGlasses","_lightRig","_mediumRig","_heavyRig","_diverUniform","_diverHelmet","_diverRig","_diverGlasses","_pilotUniform","_pilotHelmet","_pilotRig","_pilotGlasses","_crewUniform","_crewHelmet","_crewRig","_crewGlasses","_ghillieUniform","_ghillieHelmet","_ghillieRig","_ghillieGlasses","_sfuniform","_sfhelmet","_sfRig","_sfGlasses","_backpack","_typeofBackPack","_loadout","_COrifle","_mgrenade","_DC","_SLrifle","_JTACrifle","_ftlrifle","_grenrifle","_typeofunit","_jet","_jetUniform","_jetHelmet","_jetRig","_jetGlasses","_vip","_vipUniform","_vipHelmet","_vipRig","_vipGlasses"];
+private ["_binoculars","_lau_attach1","_lau_attachments","_attach1","_attach2","_silencer1","_silencer2","_scope1","_scope2","_scope3","_bipod1","_bipod2","_attachments","_silencer","_hg_silencer1","_hg_scope1","_hg_attachments","_rifle","_riflemag","_riflemag_tr","_carbine","_carbinemag","_carbinemag_tr","_shotgun","_shotgunmag1","_shotgunmag2","_smg","_smgmag","_smgmag_tr","_diverWep","_diverMag1","_diverMag2","_glrifle","_glriflemag","_glriflemag_tr","_glmag","_glsmokewhite","_glsmokegreen","_glsmokered","_glflarewhite","_glflarered","_glflareyellow","_glflaregreen","_pistol","_pistolmag","_grenade","_Mgrenade","_smokegrenade","_smokegrenadegreen","_smokegrenadeblue","_smokegrenadepurple","_bandage","_firstaid","_medkit","_nvg","_nvgPilot","_uavterminal","_chemgreen","_chemred","_chemyellow","_chemblue","_bag","_bagLarge","_bagmediumdiver","_baguav","_baghmgg","_baghmgag","_baghatg","_baghatag","_bagmtrg","_bagmtrag","_baghsamg","_baghsamag","_bagRadio","_AR","_ARmag","_ARmag_tr","_MMG","_MMGmag","_MMGmag_tr","_Tracer","_DMrifle","_DMriflemag","_RAT","_RATmag1","_RATmag2","_MAT","_MATmag1","_MATmag2","_SAM","_SAMmag","_HAT","_HATmag1","_HATmag2","_SNrifle","_SNrifleMag","_ATmine","_satchel","_APmine1","_APmine2","_diver","_pilot","_crew","_ghillie","_specOp","_baseUniform","_baseHelmet","_baseGlasses","_lightRig","_mediumRig","_heavyRig","_diverUniform","_diverHelmet","_diverRig","_diverGlasses","_pilotUniform","_pilotHelmet","_pilotRig","_pilotGlasses","_crewUniform","_crewHelmet","_crewRig","_crewGlasses","_ghillieUniform","_ghillieHelmet","_ghillieRig","_ghillieGlasses","_sfuniform","_sfhelmet","_sfRig","_sfGlasses","_backpack","_typeofBackPack","_loadout","_COrifle","_mgrenade","_DC","_SLrifle","_JTACrifle","_ftlrifle","_grenrifle","_typeofunit","_jet","_jetUniform","_jetHelmet","_jetRig","_jetGlasses","_vip","_vipUniform","_vipHelmet","_vipRig","_vipGlasses"];
 
 // ====================================================================================
 
@@ -263,13 +271,6 @@ if (_faction in (["3ifb"] apply {toLower _x})) then {
 // This block needs only to be run on an infantry unit
 if (_isMan) then {
 
-	// Add extra FAKs,
-	// because the assignGear files were made when the sws was still existing.
-	private _numExtraFAK = 2;
-	for "_i" from 1 to _numExtraFAK do {
-		_unit addItem _firstaid;
-	};
-
 	// Handle weapon attachments
 	#include "f_assignGear_attachments.sqf";
 
@@ -277,7 +278,6 @@ if (_isMan) then {
 	_unit selectweapon primaryweapon _unit;
 
 };
-
 
 // ====================================================================================
 

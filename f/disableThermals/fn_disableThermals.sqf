@@ -1,6 +1,9 @@
-// F3 - Disable Thermals
+// FA3 - Disable Thermals
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
+
+// If disableThermals is turned off by the mission parameter, don't run
+if (f_param_disableThermals == 2) exitWith {};
 
 // DECLARE VARIABLES AND FUNCTIONS
 
@@ -18,10 +21,13 @@ f_var_disableThermals_enabled = true;
 
 _allowedTypes = [];
 _allowedUnits = [];
-{
-	if (_x isEqualType "") then {_allowedTypes pushBack _x};
-	if (_x isEqualType objNull) then {_allowedUnits pushBack _x};
-} forEach _allowedList;
+// Only use the whitelists if the parameter mode is set for that. Otherwise, leave whitelists empty.
+if (f_param_disableThermals == 0) then {
+	{
+		if (_x isEqualType "") then {_allowedTypes pushBack _x};
+		if (_x isEqualType objNull) then {_allowedUnits pushBack _x};
+	} forEach _allowedList;
+};
 
 // PERFORM CHECKS
 // Check if any vehicle is one of the allowed vehicles or in the allowed types, if not, disable their thermals.

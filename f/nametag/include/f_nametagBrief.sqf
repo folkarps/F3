@@ -30,5 +30,5 @@
 	};
 	
 	//	Add brief to map screen.
-	player createDiaryRecord ["Diary", ["FA Nametags (Options)",_bstr]];
+	player createDiaryRecord ["fa3_actions", ["FA Nametags (Options)",_bstr]];
 };

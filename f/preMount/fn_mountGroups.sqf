@@ -1,4 +1,4 @@
-// F3 - Mount Groups Function
+// FA3 - Mount Groups Function
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

@@ -1,4 +1,4 @@
-// F3 - Mission Maker Teleport
+// FA3 - Mission Maker Teleport
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -24,6 +24,7 @@ if (isNil "f_var_mapClickTeleport_GroupTeleport")    then {f_var_mapClickTelepor
 if (isNil "f_var_mapClickTeleport_Units")            then {f_var_mapClickTeleport_Units = []};
 if (isNil "f_var_mapClickTeleport_Height")           then {f_var_mapClickTeleport_Height = 0};
 if (isNil "f_var_mapClickTeleport_SaferVehicleHALO") then {f_var_mapClickTeleport_SaferVehicleHALO = false};
+if (isNil "f_var_mapClickTeleport_Smoke")			 then {f_var_mapClickTeleport_Smoke = true};
 
 // Setup the localized strings for the various stages of the component
 // Depending on the setting of the height variable the strings either use the teleport or the HALO option.
@@ -43,7 +44,7 @@ f_var_mapClickTeleport_Units = f_var_mapClickTeleport_Units select {! isNil _x} 
 // Add a briefing page for everyone if HALO is being used
 
 if (f_var_mapClickTeleport_Height > 0) then {
-        [] call f_fnc_mapClickTeleportBriefing;
+        call f_fnc_mapClickTeleportBriefing;
 };
 
 // ====================================================================================

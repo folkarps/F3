@@ -1,4 +1,4 @@
-// F3 - Loadout Notes
+// FA3 - Loadout Notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -42,20 +42,21 @@ private _fnc_name = {
 		["_prefix", "", [""]],
 		["_short", false, [false]]
 	];
-
+	
+	private _displayName = getText (configFile >> _type >> _name >> "displayname");
 	private _picture = getText (configFile >> _type >> _name >> "picture");
 	if ! (_picture isEqualTo "") then {
 		if (_picture find ".paa" == -1) then {
 			_picture = _picture + ".paa"
 		};
-		_picture = format ["<img image='%1' height='24'/>", _picture];
+		_picture = format ["<img image='%1' height='24' title='%2'/>", _picture,_displayName];
 	};
 
 	format[
 		["%1%2%3 ", "%1%2 "] select _short,
 		_prefix,
 		_picture,
-		getText (configFile >> _type >> _name >> "displayname")
+		_displayName
 	]
 };
 private _fnc_nameShort = {

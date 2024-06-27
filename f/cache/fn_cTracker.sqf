@@ -1,4 +1,4 @@
-// F3 - Caching Script Tracker
+// FA3 - Caching Script Tracker
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
