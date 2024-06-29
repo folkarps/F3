@@ -33,7 +33,7 @@ if (_vehicle getVariable ["f_var_fcs_hasEH",false]) exitWith { diag_log "FCS: tr
 
 // If the FCS briefing tab hasn't been added already, add it.
 if (isNil "f_var_fcs_briefingDone") then {
-	[] call f_fnc_fcsBriefing;
+	0 spawn f_fnc_fcsBriefing;
 };
 
 // Commander's override action
