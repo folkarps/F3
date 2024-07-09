@@ -27,8 +27,8 @@ private _healCodeStart = {
 	};
 
 	if (stance _caller == "PRONE") then {
-		// Rifle
-		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+		// Rifle or Binocular
+		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 			_caller playMove "ainvppnemstpslaywrfldnon_medicother"; 
 		};
 		// Nothing
@@ -40,8 +40,8 @@ private _healCodeStart = {
 			_caller playMove "ainvppnemstpslaywpstdnon_medicother";
 		};
 	} else { 
-		// Rifle
-		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+		// Rifle or Binocular
+		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 			_caller playMove "ainvpknlmstpslaywrfldnon_medicother"; 
 		};
 		// Nothing

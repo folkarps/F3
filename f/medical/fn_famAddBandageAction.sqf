@@ -24,8 +24,8 @@ private _bdgCodeStart = {
 	};
 
 	if (stance _caller == "PRONE") then {
-		// Rifle
-		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+		// Rifle or Binocular
+		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 			_caller playMove "ainvppnemstpslaywrfldnon_medicother"; 
 		};
 		// Nothing
@@ -37,9 +37,13 @@ private _bdgCodeStart = {
 			_caller playMove "ainvppnemstpslaywpstdnon_medicother";
 		};
 	} else { 
-		// Rifle
-		if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+		// Rifle or Binocular
+		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 			_caller playMove "ainvpknlmstpslaywrfldnon_medicother"; 
+		};
+		// Binocular
+		if (currentWeapon _caller == binocular _caller) exitWith {
+			_caller playMove "ainvpknlmstpslaywrfldnon_medicother";
 		};
 		// Nothing
 		if (currentWeapon _caller == "") exitWith {
@@ -120,8 +124,8 @@ if (_unit == player) then {
 
 			if (stance _caller == "PRONE") then {
 
-				// Rifle
-				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+				// Rifle or Binocular
+				if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 					_caller playMove "ainvppnemstpslaywrfldnon_medic"; 
 				};
 				// Nothing
@@ -135,8 +139,8 @@ if (_unit == player) then {
 
 			} else { 
 
-				// Rifle
-				if (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
+				// Rifle or Binocular
+				if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 					_caller playMove "ainvpknlmstpslaywrfldnon_medic"; 
 				};
 				// Nothing
