@@ -60,24 +60,5 @@ if (_itemsNeedUpdate) then {
 };
 
 // ====================================================================================
-/*
-// VEHICLE CREWS
-{
-	_crew = _x;
-	{
-		if (_x == "FirstAidKit" || {[configFile >> "CfgWeapons" >> _x >> "ItemInfo","type",-1] call BIS_fnc_returnConfigEntry == 401}) then {
-			_itemType = _x;
-			_crew removeItem _x;
-			_roll = round random 10;
-			if (_roll >= 8) then {
-				_obj addItem "Bandage"; // 30% chance to get a bandage
-			} else {
-				if (_roll == 1) then {
-					_obj addItem _itemType; // 10% chance of a FAK.
-				};
-			};
-		};
-	} forEach items _crew;
-} foreach crew _obj;
 
 
