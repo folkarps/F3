@@ -16,8 +16,6 @@ private _healMedicTime = 4.5; // Action Duration
 
 // Starting Code
 private _healCodeStart = { 
-	params ["_target", "_caller", "_actionId", "_arguments"]; 
-
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",true];
 	
@@ -62,26 +60,23 @@ private _healCodeStart = {
 }; 
 
 // Progress Code
-private _healCodeProg = { 
-	params ["_target", "_caller", "_actionId", "_arguments"]; 
-}; 
+private _healCodeProg = {}; 
 
 // Completed Code
 private _healCodeComp = { 
-	params ["_target", "_caller", "_actionId", "_arguments"]; 
-
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
 
 	// Medic heals to full only if they have a medikit. TODO CLS Support?
-	if (_caller getUnitTrait 'Medic' && 'Medikit' in items _caller) then {
+	if (_caller getUnitTrait 'Medic' && (_caller call f_fnc_famHasFAK >= 1)) then {
 		_target setDamage 0;
 		hint "Patient healed fully with Medikit"; // feedback on resource consumption.
 	} else {	
 		_target setDamage 0.25;
-		if ("FirstAidKit" in items _caller) then {
-			_caller removeItem "FirstAidKit"; 
-			hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _caller select {_x == "FirstAidKit"})]; // feedback on resource consumption.
+		if (_caller call f_fnc_famHasFAK == 0) then {
+			private _FAKs = (items _caller select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401});
+			_caller removeItem (selectRandom _FAKs);
+			hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",(count _FAKs) - 1]; // feedback on resource consumption.
 		} else {
 			hint "FAK used from patient's inventory";
 			_target setVariable ["f_var_fam_used_fak",true,true];
@@ -91,8 +86,6 @@ private _healCodeComp = {
 
 // Interrupt Code
 private _healCodeInt = { 
-	params ["_target", "_caller", "_actionId", "_arguments"];
-
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
 
@@ -113,7 +106,7 @@ private _healCodeInt = {
 	format ["Heal %1", name _unit],
 	_healIcon, 
 	_healIcon, 
-	"(!(_this getUnitTrait 'medic') || !('Medikit' in items _this)) && {alive _target && _target distance _this < 3 && {damage _target > 0.25 && !(_target getVariable ['f_var_fam_conscious',true]) && ('FirstAidKit' in items _this || _target getVariable ['f_var_fam_hasfak',false])}}", 
+	"(!(_this getUnitTrait 'medic') || (_this call f_fnc_famHasFAK <= 0))  && { alive _target && _target distance _this < 3  && { damage _target > 0.25 && !(_target getVariable ['f_var_fam_conscious',true])  && {      (_this call f_fnc_famHasFAK == 0) || (_target getVariable ['f_var_fam_hasfak',false]) && {!(_target getVariable ['f_var_fam_hasfak_requiremedic',false]) || (_this getUnitTrait 'medic')}}}}", 
 	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healTime, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;
 
@@ -123,6 +116,6 @@ private _healCodeInt = {
 	format ["Heal %1", name _unit],
 	_healIcon, 
 	_healIcon, 
-	"(_this getUnitTrait 'medic' && 'Medikit' in items _this) && {alive _target && _target distance _this < 3 && {damage _target > 0 && !(_target getVariable ['f_var_fam_conscious',true])}}", 
+	"(_this getUnitTrait 'medic' && (_this call f_fnc_famHasFAK >= 1)) && {alive _target && _target distance _this < 3 && {damage _target > 0 && !(_target getVariable ['f_var_fam_conscious',true])}}", 
 	_healProg, _healCodeStart, _healCodeProg, _healCodeComp, _healCodeInt, [], _healMedicTime, 19, false, false, false
 ] call BIS_fnc_holdActionAdd;

@@ -204,7 +204,7 @@ while {alive _unit && {local _unit}} do {
 			if (damage _unit == 0) then {
 				hint "Healed to full with Medikit";
 			} else {
-				hint format ["Healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _unit select {_x == "FirstAidKit"})]
+				hint format ["Healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _unit select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401})]
 			};
 			_unit setVariable ["f_var_fam_selffak", false];
 		};

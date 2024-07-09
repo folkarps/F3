@@ -45,12 +45,14 @@ if(local _unit) then
         _unit setVariable ["f_var_fam_used_bandage",false];
     };
     if (_unit getVariable ["f_var_fam_used_fak",false]) then {
-        _unit removeItem "FirstAidKit";
+        private _FAKs = (items _unit select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401});
+		_unit removeItem (selectRandom _FAKs);
         _unit setVariable ["f_var_fam_used_fak",false];
     };
     // reset these
     _unit setVariable ["f_var_fam_hasbandage",false,true];  
-    _unit setVariable ["f_var_fam_hasfak",false,true];  
+    _unit setVariable ["f_var_fam_hasfak",false,true]; 
+	_unit setVariable ["f_var_fam_hasfak_requiremedic",false,true];
 
     // reset the screen effects
     [4] spawn f_fnc_famWoundedEffect;
