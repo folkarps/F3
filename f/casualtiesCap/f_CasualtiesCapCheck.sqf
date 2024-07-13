@@ -1,4 +1,4 @@
-// F3 - Casualties Cap
+// FA3 - Casualties Cap
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

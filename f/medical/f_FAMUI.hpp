@@ -1,3 +1,6 @@
+// FA3 - Medical component
+// UI classes for medical displays
+
 class f_FAMdiagnoseUI
 {
 	idd = 3580;

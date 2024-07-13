@@ -1,4 +1,4 @@
-// F3 - Driver's Brake Override system
+// FA3 - Driver's Brake Override system
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 /*
 This component allows players to disable the automatic brakes of any ground vehicle they're driving. It is enabled by default in init.sqf.

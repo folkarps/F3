@@ -1,4 +1,4 @@
-// F3 - SetFog
+// FA3 - SetFog
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

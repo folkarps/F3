@@ -1,4 +1,4 @@
-// F3 - SetAISkill
+// FA3 - SetAISkill
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

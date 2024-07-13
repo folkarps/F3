@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - SYNDIKAT
+// FA3 - Folk ARPS Assign Gear Script - SYNDIKAT
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

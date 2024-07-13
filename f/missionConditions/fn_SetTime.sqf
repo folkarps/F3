@@ -1,4 +1,4 @@
-// F3 - SetTime
+// FA3 - SetTime
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

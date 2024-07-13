@@ -1,4 +1,4 @@
-// F3 - Add group join option to action menu
+// FA3 - Add group join option to action menu
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 
@@ -51,6 +51,9 @@ while {true} do {
 				];
 
 				_unit = player;
+
+				// Set rank to private so that they don't accidently take over the group.
+				player setUnitRank 'PRIVATE';
 
 				// Player joins new group
 				[player] joinSilent _grp;

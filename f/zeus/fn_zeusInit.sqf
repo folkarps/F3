@@ -1,4 +1,4 @@
-// F3 Zeus Support  - Initialization
+// FA3 Zeus Support  - Initialization
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

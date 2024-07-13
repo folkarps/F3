@@ -1,4 +1,4 @@
-// F3 - Mission Condition briefing notes
+// FA3 - Mission Condition briefing notes
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

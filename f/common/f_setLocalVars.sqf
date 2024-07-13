@@ -1,4 +1,4 @@
-// F3 - F3 Common Local Variables
+// FA3 - Common Local Variables
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

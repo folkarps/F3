@@ -1,4 +1,4 @@
-// F3 - Folk Group Markers
+// FA3 - Group Markers
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

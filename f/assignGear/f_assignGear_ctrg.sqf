@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Assign Gear Script - CTRG
+// FA3 - Folk ARPS Assign Gear Script - CTRG
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // ====================================================================================
 

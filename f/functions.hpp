@@ -1,4 +1,4 @@
-// F3 Functions
+// FA3 Functions
 
 class F // Defines the "owner"
 {
@@ -144,6 +144,7 @@ class F // Defines the "owner"
 		class famBriefing{};
 		class FAMdiagnose{};
 		class FAMdiagnoseInitUI{};
+		class famHasFAK{};
 	};
 	class disableThermals
 	{

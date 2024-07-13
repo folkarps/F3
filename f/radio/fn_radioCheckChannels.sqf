@@ -1,4 +1,4 @@
-// F3 - Folk ARPS Long-Range Radio Module
+// FA3 - Long-Range Radio Module
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 
 /* ========================
@@ -46,16 +46,16 @@ for "_i" from 1 to 2 do {
 		// If the vehicle radio is turned off, don't check for vehicle-provided channels.
 		if _vicRadioOn then {
 			// Check for vehicles. Don't add send permissions unless they're the driver.
-			if ((toLowerANSI str objectParent _unit) in _channelObjects) then {
+			if ((toLowerANSI str vehicle _unit) in _channelObjects) then {
 				_channelsToAddListen pushBackUnique _i;
-				if (_unit in [driver objectParent _unit,commander objectParent _unit,gunner objectParent _unit]) then {
+				if (_unit in [driver vehicle _unit,commander vehicle _unit,gunner vehicle _unit]) then {
 					_channelsToAddTalk pushBackUnique _i;
 				};
 			};
 			// Same for vehicle classes.
-			if ((toLowerANSI typeOf objectParent _unit) in _channelObjects) then {
+			if ((toLowerANSI typeOf vehicle _unit) in _channelObjects) then {
 				_channelsToAddListen pushBackUnique _i;
-				if (_unit in [driver objectParent _unit,commander objectParent _unit,gunner objectParent _unit]) then {
+				if (_unit in [driver vehicle _unit,commander vehicle _unit,gunner vehicle _unit]) then {
 					_channelsToAddTalk pushBackUnique _i;
 				};
 			};
