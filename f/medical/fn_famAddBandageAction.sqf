@@ -41,10 +41,6 @@ private _bdgCodeStart = {
 		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
 			_caller playMove "ainvpknlmstpslaywrfldnon_medicother"; 
 		};
-		// Binocular
-		if (currentWeapon _caller == binocular _caller) exitWith {
-			_caller playMove "ainvpknlmstpslaywrfldnon_medicother";
-		};
 		// Nothing
 		if (currentWeapon _caller == "") exitWith {
 			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
