@@ -244,13 +244,13 @@ _MATmag1 = "RPG32_F";
 _MATmag2 = "RPG32_HE_F";
 
 // Surface Air
-_SAM = "launch_Titan_F";
+_SAM = "launch_B_Titan_olive_F";
 _SAMmag = "Titan_AA";
 
 // Heavy AT
-_HAT = "launch_Titan_short_F";
-_HATmag1 = "Titan_AT";
-_HATmag2 = "Titan_AP";
+_HAT = "launch_O_Vorona_green_F";
+_HATmag1 = "Vorona_HEAT";
+_HATmag2 = "Vorona_HE";
 
 // Sniper
 _SNrifle = "srifle_LRR_F";
