@@ -225,7 +225,7 @@ if (f_param_debugMode == 1) then
 };
 
 // I think this needs to be reset for respawn
-_unit setVariable ["f_var_fam_initDone",false];
+_unit setVariable ["f_var_fam_initDone",false,true];
 
 
 titleText ["","PLAIN"];

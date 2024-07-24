@@ -27,6 +27,19 @@ if (isServer) then {
         };
     } forEach (allMissionObjects "ALL" select {!isPlayer _x});
 
+	[] spawn {
+		// persistent JIP check
+		while {true} do {
+
+			sleep 10;
+			{
+				if (!(_x getVariable ["f_var_fam_initDone",false])) then{ 
+					[] remoteExec ["f_fnc_famInit",_x];
+				};
+			} foreach (playableUnits select {isPlayer _x}); 
+		};
+	};
+
 };
 
 waitUntil{!isNull player && {player == player}};
@@ -102,4 +115,4 @@ if (isNil "f_var_fam_briefingDone") then {
 	[] call f_fnc_famBriefing;
 };
 
-player setVariable ["f_var_fam_initDone",true];
+player setVariable ["f_var_fam_initDone",true,true];
