@@ -223,9 +223,9 @@ _DMriflemag = "30Rnd_65x39_caseless_msbs_mag";
 _DMriflemag_tr = "30Rnd_65x39_caseless_msbs_mag_Tracer";
 
 // Rifleman AT
-_RAT = "launch_MRAWS_green_rail_F";
-_RATmag1 = "MRAWS_HEAT55_F";
-_RATmag2 = "MRAWS_HE_F";
+_RAT = "launch_RPG32_green_F";
+_RATmag1 = "RPG32_F";
+_RATmag2 = "RPG32_HE_F";
 
 // Medium AT
 _MAT = "launch_MRAWS_green_rail_F";
