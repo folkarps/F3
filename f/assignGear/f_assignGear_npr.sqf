@@ -194,7 +194,7 @@ _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
 // Backpacks
-_bag = "B_FieldPack_green_F";
+_bag = selectRandom ["B_FieldPack_oli","B_FieldPack_green_f","B_FieldPack_blk","B_FieldPack_taiga_f","B_CivilianBackpack_01_Everyday_Black_F"];	
 _bagLarge = "B_Carryall_oli";
 _bagMedic = "B_TacticalPack_blk";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers

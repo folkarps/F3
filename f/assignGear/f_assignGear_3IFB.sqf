@@ -187,7 +187,7 @@ _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
 // Backpacks
-_bag = "B_FieldPack_khk";			// carries 160, weighs 20
+_bag = selectRandom ["B_FieldPack_khk","B_FieldPack_oli","B_FieldPack_green_f","B_CivilianBackpack_01_Everyday_Black_F","B_AssaultPack_cbr","B_AssaultPack_khk"];			// carries 160, weighs 20
 _baglarge =  "B_Carryall_khk"; 				// carries 320, weighs 60
 _bagmedic =  "B_TacticalPack_oli"; 			// carries 240, weighs 40
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
