@@ -272,7 +272,7 @@ _vip = [];
 
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
-_baseUniform = ["U_B_CombatUniform_mcam_wdl_f","U_B_CombatUniform_tshirt_mcam_wdL_f","U_B_CombatUniform_vest_mcam_wdl_f"];
+_baseUniform = ["U_B_CombatUniform_mcam_wdl_f","U_B_CombatUniform_vest_mcam_wdl_f","U_B_CombatUniform_mcam_wdl_f","U_B_CombatUniform_vest_mcam_wdl_f","U_B_CombatUniform_tshirt_mcam_wdL_f"];
 _baseHelmet = ["H_HelmetB_plain_wdl"];
 _baseGlasses = [];
 
