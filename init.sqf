@@ -1,5 +1,11 @@
 // ====================================================================================
 
+// FA3 - Mission Options
+// https://community.bistudio.com/wiki/setMissionOptions
+setMissionOptions createHashMapFromArray [["IgnoreNoDamage", true], ["IgnoreFakeHeadHit", true], ["IgnoreUpsideDownDamage", true]];
+
+// ====================================================================================
+
 // FA3 - Common Local Variables
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 // WARNING: DO NOT DISABLE THIS COMPONENT
