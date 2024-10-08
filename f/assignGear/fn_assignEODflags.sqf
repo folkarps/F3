@@ -30,6 +30,7 @@ private _actionID = _unit addAction [
 				
 				_position = _intersection select 0;
 				private _flag = createVehicle ["FlagMarker_01_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+				[_flag, false] remoteExec ["setPhysicsCollisionFlag",0,true];
 				_flag setPosASL _position;
 				
 				playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,_position, 2, 1, 25];
