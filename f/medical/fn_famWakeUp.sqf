@@ -40,6 +40,8 @@ if(local _unit) then
         _unit linkItem _x;
     } foreach _items;
 
+    _unit selectThrowable (_unit getVariable ["f_var_fam_wound_down_throwable",""]);
+
     if (_unit getVariable ["f_var_fam_used_bandage",false]) then {
         _unit removeItem "Bandage";
         _unit setVariable ["f_var_fam_used_bandage",false];

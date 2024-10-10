@@ -84,6 +84,8 @@ if(local _unit && isPlayer _unit) then
         _unit unlinkItem _x;
     } foreach (_unit getVariable ["f_var_fam_wound_down_items",[]]);
 
+    _unit setVariable ["f_var_fam_wound_down_throwable",(currentThrowable _unit select 0)];
+
     // this disables the actionmenu for the users 
     showHud false;
 
