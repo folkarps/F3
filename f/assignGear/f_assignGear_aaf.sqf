@@ -189,6 +189,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_AssaultPack_dgtl";			// The standard bag for most classes
 _bagLarge = "B_Kitbag_rgr";				// Larger bag for some special purpose classes
+_bagmedic =  "B_TacticalPack_oli"; 			// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "I_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_HMG_02_weapon_F";				// used by Heavy MG gunner
@@ -211,9 +212,9 @@ _ARmag = "200Rnd_556x45_Box_F";
 _ARmag_tr = "200Rnd_556x45_Box_Tracer_F";
 
 // Medium MG
-_MMG = "LMG_Zafir_F";
-_MMGmag = "150Rnd_762x54_Box";
-_MMGmag_tr = "150Rnd_762x54_Box_Tracer";
+_MMG = "LMG_S77_AAF_lxWS";
+_MMGmag = "100Rnd_762x51_S77_Yellow_lxWS";
+_MMGmag_tr = "100Rnd_762x51_S77_Yellow_Tracer_lxWS";
 
 // Marksman rifle
 _DMrifle = "srifle_EBR_F";
@@ -221,9 +222,9 @@ _DMriflemag = "20Rnd_762x51_Mag";
 _DMriflemag_tr = "20Rnd_762x51_Mag";
 
 // Rifleman AT
-_RAT = "launch_MRAWS_olive_rail_F";
-_RATmag1 = "MRAWS_HEAT55_F";
-_RATmag2 = "MRAWS_HE_F";
+_RAT = "launch_RPG32_green_F";
+_RATmag1 = "RPG32_F";
+_RATmag2 = "RPG32_HE_F";
 
 // Medium AT
 _MAT = "launch_MRAWS_olive_rail_F";
@@ -371,6 +372,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

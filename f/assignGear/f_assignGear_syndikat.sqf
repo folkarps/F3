@@ -85,7 +85,7 @@ _bipod1 = "bipod_01_F_mtp";		// Default bipod
 _bipod2 = "bipod_02_F_blk";		// Black bipod
 
 // Default setup
-_attachments = [_scope1]; // The default attachment set for most units, overwritten in the individual unitType
+_attachments = []; // The default attachment set for most units, overwritten in the individual unitType
 
 // [] = remove all
 // [_attach1,_scope1,_silencer] = remove all, add items assigned in _attach1, _scope1 and _silencer1
@@ -114,14 +114,14 @@ _lau_attachments = []; // The default attachment set for launchers, overwritten 
 // WEAPON SELECTION
 
 // Standard Riflemen ( MMG Assistant Gunner, Assistant Automatic Rifleman, MAT Assistant Gunner, MTR Assistant Gunner, Rifleman)
-_rifle = "arifle_AK12_F";
-_riflemag = "30Rnd_762x39_AK12_Mag_F";
-_riflemag_tr = "30Rnd_762x39_AK12_Mag_Tracer_F";
+_rifle = "arifle_Velko_lxWS";
+_riflemag = "35Rnd_556x45_Velko_reload_tracer_yellow_lxWS";
+_riflemag_tr = "35Rnd_556x45_Velko_tracer_yellow_lxWS";
 
 // Standard Carabineer (Medic, Rifleman (AT), MAT Gunner, MTR Gunner, Carabineer)
-_carbine = "arifle_AKS_F";
-_carbinemag = "30Rnd_545x39_Mag_F";
-_carbinemag_tr = "30Rnd_545x39_Mag_Tracer_F";
+_carbine = "arifle_VelkoR5_lxWS";
+_carbinemag = "35Rnd_556x45_Velko_reload_tracer_yellow_lxWS";
+_carbinemag_tr = "35Rnd_556x45_Velko_tracer_yellow_lxWS";
 
 // Standard Submachine Gun/Personal Defence Weapon (Aircraft Pilot, Submachinegunner)
 _smg = "hgun_PDW2000_F";
@@ -134,9 +134,9 @@ _diverMag2 = "30Rnd_556x45_Stanag_Tracer_Yellow";
 _diverMag3 = "20Rnd_556x45_UW_mag";
 
 // Rifle with GL and HE grenades (CO, DC, FTLs)
-_glrifle = "arifle_AK12_GL_F";
-_glriflemag = "30Rnd_762x39_AK12_Mag_F";
-_glriflemag_tr = "30Rnd_762x39_AK12_Mag_Tracer_F";
+_glrifle = "arifle_VelkoR5_GL_lxWS";
+_glriflemag = "35Rnd_556x45_Velko_reload_tracer_yellow_lxWS";
+_glriflemag_tr = "35Rnd_556x45_Velko_tracer_yellow_lxWS";
 _glmag = "1Rnd_HE_Grenade_shell";
 
 // Smoke for FTLs, Squad Leaders, etc
@@ -151,8 +151,8 @@ _glflareyellow = "UGL_FlareYellow_F";
 _glflaregreen = "UGL_FlareGreen_F";
 
 // Pistols (CO, DC, Automatic Rifleman, Medium MG Gunner)
-_pistol = "hgun_Pistol_heavy_02_F";
-_pistolmag = "6Rnd_45ACP_Cylinder";
+_pistol = "hgun_DEagle_classic_RF";
+_pistolmag = "7Rnd_50AE_Mag_RF";
 
 // Grenades
 _grenade = "HandGrenade";
@@ -187,8 +187,9 @@ _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
 // Backpacks
-_bag = "B_AssaultPack_rgr";			// carries 160, weighs 20
-_bagLarge =  "B_Carryall_cbr"; 				// carries 320, weighs 60
+_bag = "B_FieldPack_oli";			// carries 160, weighs 20
+_bagLarge =  "B_Carryall_oli"; 				// carries 320, weighs 60
+_bagMedic = "B_TacticalPack_oli";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "I_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_C_HMG_02_weapon_F";				// used by Heavy MG gunner
@@ -210,9 +211,9 @@ _ARmag = "200Rnd_556x45_Box_F";
 _ARmag_tr = "200Rnd_556x45_Box_Tracer_F";
 
 // Medium MG
-_MMG = "LMG_Zafir_F";
-_MMGmag = "150Rnd_762x54_Box";
-_MMGmag_tr = "150Rnd_762x54_Box_Tracer";
+_MMG = "LMG_S77_lxWS";
+_MMGmag = "100Rnd_762x51_S77_Yellow_lxWS";
+_MMGmag_tr = "100Rnd_762x51_S77_Yellow_Tracer_lxWS";
 
 // Marksman rifle
 _DMrifle = "srifle_DMR_03_F";
@@ -220,12 +221,12 @@ _DMriflemag = "20Rnd_762x51_Mag";
 _DMriflemag_tr = "20Rnd_762x51_Mag";
 
 // Rifleman AT
-_RAT = "launch_RPG32_ghex_F";
+_RAT = "launch_RPG32_green_F";
 _RATmag1 = "RPG32_F";
 _RATmag2 = "RPG32_HE_F";
 
 // Medium AT
-_MAT = "launch_RPG32_ghex_F";
+_MAT = "launch_RPG32_green_F";
 _MATmag1 = "RPG32_F";
 _MATmag2 = "RPG32_HE_F";
 
@@ -267,13 +268,13 @@ _vip = [];
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
 
-_baseUniform = ["U_I_C_Soldier_Camo_F","U_I_C_Soldier_Para_1_F","U_I_C_Soldier_Para_2_F","U_I_C_Soldier_Para_3_F","U_I_C_Soldier_Para_4_F","U_I_C_Soldier_Para_5_F"];
-_baseHelmet = ["H_Beret_blk"];
-_baseGlasses = ["G_Bandanna_blk","G_Bandanna_khk","G_Bandanna_oli"];
+_baseUniform = ["U_I_C_Soldier_Camo_F","U_I_C_Soldier_Para_1_F","U_I_C_Soldier_Para_2_F","U_I_C_Soldier_Para_3_F","U_I_C_Soldier_Para_4_F"];
+_baseHelmet = ["H_Booniehat_mgrn","H_Booniehat_khk","H_Cap_oli","H_Bandanna_khk","H_Bandanna_cbr"];
+_baseGlasses = ["G_Bandanna_blk","G_Bandanna_Skull1","G_Bandanna_Syndikat1","G_Bandanna_beast","G_Bandanna_aviator","G_Bandanna_shades","G_Bandanna_Syndikat2"];
 
 // Vests
-_lightRig = ["V_TacVestIR_blk"];
-_standardRig = ["V_TacVestIR_blk"];
+_lightRig = ["V_lxWS_TacVestIR_oli"];
+_standardRig = ["V_lxWS_TacVestIR_oli"];
 
 // Diver
 _diverUniform =  ["U_B_Wetsuit"];
@@ -370,6 +371,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

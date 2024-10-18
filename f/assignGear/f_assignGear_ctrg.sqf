@@ -151,8 +151,8 @@ _glflareyellow = "UGL_FlareYellow_F";
 _glflaregreen = "UGL_FlareGreen_F";
 
 // Pistol
-_pistol = "hgun_Pistol_heavy_01_F";
-_pistolmag = "11Rnd_45ACP_Mag";
+_pistol = "hgun_Glock19_RF";
+_pistolmag = "17Rnd_9x19_Mag_RF";
 
 // Grenades
 _grenade = "HandGrenade";
@@ -189,6 +189,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_AssaultPack_rgr";					// Regular bag
 _bagLarge =  "B_Kitbag_rgr"; 			// Large bag
+_bagMedic = "B_TacticalPack_blk";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "B_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "B_HMG_01_weapon_F";			// used by Heavy MG gunner
@@ -278,7 +279,7 @@ _vip = [];
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
 _baseUniform = ["U_B_CTRG_1","U_B_CTRG_2","U_B_CTRG_3"];
-_baseHelmet = ["H_Watchcap_khk","H_Shemag_olive_hs","H_Cap_khaki_specops_UK","H_Bandanna_camo","H_Bandanna_cbr","H_Bandanna_khk_hs","H_Booniehat_khk","H_Booniehat_khk_hs","H_Booniehat_oli","H_Cap_headphones"];
+_baseHelmet = ["H_Watchcap_khk","H_Shemag_olive_hs","H_Cap_khaki_specops_UK","H_Bandanna_camo","H_Bandanna_cbr","H_Bandanna_khk_hs","H_Booniehat_khk","H_Booniehat_khk_hs","H_Booniehat_oli","H_Cap_headphones","lxWS_H_Headset"];
 _baseGlasses = [];
 
 // Vests
@@ -380,6 +381,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================
