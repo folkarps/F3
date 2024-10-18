@@ -27,7 +27,7 @@ for "_i" from 2 to 5 do {
 
 if(local _unit) then
 {
-	
+
 	// return unit ammo.
 	private _mags = _unit getVariable ["f_var_fam_wound_down_mags",magazines _unit];
 	{
@@ -59,10 +59,10 @@ if(local _unit) then
 	// reset the screen effects
 	[4] spawn f_fnc_famWoundedEffect;
 	showHud true;
-	
+
 	// force them into prone otherwise they can get stuck in the rolltofrontanimation. 
 	_unit setUnconscious false;
-	
+
 	// exit if they are dead
 	if (damage _unit >= 1) exitWith {};
 

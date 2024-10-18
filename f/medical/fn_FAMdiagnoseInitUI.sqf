@@ -45,4 +45,4 @@ _statusCtrl ctrlSetStructuredText parseText (_healthState select 0);
 _bleedCtrl ctrlSetStructuredText parseText (_healthState select 1);
 _nameCtrl ctrlSetStructuredText parseText ("<t valign='top'>Medical diagnosis: " + _unitName + "</t>");
 
-_bleedWarnCtrl ctrlSetBackgroundColor (_healthState select 2);	
+_bleedWarnCtrl ctrlSetBackgroundColor (_healthState select 2);

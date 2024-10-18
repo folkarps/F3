@@ -43,7 +43,7 @@ if (vehicle _unit != _unit) then {
 	_animCfg = (configFile >> "CfgMovesMaleSdr" >> "States" >> (animationState _unit));
 
 	if (isArray (_animCfg >> "interpolateTo") && {count getArray (_animCfg >> "interpolateTo") != 0}) then {
-		_anims =  getArray (_animCfg >> "interpolateTo");
+		_anims = getArray (_animCfg >> "interpolateTo");
 		_anim = _anims select (count _anims - 2);
 		_unit playMove _anim;
 	};
@@ -116,7 +116,7 @@ if (isPlayer _unit) then {
 // Create a loop for the wounded visual effects. 
 _unit spawn {
 	_unit = _this;
-	
+
 	private _stage = 0;
 	private _duration = 4;
 
@@ -125,7 +125,7 @@ _unit spawn {
 
 		[_stage] call f_fnc_famWoundedEffect;
 		sleep 2.5;
-		
+
 		if (_duration == 0) then { 
 			_stage = selectRandom [0,0,0,0,1,1,1,2,2,3,5];
 			_duration = round random 4;

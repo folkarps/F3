@@ -44,7 +44,7 @@ if (!(isPlayer _source) && {_hitSize > (_damageReductionThreshold * 0.8602647831
 
 // Check if the player is in an aircraft, and redirect damage to the player to the airframe.
 if (vehicle _unit isKindof "Air" && {driver vehicle _unit == _unit}) then {
-		
+
 	_newHit = _newHit * 0.5;
 
 	if (_hitSize > 1) then {

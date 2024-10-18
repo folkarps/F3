@@ -7,25 +7,25 @@ if (isServer) then {
 	// Add server EH for JIP
 	addMissionEventHandler ["OnUserClientStateChanged",
 	{
-	    params ["_networkId", "_clientStateNumber", "_clientState"];
+		params ["_networkId", "_clientStateNumber", "_clientState"];
 		if (_clientStateNumber == 8) then {
 			[] remoteExec ["f_fnc_famInit",_networkId];
 		};
 	}];
 
 	// replace editor placed object's default FAKs with a mix of FAKs and Bandages
-    {
-        _obj = _x;
-        if ("" != (_obj getVariable ["f_var_assignGear", ""]) && { !(_obj getVariable ["f_var_assignGear_done", false]) }) then {
-            systemChat "TODO assign gear wasnt done after all o.O";
-            _obj spawn {
-                waitUntil { sleep 1; _this getVariable ["f_var_assignGear_done", false]; };
-                [_this] call f_fnc_famMedSwap;
-            }
-        }else{
-            [_obj] call f_fnc_famMedSwap;
-        };
-    } forEach (allMissionObjects "ALL" select {!isPlayer _x});
+	{
+		_obj = _x;
+		if ("" != (_obj getVariable ["f_var_assignGear", ""]) && { !(_obj getVariable ["f_var_assignGear_done", false]) }) then {
+			systemChat "TODO assign gear wasnt done after all o.O";
+			_obj spawn {
+				waitUntil { sleep 1; _this getVariable ["f_var_assignGear_done", false]; };
+				[_this] call f_fnc_famMedSwap;
+			}
+		}else{
+			[_obj] call f_fnc_famMedSwap;
+		};
+	} forEach (allMissionObjects "ALL" select {!isPlayer _x});
 
 	[] spawn {
 		// persistent JIP check
@@ -46,15 +46,15 @@ waitUntil{!isNull player && {player == player}};
 if (!hasInterface) exitWith {};
 
 if (player getVariable ["f_var_fam_initDone",false]) exitWith {
-    systemChat "FAM init already run!";
+	systemChat "FAM init already run!";
 };
 
 // ====================================================================================
 //global stuff:
 
-f_var_fam_uncCC         = ppEffectCreate ["ColorCorrections", 1603];
-f_var_fam_uncRadialBlur = ppEffectCreate ["RadialBlur", 280];
-f_var_fam_uncBlur       = ppEffectCreate ["DynamicBlur", 180];
+f_var_fam_uncCC			= ppEffectCreate ["ColorCorrections", 1603];
+f_var_fam_uncRadialBlur	= ppEffectCreate ["RadialBlur", 280];
+f_var_fam_uncBlur		= ppEffectCreate ["DynamicBlur", 180];
 
 
 // ====================================================================================
@@ -77,7 +77,7 @@ _unit setVariable ["f_var_fam_actions",false];
 // Event Handlers must not be run twice on respawned units.
 
 if (count (_unit getVariable ["f_var_fam_allEHs",[]]) == 0) then {
-    [_unit] spawn f_fnc_famEH;
+	[_unit] spawn f_fnc_famEH;
 };
 
 // ====================================================================================
@@ -86,10 +86,10 @@ if (count (_unit getVariable ["f_var_fam_allEHs",[]]) == 0) then {
 // These are also executed for JIPed players
 
 if (!(_unit getVariable ["f_var_fam_actions",false]) && {hasInterface}) then {
-        
-        [_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + (_unit call BIS_fnc_netId))];
-        _unit setVariable ["f_var_fam_actions",true,true];
-        
+
+		[_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + (_unit call BIS_fnc_netId))];
+		_unit setVariable ["f_var_fam_actions",true,true];
+
 };
 
 // ====================================================================================
