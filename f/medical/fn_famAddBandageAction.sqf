@@ -52,7 +52,7 @@ private _bdgCodeStart = {
 		// Pistol
 		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
 			_caller playMove "ainvpknlmstpslaywpstdnon_medicother";
-		};	
+		};
 	}; 
 
 	// Let the wounded know someone is trying to save them. 
