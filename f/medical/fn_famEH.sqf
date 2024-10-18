@@ -7,27 +7,26 @@ params ["_unit"];
 // ====================================================================================
 // When they die
 _ehKilled = _unit addEventHandler ["Killed", {
-    params ["_unit"];
-    // EXIT
-    // This occurs after death, make sure that none of the wounded affects carry over.
+	params ["_unit"];
+	// EXIT
+	// This occurs after death, make sure that none of the wounded affects carry over.
 
-    // Give them their gear back
-    if !(_unit getVariable ["f_var_fam_conscious",true]) then {
-        _unit call f_fnc_famWakeUp;
-    }; 
+	// Give them their gear back
+	if !(_unit getVariable ["f_var_fam_conscious",true]) then {
+		_unit call f_fnc_famWakeUp;
+	}; 
 
-    
-    if (vehicle _unit == _unit) then {
-        _unit setPosATL [getPosATL _unit select 0, getPosATL _unit select 1, (getPosATL _unit select 2) + 0.25];
-    };
-    _unit enableSimulation true;
-    
-    if (animationState _unit == "Unconscious") then {
-        _unit switchMove "deadState";
-    };
+	if (vehicle _unit == _unit) then {
+		_unit setPosATL [getPosATL _unit select 0, getPosATL _unit select 1, (getPosATL _unit select 2) + 0.25];
+	};
+	_unit enableSimulation true;
+	
+	if (animationState _unit == "Unconscious") then {
+		_unit switchMove "deadState";
+	};
 
-    // store name on corpse for future diagnosis.
-    _unit setVariable ["f_var_fam_corpse",name _unit,true];
+	// store name on corpse for future diagnosis.
+	_unit setVariable ["f_var_fam_corpse",name _unit,true];
 
 }];
 
@@ -35,25 +34,25 @@ _ehKilled = _unit addEventHandler ["Killed", {
 // Treatment Feedback
 _ehHeal = _unit addEventHandler ["HandleHeal", {
 
-    // notification correction for self FAK usage.
-    params ["_injured", "_healer"];
-    if (_injured == _healer) exitWith { 
-        _healer setVariable ["f_var_fam_selffak", true];
-    };
+	// notification correction for self FAK usage.
+	params ["_injured", "_healer"];
+	if (_injured == _healer) exitWith { 
+		_healer setVariable ["f_var_fam_selffak", true];
+	};
 
-    // information for using vanilla heal on others.
-    [_injured, _healer] spawn {
-        params ["_injured", "_healer"];
-        _damage = damage _injured;
-        waitUntil{sleep 1; damage _injured <= _damage};
+	// information for using vanilla heal on others.
+	[_injured, _healer] spawn {
+		params ["_injured", "_healer"];
+		_damage = damage _injured;
+		waitUntil{sleep 1; damage _injured <= _damage};
 
-        if (_healer getUnitTrait "Medic") then {
-            hint "Patient healed with Medikit";
-        } else {
-            hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _unit select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401})];
-        };
+		if (_healer getUnitTrait "Medic") then {
+			hint "Patient healed with Medikit";
+		} else {
+			hint format ["Patient healed partially with FAK, %1 remaining. Medic required for further healing.",count (items _unit select {(getNumber (configFile >> "CfgWeapons" >> _x >> "ItemInfo" >> "type")) == 401})];
+		};
 
-    };
+	};
 
 }];
 
