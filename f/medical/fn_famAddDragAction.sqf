@@ -36,7 +36,7 @@ private _drag_exec_code = {
 		["_ID", -1, [0]],
 		["_arguments", nil]
 	];
-	 _this remoteExec ["f_fnc_famOnDrag", [_caller,_target]]; //Dragger and Draggee
+	_this remoteExec ["f_fnc_famOnDrag", [_caller,_target]]; //Dragger and Draggee
 };
 
 // ====================================================================================

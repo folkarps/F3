@@ -33,7 +33,7 @@ while {alive _unit && {local _unit}} do {
 		_unit call f_fnc_famPassOut;
 		_nextSave = time + 20; 
 	};
-	
+
 	_unit setVariable ["f_var_fam_forcedown",false];
 
 	if (damage _unit >= 0.51 && {_unit getVariable ["f_var_fam_conscious",true]}) then {
@@ -63,7 +63,7 @@ while {alive _unit && {local _unit}} do {
 			};
 		};
 	};
-	
+
 // ====================================================================================
 
 	// WAKEUP TEST 
@@ -74,7 +74,7 @@ while {alive _unit && {local _unit}} do {
 			_unit call f_fnc_famWakeUp;
 			_desaturate = false;
 		};
-	
+
 		// check to wake up otherwise.
 		if (time > _nextSave) then {
 
@@ -84,7 +84,7 @@ while {alive _unit && {local _unit}} do {
 
 			if (damage _unit > 0.5) then {
 				_dc = round (100 - (50 * _adjust));
-			};			
+			};
 
 			if (_save >= _dc && {damage _unit < 0.95}) then {
 
@@ -188,7 +188,7 @@ while {alive _unit && {local _unit}} do {
 		_coef = 0.90 - (getFatigue _unit * 0.1);          
 		_unit setAnimSpeedCoef _coef;  
 	};
-			
+
 // ====================================================================================
 // Let the player know they have been healed.
 	if (_damage_last_tick - damage _unit > 0.1) then {
@@ -225,7 +225,7 @@ if (f_param_debugMode == 1) then
 };
 
 // I think this needs to be reset for respawn
-_unit setVariable ["f_var_fam_initDone",false];
+_unit setVariable ["f_var_fam_initDone",false,true];
 
 
 titleText ["","PLAIN"];

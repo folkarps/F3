@@ -6,7 +6,7 @@ This function adds a briefing page to explain the Folk ARPS Medical System
 
 if (!hasInterface) exitWith {}; // Exit if not a player.
 
-_fam = player createDiaryRecord ["diary", ["Medical System","
+_fam = player createDiaryRecord ["diary", ["FA3 Medical System","
 <br/>
 The quick guide on Folk ARPS Medical (FAM)
 <br/><br/>

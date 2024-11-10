@@ -9,35 +9,35 @@ params ["_unit"];
 
 // EVENT HANDLER 
 _eh = _unit addEventHandler ["AnimStateChanged", {
-    
-    // EH PARAMS
+
+	// EH PARAMS
 	params ["_unit", "_anim"];
 
-    // Detect animations which should put us on our belly.
-    if (_anim == "unconsciousfacedown" || _anim == "unconsciousfaceright" || _anim == "amovppnemstpsnonwnondnon_turnl" || _anim == "amovppnemstpsnonwnondnon" || _anim == "incapacitated") then {
+	// Detect animations which should put us on our belly.
+	if (_anim == "unconsciousfacedown" || _anim == "unconsciousfaceright" || _anim == "amovppnemstpsnonwnondnon_turnl" || _anim == "amovppnemstpsnonwnondnon" || _anim == "incapacitated") then {
 
-        if (f_param_debugMode == 1) then
-        {
-            systemChat "belly";
-        };
+		if (f_param_debugMode == 1) then
+		{
+			systemChat "belly";
+		};
 
-        [_unit, _thisEvent, _thisEventHandler] spawn {
+		[_unit, _thisEvent, _thisEventHandler] spawn {
 
-            params ["_unit","_tE","_tEH"];
-    
-            _unit setPosWorld getPosWorld _unit;
-            _unit setVelocity [0,0,0];
+			params ["_unit","_tE","_tEH"];
+	
+			_unit setPosWorld getPosWorld _unit;
+			_unit setVelocity [0,0,0];
 
-            if !(_unit getVariable ["f_var_fam_conscious",false]) then {
+			if !(_unit getVariable ["f_var_fam_conscious",false]) then {
 
-                // Set preferred animation.
-                _unit switchmove "Unconscious"; 
+				// Set preferred animation.
+				_unit switchmove "Unconscious"; 
 
-            };
-            // Remove this eventHandler once it happens.
-            _unit removeEventHandler [_tE, _tEH];
-        };
-    };
+			};
+			// Remove this eventHandler once it happens.
+			_unit removeEventHandler [_tE, _tEH];
+		};
+	};
 }]; 
 
 _unit setVariable ["f_var_fam_ragEH",_eh];
@@ -50,23 +50,23 @@ _unit setVariable ["f_var_wound_being_dragged", true, true];
 // this bit avoid a BI bug that removes all actions if you ragdoll while healing.
 if (["medic",animationState _unit] call BIS_fnc_inString && {!(_unit getVariable ["f_var_fam_flag",false])}) then {
 
-    _unit setCaptive true;
-    private _dmg = damage _unit;
-    private _hands_n_legs = ["hithands","hitlegs"];
-    private _hitPointDamage = [];
+	_unit setCaptive true;
+	private _dmg = damage _unit;
+	private _hands_n_legs = ["hithands","hitlegs"];
+	private _hitPointDamage = [];
 
-    {
-        _hitPointDamage pushback (_unit getHitPointDamage _x);
-    } foreach _hands_n_legs;
+	{
+		_hitPointDamage pushback (_unit getHitPointDamage _x);
+	} foreach _hands_n_legs;
 
-    waitUntil {sleep 0.1; !(["medic",animationState _unit] call BIS_fnc_inString)};
+	waitUntil {sleep 0.1; !(["medic",animationState _unit] call BIS_fnc_inString)};
 
-    _unit setDamage _dmg;
-    {
-        _unit setHitPointDamage [_x,(_hitPointDamage select _forEachIndex)];
-    } foreach _hands_n_legs;
-    _unit addItem "FirstAidKit"; //replace the one they won't know they lost.
-    
+	_unit setDamage _dmg;
+	{
+		_unit setHitPointDamage [_x,(_hitPointDamage select _forEachIndex)];
+	} foreach _hands_n_legs;
+	_unit addItem "FirstAidKit"; //replace the one they won't know they lost.
+
 };
 
 // RAGDOLL
@@ -86,11 +86,11 @@ _unit addForce [_force, _position];
 
 // Make dragable after ragdoll.
 [_unit] spawn {
-    params ["_unit"];
-    waitUntil {sleep 0.2; isAwake _unit};
-    if (alive _unit) then {
-        _unit setVariable ["f_var_wound_being_dragged", false, true];
-    }
+	params ["_unit"];
+	waitUntil {sleep 0.2; isAwake _unit};
+	if (alive _unit) then {
+		_unit setVariable ["f_var_wound_being_dragged", false, true];
+	}
 };
 
 _unit setVariable ["f_var_forcedownParams",nil];

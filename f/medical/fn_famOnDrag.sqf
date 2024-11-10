@@ -34,8 +34,8 @@ if (_isDragger) then {
 //setting these here to prevent race cconditions
 //although there will be a race condition between the 2 different execs, if the waitUntil
 //on the target finishes before we reach here (at the dragger), which really should never happen.
-_dragger setVariable ["f_var_wound_dragging",      _unit, false];
-_unit    setVariable ["f_var_wound_being_dragged", true,  false];
+_dragger setVariable ["f_var_wound_dragging", _unit, false];
+_unit setVariable ["f_var_wound_being_dragged", true, false];
 
 // ====================================================================================
 
@@ -73,9 +73,9 @@ if (f_param_debugMode == 1) then {
 
 if (_isDragger) then {
 	if (_dragger getVariable ["f_var_fam_conscious",true]) then {
-	    if(vehicle _dragger == _dragger) then {
-		    _dragger switchMove "";
-	    }
+		if(vehicle _dragger == _dragger) then {
+			_dragger switchMove "";
+		}
 	};
 	_dragger removeAction _actionIdx;
 };

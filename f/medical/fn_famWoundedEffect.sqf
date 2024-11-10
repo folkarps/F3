@@ -34,7 +34,6 @@ switch (_stage) do {
 		f_var_fam_UncBlur ppEffectEnable true;
 		f_var_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
-
 	};
 	case 2: {
 		// Dim screen, a little red, cannot talk.
@@ -46,7 +45,6 @@ switch (_stage) do {
 		f_var_fam_UncBlur ppEffectEnable true;
 		f_var_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
-
 	};
 	case 3: {
 		// Black but you can hear sounds better, cannot talk.
@@ -58,7 +56,6 @@ switch (_stage) do {
 		f_var_fam_UncBlur ppEffectEnable true;
 		f_var_fam_UncBlur ppEffectCommit 0;
 		5 enableChannel false;
-
 	};
 	case 4: {
 		// Clearing effects, can talk. 
@@ -109,7 +106,3 @@ f_var_fam_UncCC ppEffectEnable true;
 f_var_fam_UncCC ppEffectCommit 1;
 f_var_fam_UncCC ppEffectEnable true;
 f_var_fam_UncCC ppEffectForceInNVG true;
-
-
-
-
