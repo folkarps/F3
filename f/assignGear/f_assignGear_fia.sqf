@@ -78,7 +78,7 @@ _silencer1 = "muzzle_snds_M";	// 5.56 suppressor
 _silencer2 = "muzzle_snds_H";	// 6.5 suppressor
 
 _scope1 = "optic_ACO";			// ACO
-_scope2 = "optic_MRCO";			// MRCO Scope - 1x - 6x
+_scope2 = "optic_VRCO_khk_RF";			// VRCO Scope - 1x - 6x
 _scope3 = "optic_SOS";			// SOS Scope - 18x - 75x
 
 _bipod1 = "bipod_02_F_blk";		// Default bipod
@@ -189,8 +189,9 @@ _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
 // Backpacks
-_bag = "B_AssaultPack_cbr";
+_bag = selectRandom ["B_FieldPack_khk","B_FieldPack_oli","B_FieldPack_green_f","B_AssaultPack_cbr","B_AssaultPack_khk"];	
 _bagLarge = "B_Kitbag_cbr";
+_bagMedic = "B_TacticalPack_blk";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "B_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_G_HMG_02_weapon_F";			// used by Heavy MG gunner
@@ -213,9 +214,9 @@ _ARmag = "200Rnd_556x45_Box_Red_F";
 _ARmag_tr = "200Rnd_556x45_Box_Tracer_Red_F";
 
 // Medium MG
-_MMG = "LMG_Zafir_F";
-_MMGmag = "150Rnd_762x54_Box";
-_MMGmag_tr = "150Rnd_762x54_Box_Tracer";
+_MMG = "LMG_S77_lxWS";
+_MMGmag = "100Rnd_762x51_S77_Red_lxWS";
+_MMGmag_tr = "100Rnd_762x51_S77_Red_Tracer_lxWS";
 
 // NON-DLC ALTERNATIVE:
 // _MMG = "MMG_02_camo_F";
@@ -223,14 +224,14 @@ _MMGmag_tr = "150Rnd_762x54_Box_Tracer";
 // _MMGmag_tr = "150Rnd_762x54_Box"_Tracer";
 
 // Marksman rifle
-_DMrifle = "srifle_DMR_06_olive_F";
-_DMriflemag = "20Rnd_762x51_Mag";
-_DMriflemag_tr = "20Rnd_762x51_Mag";
+_DMrifle = "srifle_h6_oli_rf";
+_DMriflemag = "10Rnd_556x45_AP_Stanag_red_RF";
+_DMriflemag_tr = "10Rnd_556x45_AP_Stanag_red_RF";
 
 // Rifleman AT
-_RAT = "launch_MRAWS_olive_rail_F";
-_RATmag1 = "MRAWS_HEAT55_F";
-_RATmag2 = "MRAWS_HE_F";
+_RAT = "launch_RPG32_green_F";
+_RATmag1 = "RPG32_F";
+_RATmag2 = "RPG32_HE_F";
 
 // Medium AT
 _MAT = "launch_MRAWS_olive_rail_F";
@@ -275,13 +276,13 @@ _vip = [];
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
 
-_baseUniform = ["U_BG_leader","U_BG_Guerilla1_1","U_BG_Guerilla2_1","U_BG_Guerilla2_2","U_BG_Guerilla2_3","U_BG_Guerilla3_1","U_BG_Guerilla3_2","U_BG_Guerrilla_6_1"];
+_baseUniform = ["U_BG_leader","U_BG_Guerilla1_1","U_BG_Guerilla2_1","U_BG_Guerilla2_2","U_BG_Guerilla2_3","U_BG_Guerilla3_1","U_BG_Guerilla3_2","U_BG_Guerrilla_6_1","U_BG_Guerrilla_RF","U_BG_leader_RF"];
 _baseHelmet = ["H_Shemag_olive","H_ShemagOpen_tan","H_Bandanna_khk","H_Booniehat_khk","H_Cap_oli","H_Watchcap_blk"];
 _baseGlasses = ["G_Bandanna_blk","G_Bandanna_khk","G_Bandanna_oli"];
 
 // Vests
-_lightRig = ["V_TacVestIR_blk"];
-_standardRig = ["V_TacVestIR_blk"];
+_lightRig = ["V_TacVest_rig_blk_RF","V_TacVest_rig_khk_RF","V_TacVest_rig_oli_RF","V_TacVest_camo"];
+_standardRig = ["V_TacVest_rig_blk_RF","V_TacVest_rig_khk_RF","V_TacVest_rig_oli_RF","V_TacVest_camo"];
 
 // Diver
 _diverUniform =  ["U_B_Wetsuit"];
@@ -378,6 +379,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

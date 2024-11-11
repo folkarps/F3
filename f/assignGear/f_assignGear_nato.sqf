@@ -190,6 +190,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_AssaultPack_mcamo";
 _bagLarge = "B_Kitbag_mcamo";
+_bagMedic = "B_TacticalPack_mcamo";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "B_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "B_HMG_01_weapon_F";			// used by Heavy MG gunner
@@ -227,7 +228,7 @@ _DMriflemag = "30Rnd_65x39_caseless_mag";
 _DMriflemag_tr = "30Rnd_65x39_caseless_mag_Tracer";
 
 // Rifleman AT
-_RAT = "launch_MRAWS_sand_F";
+_RAT = "launch_MRAWS_sand_rail_F";
 _RATmag1 = "MRAWS_HEAT55_F";
 _RATmag2 = "MRAWS_HE_F";
 
@@ -376,6 +377,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

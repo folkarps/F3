@@ -193,6 +193,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_FieldPack_green_F";			// carries 120, weighs 20
 _bagLarge =  "B_Carryall_green_f"; 			// carries 320, weighs 40
+_bagMedic = "B_FieldPack_taiga_F";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_rgr";		// used by divers
 _baguav = "O_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_HMG_01_weapon_F";				// used by Heavy MG gunner
@@ -236,7 +237,7 @@ _MATmag1 = "RPG32_F";
 _MATmag2 = "RPG32_HE_F";
 
 // Surface Air
-_SAM = "launch_O_Titan_F";
+_SAM = "launch_B_Titan_olive_F";
 _SAMmag = "Titan_AA";
 
 // Heavy AT
@@ -386,6 +387,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

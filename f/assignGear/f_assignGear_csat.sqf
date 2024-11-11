@@ -190,6 +190,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_AssaultPack_ocamo";			// carries 120, weighs 20
 _bagLarge =  "B_Carryall_ocamo"; 			// carries 320, weighs 40
+_bagmedic =  "B_TacticalPack_ocamo"; 			// Medium bag for medics
 _bagdiver =  "B_AssaultPack_rgr";		// used by divers
 _baguav = "O_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "O_HMG_01_weapon_F";				// used by Heavy MG gunner
@@ -288,8 +289,8 @@ _baseGlasses = [];
 //_baseHelmet = ["H_HelmetO_oucamo"];
 
 // Vests
-_lightRig = ["V_TacVest_khk"];
-_standardRig = ["V_TacVest_khk"];
+_lightRig = ["V_TacVest_brn"];
+_standardRig = ["V_TacVest_brn"];
 // Consider changing to "V_HarnessO_brn" if using this with assignGear AI.
 
 // Urban Vests
@@ -330,7 +331,7 @@ _ghillieGlasses = [];
 // Spec Op
 _sfuniform = ["U_O_SpecopsUniform_ocamo"]; // Viper: ["U_O_V_Soldier_Viper_hex_F"];
 _sfhelmet = ["H_HelmetSpecO_ocamo"];	   //Viper: ["H_HelmetO_ViperSP_hex_F"]; IMPORTANT: Will be overriden if nvg is added afterwards
-_sfRig = _standardRig;
+_sfRig = ["V_TacVest_brn"];
 _sfGlasses = [];
 
 // VIP/Officer
@@ -392,6 +393,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

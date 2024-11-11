@@ -78,7 +78,7 @@ _silencer1 = "muzzle_snds_B";	// 7.62 suppressor
 _silencer2 = "muzzle_snds_H";	// 6.5 suppressor
 
 _scope1 = "optic_ACO";			// ACO
-_scope2 = "optic_MRCO";			// MRCO Scope - 1x - 6x
+_scope2 = "optic_VRCO";			// VRCO Scope - 1x - 6x
 _scope3 = "optic_KHS_old";			// SOS Scope - 18x - 75x
 
 _bipod1 = "bipod_01_F_mtp";		// Default bipod
@@ -134,7 +134,7 @@ _diverMag2 = "30Rnd_556x45_Stanag_Tracer_Yellow";
 _diverMag3 = "20Rnd_556x45_UW_mag";
 
 // Rifle with GL and HE grenades (CO, DC, FTLs)
-_glrifle = "arifle_AK12_GL_F"; // Slight randomization, biased towards TRG
+_glrifle = "arifle_AK12_GL_F"; 
 _glriflemag = "30Rnd_762x39_Mag_F";
 _glriflemag_tr = "30Rnd_762x39_Mag_Tracer_F";
 _glmag = "1Rnd_HE_Grenade_shell";
@@ -187,8 +187,9 @@ _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
 // Backpacks
-_bag = "B_FieldPack_khk";			// carries 160, weighs 20
+_bag = selectRandom ["B_FieldPack_khk","B_FieldPack_oli","B_FieldPack_green_f","B_CivilianBackpack_01_Everyday_Black_F","B_AssaultPack_cbr","B_AssaultPack_khk"];			// carries 160, weighs 20
 _baglarge =  "B_Carryall_khk"; 				// carries 320, weighs 60
+_bagmedic =  "B_TacticalPack_oli"; 			// carries 240, weighs 40
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "I_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_G_HMG_02_weapon_F";				// used by Heavy MG gunner
@@ -205,7 +206,7 @@ _bagRadio = selectRandom ["B_RadioBag_01_eaf_F","B_RadioBag_01_black_F","B_Radio
 // UNIQUE, ROLE-SPECIFIC EQUIPMENT
 
 // Automatic Rifleman
-_AR = "arifle_RPK12_F";
+_AR = selectRandom ["arifle_RPK12_F","arifle_Galat_lxWS","arifle_Galat_lxWS"];
 _ARmag = "75Rnd_762x39_Mag_F";
 _ARmag_tr = "75Rnd_762x39_Mag_Tracer_F";
 
@@ -215,9 +216,9 @@ _MMGmag = "150Rnd_762x54_Box";
 _MMGmag_tr = "150Rnd_762x54_Box_Tracer";
 
 // Marksman rifle
-_DMrifle = "srifle_DMR_06_olive_F";
-_DMriflemag = "20Rnd_762x51_Mag";
-_DMriflemag_tr = "20Rnd_762x51_Mag";
+_DMrifle = "arifle_SLR_V_lxWS";
+_DMriflemag = "20Rnd_762x51_slr_reload_tracer_green_lxWS";
+_DMriflemag_tr = "20Rnd_762x51_slr_tracer_green_lxWS";
 
 // Rifleman AT
 _RAT = "launch_RPG32_green_F";
@@ -271,7 +272,8 @@ _baseUniform = ["U_BG_Guerrilla_6_1","U_BG_Guerilla2_2","U_BG_Guerilla2_1","U_BG
 				"U_I_C_Soldier_Bandit_3_F","U_I_C_Soldier_Para_2_F","U_I_C_Soldier_Para_3_F","U_I_C_Soldier_Para_4_F","U_I_C_Soldier_Para_1_F",
 				"U_I_G_Story_Protagonist_F","U_I_G_resistanceLeader_F","U_C_WorkerCoveralls",
 				"U_C_Uniform_Farmer_01_F","U_I_L_Uniform_01_camo_F","U_I_L_Uniform_01_deserter_F","U_I_L_Uniform_01_tshirt_black_F","U_I_L_Uniform_01_tshirt_olive_F","U_I_L_Uniform_01_tshirt_skull_F",
-				"U_O_R_Gorka_01_black_F"
+				"U_O_R_Gorka_01_black_F","U_lxWS_Djella_02_Brown","U_lxWS_Djella_02_Grey","U_lxWS_Djella_03_Green","U_lxWS_Djella_02_Sand","U_lxWS_ION_Casual5","U_lxWS_SFIA_deserter","U_lxWS_SFIA_Tanker_O",
+				"U_SFIA_deserter_lxWS","U_C_PilotJacket_black_RF","U_C_PilotJacket_brown_RF","U_C_PilotJacket_lbrown_RF","U_BG_Guerrilla_RF","U_BG_leader_RF"
 ];
 _baseHelmet = ["H_Beret_Colonel"];
 _baseGlasses = [];
@@ -378,6 +380,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

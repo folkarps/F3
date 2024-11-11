@@ -188,6 +188,7 @@ _chemblue = "Chemlight_blue";
 // Backpacks
 _bag = "B_AssaultPack_wdl_f";
 _bagLarge = "B_Kitbag_rgr";
+_bagMedic = "B_TacticalPack_oli";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "B_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_HMG_01_weapon_F";			// used by Heavy MG gunner
@@ -225,7 +226,7 @@ _DMriflemag = "30Rnd_65x39_caseless_black_mag";
 _DMriflemag_tr = "30Rnd_65x39_caseless_black_mag_Tracer";
 
 // Rifleman AT
-_RAT = "launch_MRAWS_green_F";
+_RAT = "launch_MRAWS_green_rail_F";
 _RATmag1 = "MRAWS_HEAT55_F";
 _RATmag2 = "MRAWS_HE_F";
 
@@ -271,7 +272,7 @@ _vip = [];
 
 // Basic clothing
 // The outfit-piece is randomly selected from the array for each unit
-_baseUniform = ["U_B_CombatUniform_mcam_wdl_f","U_B_CombatUniform_tshirt_mcam_wdL_f","U_B_CombatUniform_vest_mcam_wdl_f"];
+_baseUniform = ["U_B_CombatUniform_mcam_wdl_f","U_B_CombatUniform_vest_mcam_wdl_f","U_B_CombatUniform_mcam_wdl_f","U_B_CombatUniform_vest_mcam_wdl_f","U_B_CombatUniform_tshirt_mcam_wdL_f"];
 _baseHelmet = ["H_HelmetB_plain_wdl"];
 _baseGlasses = [];
 
@@ -374,6 +375,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

@@ -78,7 +78,7 @@ _silencer1 = "muzzle_snds_B";	// 7.62 suppressor
 _silencer2 = "muzzle_snds_M";	// 5.56 suppressor
 
 _scope1 = "optic_ACO";			// ACO
-_scope2 = "optic_MRCO";			// MRCO Scope - 1x - 6x
+_scope2 = "optic_VRCO_RF";			// VRCO Scope - 1x - 6x
 _scope3 = "optic_SOS";			// SOS Scope - 18x - 75x
 
 _bipod1 = "bipod_02_F_blk";		// Default bipod
@@ -112,22 +112,14 @@ _lau_attachments = []; // The default attachment set for launchers, overwritten 
 // ====================================================================================
 
 // WEAPON SELECTION
-/*
+
 // Standard Riflemen ( MMG Assistant Gunner, Assistant Automatic Rifleman, MAT Assistant Gunner, MTR Assistant Gunner, Rifleman)
-_rifle = selectRandom ["arifle_MSBS65_black_F","arifle_MSBS65_camo_F","arifle_MSBS65_F"]; // Slight randomization, biased towards TRG
-_riflemag = "30Rnd_65x39_caseless_msbs_mag";
-_riflemag_tr = "30Rnd_65x39_caseless_msbs_mag_Tracer";
-*/
 _rifle = "arifle_AKM_F";
 _riflemag = "30Rnd_762x39_Mag_F";
 _riflemag_tr = "30Rnd_762x39_Mag_Tracer_F";
-/*
+
 // Standard Carabineer (MAT Gunner, MTR Gunner, Carabineer)
-_carbine = selectRandom ["arifle_MSBS65_black_F","arifle_MSBS65_camo_F","arifle_MSBS65_F"]; // Slight randomization, biased towards TRG
-_carbinemag = "30Rnd_65x39_caseless_msbs_mag";
-_carbinemag_tr = "30Rnd_65x39_caseless_msbs_mag_Tracer";
-*/
-_carbine = "arifle_AK12U_F"; // Slight randomization, biased towards TRG
+_carbine = "arifle_AK12U_F"; 
 _carbinemag = "30Rnd_762x39_Mag_F";
 _carbinemag_tr = "30Rnd_762x39_Mag_Tracer_F";
 
@@ -145,14 +137,9 @@ _diverWep = "arifle_SDAR_F";
 _diverMag1 = "30Rnd_556x45_Stanag_red";
 _diverMag2 = "30Rnd_556x45_Stanag_Tracer_Red";
 _diverMag3 = "20Rnd_556x45_UW_mag";
-/*
+
 // Rifle with GL and HE grenades (CO, DC, FTLs)
-_glrifle = selectRandom ["arifle_MSBS65_GL_black_F","arifle_MSBS65_GL_camo_F","arifle_MSBS65_GL_F"]; // Slight randomization, biased towards TRG
-_glriflemag = "30Rnd_65x39_caseless_msbs_mag";
-_glriflemag_tr = "30Rnd_65x39_caseless_msbs_mag_Tracer";
-_glmag = "1Rnd_HE_Grenade_shell";
-*/
-_glrifle = "arifle_AK12_GL_F"; // Slight randomization, biased towards TRG
+_glrifle = "arifle_AK12_GL_F"; 
 _glriflemag = "30Rnd_762x39_Mag_F";
 _glriflemag_tr = "30Rnd_762x39_Mag_Tracer_F";
 _glmag = "1Rnd_HE_Grenade_shell";
@@ -207,8 +194,9 @@ _chemyellow =  "Chemlight_yellow";
 _chemblue = "Chemlight_blue";
 
 // Backpacks
-_bag = "B_FieldPack_green_F";
+_bag = selectRandom ["B_FieldPack_oli","B_FieldPack_green_f","B_FieldPack_blk","B_FieldPack_taiga_f","B_CivilianBackpack_01_Everyday_Black_F"];	
 _bagLarge = "B_Carryall_oli";
+_bagMedic = "B_TacticalPack_blk";		// Medium bag for medics
 _bagdiver =  "B_AssaultPack_blk";		// used by divers
 _baguav = "O_UAV_01_backpack_F";			// used by UAV operator
 _baghmgg = "I_G_HMG_02_weapon_F";			// used by Heavy MG gunner
@@ -224,13 +212,9 @@ _bagRadio = "B_RadioBag_01_black_F";			// cosmetic, used by COs, DCs, and anybod
 // ====================================================================================
 
 // UNIQUE, ROLE-SPECIFIC EQUIPMENT
-/*
+
 // Automatic Rifleman
-_AR = "LMG_Mk200_black_F";
-_ARmag = "200Rnd_65x39_cased_Box";
-_ARmag_tr = "200Rnd_65x39_cased_Box_Tracer";
-*/
-_AR = "arifle_AKM_F";
+_AR = "arifle_Galat_lxWS";
 _ARmag = "75Rnd_762x39_Mag_F";
 _ARmag_tr = "75Rnd_762x39_Mag_Tracer_F";
 
@@ -245,9 +229,9 @@ _MMGmag_tr = "150Rnd_762x54_Box_Tracer";
 // _MMGmag_tr = "150Rnd_762x54_Box"_Tracer";
 
 // Marksman rifle
-_DMrifle = "srifle_DMR_06_hunter_F";
-_DMriflemag = "10Rnd_Mk14_762x51_Mag";
-_DMriflemag_tr = "10Rnd_Mk14_762x51_Mag";
+_DMrifle = "srifle_h6_oli_rf";
+_DMriflemag = "10Rnd_556x45_AP_Stanag_RF";
+_DMriflemag_tr = "10Rnd_556x45_AP_Stanag_RF";
 
 // Rifleman AT
 _RAT = "launch_RPG32_green_F";
@@ -260,13 +244,13 @@ _MATmag1 = "RPG32_F";
 _MATmag2 = "RPG32_HE_F";
 
 // Surface Air
-_SAM = "launch_Titan_F";
+_SAM = "launch_B_Titan_olive_F";
 _SAMmag = "Titan_AA";
 
 // Heavy AT
-_HAT = "launch_Titan_short_F";
-_HATmag1 = "Titan_AT";
-_HATmag2 = "Titan_AP";
+_HAT = "launch_O_Vorona_green_F";
+_HATmag1 = "Vorona_HEAT";
+_HATmag2 = "Vorona_HE";
 
 // Sniper
 _SNrifle = "srifle_LRR_F";
@@ -402,6 +386,19 @@ if (_isMan) then {
 			_unit addItem _bandage;
 		};
 	};
+	
+	// Use this block if using with AI instead of the above FAK/Bandage assignment
+	/*
+    // AI have a random chance of receiving bandage
+    _roll = round random 10;
+    if (_roll >= 8) then {
+        _unit addItem "Bandage";
+    } else {
+        if (_roll == 0) then {
+            _unit addItem "FirstAidKit";
+        };
+    };
+	*/
 };
 
 // ====================================================================================

@@ -53,14 +53,16 @@ switch (_typeofUnit) do
 // Fire Team Leader Loadout:
 	case "ftl":
 	{
+		_unit addBackpack _bag;
 		_unit addmagazines [_glriflemag, 1];
 		_unit addmagazines [_glmag, 1];
 		_unit addweapon _glrifle;
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_glriflemag, 4];
 		_unit addmagazines [_glriflemag_tr, 2];
-		_unit addmagazines [_glmag, 5];
+		_unit addmagazines [_glmag, 10];
 		_unit addmagazines [_glsmokewhite, 3];
+		_unit addmagazines [_grenade, 2];
 		_attachments pushback (_attach1); // Adds laser pointer, keeps default scope
 		_unit addWeapon _binoculars;
 		_unit addmagazines [_smokegrenadegreen, 2];
@@ -129,7 +131,7 @@ switch (_typeofUnit) do
 	case "m":
 	{
 		_unit setUnitTrait ["medic",true]; // Can use medkit
-		_unit addBackpack _bagLarge;
+		_unit addBackpack _bagMedic;
 		_unit addmagazines [_carbinemag, 1];
 		_unit addweapon _carbine;
 		_unit addmagazines [_smokegrenade, 6];
@@ -176,7 +178,7 @@ switch (_typeofUnit) do
 		_unit addweapon _MMG;
 		_attachments pushback (_bipod1); // Adds the bipod
 		_unit addmagazines [_smokegrenade, 3];
-		_unit addmagazines [_MMGmag, 1];
+		_unit addmagazines [_MMGmag, 2];
 		_unit addmagazines [_MMGmag_tr, 1];
 	};
 // Medium MG Assistant Loadout:
@@ -189,7 +191,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
 		_unit addmagazines [_grenade, 2];
-		_unit addmagazines [_MMGmag, 2];
+		_unit addmagazines [_MMGmag, 3];
 		_unit addmagazines [_MMGmag_tr, 1];
 	};
 // Medium MG Team Leader Loadout:
@@ -202,7 +204,7 @@ switch (_typeofUnit) do
 		_unit addmagazines [_riflemag, 4];
 		_unit addmagazines [_riflemag_tr, 2];
 		_unit addmagazines [_grenade, 2];
-		_unit addmagazines [_MMGmag, 2];
+		_unit addmagazines [_MMGmag, 3];
 		_unit addmagazines [_MMGmag_tr, 1];
 		_unit addWeapon _binoculars;
 	};
@@ -439,6 +441,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
+		_attachments = []; // no attachments for smg.
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 		_unit addweapon _binoculars;
@@ -448,6 +451,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
+		_attachments = []; // no attachments for smg.
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 	};
@@ -458,6 +462,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
+		_attachments = []; // no attachments for smg.
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 		_unit addItem "ToolKit";
@@ -468,6 +473,7 @@ switch (_typeofUnit) do
 		_unit setUnitTrait ["engineer",true]; // Can repair
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
+		_attachments = []; // no attachments for smg.
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 3];
 	};
@@ -480,6 +486,7 @@ switch (_typeofUnit) do
 		_unit addBackpack _bag;
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
+		_attachments = []; // no attachments for smg.
 		_unit addmagazines [_smokegrenadeblue, 3];
 		_unit addmagazines [_smgmag, 4];
 		_unit addItem "ToolKit";
@@ -565,6 +572,7 @@ switch (_typeofUnit) do
 	{
 		_unit addmagazines [_smgmag, 1];
 		_unit addweapon _smg;
+		_attachments = []; // no attachments for smg.
 		_unit addmagazines [_smokegrenade, 3];
 		_unit addmagazines [_smgmag, 6];
 		_unit addmagazines [_grenade, 2];
