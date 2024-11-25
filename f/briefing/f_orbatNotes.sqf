@@ -164,7 +164,7 @@ OVERRIDE GROUP CONTROL: <br/>
 		hintsilent 'Taking control of your group';
 		(leader _pgrp) setUnitRank 'PRIVATE';
 		player setUnitRank 'COLONEL';
-		[_pgrp, player] remoteExec ["selectLeader", units _pgrp];
+		[_pgrp, player] remoteExec ['selectLeader', units _pgrp];
 	} else {
 		hintsilent 'You are already the leader of your group';
 	};"">
