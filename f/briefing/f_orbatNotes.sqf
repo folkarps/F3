@@ -159,10 +159,12 @@ private _leaderString = "<br/>
 OVERRIDE GROUP CONTROL: <br/> 
  | <execute expression=""
 	if (leader group player != player) then {
+		private _pgrp = group player;
+
 		hintsilent 'Taking control of your group';
-		leader (group player) setUnitRank 'PRIVATE'; 
+		(leader _pgrp) setUnitRank 'PRIVATE';
 		player setUnitRank 'COLONEL';
-		group player selectLeader player; 
+		[_pgrp, player] remoteExec ["selectLeader", units _pgrp];
 	} else {
 		hintsilent 'You are already the leader of your group';
 	};"">
