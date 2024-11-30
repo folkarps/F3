@@ -5,7 +5,8 @@
 //Exit if server
 if(isDedicated) exitwith {};
 
-if !(player isKindOf "CAManBase") exitWith {};
+// Exit if virtual unit like Zeus or spectator
+if (side player isEqualto sideLogic) exitWith {};
 
 params [["_enableSafeStart", true, [true]]];
 
