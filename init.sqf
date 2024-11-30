@@ -2,7 +2,7 @@
 
 // FA3 - Mission Options
 // https://community.bistudio.com/wiki/setMissionOptions
-setMissionOptions createHashMapFromArray [["IgnoreNoDamage", true], ["IgnoreFakeHeadHit", true], ["IgnoreUpsideDownDamage", true]];
+setMissionOptions createHashMapFromArray [["IgnoreFakeHeadHit", true], ["IgnoreUpsideDownDamage", true]];
 
 // ====================================================================================
 
