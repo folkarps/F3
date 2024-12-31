@@ -13,7 +13,7 @@ sleep 3;
     waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
 BIS_fnc_feedback_allowPP = false;
 
-if (_isFullSpectator) then {
+if (_isFullSpectator or (([player] call BIS_fnc_respawnTickets) < 1)) then {
 	// Create a new (alive) unit to prevent draw3D bug with floating head tags
 	// Credit to SilentSpike: https://github.com/acemod/ACE3/pull/5868
 	private _cameraUnit = (createGroup sideLogic) createUnit ["VirtualMan_F", player, [], 0, "NONE"];

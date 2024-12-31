@@ -172,6 +172,17 @@ f_var_viewDistance_crewOnly = true;
 
 // ====================================================================================
 
+// FA3 - Respawn
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+if isServer then {
+	{
+		[_x, f_param_respawnTickets] call BIS_fnc_respawnTickets;
+	} forEach [east, west, independent, civilian];
+};
+player call f_fnc_respawnBeaconAction;
+
+// ====================================================================================
+
 // FA3 - Skulls
 // Credits and documentation: https://github.com/folkarps/F3/wiki
 

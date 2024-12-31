@@ -28,8 +28,8 @@ minPlayerDistance = 500; // The minimum distance between corpse or wreck and nea
 // FA3 - Respawn Settings
 
 respawn = 1;
-respawndelay = 30;
-respawnOnStart = 0;
+respawndelay = -1;
+respawnOnStart = -1;
 respawnTemplates[] = {"F_Respawn","Base", "Tickets"};
 
 // ============================================================================================
@@ -43,6 +43,8 @@ class CfgRespawnTemplates
 {
 	class F_Respawn
 	{
+		respawnDelay = 30;
+		respawn = 3;
 		onPlayerRespawn = "f_fnc_respawn";
 		onPlayerKilled = "f_fnc_activateSpectator";
 	};
@@ -288,6 +290,17 @@ class Params
 		values[] = {0,1,2};
 		texts[] = {"Mission allow list (default)","Disable all vehicle thermals","Allow all vehicle thermals"};
 		default = 0;
+	};
+	
+// FA3 - Respawn Tickets Parameters
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+	class f_param_respawnTickets
+	{
+		title = "Respawn tickets per side";
+		values[] = {0,10,25,50,2000};
+		texts[] = {"None", "10", "25", "50", "2000"};
+		default = 10;
 	};
 	
 // ============================================================================================
