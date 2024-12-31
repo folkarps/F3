@@ -12,6 +12,7 @@ if (player getVariable ["f_var_hasRespawnBeaconAction",false] && !_respawned) ex
 	"(isNull objectParent _this) && {(_target == _this) && {leader _this == _this}}",
 	"(isNull objectParent _this) && {(_target == _this) && {leader _this == _this}}",
 	{
+		_caller playActionNow "MedicOther";
 		private _text = format ["[%1] %2 is deploying a respawn beacon.", str side group _caller, name _caller];
 		[_text] remoteExec ["systemChat"];
 	},
@@ -20,7 +21,9 @@ if (player getVariable ["f_var_hasRespawnBeaconAction",false] && !_respawned) ex
 		private _text = format ["[%1] %2 deployed a respawn beacon.", str side group _caller, name _caller];
 		_caller call f_fnc_respawnBeaconDeploy;
 	},
-	{},
+	{
+		_caller playActionNow "MedicStop";
+	},
 	[],
 	10,
 	0,
