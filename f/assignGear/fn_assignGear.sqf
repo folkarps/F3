@@ -7,7 +7,9 @@
 // The following interprets what has been passed to this script
 params[
 	["_typeofUnit", "", [""]],
-	["_unit", objNull, [objNull]]
+	["_unit", objNull, [objNull]],
+	["_faction", ""],
+	["_isRespawn",false]
 ];
 private _isMan = _unit isKindOf "CAManBase"; // We check if we're dealing with a soldier or a vehicle
 _typeofUnit = toLower _typeofUnit; // Tidy input for SWITCH/CASE statements, expecting something like : r = Rifleman, co = Commanding Officer, rat = Rifleman (AT)
@@ -18,8 +20,9 @@ _typeofUnit = toLower _typeofUnit; // Tidy input for SWITCH/CASE statements, exp
 // The following code detects what faction the unit's slot belongs to, and stores
 // it in the private variable _faction. It can also be passed as an optional parameter.
 
-private _faction = toLower (param[2, ([_unit] call f_fnc_virtualFaction)]);
-
+if (_faction = "") then {
+	_faction = toLower ([_unit] call f_fnc_virtualFaction);
+};
 // ====================================================================================
 
 // INSIGNIA
@@ -56,6 +59,7 @@ if !(local _unit) exitWith {};
 // A public variable is set on the unit, indicating their type. This is mostly relevant for the FA3 respawn component
 
 _unit setVariable ["f_var_assignGear",_typeofUnit,true];
+_unit setVariable ["f_var_assignGearFaction",_faction,true];
 
 // ====================================================================================
 
@@ -277,6 +281,13 @@ if (_isMan) then {
 	// ENSURE UNIT HAS CORRECT WEAPON SELECTED ON SPAWNING
 	_unit selectweapon primaryweapon _unit;
 
+};
+
+if !_isRespawn then {
+	_unit addEventHandler ["Respawned", {
+		params ["_unit", "_corpse"];
+		[_unit, _unit getVariable ["f_var_assignGear","r"], _unit getVariable ["f_var_assignGearFaction", toLower [_unit] call f_fnc_virtualFaction]] call f_fnc_assignGear;
+	}];
 };
 
 // ====================================================================================

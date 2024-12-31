@@ -28,9 +28,30 @@ minPlayerDistance = 500; // The minimum distance between corpse or wreck and nea
 // FA3 - Respawn Settings
 
 respawn = 1;
-respawndelay = 3;
+respawndelay = 30;
 respawnOnStart = 0;
-respawnTemplates[] = {"F_Spectator"};
+respawnTemplates[] = {"F_Respawn","Base", "Tickets"};
+
+// ============================================================================================
+
+// FA3 - Respawn templates
+// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
+
+
+// ============================================================================================
+class CfgRespawnTemplates
+{
+	class F_Respawn
+	{
+		onPlayerRespawn = "f_fnc_respawn";
+		onPlayerKilled = "f_fnc_activateSpectator";
+	};
+	class F_Spectator
+	{
+		onPlayerRespawn = "f_fnc_activateSpectator";
+	};
+};
+
 
 // ============================================================================================
 
@@ -355,23 +376,6 @@ class CfgDebriefing
 		// pictureColor[] = {0.0,0.3,0.6,1};
 	};
 
-};
-
-
-
-// ============================================================================================
-
-// FA3 - Respawn templates
-// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
-
-
-// ============================================================================================
-class CfgRespawnTemplates
-{
-    class F_Spectator
-    {
-		onPlayerRespawn = "f\spect\fn_activateSpectator.sqf";
-    };
 };
 
 // ============================================================================================
