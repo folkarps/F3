@@ -59,6 +59,12 @@ if (vehicle _unit isKindof "Air" && {driver vehicle _unit == _unit}) then {
 };
 
 _newDamage = _currentDamage + _newHit;
+// Prevent outright death
+if (_newDamage > 0.95) then {
+	_newDamage = 0.95;
+	_unit setVariable ["f_var_fam_forcedown",true];
+	_unit setVariable ["f_var_fam_forcedownparams",[_source,_selection,_projectile]];
+};
 
 // Down you on a big hit.
 if (_selection != "" && {!(_selection in ["hands","arms"]) && {_hitSize > 2 || {_hitSize > 1 && random 2 > 1}}}) then { 
