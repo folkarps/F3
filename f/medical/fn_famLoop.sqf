@@ -21,6 +21,12 @@ while {alive _unit && {local _unit}} do {
 	};
 // ====================================================================================
 	
+	// Timeout for being downed
+	private _knockoutTime = _unit getGetVariable ["f_var_fam_knockOutTime", serverTime];
+	if ((serverTime - _knockOutTime) > 180) then {
+		f_var_fam_respawnDisplay = findDisplay 46 createDisplay "f_FAMrespawnUI";
+	};
+		
 	// PASSOUT TEST 
 	// Force Unit Down above damage threshold. 
 	if (damage _unit >= 0.9 && {_unit getVariable ["f_var_fam_conscious",true]}) then { 

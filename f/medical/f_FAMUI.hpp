@@ -112,3 +112,62 @@ class f_FAMdiagnoseUI
 		};
 	};
 };
+
+class f_FAMrespawnUI
+{
+	idd = 3680;
+	duration = 1e+6;
+	access = 0;
+	movingEnable = false;
+	enableSimulation = true;
+	fadeIn = 0;
+	fadeOut = 0;
+	onLoad = "";
+	
+	class Controls
+	{
+		class f_FAMcontrolsGroupRespawn : f_FAMcontrolsGroup
+		{
+			onLoad = "[_this#0] spawn f_fnc_FAMdiagnoseInitUI;";
+
+			class Controls
+			{
+				class f_FAMbackgroundRespawn : f_FAMbackGround
+				{
+					idc = 3689;
+				};
+				class f_FAMstatusTextRespawn : f_FAMstatusText
+				{
+					type = CT_STRUCTURED_TEXT;
+					idc = 3681;
+					text = "You have been downed for more than 3 minutes.";
+				};
+				class f_FAMbleedTextRespawn : f_FAMbleedText
+				{
+					type = CT_STRUCTURED_TEXT;
+					idc = 3682;
+					text = "Click on the button to the left to respawn.";
+				};
+				class f_FAMnameTextRespawn : f_FAMnameText
+				{
+					type = CT_STRUCTURED_TEXT;
+					idc = 3683;
+					text = "MEDICAL SYSTEM";
+				};
+				class f_FAMbleedWarnRespawn : f_FAMbleedWarn
+				{
+					type = CT_BUTTON;
+					idc = 3684;
+					x = safeZoneW * 0.003;
+					y = safeZoneH * 0.025;
+					w = safeZoneW * 0.02;
+					h = safeZoneH * 0.063;
+					style = 0;
+					text = "";
+					colorBackground[] = {0,0,0,0.1};
+					action = "player setDamage 1; (missionNamespace getVariable ['f_var_fam_respawnDisplay', displayNull]) closeDisplay 1;";
+				};
+			};
+		};
+	};
+};

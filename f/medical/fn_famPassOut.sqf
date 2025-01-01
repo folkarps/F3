@@ -112,6 +112,7 @@ if (isPlayer _unit) then {
 	};
 };
 
+_unit setVariable ["f_var_famKnockOutTime", serverTime, true];
 // VISUAL EFFECTS
 // Create a loop for the wounded visual effects. 
 _unit spawn {
