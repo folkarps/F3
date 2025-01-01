@@ -113,6 +113,8 @@ if (isPlayer _unit) then {
 };
 
 _unit setVariable ["f_var_famKnockOutTime", serverTime, true];
+
+[_unit, "f_fam_knockOut", [_unit]] call BIS_fnc_callScriptedEventHandler;
 // VISUAL EFFECTS
 // Create a loop for the wounded visual effects. 
 _unit spawn {

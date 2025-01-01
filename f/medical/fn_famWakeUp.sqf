@@ -92,6 +92,8 @@ titleText ["","PLAIN"];
 
 _unit setCaptive false;
 
+[_unit, "f_fam_wakeUp", [_unit]] call BIS_fnc_callScriptedEventHandler;
+
 // DELAYED RESETS
 _unit spawn {
 
