@@ -1,3 +1,10 @@
+if (isNil "f_respawnTerminal") exitWith {
+	systemChat "FA3 Respawn: Critical: Respawn Terminal object is not present or not correctly named f_respawnTerminal.";
+};
+if (isNil "f_respawnBase") exitWith {
+	systemChat "FA3 Respawn: Critical: Respawn Base object is not present or not correctly named f_respawnBase.";
+};
+
 [
 	f_respawnTerminal,
 	"Deploy to side respawn beacon",
