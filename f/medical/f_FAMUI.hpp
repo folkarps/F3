@@ -128,7 +128,7 @@ class f_FAMrespawnUI
 	{
 		class f_FAMcontrolsGroupRespawn : f_FAMcontrolsGroup
 		{
-			onLoad = "[_this#0] spawn f_fnc_FAMdiagnoseInitUI;";
+			onLoad = "";
 
 			class Controls
 			{
