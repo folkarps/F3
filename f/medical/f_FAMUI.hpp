@@ -113,7 +113,7 @@ class f_FAMdiagnoseUI
 	};
 };
 
-class f_FAMrespawnUI
+class f_FAMrespawnUI : f_FAMdiagnoseUI
 {
 	idd = 3680;
 	duration = 1e+6;
@@ -126,35 +126,35 @@ class f_FAMrespawnUI
 	
 	class Controls
 	{
-		class f_FAMcontrolsGroupRespawn : f_FAMcontrolsGroup
+		class f_FAMcontrolsGroupRespawn
 		{
 			onLoad = "";
 
 			class Controls
 			{
-				class f_FAMbackgroundRespawn : f_FAMbackGround
+				class f_FAMbackgroundRespawn
 				{
 					idc = 3689;
 				};
-				class f_FAMstatusTextRespawn : f_FAMstatusText
+				class f_FAMstatusTextRespawn
 				{
 					type = CT_STRUCTURED_TEXT;
 					idc = 3681;
 					text = "You have been downed for more than 3 minutes.";
 				};
-				class f_FAMbleedTextRespawn : f_FAMbleedText
+				class f_FAMbleedTextRespawn
 				{
 					type = CT_STRUCTURED_TEXT;
 					idc = 3682;
 					text = "Click on the button to the left to respawn.";
 				};
-				class f_FAMnameTextRespawn : f_FAMnameText
+				class f_FAMnameTextRespawn
 				{
 					type = CT_STRUCTURED_TEXT;
 					idc = 3683;
 					text = "MEDICAL SYSTEM";
 				};
-				class f_FAMbleedWarnRespawn : f_FAMbleedWarn
+				class f_FAMbleedWarnRespawn
 				{
 					type = CT_BUTTON;
 					idc = 3684;
