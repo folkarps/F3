@@ -158,7 +158,7 @@ while {true} do
         systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _remaining = %1",_remaining];
     };
 
-    if (_respawn_tickets == 0 && {_remaining == 0 || ((_started - _remaining) / _started) >= (_pc / 100)}) exitWith {};
+    if (_respawn_tickets <= 0 && {_remaining == 0 || ((_started - _remaining) / _started) >= (_pc / 100)}) exitWith {};
 
     sleep 6;
 };
