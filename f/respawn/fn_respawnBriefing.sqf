@@ -21,7 +21,7 @@ The FA3 Respawn system allows team leaders to deploy a respawn beacon for their 
 <br/><br/>
 Placing this beacon will remove any previously-placed beacon for your side. You can only place this beacon if you are the leader of your group.
 <br/><br/>
-<execute expression='[player] spawn f_fnc_respawnBeaconDeploy'>Place respawn beacon</execute>"
+<execute expression='[player] spawn f_fnc_respawnBeaconDeploy; openMap false'>Place respawn beacon</execute>"
 ]];
 
 waitUntil {!isNil "f_script_loadoutNotes"};
