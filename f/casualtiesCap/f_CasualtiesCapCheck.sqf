@@ -18,7 +18,7 @@ sleep 0.1;
 
 // DECLARE PRIVATE VARIABLES
 
-private ["_grps", "_side", "_factionsOnly", "_countAliveUnits", "_started", "_remaining"];
+private ["_grps", "_side", "_factionsOnly", "_countAliveUnits", "_started", "_remaining", "_ticketsRemaining", "_respawn_tickets"];
 
 // ====================================================================================
 
@@ -33,11 +33,11 @@ private ["_grps", "_side", "_factionsOnly", "_countAliveUnits", "_started", "_re
 // 4: = If in side mode, only units from these faction(s) will be included (e.g. ["blu_f"])
 
 params [
-    ["_sideorgrps", sideUnknown, [sideUnknown,[]]],
-    ["_pc", 100, [0]],
-    ["_end", 1, [0,{}]],
-    ["_onlyPlayable", true, [true]],
-    ["_factions",[], [[]]]
+	["_sideorgrps", sideUnknown, [sideUnknown,[]]],
+	["_pc", 100, [0]],
+	["_end", 1, [0,{}]],
+	["_onlyPlayable", true, [true]],
+	["_factions",[], [[]]]
 ];
 
 // ====================================================================================
@@ -47,96 +47,96 @@ params [
 
 if(_sideorgrps isEqualType sideUnknown) then
 {
-    // SIDE MODE
+	// SIDE MODE
 
-    _side = _sideorgrps;
+	_side = _sideorgrps;
 	_factionsOnly = count _factions > 0;
 	_countAliveUnits = {
-        // switchableUnits is to support SP; there playableUnits is empty
-        // Conversely swichableUnits is empty in MP on the DS. So, one of these will always be empty
-	    private _eligibleUnits = if(_onlyPlayable) then {(playableUnits + switchableUnits)} else {allUnits};
+		// switchableUnits is to support SP; there playableUnits is empty
+		// Conversely swichableUnits is empty in MP on the DS. So, one of these will always be empty
+		private _eligibleUnits = if(_onlyPlayable) then {(playableUnits + switchableUnits)} else {allUnits};
 		private _filteredUnits = if(_factionsOnly) then
 		{
-		    _eligibleUnits select {(side _x == _side) && (([_x] call f_fnc_virtualFaction) in _factions)};
+			_eligibleUnits select {(side _x == _side) && (([_x] call f_fnc_virtualFaction) in _factions)};
 		}
 		else
 		{
-		    _eligibleUnits select {side _x == _side};
+			_eligibleUnits select {side _x == _side};
 		};
 		{alive _x} count _filteredUnits;
 	};
-    _ticketsRemaining = {
-        [_side] call BIS_fnc_respawnTickets;
-    };
+	_ticketsRemaining = {
+		[_side] call BIS_fnc_respawnTickets;
+	};
 	
-    // DEBUG
-    if (f_param_debugMode == 1) then
-    {
-        systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): CasCap operating in SIDE mode. _side = %1, _onlyPlayable = %2, _factionsOnly = %3, _factions = %4",_side,_onlyPlayable,_factionsOnly,_factions];
-    };
+	// DEBUG
+	if (f_param_debugMode == 1) then
+	{
+		systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): CasCap operating in SIDE mode. _side = %1, _onlyPlayable = %2, _factionsOnly = %3, _factions = %4",_side,_onlyPlayable,_factionsOnly,_factions];
+	};
 }
 else
 {
-    // GROUP MODE
+	// GROUP MODE
 
 	// COLLECT GROUPS TO CHECK
 	// If a groups variable was passed we collect all relevant groups
 	
 	_grps = []; 
 
-    sleep 1;
-    {
-        private _Tgrp = call compile format ["%1",_x];
-        if(!isNil "_Tgrp") then
-        {
-            _grps pushBackUnique _Tgrp;
-        };
-    } forEach _sideorgrps;
+	sleep 1;
+	{
+		private _Tgrp = call compile format ["%1",_x];
+		if(!isNil "_Tgrp") then
+		{
+			_grps pushBackUnique _Tgrp;
+		};
+	} forEach _sideorgrps;
 	
 	// FAULT CHECK
-    // Check if any groups were found. If not, exit with an error message
+	// Check if any groups were found. If not, exit with an error message
 
-    if (count _grps == 0) exitWith {
-        systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): No groups found, _sideorgrps = %1, _grps = %2",_sideorgrps,_grps];
-    };
+	if (count _grps == 0) exitWith {
+		systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): No groups found, _sideorgrps = %1, _grps = %2",_sideorgrps,_grps];
+	};
 
-    _countAliveUnits = {
-        {alive _x} count (flatten (_grps apply {units _x}));
-    };
+	_countAliveUnits = {
+		{alive _x} count (flatten (_grps apply {units _x}));
+	};
 
-    _ticketsRemaining = {
-        // check if tickets exist for the group itself or the group's side. 
-        _tickets_remaining = 0;
-        {
-            _tickets_check = [_x] call BIS_fnc_respawnTickets; // update ticket count if group has tickets applied;
-            if (_tickets_check > 0) then {
-                _tickets_remaining = _tickets_check;
-            };
-            _tickets_check = [side _x] call BIS_fnc_respawnTickets; // update ticket count if group's side has tickets applied;
-            if (_tickets_check > 0) then {
-                _tickets_remaining = _tickets_check;
-            };
-        } foreach _grps;
-        _tickets_remaining // return some number of tickets if at least one group or side has > 0 tickets
-    };
+	_ticketsRemaining = {
+		// check if tickets exist for the group itself or the group's side. 
+		_tickets_remaining = 0;
+		{
+			private _tickets_check = [_x] call BIS_fnc_respawnTickets; // update ticket count if group has tickets applied;
+			if (_tickets_check > 0) then {
+				_tickets_remaining = _tickets_check;
+			};
+			private _tickets_check = [side _x] call BIS_fnc_respawnTickets; // update ticket count if group's side has tickets applied;
+			if (_tickets_check > 0) then {
+				_tickets_remaining = _tickets_check;
+			};
+		} foreach _grps;
+		_tickets_remaining // return some number of tickets if at least one group or side has > 0 tickets
+	};
 	
 	// DEBUG
-    if (f_param_debugMode == 1) then
-    {
-        systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): CasCap operating in GROUP mode. _grps = %1",_grps];
-    };
+	if (f_param_debugMode == 1) then
+	{
+		systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): CasCap operating in GROUP mode. _grps = %1",_grps];
+	};
 };
 
 // ====================================================================================
 
 // CREATE STARTING VALUES
 // A initial count is made of units in the groups listed in _grps.
-_started = [] call _countAliveUnits;
+_started = call _countAliveUnits;
 
 // DEBUG
 if (f_param_debugMode == 1) then
 {
-    systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _started = %1",_started];
+	systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _started = %1",_started];
 };
 
 // ====================================================================================
@@ -148,19 +148,19 @@ if (f_param_debugMode == 1) then
 
 while {true} do
 {
-    // Call the local function to determine how many units are still alive
-    _remaining = [] call _countAliveUnits;
-    _respawn_tickets = [] call _ticketsRemaining;
+	// Call the local function to determine how many units are still alive
+	_remaining = call _countAliveUnits;
+	_respawn_tickets = call _ticketsRemaining;
 
-    // DEBUG
-    if (f_param_debugMode == 1) then
-    {
-        systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _remaining = %1",_remaining];
-    };
+	// DEBUG
+	if (f_param_debugMode == 1) then
+	{
+		systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _remaining = %1",_remaining];
+	};
 
-    if (_respawn_tickets <= 0 && {_remaining == 0 || ((_started - _remaining) / _started) >= (_pc / 100)}) exitWith {};
+	if (_respawn_tickets <= 0 && {_remaining == 0 || ((_started - _remaining) / _started) >= (_pc / 100)}) exitWith {};
 
-    sleep 6;
+	sleep 6;
 };
 
 // ====================================================================================
@@ -169,11 +169,11 @@ while {true} do
 // Depending on input, either MPEnd or the parsed code itself is called
 
 if (_end isEqualType 0) exitWith {
-    [_end] call f_fnc_mpEnd;
+	[_end] call f_fnc_mpEnd;
 };
 
 if (_end isEqualType {}) exitWith {
-    _end remoteExec ["bis_fnc_spawn", 0];
+	_end remoteExec ["bis_fnc_spawn", 0];
 };
 
 systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): Ending didn't fire, should either be code or scalar. _end = %1, typeName _end: %2",_end,typeName _end];
