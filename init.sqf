@@ -180,6 +180,7 @@ if isServer then {
 	} forEach [east, west, independent, civilian];
 };
 0 spawn f_fnc_respawnBriefing;
+0 spawn f_fnc_respawnTerminalAction;
 
 // ====================================================================================
 
