@@ -1,3 +1,15 @@
+// FA3 - Respawn Module - Terminal Action
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+/* ========================
+This function is executed from init.sqf.
+Two objects must be defined as global variables in the mission for this function to operate: f_respawnTerminal, an object which players can interact with to teleport and spectate; and f_respawnBase, a proxy object which is used as their spawn position upon respawning.
+Example:
+0 spawn f_fnc_terminalAction
+
+Arguments:
+None
+=========================== */
 if (isNil "f_respawnTerminal") exitWith {
 	systemChat "FA3 Respawn: Critical: Respawn Terminal object is not present or not correctly named f_respawnTerminal.";
 };

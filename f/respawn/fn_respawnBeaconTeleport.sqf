@@ -1,3 +1,14 @@
+// FA3 - Respawn Module - Teleport
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+/* ========================
+This function handles teleporting a unit to their side's FA3 Respawn Beacon.
+Example:
+[player] call f_fnc_respawnTeleport
+
+Arguments:
+0. Unit (object) - Living unit which will be teleported.
+=========================== */
 params ["_caller"];
 
 private _sideString = str side group _caller;

@@ -1,3 +1,15 @@
+// FA3 - Respawn Module - Beacon Placement
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+/* ========================
+This function is typically executed by the FA3 Respawn Player Actions briefing tab, but it can be used in other contexts if needed. It must be executed in a scheduled environment, and should be executed only on one machine at a time.
+Example:
+[player] spawn f_fnc_respawnBeaconDeploy
+
+Arguments:
+0. Unit (object) - Living unit which will place the beacon, ideally the local player.
+=========================== */
+
 params ["_caller"];
 if !(isNull objectParent _caller) exitWith {
 	systemChat "Can't place respawn beacon while in a vehicle.";

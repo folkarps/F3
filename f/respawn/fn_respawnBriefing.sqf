@@ -27,7 +27,7 @@ Placing this beacon will remove any previously-placed beacon for your side. You 
 waitUntil {!isNil "f_script_loadoutNotes"};
 waitUntil {scriptDone f_script_loadoutNotes};
 
-_fcs = player createDiaryRecord ["diary", ["FA3 Respawn",format ["
+player createDiaryRecord ["diary", ["FA3 Respawn",format ["
 <br/>
 If you have been unconscious for 3 minutes straight, you will have the option to respawn. After a brief timeout, you will respawn at a neutral base location.
 <br/><br/>
