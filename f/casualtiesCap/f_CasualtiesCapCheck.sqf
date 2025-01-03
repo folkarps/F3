@@ -65,6 +65,9 @@ if(_sideorgrps isEqualType sideUnknown) then
 		};
 		{alive _x} count _filteredUnits;
 	};
+    _ticketsRemaining = {
+        [_side] call BIS_fnc_respawnTickets;
+    };
 	
     // DEBUG
     if (f_param_debugMode == 1) then
@@ -79,7 +82,7 @@ else
 	// COLLECT GROUPS TO CHECK
 	// If a groups variable was passed we collect all relevant groups
 	
-	_grps = [];
+	_grps = []; 
 
     sleep 1;
     {
@@ -99,6 +102,22 @@ else
 
     _countAliveUnits = {
         {alive _x} count (flatten (_grps apply {units _x}));
+    };
+
+    _ticketsRemaining = {
+        // check if tickets exist for the group itself or the group's side. 
+        _tickets_remaining = 0;
+        {
+            _tickets_check = [_x] call BIS_fnc_respawnTickets; // update ticket count if group has tickets applied;
+            if (_tickets_check > 0) then {
+                _tickets_remaining = _tickets_check;
+            };
+            _tickets_check = [side _x] call BIS_fnc_respawnTickets; // update ticket count if group's side has tickets applied;
+            if (_tickets_check > 0) then {
+                _tickets_remaining = _tickets_check;
+            };
+        } foreach _grps;
+        _tickets_remaining // return some number of tickets if at least one group or side has > 0 tickets
     };
 	
 	// DEBUG
@@ -131,6 +150,7 @@ while {true} do
 {
     // Call the local function to determine how many units are still alive
     _remaining = [] call _countAliveUnits;
+    _respawn_tickets = [] call _ticketsRemaining;
 
     // DEBUG
     if (f_param_debugMode == 1) then
@@ -138,7 +158,7 @@ while {true} do
         systemChat format ["DEBUG (f\casualtiesCap\f_CasualtiesCapCheck.sqf): _remaining = %1",_remaining];
     };
 
-    if (_remaining == 0 || ((_started - _remaining) / _started) >= (_pc / 100)) exitWith {};
+    if (_respawn_tickets == 0 && {_remaining == 0 || ((_started - _remaining) / _started) >= (_pc / 100)}) exitWith {};
 
     sleep 6;
 };
