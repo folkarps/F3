@@ -1,7 +1,18 @@
 params ["_caller"];
+if !(isNull objectParent _caller) exitWith {
+	systemChat "Can't place respawn beacon while in a vehicle.";
+};
+if !(_caller == leader _caller) exitWith {
+	systemChat "Only group leaders can place a respawn beacon.";
+};
 
-_caller playActionNow "PutDown";
+_caller playActionNow "MedicOther";
+private _text = format ["[%1] %2 is deploying a respawn beacon.", str side group _caller, name _caller];
+[_text] remoteExec ["systemChat"];
 
+sleep 5;
+
+if !(alive _caller) exitWith {};
 // Check 3 possible positions
 {
 	// Aim about waist height
@@ -41,3 +52,6 @@ _caller playActionNow "PutDown";
 		break;
 	};
 } forEach [[0,1.5,0.8],[0,0.75,0.8],[0,0.1,0.1]];
+
+private _text = format ["[%1] %2 deployed a respawn beacon.", str side group _caller, name _caller];
+[_text] remoteExec ["systemChat"];

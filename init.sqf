@@ -179,7 +179,7 @@ if isServer then {
 		[_x, f_param_respawnTickets] call BIS_fnc_respawnTickets;
 	} forEach [east, west, independent, civilian];
 };
-player call f_fnc_respawnBeaconAction;
+0 spawn f_fnc_respawnBriefing;
 
 // ====================================================================================
 
