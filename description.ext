@@ -30,6 +30,7 @@ minPlayerDistance = 500; // The minimum distance between corpse or wreck and nea
 respawn = 1;
 respawndelay = -1;
 respawnOnStart = -1;
+respawnButton = 0;
 respawnTemplates[] = {"F_Respawn","Base", "Tickets"};
 
 // ============================================================================================
