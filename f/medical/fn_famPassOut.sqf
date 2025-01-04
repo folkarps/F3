@@ -112,7 +112,7 @@ if (isPlayer _unit) then {
 	};
 };
 
-_unit setVariable ["f_var_famKnockOutTime", serverTime, true];
+_unit setVariable ["f_var_fam_knockOutTime", serverTime, true];
 
 [_unit, "f_fam_knockOut", [_unit]] call BIS_fnc_callScriptedEventHandler;
 // VISUAL EFFECTS

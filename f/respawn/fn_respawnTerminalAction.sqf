@@ -50,21 +50,25 @@ if (isNil "f_respawnBase") exitWith {
 	"isNull objectParent _this",
 	"isNull objectParent _this",
 	{
-		private _text = format ["[%1] Press ESC to exit spectator.", str side group _caller];
+		private _text = format ["[%1] Launching side spectator. Press ESC to exit spectator.", str side group _caller];
 		systemChat _text;
 	},
 	{},
 	{
-		private _text = format ["[%1] Press ESC to exit spectator.", str side group _caller];
-		systemChat _text;
-		0 call f_fnc_activateSpectator;
-		(findDisplay 46) displayAddEventHandler ["keyDown",{
-			params ["", "_key"];
-			if (_key == 1) then {
-				call f_fnc_terminateSpectator;
-				(findDisplay 46) displayRemoveEventHandler _thisEventHandler;
-			};
-		}];
+		_caller spawn {
+			private _text = format ["[%1] Launched side spectator. Press ESC to exit spectator. Select units in the left panel to spectate.", str side group _this];
+			systemChat _text;
+			call f_fnc_activateSpectator;
+			waitUntil { !isNull findDisplay 60492 };
+			(findDisplay 60492) displayAddEventHandler ["keyDown",{
+				params ["", "_key"];
+				if (_key == 1) then {
+					(findDisplay 60492) displayRemoveEventHandler [_thisEvent,_thisEventHandler];
+					call f_fnc_terminateSpectator;
+					true;
+				};
+			}];
+		};
 	},
 	{},
 	[],

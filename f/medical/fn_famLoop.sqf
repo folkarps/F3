@@ -24,8 +24,8 @@ while {alive _unit && {local _unit}} do {
 	// Timeout for being downed
 	private _knockoutTime = _unit getVariable ["f_var_fam_knockOutTime", serverTime];
 	if ((serverTime - _knockOutTime) > 180) then {
-		if (isNull (missionNamespace getVariable ["f_var_fam_respawnDisplay",displayNull])) then {
-			f_var_fam_respawnDisplay = findDisplay 46 createDisplay "f_FAMrespawnUI";
+		if (isNull (uiNamespace getVariable ["f_var_fam_respawnDisplay",displayNull])) then {
+			uiNamespace setVariable ["f_var_fam_respawnDisplay",findDisplay 46 createDisplay "f_FAMrespawnUI"];
 		};
 	};
 		

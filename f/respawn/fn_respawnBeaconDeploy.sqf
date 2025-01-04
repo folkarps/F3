@@ -45,21 +45,22 @@ if !(alive _caller) exitWith {};
 		if (["Air","LandVehicle","Ship"] findIf {(_intersection select 2) isKindOf _x} > -1) then { continue };
 		
 		_position = _intersection select 0;
-		private _beacon = createSimpleObject ["OmniDirectionalAntenna_01_olive_F", [0,0,0], [], 0, "CAN_COLLIDE"];
+		private _beacon = createSimpleObject ["OmniDirectionalAntenna_01_olive_F", [0,0,0]];
 		[_beacon, false] remoteExec ["setPhysicsCollisionFlag",0,true];
 		_beacon setPosASL _position;
 		
-		playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_flag,false,_position, 2, 1, 25];
+		playSound3D ["A3\Sounds_F_AoW\SFX\Showcase_Future\place_flag.wss",_beacon,false,_position, 2, 1, 25];
 		_beacon setVectorUp [0,0,1];
 		_beacon setDir (getDir _caller - 90);
 		
 		private _smoke = "SmokeShellRed_Infinite" createVehicle [0,0,0];
-		_smoke attachTo [_beacon,[0,0,0.2]];
+		_smoke setPosASL _position;
+		_beacon setVariable ["f_beaconSmoke",_smoke,true];
 		
 		// If we got this far we can skip any remaining positions
 		private _varName = format ["f_var_respawnBeacon_%1", str side group _caller];
 		private _oldBeacon = missionNamespace getVariable [_varName, objNull];
-		deleteVehicle (attachedObjects _oldBeacon) pushback _oldBeacon;
+		deleteVehicle ((attachedObjects _oldBeacon) + [_oldBeacon getVariable ["f_beaconSmoke",objNull], _oldBeacon]);
 		missionNamespace setVariable [_varName, _beacon, true];
 		break;
 	};

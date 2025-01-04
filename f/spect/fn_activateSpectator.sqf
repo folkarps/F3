@@ -3,15 +3,18 @@ if (f_param_debugMode == 1) then {
     diag_log "FA3 Spectator: activating spectator";
 };
 
-params [["",""],["",""],["",""],["",""],["_isFullSpectator",false]];
+params ["","","","",["_isFullSpectator",false]];
 
 // 'Cinematic' delay before spectator activates
 sleep 3;
 
 // Disable post-processing effects
 // Borrowed from BIS_fnc_respawnSpectator
-    waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
-BIS_fnc_feedback_allowPP = false;
+waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
+if ((0 call BIS_fnc_missionRespawnType) == 1) then {
+	waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
+	BIS_fnc_feedback_allowPP = false;
+};
 
 if (_isFullSpectator or (!(alive player) && ([side group player] call BIS_fnc_respawnTickets) < 1)) then {
 	// Create a new (alive) unit to prevent draw3D bug with floating head tags

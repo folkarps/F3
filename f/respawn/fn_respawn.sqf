@@ -10,8 +10,6 @@ onPlayerRespawn = "f_fnc_respawn";
 Arguments:
 None
 =========================== */
-[side group player, -1] call BIS_fnc_respawnTickets;
-
 call f_fnc_terminateSpectator;
 
 private _newTickets = [side group player] call BIS_fnc_respawnTickets;
