@@ -27,7 +27,7 @@ minPlayerDistance = 500; // The minimum distance between corpse or wreck and nea
 
 // FA3 - Respawn Settings
 
-respawn = 1;
+respawn = 3;
 respawndelay = -1;
 respawnOnStart = -1;
 respawnButton = 0;
@@ -45,7 +45,6 @@ class CfgRespawnTemplates
 	class F_Respawn
 	{
 		respawnDelay = 30;
-		respawn = 3;
 		onPlayerRespawn = "f_fnc_respawn";
 		onPlayerKilled = "f_fnc_activateSpectator";
 	};
