@@ -165,7 +165,7 @@ class f_FAMrespawnUI : f_FAMdiagnoseUI
 					style = 0;
 					text = "";
 					colorBackground[] = {0,0,0,0.1};
-					action = "player setDamage 1; (missionNamespace getVariable ['f_var_fam_respawnDisplay', displayNull]) closeDisplay 1;";
+					action = "player setDamage 1; (uiNamespace getVariable ['f_var_fam_respawnDisplay', displayNull]) closeDisplay 1;";
 				};
 			};
 		};
