@@ -20,7 +20,7 @@ _typeofUnit = toLower _typeofUnit; // Tidy input for SWITCH/CASE statements, exp
 // The following code detects what faction the unit's slot belongs to, and stores
 // it in the private variable _faction. It can also be passed as an optional parameter.
 
-if (_faction = "") then {
+if (_faction == "") then {
 	_faction = toLower ([_unit] call f_fnc_virtualFaction);
 };
 // ====================================================================================
