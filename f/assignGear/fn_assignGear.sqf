@@ -286,7 +286,7 @@ if (_isMan) then {
 if !_isRespawn then {
 	_unit addEventHandler ["Respawn", {
 		params ["_unit", "_corpse"];
-		[_unit, _unit getVariable ["f_var_assignGear","r"], _unit getVariable ["f_var_assignGearFaction", toLower [_unit] call f_fnc_virtualFaction]] call f_fnc_assignGear;
+		[_unit, _unit getVariable ["f_var_assignGear","r"], _unit getVariable ["f_var_assignGearFaction", toLower ([_unit] call f_fnc_virtualFaction)]] call f_fnc_assignGear;
 	}];
 };
 
