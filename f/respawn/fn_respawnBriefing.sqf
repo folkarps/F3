@@ -19,12 +19,12 @@ _str_deploy = "deployment vehicle.";
 
 if (_respawnMode == 0) then {
 	player createDiaryRecord ["fa3_actions",["FA3 Respawn Beacon","
-	<br/>
-	The FA3 Respawn system allows team leaders to deploy a respawn beacon for their side. Respawning players can teleport to this beacon.
-	<br/><br/>
-	Placing this beacon will remove any previously-placed beacon for your side. You can only place this beacon if you are the leader of your group.
-	<br/><br/>
-	<execute expression='[player] spawn f_fnc_respawnBeaconDeploy; openMap false'>Place respawn beacon</execute>"
+<br/>
+The FA3 Respawn system allows team leaders to deploy a respawn beacon for their side. Respawning players can teleport to this beacon.
+<br/><br/>
+Placing this beacon will remove any previously-placed beacon for your side. You can only place this beacon if you are the leader of your group.
+<br/><br/>
+<execute expression='[player] spawn f_fnc_respawnBeaconDeploy; openMap false'>Place respawn beacon</execute>"
 	]];
 	_str_deploy = "respawn beacon.<br/><br/>Group leaders can place their side's respawn beacon from the FA3 Player Actions briefing menu.";
 };
