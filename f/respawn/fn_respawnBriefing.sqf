@@ -7,7 +7,7 @@ Example:
 0 spawn f_fnc_respawnBriefing
 
 Arguments:
-_this: 0 - deployable beacons, 1 - teleport to vehicle
+0. mode: 0 - deployable beacons, 1 - teleport to vehicle
 =========================== */
 if !(hasInterface) exitWith {};
 if !(isNil "f_var_respawn_briefingDone") exitWith{};
