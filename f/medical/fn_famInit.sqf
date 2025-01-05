@@ -69,7 +69,7 @@ _unit setVariable ["f_var_fam_forcedown",false];
 _unit setVariable ["f_var_fam_hasfak",false]; 
 _unit setVariable ["f_var_fam_hasbandage",false]; 
 _unit getVariable ["f_var_fam_flag",false];
-_unit setVariable ["f_var_fam_actions",false];
+_unit setVariable ["f_var_fam_actionsAdded",false];
 
 [_unit] spawn f_fnc_famLoop; 
 

@@ -62,8 +62,7 @@ private _ehRespawn = _unit addEventHandler ["Respawn", {
 	params ["_unit"];
 	if !(local _unit) exitWith {};
 	if !(_unit isKindOf "VirtualMan_F") then {
-		_unit setVariable ["f_var_fam_actions",false,true];
-		[_unit] spawn f_fnc_famLoop;
+		_unit setVariable ["f_var_fam_actionsAdded",false,true];
 		[_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + netId _unit)];
 	};
 }];
