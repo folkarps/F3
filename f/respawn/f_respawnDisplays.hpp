@@ -41,7 +41,7 @@ class f_respawnUI
 					idc = 3689;
 					x = 0;
 					y = 0;
-					w = safeZoneW * 0.22;
+					w = safeZoneW * 0.25;
 					h = safeZoneH * 0.095;
 					style = 0;
 					text = "";
@@ -53,7 +53,7 @@ class f_respawnUI
 					idc = 3681;
 					x = safeZoneW * 0.027;
 					y = safeZoneH * 0.032;
-					w = safeZoneW * 0.18;
+					w = safeZoneW * 0.22;
 					h = safeZoneH * 0.02;
 					style = 0;
 					text = "You have been unconscious for more than 3 minutes.";
@@ -69,7 +69,7 @@ class f_respawnUI
 					idc = 3682;
 					x = safeZoneW * 0.027;
 					y = safeZoneH * 0.057;
-					w = safeZoneW * 0.18;
+					w = safeZoneW * 0.22;
 					h = safeZoneH * 0.02;
 					style = 0;
 					text = "Wait for revive or click this button to respawn.";
