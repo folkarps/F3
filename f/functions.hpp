@@ -90,6 +90,7 @@ class F // Defines the "owner"
 		class respawnBriefing{};
 		class respawnBeaconDeploy{};
 		class respawnBeaconTeleport{};
+		class respawnKilled{};
 		class respawnTerminalAction{};
 	};
 	class nametag

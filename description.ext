@@ -47,7 +47,7 @@ class CfgRespawnTemplates
 	{
 		respawnDelay = 30;
 		onPlayerRespawn = "f_fnc_respawn";
-		onPlayerKilled = "f_fnc_activateSpectator";
+		onPlayerKilled = "f_fnc_respawnKilled";
 	};
 	class F_Spectator
 	{

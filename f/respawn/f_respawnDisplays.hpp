@@ -53,7 +53,7 @@ class f_respawnUI
 					idc = 3681;
 					x = safeZoneW * 0.027;
 					y = safeZoneH * 0.032;
-					w = safeZoneW * 0.16;
+					w = safeZoneW * 0.18;
 					h = safeZoneH * 0.02;
 					style = 0;
 					text = "You have been unconscious for more than 3 minutes.";
@@ -69,10 +69,10 @@ class f_respawnUI
 					idc = 3682;
 					x = safeZoneW * 0.027;
 					y = safeZoneH * 0.057;
-					w = safeZoneW * 0.16;
+					w = safeZoneW * 0.18;
 					h = safeZoneH * 0.02;
 					style = 0;
-					text = "Wait to be revived or click the button to the left to respawn.";
+					text = "Wait for revive or click this button to respawn.";
 					colorBackground[] = {0.8863,0.7294,0.7294,0};
 					colorText[] = {1,1,0.302,1};
 					font = "PuristaMedium";
@@ -104,6 +104,9 @@ class f_respawnUI
 					style = 0;
 					text = "";
 					colorBackground[] = {1,1,1,1};
+					colorFocused[] = {0.98,0.51,0,1};
+					colorFocused2[] = {0.98,0.51,0,1};
+					colorBackGroundActive[] = {0.98,0.51,0,1};
 					action = "player setDamage 1; (uiNamespace getVariable ['f_var_fam_respawnDisplay', displayNull]) closeDisplay 1;";
 				};
 			};
