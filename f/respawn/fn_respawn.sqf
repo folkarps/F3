@@ -24,3 +24,4 @@ waitUntil {
 	(player distance f_respawnBase) > 100;
 };
 player allowDamage true;
+player setCaptive false;
