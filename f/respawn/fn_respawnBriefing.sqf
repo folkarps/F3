@@ -12,7 +12,7 @@ _this: 0 - deployable beacons, 1 - teleport to vehicle
 if !(hasInterface) exitWith {};
 if !(isNil "f_var_respawn_briefingDone") exitWith{};
 
-_respawnMode = _this;
+params ["_respawnMode"];
 
 waitUntil {scriptDone f_script_briefing};
 _str_deploy = "deployment vehicle.";
