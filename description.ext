@@ -438,3 +438,5 @@ class RscTitles
 	// UI elements for the medical system
 	#include "f\medical\f_FAMUI.hpp"
 };
+
+#include "f\respawn\f_respawnDisplays.hpp"

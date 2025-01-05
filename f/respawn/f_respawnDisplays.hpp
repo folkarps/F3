@@ -1,9 +1,6 @@
-// FA3 - Medical component
-// UI classes for medical displays
-
-class f_FAMdiagnoseUI
+class f_respawnUI
 {
-	idd = 3580;
+	idd = 3680;
 	duration = 1e+6;
 	access = 0;
 	movingEnable = false;
@@ -14,7 +11,7 @@ class f_FAMdiagnoseUI
 	
 	class Controls
 	{
-		class f_FAMcontrolsGroup : RscControlsGroupNoScrollbars
+		class f_respawnControlsGroup : RscControlsGroupNoScrollbars
 		{
 			type = CT_CONTROLS_GROUP;
 			idc = -1;
@@ -23,7 +20,7 @@ class f_FAMdiagnoseUI
 			y = safeZoneY + safeZoneH * 0.22;
 			w = safeZoneW * 0.22;
 			h = safeZoneH * 0.1;
-			onLoad = "[_this#0] spawn f_fnc_FAMdiagnoseInitUI;";
+			onLoad = "";
 			class HScrollbar
 			{
 				height = 0;
@@ -38,10 +35,10 @@ class f_FAMdiagnoseUI
 
 			class Controls
 			{
-				class f_FAMbackground : RscText
+				class f_respawnBackground : RscText
 				{
 					type = CT_STATIC;
-					idc = 3589;
+					idc = 3689;
 					x = 0;
 					y = 0;
 					w = safeZoneW * 0.22;
@@ -50,63 +47,64 @@ class f_FAMdiagnoseUI
 					text = "";
 					colorBackground[] = {0.05,0.05,0.05,0.7};
 				};
-				class f_FAMstatusText : RscStructuredText
+				class f_respawnStatusText : RscStructuredText
 				{
 					type = CT_STRUCTURED_TEXT;
-					idc = 3581;
+					idc = 3681;
 					x = safeZoneW * 0.027;
 					y = safeZoneH * 0.032;
 					w = safeZoneW * 0.16;
 					h = safeZoneH * 0.02;
 					style = 0;
-					text = "";
+					text = "You have been unconscious for more than 3 minutes.";
 					colorBackground[] = {0.8863,0.7294,0.7294,0};
 					colorText[] = {1,1,0.302,1};
 					font = "PuristaMedium";
 					sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1);
 					
 				};
-				class f_FAMbleedText : RscStructuredText
+				class f_respawnStatus2Text : RscStructuredText
 				{
 					type = CT_STRUCTURED_TEXT;
-					idc = 3582;
+					idc = 3682;
 					x = safeZoneW * 0.027;
 					y = safeZoneH * 0.057;
 					w = safeZoneW * 0.16;
 					h = safeZoneH * 0.02;
 					style = 0;
-					text = "";
+					text = "Wait to be revived or click the button to the left to respawn.";
 					colorBackground[] = {0.8863,0.7294,0.7294,0};
 					colorText[] = {1,1,0.302,1};
 					font = "PuristaMedium";
 					sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1);
 				};
-				class f_FAMnameText : RscStructuredText
+				class f_respawnTitleText : RscStructuredText
 				{
 					type = CT_STRUCTURED_TEXT;
-					idc = 3583;
+					idc = 3683;
 					x = 0;
 					y = 0;
 					w = safeZoneW * 0.22;
 					h = safeZoneH * 0.019;
 					style = 0;
-					text = "";
+					text = "FA3 Respawn";
 					colorBackground[] = {0.1,0.1,0.1,1};
 					colorText[] = {1,1,1,1};
 					font = "PuristaMedium";
 					sizeEx = (((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1);
 				};
-				class f_FAMbleedWarn : RscText
+				class f_respawnButton : RscButton
 				{
-					type = CT_STATIC;
-					idc = 3584;
+					type = CT_BUTTON;
+					idc = 3684;
 					x = safeZoneW * 0.003;
 					y = safeZoneH * 0.025;
 					w = safeZoneW * 0.02;
 					h = safeZoneH * 0.063;
 					style = 0;
 					text = "";
-					colorBackground[] = {0,0,0,0.1};
+					colorBackground[] = {1,1,1,1};
+					action = "player setDamage 1; (uiNamespace getVariable ['f_var_fam_respawnDisplay', displayNull]) closeDisplay 1;";
 				};
 			};
 		};
