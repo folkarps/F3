@@ -6,7 +6,7 @@ This function handles teleporting a unit to their side's FA3 Respawn Beacon or d
 Example:
 [player] call f_fnc_respawnTeleport
 
-If using a deployment vehicle, you must have a vehicle with name f_var_respawnBeacon_west (_east, _independent, etc) for your players force.
+If using a deployment vehicle, you must have a vehicle with name f_var_respawnBeacon_west (_east, _guer, etc) for your players force.
 
 Arguments:
 0. Unit (object) - Living unit which will be teleported.
