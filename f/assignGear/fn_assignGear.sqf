@@ -41,7 +41,7 @@ _insignia_styles = [_insignia_style_NATO,_insignia_style_CSAT];
 // ====================================================================================
 
 // Universal: assign EOD flags to engineer classes
-if (_typeofUnit in ["eng","engm"]) then {
+if ((_typeofUnit in ["eng","engm"]) or (_isRespawn && {(_unit getVariable ["f_var_eodFlagAction",-1]) > -1})) then {
 	[_unit] call f_fnc_assignEODflags;
 };
 
