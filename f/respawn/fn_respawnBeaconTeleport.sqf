@@ -24,7 +24,7 @@ if (isNull _respawnBeacon) exitWith {
 
 if (typeOf _respawnBeacon == "OmniDirectionalAntenna_01_olive_F") exitWith {
 
-	private _text = format ["[%1] %2 is deploying to the respawn beacon.", _sideString, name _caller];
+	private _text = format ["[%1] %2 is deploying to the rally point.", _sideString, name _caller];
 	[_text] remoteExec ["systemChat"];
 
 	private _pos = (getPosASL _respawnBeacon) vectorAdd [0.5,0,0];
@@ -38,12 +38,12 @@ if (_respawnBeacon isKindOf "AllVehicles") exitWith {
 		systemChat "Respawn vehicle has been destroyed! Please wait for a new deployment point.";
 	};
 	if (_respawnBeacon emptyPositions "Cargo" >= 1) then {
-		private _text = format ["[%1] %2 is deploying to the respawn vehicle.", _sideString, name _caller];
+		private _text = format ["[%1] %2 is deploying to the rally point vehicle.", _sideString, name _caller];
 		[_text] remoteExec ["systemChat"];
 
 		_caller moveInCargo _respawnBeacon;
 	} else {
-		systemChat "Respawn vehicle has no available cargo seats, please try again.";
+		systemChat "Rally point vehicle has no available cargo seats, please try again.";
 	};
 
 };
