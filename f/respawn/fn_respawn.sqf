@@ -9,19 +9,25 @@ onPlayerRespawn = "f_fnc_respawn";
 
 Arguments: as automatically passed to onPlayerRespawn.sqf
 =========================== */
+params ["_newUnit", "_oldUnit"];
+
+waitUntil {local _newUnit};
+
+["respawn", _newUnit, _oldUnit getVariable ["f_var_assignGearFaction", toLower ([_unit] call f_fnc_virtualFaction)], true] call f_fnc_assignGear;
+
 call f_fnc_terminateSpectator;
-private _newTickets = [side group player] call BIS_fnc_respawnTickets;
-private _respawnText = format ["[%1] %2 respawned, %3 tickets remaining", side group player, name player, _newTickets];
+private _newTickets = [side group _newUnit] call BIS_fnc_respawnTickets;
+private _respawnText = format ["[%1] %2 respawned, %3 tickets remaining", side group _newUnit, name _newUnit, _newTickets];
 [_respawnText] remoteExec ["systemChat"];
 
-player assignTeam ((_this#1) getVariable ["f_var_lastTeamColour","MAIN"]);
+_newUnit assignTeam (_oldUnit getVariable ["f_var_lastTeamColour","MAIN"]);
 
-player allowDamage false;
-player setPosASL getPosASL f_respawnBase;
+_newUnit allowDamage false;
+_newUnit setPosASL getPosASL f_respawnBase;
 
 waitUntil {
 	sleep 2;
-	(player distance f_respawnBase) > 100;
+	(_newUnit distance f_respawnBase) > 100;
 };
-player allowDamage true;
-player setCaptive false;
+_newUnit allowDamage true;
+_newUnit setCaptive false;

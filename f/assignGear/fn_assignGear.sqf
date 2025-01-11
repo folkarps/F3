@@ -283,13 +283,6 @@ if (_isMan) then {
 
 };
 
-if !_isRespawn then {
-	_unit addEventHandler ["Respawn", {
-		params ["_unit", "_corpse"];
-		[_unit getVariable ["f_var_assignGear","r"], _unit, _unit getVariable ["f_var_assignGearFaction", toLower ([_unit] call f_fnc_virtualFaction)]] spawn f_fnc_assignGear;
-	}];
-};
-
 // ====================================================================================
 
 // This variable simply tracks the progress of the gear assignation process, for other
