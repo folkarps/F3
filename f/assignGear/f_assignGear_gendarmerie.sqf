@@ -336,6 +336,19 @@ switch (_typeofUnit) do
 		_unit addmagazines [_chemred,1];
 		_unit addmagazines [_chemyellow,1];
 	};
+// Respawn Loadout:
+	case "respawn":
+	{
+		_unit addmagazines [_riflemag, 1];
+		_unit addweapon _rifle;
+		_unit addmagazines [_smokegrenade, 3];
+		_unit addmagazines [_riflemag, 2];
+		_unit addmagazines [_riflemag_tr, 1];
+		_unit addmagazines [_grenade, 2];
+		{
+			_unit setUnitTrait [_x#0, _x#1];
+		} forEach (_unit getVariable ["f_var_unitTraits",[]]);
+	};
 // CARGO: CAR - room for 10 weapons and 50 cargo items
 	case "v_car":
 	{

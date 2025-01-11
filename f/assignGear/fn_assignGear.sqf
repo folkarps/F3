@@ -287,7 +287,6 @@ if (_isMan) then {
 
 // This variable simply tracks the progress of the gear assignation process, for other
 // scripts to reference.
-
 _unit setVariable ["f_var_assignGear_done",true,true];
 
 // ====================================================================================

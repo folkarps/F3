@@ -11,5 +11,5 @@ Arguments: as automatically passed to onPlayerKilled.sqf
 
 _this spawn f_fnc_activateSpectator;
 private _unit = _this#0;
-private _oldTeam = assignedTeam _unit;
-_unit setVariable ["f_var_lastTeamColour",_oldTeam,true];
+_unit setVariable ["f_var_lastTeamColour",assignedTeam _unit,true];
+_unit setVariable ["f_var_unitTraits", getAllUnitTraits _unit, true];
