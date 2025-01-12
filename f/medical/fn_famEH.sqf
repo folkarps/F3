@@ -28,7 +28,7 @@ private _ehKilled = _unit addEventHandler ["Killed", {
 	// store name on corpse for future diagnosis.
 	_unit setVariable ["f_var_fam_corpse",name _unit,true];
 	_unit setVariable ["f_var_fam_bleed",false,true]; 
-	_unit setVariable ["f_var_fam_conscious",true,false,true]; 
+	_unit setVariable ["f_var_fam_conscious",true,true]; 
 
 }];
 
