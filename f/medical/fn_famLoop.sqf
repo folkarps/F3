@@ -28,6 +28,19 @@ while {alive _unit && {local _unit}} do {
 			uiNamespace setVariable ["f_var_fam_respawnDisplay",findDisplay 46 createDisplay "f_respawnUI"];
 		};
 	};
+	// If the unit is in a dead vehicle, eject them (if vehicle is on the ground and at very low speed) or kill them (if it isn't)
+	if (!(isNull objectParent _unit) && {!alive objectParent _unit}) then {
+		sleep 3;
+		private _parent = objectParent _unit;
+		if (!(isNull _parent) && {!alive _parent}) then {
+			if (((getPos _parent select 2) < 5) && {(vectorMagnitude velocity _parent) < 2}) then {
+				moveOut _unit;
+			} else {
+				_unit setDamage 1;
+				break;
+			};
+		};
+	};
 		
 	// PASSOUT TEST 
 	// Force Unit Down above damage threshold. 
