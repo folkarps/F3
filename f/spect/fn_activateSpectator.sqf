@@ -5,12 +5,8 @@ if (f_param_debugMode == 1) then {
 
 params ["","","","",["_isFullSpectator",false]];
 
-// 'Cinematic' delay before spectator activates
-sleep 3;
-
 // Disable post-processing effects
 // Borrowed from BIS_fnc_respawnSpectator
-waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
 if ((0 call BIS_fnc_missionRespawnType) == 1) then {
 	waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
 	BIS_fnc_feedback_allowPP = false;
