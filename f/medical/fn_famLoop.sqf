@@ -144,10 +144,9 @@ while {alive _unit && {local _unit}} do {
 
 				if (_currentDamage > 0.95) then {
 					_tick = selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
-					if (_currentDamage + _tick >= 0.98) then {_tick = 0}; //careful not to overdamage you with the bleed.
 				} else {
 					_tick = selectRandom [0.06,0.08,0.11]; // faster rate until you are forced down. 
-					if (_currentDamage + _tick >= 0.98) then {_tick = 0.01}; //careful not to overdamage you with the bleed.
+					if (_currentDamage + _tick >= 0.99) then {_tick = 0.01}; //careful not to overdamage you with the bleed.
 				};
 
 				{ // save current hands and legs damage.
