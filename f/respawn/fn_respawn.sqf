@@ -13,7 +13,7 @@ params ["_newUnit", "_oldUnit"];
 
 waitUntil {local _newUnit};
 
-["respawn", _newUnit, _oldUnit getVariable ["f_var_assignGearFaction", toLower ([_unit] call f_fnc_virtualFaction)], true] call f_fnc_assignGear;
+["respawn", _newUnit, _oldUnit getVariable ["f_var_assignGearFaction", toLower ([_oldUnit] call f_fnc_virtualFaction)], true] call f_fnc_assignGear;
 
 call f_fnc_terminateSpectator;
 private _newTickets = [side group _newUnit] call BIS_fnc_respawnTickets;
