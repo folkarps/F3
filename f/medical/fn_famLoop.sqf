@@ -33,7 +33,7 @@ while {alive _unit && {local _unit}} do {
 		sleep 3;
 		private _parent = objectParent _unit;
 		if (!(isNull _parent) && {!alive _parent}) then {
-			if (((getPos _parent select 2) < 5) && {(vectorMagnitude velocity _parent) < 2}) then {
+			if (((getPos _parent select 2) < 5) && {(vectorMagnitude velocity _parent) < 4.2}) then {
 				moveOut _unit;
 			} else {
 				_unit setDamage 1;
