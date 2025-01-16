@@ -11,8 +11,8 @@ if (_unit == player) exitWith {};
 // Variables to streamline balancing/updates
 private _healIcon = "a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa"; //Icon to Display
 private _healProg = "(_target distance _caller < 3) && {alive _target && !(_target getVariable ['f_var_fam_conscious',true])}"; // This one is always the same, start condition varies by unit type.
-private _healTime = 6; // Action Duration
-private _healMedicTime = 4.5; // Action Duration
+private _healTime = 14; // Action Duration
+private _healMedicTime = 8.5; // Action Duration
 
 // Starting Code
 private _healCodeStart = { 
@@ -21,7 +21,9 @@ private _healCodeStart = {
 	
 	// Match medic animation speed to speed modifier.
 	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1.25;
+		_caller setAnimSpeedCoef 0.9;
+	} else {
+		_caller setAnimSpeedCoef 0.6;
 	};
 
 	if (stance _caller == "PRONE") then {
