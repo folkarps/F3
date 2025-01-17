@@ -29,7 +29,7 @@ Placing this rally point will remove any previously-placed rally point for your 
 	_str_deploy = "to be deployed to your side's rally point.<br/><br/>Group leaders can place their side's rally point from the FA3 Player Actions briefing menu.";
 };
 
-if (_respawnMode == 1) then {
+if (_respawnMode == 2) then {
 	_str_deploy = "for pickup by an allied transport";
 };
 
