@@ -67,10 +67,16 @@ if !(alive _caller) exitWith {};
 		_smoke setPosASL _position;
 		_beacon setVariable ["f_beaconSmoke",_smoke,true];
 		
+		private _sphere = "Sign_Sphere100cm_Geometry_F" createVehicle [0,0,0];
+		_sphere setObjectTextureGlobal [0, ""];
+		_sphere setPosASL (_position vectorAdd [0,0,0.5]);
+		[_sphere] remoteExec ["f_fnc_respawnBeaconAction",0,true];
+		_beacon setVariable ["f_beaconSphere",_sphere,true];
+		
 		// If we got this far we can skip any remaining positions
 		private _varName = format ["f_var_respawnBeacon_%1", _side];
 		private _oldBeacon = missionNamespace getVariable [_varName, objNull];
-		deleteVehicle ((attachedObjects _oldBeacon) + [_oldBeacon getVariable ["f_beaconSmoke",objNull], _oldBeacon]);
+		deleteVehicle ((attachedObjects _oldBeacon) + [_oldBeacon getVariable ["f_beaconSmoke",objNull], _oldBeacon, _oldBeacon getVariable ["f_beaconSphere",objNull]]);
 		missionNamespace setVariable [_varName, _beacon, true];
 		break;
 	};

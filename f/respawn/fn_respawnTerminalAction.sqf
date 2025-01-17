@@ -19,31 +19,6 @@ if (isNil "f_respawnBase") exitWith {
 
 [
 	f_respawnTerminal,
-	"Deploy to side rally point",
-	"a3\ui_f_oldman\data\igui\cfg\holdactions\meet_ca.paa",
-	"a3\ui_f_oldman\data\igui\cfg\holdactions\meet_ca.paa",
-	"isNull objectParent _this",
-	"isNull objectParent _this",
-	{
-		private _text = format ["[%1] Searching for valid rally point...", str side group _caller];
-		systemChat _text;
-	},
-	{},
-	{
-		_caller call f_fnc_respawnBeaconTeleport;
-	},
-	{},
-	[],
-	2,
-	0,
-	false,
-	false,
-	true
-] call BIS_fnc_holdActionAdd;
-
-
-[
-	f_respawnTerminal,
 	"Spectate your team",
 	"a3\ui_f\data\igui\cfg\holdactions\holdaction_search_ca.paa",
 	"a3\ui_f\data\igui\cfg\holdactions\holdaction_search_ca.paa",

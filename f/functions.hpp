@@ -88,6 +88,7 @@ class F // Defines the "owner"
 		file = "f\respawn";
 		class respawn{};
 		class respawnBriefing{};
+		class respawnBeaconAction{};
 		class respawnBeaconDeploy{};
 		class respawnBeaconTeleport{};
 		class respawnKilled{};
