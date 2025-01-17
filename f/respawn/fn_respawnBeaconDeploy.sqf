@@ -11,15 +11,24 @@ Arguments:
 =========================== */
 
 params ["_caller"];
+// Exit if you don't meet basic conditions
 if !(isNull objectParent _caller) exitWith {
-	systemChat "Can't place respawn beacon while in a vehicle.";
+	systemChat "Can't place rally beacon while in a vehicle.";
 };
 if !(_caller == leader _caller) exitWith {
-	systemChat "Only group leaders can place a respawn beacon.";
+	systemChat "Only group leaders can place a rally beacon.";
+};
+// Check cooldown
+private _side = str side group _caller;
+private _timerVarName = format ["f_var_lastRespawnBeacon_%1", _side];
+private _cooldown = serverTime - (missionNamespace getVariable [_timerVarName, serverTime]);
+if (_cooldown < 300) exitWith {
+	private _text = format ["[%1] Rally beacon on cooldown: %2", _side, [_cooldown, "MM:SS"] call BIS_fnc_secondsToString];
+	systemChat _text;
 };
 
 _caller playActionNow "MedicOther";
-private _text = format ["[%1] %2 is deploying a respawn beacon.", str side group _caller, name _caller];
+private _text = format ["[%1] %2 is deploying a respawn beacon.", _side, name _caller];
 [_text] remoteExec ["systemChat"];
 
 sleep 5;
@@ -58,7 +67,7 @@ if !(alive _caller) exitWith {};
 		_beacon setVariable ["f_beaconSmoke",_smoke,true];
 		
 		// If we got this far we can skip any remaining positions
-		private _varName = format ["f_var_respawnBeacon_%1", str side group _caller];
+		private _varName = format ["f_var_respawnBeacon_%1", _side];
 		private _oldBeacon = missionNamespace getVariable [_varName, objNull];
 		deleteVehicle ((attachedObjects _oldBeacon) + [_oldBeacon getVariable ["f_beaconSmoke",objNull], _oldBeacon]);
 		missionNamespace setVariable [_varName, _beacon, true];
@@ -66,5 +75,8 @@ if !(alive _caller) exitWith {};
 	};
 } forEach [[0,1.5,0.8],[0,0.75,0.8],[0,0.1,0.1]];
 
-private _text = format ["[%1] %2 deployed a respawn beacon.", str side group _caller, name _caller];
+// Cooldown marker
+missionNamespace setVariable [_timerVarName, serverTime, true];
+
+private _text = format ["[%1] %2 deployed a respawn beacon.", _side, name _caller];
 [_text] remoteExec ["systemChat"];

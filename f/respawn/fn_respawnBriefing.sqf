@@ -22,7 +22,7 @@ if (_respawnMode == 0) then {
 <br/>
 The FA3 Respawn system allows team leaders to deploy a rally point for their side. Respawning players can teleport to this rally point.
 <br/><br/>
-Placing this rally point will remove any previously-placed rally point for your side. You can only place this rally point if you are the leader of your group.
+Placing this rally point will remove any previously-placed rally point for your side. You can only place this rally point if you are the leader of your group. There is a 5-minute cooldown after placing a beacon before another beacon for that side can be placed.
 <br/><br/>
 <execute expression='[player] spawn f_fnc_respawnBeaconDeploy; openMap false'>Place rally point</execute>"
 	]];
