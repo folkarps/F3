@@ -20,7 +20,7 @@ _str_deploy = "deployment vehicle.";
 if (_respawnMode == 0) then {
 	player createDiaryRecord ["fa3_actions",["FA3 Rally Point","
 <br/>
-The FA3 Respawn system allows team leaders to deploy a rally point for their side. Respawning players can teleport to this rally point.
+The FA3 Respawn system allows team leaders to deploy a rally point for their side. You can use this rally point to summon respawning players.
 <br/><br/>
 Placing this rally point will remove any previously-placed rally point for your side. You can only place this rally point if you are the leader of your group. There is a 5-minute cooldown after placing a beacon before another beacon for that side can be placed.
 <br/><br/>
@@ -36,7 +36,7 @@ player createDiaryRecord ["diary", ["FA3 Respawn",format ["
 <br/>
 If you have been unconscious for 3 minutes straight, you will have the option to respawn. After a brief timeout, you will respawn at a neutral base location.
 <br/><br/>
-At the base, you will have access to a terminal, which you can use to either spectate your team, or teleport to your side's %2
+At the base, you will have access to a terminal, which you can use to spectate your team, while you wait to be deployed to your side's %2
 <br/><br/>
 Your side has %1 respawn tickets at mission start.
 ",f_param_respawnTickets,_str_deploy]]];
