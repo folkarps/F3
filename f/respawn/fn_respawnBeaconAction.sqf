@@ -10,9 +10,10 @@ _object call f_fnc_respawnBeaconAction;
 
 Arguments:
 0. Target (object) - object to add the action to
+1. Radius (number) - Optional - radius for the action. Increase it for large objects as the radius is measured from object centre. Default: 3
 =========================== */
 
-params ["_object"];
+params ["_object",["_radius",3]];
 
 [
 	_object,
@@ -31,7 +32,7 @@ params ["_object"];
 	},
 	{},
 	[],
-	3,
+	_radius,
 	0,
 	false,
 	false,
