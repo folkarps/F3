@@ -28,7 +28,7 @@ params ["_object",["_radius",3]];
 	},
 	{},
 	{
-		_caller call f_fnc_respawnBeaconTeleport;
+		_caller spawn f_fnc_respawnBeaconTeleport;
 	},
 	{},
 	[],

@@ -45,10 +45,11 @@ if (_respawnBeacon isKindOf "AllVehicles") exitWith {
 		if (_respawnBeacon emptyPositions "Cargo" >= 1) then {
 			private _text = format ["[%1] %2 is deploying to the rally point vehicle.", _sideString, name _x];
 			[_text] remoteExec ["systemChat"];
-			_x moveInCargo _respawnBeacon;
+			[_x,_respawnBeacon] remoteExec ["moveInCargo"];
 		} else {
 			breakWith { systemChat "Rally point vehicle has no available cargo seats, please try again." };
 		};
+		sleep 0.3;
 	} forEach _readyUnits;
 };
 
