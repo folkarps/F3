@@ -62,7 +62,8 @@ if !(alive _caller) exitWith {};
 		_beacon setVectorUp [0,0,1];
 		_beacon setDir (getDir _caller - 90);
 		
-		private _smoke = "SmokeShellRed_Infinite" createVehicle [0,0,0];
+		private _smokeType = ["SmokeShellRed_Infinite", "SmokeShellBlue_Infinite", "SmokeShellGreen_Infinite", "SmokeShellPurple_Infinite", "SmokeShellYellow_Infinite","SmokeShellWhite_Infinite","SmokeShellWhite_Infinite","SmokeShellWhite_Infinite","SmokeShellWhite_Infinite","SmokeShellWhite_Infinite"] select ((side group _caller) call BIS_fnc_sideID);
+		private _smoke = _smokeType createVehicle [0,0,0];
 		_smoke setPosASL _position;
 		_beacon setVariable ["f_beaconSmoke",_smoke,true];
 		
