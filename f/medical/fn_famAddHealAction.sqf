@@ -51,13 +51,7 @@ private _healCodeComp = {
 private _healCodeInt = { 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
-
-	// Exit animation 
-	if (animationState _caller find "ppne" != -1) then { 
-		_caller switchMove "AinvPpneMstpSlayWnonDnon_medicOut";
-	} else {
-		_caller switchMove "AinvPknlMstpSlayWnonDnon_medicOut";
-	};
+	_caller playAction "medicStop";
 };
 
 // ====================================================================================
