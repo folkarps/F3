@@ -28,7 +28,7 @@ if (_cooldown < 300) exitWith {
 };
 
 _caller playActionNow "MedicOther";
-private _text = format ["[%1] %2 is deploying a respawn beacon.", _side, name _caller];
+private _text = format ["[%1] %2 is deploying a rally beacon.", _side, name _caller];
 [_text] remoteExec ["systemChat"];
 
 sleep 5;
@@ -85,5 +85,5 @@ if !(alive _caller) exitWith {};
 // Cooldown marker
 missionNamespace setVariable [_timerVarName, serverTime, true];
 
-private _text = format ["[%1] %2 deployed a respawn beacon.", _side, name _caller];
+private _text = format ["[%1] %2 deployed a rally beacon.", _side, name _caller];
 [_text] remoteExec ["systemChat"];
