@@ -18,61 +18,17 @@ private _healMedicTime = 8.5; // Action Duration
 private _healCodeStart = { 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",true];
-
-	if (stance _caller == "PRONE") then {
-		// Rifle or Binocular
-		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
-			_caller playMove "ainvppnemstpslaywrfldnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvppnemstpslaywrfldnon_medicother"];
-		};
-		// Nothing
-		if (currentWeapon _caller == "") exitWith {
-			_caller playMove "ainvppnemstpslaywnondnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvppnemstpslaywnondnon_medicother"];
-		};
-		// Pistol
-		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
-			_caller playMove "ainvppnemstpslaywpstdnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvppnemstpslaywpstdnon_medicother"];
-		};
-	} else { 
-		// Rifle or Binocular
-		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
-			_caller playMove "ainvpknlmstpslaywrfldnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvpknlmstpslaywrfldnon_medicother"];
-		};
-		// Nothing
-		if (currentWeapon _caller == "") exitWith {
-			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvpknlmstpslaywnondnon_medicother"];
-		};
-		// Launcher
-		if (currentWeapon _caller == secondaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
-			_caller playMove "ainvpknlmstpslaywlnrdnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvpknlmstpslaywlnrdnon_medicother"];
-		};
-		// Pistol
-		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
-			_caller playMove "ainvpknlmstpslaywpstdnon_medicother";
-			_caller setVariable ["f_var_fam_animation","ainvpknlmstpslaywpstdnon_medicother"];
-		};	
-	}; 
-	// Let the wounded know someone is trying to save them. 
-	if !(_target getVariable ['f_var_fam_conscious',true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; // TODO Test?
+	_caller playAction "medicStart";
 }; 
 
 // Progress Code
-private _healCodeProg = {
-	private _anim = _caller getVariable ["f_var_fam_animation",""];
-	if ((animationState _caller != _anim) && {_frame < 22}) then {
-		_caller playMove _anim;
-	};
-}; 
+private _healCodeProg = {}; 
 
 // Completed Code
 private _healCodeComp = { 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
+	_caller playAction "medicStop";
 
 	// Medic heals to full only if they have a medikit. TODO CLS Support?
 	if (_caller getUnitTrait 'Medic' && (_caller call f_fnc_famHasFAK >= 1)) then {
