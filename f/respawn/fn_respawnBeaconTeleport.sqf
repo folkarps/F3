@@ -22,7 +22,7 @@ if (isNull _respawnBeacon) exitWith {
 	systemChat format ["[%1] No available rally point for your side.", _sideString];
 };
 
-private _readyUnits = (playableUnits + switchableUnits) select {(side _x == side group _caller) && {(_x distance f_respawnTerminal) < 100}};
+private _readyUnits = (playableUnits + switchableUnits) select {(side group _x == side group _caller) && {(_x distance f_respawnTerminal) < 100}};
 if (count _readyUnits < 1) exitWith {
 	systemChat format ["[%1] No available reinforcements for your side.", _sideString];
 };
