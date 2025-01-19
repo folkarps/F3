@@ -21,7 +21,7 @@ if !(_caller == leader _caller) exitWith {
 // Check cooldown
 private _side = str side group _caller;
 private _timerVarName = format ["f_var_lastRespawnBeacon_%1", _side];
-private _cooldown = serverTime - (missionNamespace getVariable [_timerVarName, serverTime]);
+private _cooldown = serverTime - (missionNamespace getVariable [_timerVarName, serverTime - 301]);
 if (_cooldown < 300) exitWith {
 	private _text = format ["[%1] Rally beacon on cooldown: %2", _side, [_cooldown, "MM:SS"] call BIS_fnc_secondsToString];
 	systemChat _text;
