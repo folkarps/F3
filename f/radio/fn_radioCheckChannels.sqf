@@ -96,6 +96,10 @@ for "_i" from 1 to 2 do {
 	if !(_unit getVariable ["f_var_fam_conscious",true]) then {
 		_channelsToAddTalk = [];
 	};
+	if !(alive _unit) then {
+		_channelsToAddTalk = [];
+		_channelsToAddListen = [];
+	};
 		
 	// Remove channels player shouldn't have access to
 	for "_i" from 1 to f_var_radioChannelCount do {

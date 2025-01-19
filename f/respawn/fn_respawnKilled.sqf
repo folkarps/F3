@@ -13,3 +13,4 @@ _this spawn f_fnc_activateSpectator;
 private _unit = _this#0;
 _unit setVariable ["f_var_lastTeamColour",assignedTeam _unit,true];
 _unit setVariable ["f_var_unitTraits", getAllUnitTraits _unit, true];
+_unit spawn f_fnc_radioCheckChannels;

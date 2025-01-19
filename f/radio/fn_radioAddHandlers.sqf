@@ -11,7 +11,7 @@ params [["_respawned",false]];
 waitUntil {(!isNull player && {player == player}) && !(isNil "f_var_radioChannelsUnified")};
 
 // Add player to the correct channels if they have a backpack
-[player] spawn f_fnc_radioCheckChannels;
+player spawn f_fnc_radioCheckChannels;
 
 // Now bail if they've already been handled, unless they respawned in which case they do need the actions adding
 if (player getVariable ["f_var_radioHandlersAdded",false] && !_respawned) exitWith {};
@@ -24,44 +24,44 @@ if _respawned exitWith {};
 
 // Update channels if they drop a backpack
 player addEventHandler ["put", { 
-	params ["_unit", "_container", "_item"];
-	[_unit] spawn f_fnc_radioCheckChannels;
+	params ["_unit"];
+	_unit spawn f_fnc_radioCheckChannels;
 }]; 
 
 // Update channels if they take a backpack 
 player addEventHandler ["take", {  
-	params ["_unit", "_container", "_item"];
-	[_unit] spawn f_fnc_radioCheckChannels;  
+	params ["_unit"];
+	_unit spawn f_fnc_radioCheckChannels;  
 }];
 
 // Update channels if they open their inventory
 player addEventHandler ["inventoryOpened", {  
-	params ["_unit", "_container"];
-	[_unit] spawn f_fnc_radioCheckChannels; 
+	params ["_unit"];
+	_unit spawn f_fnc_radioCheckChannels; 
 }];
 
 // Update channels if they close their inventory
 player addEventHandler ["inventoryClosed", {  
-	params ["_unit", "_container"];
-	[_unit] spawn f_fnc_radioCheckChannels;
+	params ["_unit"];
+	_unit spawn f_fnc_radioCheckChannels;
 }];
 
 // Update channels if they get in a vehicle
 player addEventHandler ["getInMan", {  
-	params ["_unit", "_role", "_vehicle", "_turret"];
-	[_unit] spawn f_fnc_radioCheckChannels; 
+	params ["_unit"];
+	_unit spawn f_fnc_radioCheckChannels; 
 }];
 
 // Update channels if they get out of a vehicle
 player addEventHandler ["getOutMan", {  
-	params ["_unit", "_role", "_vehicle", "_turret"];
-	[_unit] spawn f_fnc_radioCheckChannels; 
+	params ["_unit"];
+	_unit spawn f_fnc_radioCheckChannels; 
 }];
 
 // Update channels if they switch seats in a vehicle
 player addEventHandler ["seatSwitchedMan", {  
-	params ["_unit1", "_unit2", "_vehicle"];
-	[_unit1] spawn f_fnc_radioCheckChannels; 
+	params ["_unit1"];
+	_unit1 spawn f_fnc_radioCheckChannels; 
 }];
 
 // Add respawn protection
@@ -85,7 +85,7 @@ if (isNil "f_var_radioPersistentCheck") then {
 	[] spawn {
 		while {f_var_radioPersistentCheck} do {
 			sleep 10;
-			[player] spawn f_fnc_radioCheckChannels;
+			player spawn f_fnc_radioCheckChannels;
 		};
 	};
 };
@@ -98,4 +98,4 @@ if (f_param_debugMode == 1) then
 
 // Check again!
 sleep 1;
-[player] spawn f_fnc_radioCheckChannels;
+player spawn f_fnc_radioCheckChannels;
