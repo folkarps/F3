@@ -64,7 +64,7 @@ private _healCodeStart = {
 // Progress Code
 private _healCodeProg = {
 	private _anim = _caller getVariable ["f_var_fam_animation",""];
-	if (animationState _caller != _anim) && {_frame < 22} then {
+	if ((animationState _caller != _anim) && {_frame < 22}) then {
 		_caller playMove _anim;
 	};
 }; 
