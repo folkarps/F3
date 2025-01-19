@@ -15,13 +15,15 @@ Arguments:
 
 params ["_object",["_radius",3]];
 
+private _condition = format ["(isNull objectParent _this) && {(_this distance _target) < %1}", _radius];
+
 [
 	_object,
 	"Call reinforcements to rally point",
 	"a3\ui_f_oldman\data\igui\cfg\holdactions\meet_ca.paa",
 	"a3\ui_f_oldman\data\igui\cfg\holdactions\meet_ca.paa",
-	"isNull objectParent _this",
-	"isNull objectParent _this",
+	_condition,
+	_condition,
 	{
 		private _text = format ["[%1] Searching for ready reinforcements...", str side group _caller];
 		systemChat _text;
@@ -32,8 +34,8 @@ params ["_object",["_radius",3]];
 	},
 	{},
 	[],
-	_radius,
-	0,
+	5,
+	10,
 	false,
 	false,
 	true
