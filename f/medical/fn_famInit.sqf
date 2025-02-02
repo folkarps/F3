@@ -46,7 +46,9 @@ waitUntil{!isNull player && {player == player}};
 if (!hasInterface) exitWith {};
 
 if (player getVariable ["f_var_fam_initDone",false]) exitWith {
-	systemChat "FAM init already run!";
+	if (f_param_debugMode == 1) then {
+		systemChat "DEBUG (fn_famInit.sqf): FAM init already run!";
+	};
 };
 
 // ====================================================================================
@@ -116,3 +118,6 @@ if (isNil "f_var_fam_briefingDone") then {
 };
 
 player setVariable ["f_var_fam_initDone",true];
+if (f_param_debugMode == 1) then {
+	systemChat "DEBUG (fn_famInit.sqf): FAM init run on local player";
+};
