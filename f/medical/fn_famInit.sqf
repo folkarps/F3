@@ -115,4 +115,4 @@ if (isNil "f_var_fam_briefingDone") then {
 	[] call f_fnc_famBriefing;
 };
 
-player setVariable ["f_var_fam_initDone",true,true];
+player setVariable ["f_var_fam_initDone",true];
