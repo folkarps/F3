@@ -23,7 +23,7 @@ for "_i" from 2 to 5 do {
 };
 
 _unit setVariable ["f_var_fam_knockOutTime",nil,true];
-(missionNamespace getVariable ["f_var_fam_respawnDisplay", displayNull]) closeDisplay 1;
+(uiNamespace getVariable ["f_var_fam_respawnDisplay", displayNull]) closeDisplay 1;
 
 // check for radio channels
 [_unit] spawn f_fnc_radioCheckChannels;
