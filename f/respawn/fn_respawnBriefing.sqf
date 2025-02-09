@@ -30,7 +30,7 @@ Placing this rally point will remove any previously-placed rally point for your 
 };
 
 if (_respawnMode == 2) then {
-	_str_deploy = "for pickup by an allied transport";
+	_str_deploy = "for pickup by an allied transport.";
 };
 
 waitUntil {!isNil "f_script_loadoutNotes"};
