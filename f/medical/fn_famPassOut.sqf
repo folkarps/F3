@@ -90,6 +90,16 @@ if (local _unit && isPlayer _unit) then
 
 };
 
+// remove unit from group while downed.
+_wasLeader = false;
+_colorTeam = assignedTeam _unit;
+if (leader group _unit == _unit) then {_wasLeader = true};
+
+_unit setVariable ["f_var_fam_old_group_details",[group _unit, groupId _unit,_colorTeam,_wasLeader]];
+_temp_grp = createGroup side _unit;
+_unit joinAs [_temp_grp,0];
+
+
 // Make sure AI won't intentionally shoot downed unit.
 _unit setCaptive true;
 

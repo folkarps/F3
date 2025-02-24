@@ -73,6 +73,9 @@ _unit setVariable ["f_var_fam_hasbandage",false];
 _unit getVariable ["f_var_fam_flag",false];
 _unit setVariable ["f_var_fam_actionsAdded",false];
 
+// Prevent the group from being deleted if all units get downed.
+group _unit deleteGroupWhenEmpty false;
+
 [_unit] spawn f_fnc_famLoop; 
 
 // ====================================================================================
