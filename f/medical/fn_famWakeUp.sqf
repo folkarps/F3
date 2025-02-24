@@ -83,12 +83,6 @@ if(local _unit) then
 	};
 };
 
-//return unit to previous group
-_group_details = _unit getVariable ["f_var_fam_old_group_details",[]];
-_unit joinAs [_group_details#0,_group_details#1];
-_unit assignTeam _group_details#2;
-if (_group_details#3) then {group _unit selectLeader _unit};
-
 // exit if they are dead
 if (damage _unit >= 1) exitWith {};
 // ====================================================================================
