@@ -17,8 +17,8 @@ waitUntil {local _newUnit};
 
 call f_fnc_terminateSpectator;
 private _newTickets = [side group _newUnit] call BIS_fnc_respawnTickets;
-private _respawnText = format ["[%1] %2 respawned, %3 tickets remaining", side group _newUnit, name _newUnit, _newTickets];
-[_respawnText] remoteExec ["systemChat"];
+private _respawnText = format ["[%1] You have respawned. %2 tickets remaining.", side group _newUnit, _newTickets];
+systemChat _respawnText;
 
 _newUnit assignTeam (_oldUnit getVariable ["f_var_lastTeamColour","MAIN"]);
 
