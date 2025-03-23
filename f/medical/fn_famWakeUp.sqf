@@ -23,7 +23,6 @@ for "_i" from 2 to 5 do {
 };
 
 _unit setVariable ["f_var_fam_knockOutTime",nil,true];
-(uiNamespace getVariable ["f_var_fam_respawnDisplay", displayNull]) closeDisplay 1;
 
 // check for radio channels
 [_unit] spawn f_fnc_radioCheckChannels;
@@ -81,6 +80,10 @@ if(local _unit) then
 	} else {
 		_unit switchMove (_unit getVariable ["f_var_fam_vehicle_animation",""]);
 	};
+};
+
+if (_unit == player) then {
+	(uiNamespace getVariable ["f_var_fam_respawnDisplay", displayNull]) closeDisplay 1;
 };
 
 // exit if they are dead
