@@ -7,7 +7,9 @@
 // The following interprets what has been passed to this script
 params[
 	["_typeofUnit", "", [""]],
-	["_unit", objNull, [objNull]]
+	["_unit", objNull, [objNull]],
+	["_faction", ""],
+	["_isRespawn",false]
 ];
 private _isMan = _unit isKindOf "CAManBase"; // We check if we're dealing with a soldier or a vehicle
 _typeofUnit = toLower _typeofUnit; // Tidy input for SWITCH/CASE statements, expecting something like : r = Rifleman, co = Commanding Officer, rat = Rifleman (AT)
@@ -18,8 +20,9 @@ _typeofUnit = toLower _typeofUnit; // Tidy input for SWITCH/CASE statements, exp
 // The following code detects what faction the unit's slot belongs to, and stores
 // it in the private variable _faction. It can also be passed as an optional parameter.
 
-private _faction = toLower (param[2, ([_unit] call f_fnc_virtualFaction)]);
-
+if (_faction == "") then {
+	_faction = toLower ([_unit] call f_fnc_virtualFaction);
+};
 // ====================================================================================
 
 // INSIGNIA
@@ -38,7 +41,7 @@ _insignia_styles = [_insignia_style_NATO,_insignia_style_CSAT];
 // ====================================================================================
 
 // Universal: assign EOD flags to engineer classes
-if (_typeofUnit in ["eng","engm"]) then {
+if ((_typeofUnit in ["eng","engm"]) or (_isRespawn && {(_unit getVariable ["f_var_eodFlagAction",-1]) > -1})) then {
 	[_unit] call f_fnc_assignEODflags;
 };
 
@@ -56,6 +59,7 @@ if !(local _unit) exitWith {};
 // A public variable is set on the unit, indicating their type. This is mostly relevant for the FA3 respawn component
 
 _unit setVariable ["f_var_assignGear",_typeofUnit,true];
+_unit setVariable ["f_var_assignGearFaction",_faction,true];
 
 // ====================================================================================
 
@@ -283,7 +287,6 @@ if (_isMan) then {
 
 // This variable simply tracks the progress of the gear assignation process, for other
 // scripts to reference.
-
 _unit setVariable ["f_var_assignGear_done",true,true];
 
 // ====================================================================================

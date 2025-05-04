@@ -27,10 +27,34 @@ minPlayerDistance = 500; // The minimum distance between corpse or wreck and nea
 
 // FA3 - Respawn Settings
 
-respawn = 1;
-respawndelay = 3;
-respawnOnStart = 0;
-respawnTemplates[] = {"F_Spectator"};
+respawn = 3;
+respawnDialog = 0;
+respawndelay = -1;
+respawnOnStart = -1;
+respawnButton = 0;
+respawnTemplates[] = {"F_Respawn", "Tickets", "Counter"};
+
+// ============================================================================================
+
+// FA3 - Respawn templates
+// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
+
+
+// ============================================================================================
+class CfgRespawnTemplates
+{
+	class F_Respawn
+	{
+		respawnDelay = 30;
+		onPlayerRespawn = "f_fnc_respawn";
+		onPlayerKilled = "f_fnc_respawnKilled";
+	};
+	class F_Spectator
+	{
+		onPlayerRespawn = "f_fnc_activateSpectator";
+	};
+};
+
 
 // ============================================================================================
 
@@ -269,6 +293,17 @@ class Params
 		default = 0;
 	};
 	
+// FA3 - Respawn Tickets Parameters
+// Credits and documentation: https://github.com/folkarps/F3/wiki
+
+	class f_param_respawnTickets
+	{
+		title = "Respawn tickets per side";
+		values[] = {0,10,25,50,2000};
+		texts[] = {"None", "10", "25", "50", "2000"};
+		default = 10;
+	};
+	
 // ============================================================================================
 
 // FA3 - Caching
@@ -357,23 +392,6 @@ class CfgDebriefing
 
 };
 
-
-
-// ============================================================================================
-
-// FA3 - Respawn templates
-// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
-
-
-// ============================================================================================
-class CfgRespawnTemplates
-{
-    class F_Spectator
-    {
-		onPlayerRespawn = "f\spect\fn_activateSpectator.sqf";
-    };
-};
-
 // ============================================================================================
 
 // FA3 - Functions
@@ -420,3 +438,5 @@ class RscTitles
 	// UI elements for the medical system
 	#include "f\medical\f_FAMUI.hpp"
 };
+
+#include "f\respawn\f_respawnDisplays.hpp"

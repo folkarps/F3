@@ -588,6 +588,19 @@ switch (_typeofUnit) do
 		_unit addmagazines [_glriflemag_tr, 2];
 		_unit addmagazines [_glmag, 5];
 	};
+// Respawn Loadout:
+	case "respawn":
+	{
+		_unit addmagazines [_riflemag, 1];
+		_unit addweapon _rifle;
+		_unit addmagazines [_smokegrenade, 3];
+		_unit addmagazines [_riflemag, 2];
+		_unit addmagazines [_riflemag_tr, 1];
+		_unit addmagazines [_grenade, 2];
+		{
+			_unit setUnitTrait [_x#0, _x#1];
+		} forEach (_unit getVariable ["f_var_unitTraits",[]]);
+	};
 
 // Include the loadouts for vehicles and crates:
 #include "f_assignGear_syndikat_v.sqf";

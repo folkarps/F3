@@ -6,7 +6,7 @@ params ["_unit"];
 
 // ====================================================================================
 // When they die
-_ehKilled = _unit addEventHandler ["Killed", {
+private _ehKilled = _unit addEventHandler ["Killed", {
 	params ["_unit"];
 	// EXIT
 	// This occurs after death, make sure that none of the wounded affects carry over.
@@ -27,12 +27,14 @@ _ehKilled = _unit addEventHandler ["Killed", {
 
 	// store name on corpse for future diagnosis.
 	_unit setVariable ["f_var_fam_corpse",name _unit,true];
+	_unit setVariable ["f_var_fam_bleed",false,true]; 
+	_unit setVariable ["f_var_fam_conscious",true,true]; 
 
 }];
 
 // ====================================================================================
 // Treatment Feedback
-_ehHeal = _unit addEventHandler ["HandleHeal", {
+private _ehHeal = _unit addEventHandler ["HandleHeal", {
 
 	// notification correction for self FAK usage.
 	params ["_injured", "_healer"];
@@ -57,9 +59,19 @@ _ehHeal = _unit addEventHandler ["HandleHeal", {
 }];
 
 // ====================================================================================
+// Respawn handling
+private _ehRespawn = _unit addEventHandler ["Respawn", {
+	params ["_unit"];
+	if !(local _unit) exitWith {};
+	if !(_unit isKindOf "VirtualMan_F") then {
+		_unit setVariable ["f_var_fam_actionsAdded",false,true];
+		[_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + netId _unit)];
+	};
+}];
+// ====================================================================================
 
 waitUntil {sleep 0.1; f_param_mission_timer <= 0}; // need to wait until post safeStart for this.
 // Handle Damage 
 _ehDamage = _unit addEventHandler ["HandleDamage",{_this call f_fnc_famDamageHandler;}];
 
-_unit setVariable ["f_var_fam_allEHs",[_ehDamage,_ehKilled,_ehHeal]];
+_unit setVariable ["f_var_fam_allEHs",[_ehDamage,_ehKilled,_ehHeal,_ehRespawn]];

@@ -83,6 +83,17 @@ class F // Defines the "owner"
 		class mapClickTeleportRemoveAction{};
 		class mapClickTeleportBriefing{};
 	};
+	class respawn
+	{
+		file = "f\respawn";
+		class respawn{};
+		class respawnBriefing{};
+		class respawnBeaconAction{};
+		class respawnBeaconDeploy{};
+		class respawnBeaconTeleport{};
+		class respawnKilled{};
+		class respawnTerminalAction{};
+	};
 	class nametag
 	{
 		file = "f\nametag\functions";

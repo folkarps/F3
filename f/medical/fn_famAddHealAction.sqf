@@ -11,52 +11,14 @@ if (_unit == player) exitWith {};
 // Variables to streamline balancing/updates
 private _healIcon = "a3\ui_f\data\igui\cfg\holdactions\holdaction_revive_ca.paa"; //Icon to Display
 private _healProg = "(_target distance _caller < 3) && {alive _target && !(_target getVariable ['f_var_fam_conscious',true])}"; // This one is always the same, start condition varies by unit type.
-private _healTime = 6; // Action Duration
-private _healMedicTime = 4.5; // Action Duration
+private _healTime = 14; // Action Duration
+private _healMedicTime = 8.5; // Action Duration
 
 // Starting Code
 private _healCodeStart = { 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",true];
-	
-	// Match medic animation speed to speed modifier.
-	if (_caller getUnitTrait 'medic') then {
-		_caller setAnimSpeedCoef 1.25;
-	};
-
-	if (stance _caller == "PRONE") then {
-		// Rifle or Binocular
-		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
-			_caller playMove "ainvppnemstpslaywrfldnon_medicother"; 
-		};
-		// Nothing
-		if (currentWeapon _caller == "") exitWith {
-			_caller playMove "ainvppnemstpslaywnondnon_medicother";
-		};
-		// Pistol
-		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
-			_caller playMove "ainvppnemstpslaywpstdnon_medicother";
-		};
-	} else { 
-		// Rifle or Binocular
-		if ((currentWeapon _caller == binocular _caller) || (currentWeapon _caller == primaryWeapon _caller && {primaryWeapon _caller != ""})) exitWith {
-			_caller playMove "ainvpknlmstpslaywrfldnon_medicother"; 
-		};
-		// Nothing
-		if (currentWeapon _caller == "") exitWith {
-			_caller playMove "ainvpknlmstpslaywnondnon_medicother";
-		};
-		// Launcher
-		if (currentWeapon _caller == secondaryWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
-			_caller playMove "ainvpknlmstpslaywlnrdnon_medicother";
-		};
-		// Pistol
-		if (currentWeapon _caller == handgunWeapon _caller && {primaryWeapon _caller != ""}) exitWith {
-			_caller playMove "ainvpknlmstpslaywpstdnon_medicother";
-		};	
-	}; 
-	// Let the wounded know someone is trying to save them. 
-	if !(_target getVariable ['f_var_fam_conscious',true]) then {[["Someone is helping you", "PLAIN"]] remoteExec ["titleText",_target];}; // TODO Test?
+	_caller playAction "medicStart";
 }; 
 
 // Progress Code
@@ -66,6 +28,7 @@ private _healCodeProg = {};
 private _healCodeComp = { 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
+	_caller playAction "medicStop";
 
 	// Medic heals to full only if they have a medikit. TODO CLS Support?
 	if (_caller getUnitTrait 'Medic' && (_caller call f_fnc_famHasFAK >= 1)) then {
@@ -88,13 +51,7 @@ private _healCodeComp = {
 private _healCodeInt = { 
 	// this is needed to protect against BI bugs that remove all actions.
 	_caller setVariable ["f_var_fam_flag",false];
-
-	// Exit animation 
-	if (animationState _caller find "ppne" != -1) then { 
-		_caller switchMove "AinvPpneMstpSlayWnonDnon_medicOut";
-	} else {
-		_caller switchMove "AinvPknlMstpSlayWnonDnon_medicOut";
-	};
+	_caller playAction "medicStop";
 };
 
 // ====================================================================================

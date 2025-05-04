@@ -46,7 +46,9 @@ waitUntil{!isNull player && {player == player}};
 if (!hasInterface) exitWith {};
 
 if (player getVariable ["f_var_fam_initDone",false]) exitWith {
-	systemChat "FAM init already run!";
+	if (f_param_debugMode == 1) then {
+		systemChat "DEBUG (fn_famInit.sqf): FAM init already run!";
+	};
 };
 
 // ====================================================================================
@@ -69,7 +71,7 @@ _unit setVariable ["f_var_fam_forcedown",false];
 _unit setVariable ["f_var_fam_hasfak",false]; 
 _unit setVariable ["f_var_fam_hasbandage",false]; 
 _unit getVariable ["f_var_fam_flag",false];
-_unit setVariable ["f_var_fam_actions",false];
+_unit setVariable ["f_var_fam_actionsAdded",false];
 
 [_unit] spawn f_fnc_famLoop; 
 
@@ -87,7 +89,7 @@ if (count (_unit getVariable ["f_var_fam_allEHs",[]]) == 0) then {
 
 if (!(_unit getVariable ["f_var_fam_actions",false]) && {hasInterface}) then {
 
-		[_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + (_unit call BIS_fnc_netId))];
+		[_unit] remoteExec ["f_fnc_famAddAllActions", 0, ("f_jip_famAddAllActions" + netId _unit)];
 		_unit setVariable ["f_var_fam_actions",true,true];
 
 };
@@ -115,4 +117,7 @@ if (isNil "f_var_fam_briefingDone") then {
 	[] call f_fnc_famBriefing;
 };
 
-player setVariable ["f_var_fam_initDone",true,true];
+player setVariable ["f_var_fam_initDone",true];
+if (f_param_debugMode == 1) then {
+	systemChat "DEBUG (fn_famInit.sqf): FAM init run on local player";
+};

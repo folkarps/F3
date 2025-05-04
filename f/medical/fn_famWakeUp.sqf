@@ -22,6 +22,8 @@ for "_i" from 2 to 5 do {
 	_i enableChannel true;
 };
 
+_unit setVariable ["f_var_fam_knockOutTime",nil,true];
+
 // check for radio channels
 [_unit] spawn f_fnc_radioCheckChannels;
 
@@ -80,6 +82,10 @@ if(local _unit) then
 	};
 };
 
+if (_unit == player) then {
+	(uiNamespace getVariable ["f_var_fam_respawnDisplay", displayNull]) closeDisplay 1;
+};
+
 // exit if they are dead
 if (damage _unit >= 1) exitWith {};
 // ====================================================================================
@@ -88,6 +94,8 @@ if (damage _unit >= 1) exitWith {};
 titleText ["","PLAIN"];
 
 _unit setCaptive false;
+
+[_unit, "f_fam_wakeUp", [_unit]] call BIS_fnc_callScriptedEventHandler;
 
 // DELAYED RESETS
 _unit spawn {

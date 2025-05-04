@@ -1,23 +1,30 @@
 // FA3 - Spectator component
 if (f_param_debugMode == 1) then {
-    diag_log "activating spectator";
+    diag_log "FA3 Spectator: activating spectator";
 };
 
-// 'Cinematic' delay before spectator activates
-sleep 3;
+params ["","","","",["_isFullSpectator",false]];
 
 // Disable post-processing effects
 // Borrowed from BIS_fnc_respawnSpectator
-    waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
-BIS_fnc_feedback_allowPP = false;
+if ((0 call BIS_fnc_missionRespawnType) == 1) then {
+	waitUntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen", true]};
+	BIS_fnc_feedback_allowPP = false;
+};
 
-// Create a new (alive) unit to prevent draw3D bug with floating head tags
-// Credit to SilentSpike: https://github.com/acemod/ACE3/pull/5868
-private _cameraUnit = (createGroup sideLogic) createUnit ["VirtualMan_F", player, [], 0, "NONE"];
-_cameraUnit enableSimulation false;
-selectPlayer _cameraUnit;
+if (_isFullSpectator or (!(alive player) && ([side group player] call BIS_fnc_respawnTickets) < 1)) then {
+	// Create a new (alive) unit to prevent draw3D bug with floating head tags
+	// Credit to SilentSpike: https://github.com/acemod/ACE3/pull/5868
+	private _cameraUnit = (createGroup sideLogic) createUnit ["VirtualMan_F", player, [], 0, "NONE"];
+	_cameraUnit enableSimulation false;
+	selectPlayer _cameraUnit;
 
-["Initialize", [player, [], true, true, true, false, true, true, true, true]] call BIS_fnc_EGSpectator;
+	["Initialize", [player, [], true, true, true, false, true, true, true, true]] call BIS_fnc_EGSpectator;
+	
+} else {
 
+	["Initialize", [player, [side group player], false, false, false, false, false, true, true, true]] call BIS_fnc_EGSpectator;
+	
+};
 // Disable direct chat to prevent ghosts interacting with the living
 5 enableChannel false;

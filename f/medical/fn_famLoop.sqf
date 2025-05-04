@@ -21,6 +21,27 @@ while {alive _unit && {local _unit}} do {
 	};
 // ====================================================================================
 	
+	// Timeout for being downed
+	private _knockoutTime = _unit getVariable ["f_var_fam_knockOutTime", serverTime];
+	if ((serverTime - _knockOutTime) > 180) then {
+		if (isNull (uiNamespace getVariable ["f_var_fam_respawnDisplay",displayNull])) then {
+			uiNamespace setVariable ["f_var_fam_respawnDisplay",findDisplay 46 createDisplay "f_respawnUI"];
+		};
+	};
+	// If the unit is in a dead vehicle, eject them (if vehicle is on the ground and at very low speed) or kill them (if it isn't)
+	if (!(isNull objectParent _unit) && {!alive objectParent _unit}) then {
+		sleep 3;
+		private _parent = objectParent _unit;
+		if (!(isNull _parent) && {!alive _parent}) then {
+			if (((getPos _parent select 2) < 5) && {(vectorMagnitude velocity _parent) < 4.2}) then {
+				moveOut _unit;
+			} else {
+				_unit setDamage 1;
+				break;
+			};
+		};
+	};
+		
 	// PASSOUT TEST 
 	// Force Unit Down above damage threshold. 
 	if (damage _unit >= 0.9 && {_unit getVariable ["f_var_fam_conscious",true]}) then { 
@@ -125,7 +146,7 @@ while {alive _unit && {local _unit}} do {
 					_tick = selectRandom [0.001,0.002,0.004]; // slower rate closer to death.
 				} else {
 					_tick = selectRandom [0.06,0.08,0.11]; // faster rate until you are forced down. 
-					if (_currentDamage + _tick >= 1) then {_tick = 0.01}; //careful not to overdamage you with the bleed.
+					if (_currentDamage + _tick >= 0.99) then {_tick = 0.01}; //careful not to overdamage you with the bleed.
 				};
 
 				{ // save current hands and legs damage.
